@@ -8,3 +8,8 @@
     position: relative;
     left: 80%;
 }
+.tabla
+{
+    border-collapse: collapse;
+    width: 100%;
+}
