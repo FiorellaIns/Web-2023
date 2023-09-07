@@ -17,3 +17,13 @@ table {
 tr:nth-child(even) {
     background-color: #dddddd;
   }
+  .centrar
+{
+    position: relative;
+    left: 50%;
+}
+#anotar
+{
+    position: relative;
+    left: 80%;
+}
