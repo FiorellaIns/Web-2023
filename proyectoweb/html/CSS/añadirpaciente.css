@@ -1,0 +1,33 @@
+body{  
+    margin: 0;
+    padding: 0;
+    font-family:'Times New Roman', Times, serif;
+    background-image: url("login3.jpg");
+    background-size: cover;
+  
+    
+}  
+    
+.añadirpacientepan{
+    width: 300px;
+    position: absolute;   
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    color: rgb(25, 13, 13);
+    background-color: rgba(255, 255, 255, 0.199);
+    border-radius: 10px;
+    padding: 8px;
+    margin: 8px;
+}
+.texto{
+    width: 70%;
+    overflow: absolute;
+    font-size: 20px;
+    padding: 13px 0;
+    margin: 13px 0;
+    margin-bottom: 20px;
+    
+  }
+  .input{
+    color: rgb(70, 63, 63);
+  }

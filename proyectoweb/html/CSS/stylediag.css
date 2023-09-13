@@ -10,12 +10,31 @@ body{
 
 .login-caja{
     position: absolute;   
-    color: rgb(25, 13, 13);
     border-radius: 10px;
+    width: 300px;   
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    border-bottom: 2px lightskyblue;
+        
      
 }
 
 .centrar{
-    position: relative;
-    left: 50%;
+    margin-left: 40%;
 }
+
+.boton{
+    width: 100%;
+    background: none;
+    color: black;
+    padding: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 12px 0;
+    
+  }
+.diagnostico1{
+    font-size: 50px;
+    
+
+  }
