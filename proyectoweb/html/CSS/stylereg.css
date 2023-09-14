@@ -3,9 +3,7 @@ body{
   padding: 0;
   font-family: 'Times New Roman', Times, serif;
   background-image: url(..\img\loginimg.jpg) no-repeat;
-  background-image: url("loginimgcopy.jpg");
   background-size: cover;
-  
   }
 .login-caja{
   width: 300px;
