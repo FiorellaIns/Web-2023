@@ -15,7 +15,7 @@ body{
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 150%;
+
  }
   
 td, th {
@@ -26,12 +26,12 @@ td, th {
 
 .centrar{
   position: relative;
-  left: 50%;
+  left: 30%;
 }
 #anotar
 {
   position: relative;
-  left: 100%;
+  left: 70%;
   border: 1px solid black;
   margin-bottom: center;
   width: 27%;
@@ -41,7 +41,7 @@ td, th {
 
 }
 .boton1{
-  width: 50%;
+  width: 40%;
   color: black;
   padding: 2px;
   font-size: 20px;
@@ -54,7 +54,9 @@ td, th {
   padding: 2px;
   font-size: 20px;
   margin: 6px;
+  
   }
 #botonennegro{
   color: black;
+    
 }
