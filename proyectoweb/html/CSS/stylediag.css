@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("fotoparafondoindex.jpg");
+    background-size: cover;
+}
+
+.login-caja {
+    position: absolute;
+    border-radius: 10px;
+    width: 400px; /* Aumenta el ancho del cuadro de texto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-bottom: 2px lightskyblue;
+}
+
+.centrar {
+    margin-left: 40%;
+}
+
+.boton {
+    width: 100%;
+    background: none;
+    color: black;
+    padding: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 12px 0;
+}
+
+.diagnostico1 {
+    font-size: 16px;
+    width: 1000px;
+    height: 100px;
+    text-align:start ;
+}
+
+.reg {
+    float: center;
+    font-size: 16px;
+}

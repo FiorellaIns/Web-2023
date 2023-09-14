@@ -2,7 +2,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: 'Times New Roman', Times, serif;
-  background-image: url("fotoparafondoindex.jpg");
+  background-image: url("paciente.jpg");
   background-size: cover;
     
   
@@ -10,32 +10,42 @@ body{
 .login-caja{
   position: absolute;   
   color: rgb(25, 13, 13);
-  border-radius: 10px;
    
 }
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+
  }
   
 td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
+  border: 2px solid #dddddd;
+  text-align: center;
   padding: 8px;
 }
- 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+
 .centrar{
   position: relative;
-  left: 50%;
+  left: 30%;
 }
 #anotar
 {
   position: relative;
-  left: 80%;
+  left: 70%;
+  border: 1px solid black;
+  margin-bottom: center;
+  width: 20%;
+  color: black;
+  padding: 3px;
+  font-size: 20px;
+
+}
+.boton1{
+  width: 40%;
+  color: black;
+  padding: 2px;
+  font-size: 20px;
+
 }
 .boton{
   width: 10%;
@@ -44,13 +54,9 @@ tr:nth-child(even) {
   padding: 2px;
   font-size: 20px;
   margin: 6px;
+  
   }
-.boton1{
-  width: 50%;
-  background: none;
+#botonennegro{
   color: black;
-  padding: 2px;
-  font-size: 20px;
-  margin: 6px;
-
+    
 }
