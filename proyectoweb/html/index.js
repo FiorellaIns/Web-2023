@@ -16,4 +16,5 @@ function agregarArray(array=[],html="")
 }
 var tabla = ""
 var tablaDeHTML = document.getElementById("miTabla");
+tabla = Encabezado();
 tablaDeHTML.innerHTML = tabla;
