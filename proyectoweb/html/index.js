@@ -81,6 +81,8 @@ class Buscador
         {
             if(str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90)
                 retorno = retorno + String.fromCharCode((str.charCodeAt(i))+32);
+            else if(str.charAt(i) == "ñ")
+                retorno = retorno + "Ñ";
             else
                 retorno = retorno + str.charAt(i);
         }
