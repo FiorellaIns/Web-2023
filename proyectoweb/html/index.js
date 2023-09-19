@@ -87,6 +87,7 @@ class Buscador
         return retorno;
     }
 }
+var comboBox = document.getElementById("caja");
 var tabla = Buscador;
 var tablaDeHTML = document.getElementById("miTabla");
 arrayArtificial = [["dasdas","asdasdsada","sdasdasdas","dasdaa","asddasdas","sdasda","asddas","sdasda","dasda","dasdasasda","sdasda"],["Coca cola","afil","pacien","das","zvb","ote","sa","mn","po","lo","ñl"],["Tercera","das","nb","fa","cv","cx","año","Nuevo","HD","lol","XD"]];
@@ -94,5 +95,5 @@ tabla = new Buscador(arrayArtificial,"miTabla");
 var control = document.getElementById("Entrada");
 control.addEventListener("input",function()
 {
-    tabla.Cambio(control.value,0);
+    tabla.Cambio(control.value,comboBox.value);
 });
