@@ -54,3 +54,10 @@ tr:nth-child(even) {
   margin: 6px;
 
 }
+.textoConAccion {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black; 
+  text-decoration: underline; 
+}

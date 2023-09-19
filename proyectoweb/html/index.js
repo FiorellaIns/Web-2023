@@ -2,7 +2,7 @@ class Buscador
 {
     idDeLaTabla = HTMLElement;
     html = "";
-    posicion = [];
+    posicion = [""];
     arrayAColocar = [[""]];
     arrayRecibido = [[""]];
     constructor(arrayDeSQL=[[]],idTabla="")
@@ -10,22 +10,20 @@ class Buscador
         this.arrayRecibido = arrayDeSQL;
         this.arrayAColocar = arrayDeSQL;
         this.idDeLaTabla = document.getElementById(idTabla);
-        this.ArmarHTML();
+        this.ArmarHTML(false);
         this.ModificarHTML();
     }
     Cambio(texto="",posicion = 0)
     {
         this.posicion = [];
-        var arraysSeleccionados = [[]];
+        var arraysSeleccionados = [];
         let longitud = this.arrayRecibido.length;
         for(let i = 0;i<longitud;i++)
         {
             let arrayRec = this.arrayRecibido[i];
             let cant = arrayRec[posicion].length;
             if(texto.length == 0)
-            {
                 arraysSeleccionados = this.arrayRecibido;
-            }
             else if(texto.length < cant)
             {
                 if(this.Aminuscula(arrayRec[posicion]).includes(this.Aminuscula(texto)))
@@ -43,20 +41,26 @@ class Buscador
         }
         this.arrayAColocar = arraysSeleccionados;
         this.html = "";
-        this.ArmarHTML();
+        this.ArmarHTML(this.arrayAColocar.length >= 1 && texto.length != 0);
         this.ModificarHTML();
     }
     ModificarHTML()
     {
         this.idDeLaTabla.innerHTML = this.html;
+        this.CrearListener();
     }
-    ArmarHTML()
+    ArmarHTML(conPosicion=true)
     {
         var lArrayAColocar = this.arrayAColocar;
         var lHTML = this.html;
         lHTML = this.Encabezado(lHTML);
-        for(let i = 0,cant = lArrayAColocar.length;i<cant;i++)
-            lHTML = this.AgregarArray(lArrayAColocar[i],lHTML);
+        for(let i = 0,c = 0,cant = lArrayAColocar.length;i<cant;i++)
+        {
+            if(!conPosicion)
+                lHTML = this.AgregarArray(lArrayAColocar[i],lHTML,i);
+            else
+                lHTML = this.AgregarArray(lArrayAColocar[i],lHTML,this.posicion[i]);
+        }
         this.html = lHTML;
     }
     Encabezado(html)
@@ -67,11 +71,11 @@ class Buscador
             retorno = retorno +  "<th>" + COLUMNAS[i] + "</th>" + "\n";
         return retorno + "</tr>\n";
     }
-    AgregarArray(array=[],html="")
+    AgregarArray(array=[],html="",posicion=0)
     {
         var retorno = html + "<tr>\n";
         for(let i = 0,cant = array.length;i<cant;i++)
-            retorno = retorno + "<td>" + array[i] + "</td>\n";
+            retorno = retorno + "<td>" + "<button class = \"textoConAccion\" value = \"" + posicion + "\">" + array[i] + "</button>" + "</td>\n";
         return retorno + "</tr>\n";
     }
     Aminuscula(str="")
@@ -88,7 +92,20 @@ class Buscador
         }
         return retorno;
     }
+    CrearListener()
+    {
+        var botones = document.getElementsByClassName("textoConAccion");
+        for(let i = 0,cant = botones.length;i<cant;i++)
+        {
+            botones[i].addEventListener("click",function()
+            {
+                //Accion de los botones, esto se va a hacer más adelante
+                console.log(botones[i].value);
+            })
+        }
+    }
 }
+
 var comboBox = document.getElementById("caja");
 var tabla = Buscador;
 var tablaDeHTML = document.getElementById("miTabla");
