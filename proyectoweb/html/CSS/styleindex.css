@@ -16,13 +16,13 @@ body{
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 100%; /*Hace que la tabla se agrande mantenerlo*/
  }
   
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 10px;
 }
  
 tr:nth-child(even) {
@@ -31,11 +31,12 @@ tr:nth-child(even) {
 .centrar{
   position: relative;
   left: 50%;
+  width: 50%;
 }
 #anotar
 {
   position: relative;
-  left: 80%;
+  left: 45%;
 }
 .boton{
   width: 10%;
