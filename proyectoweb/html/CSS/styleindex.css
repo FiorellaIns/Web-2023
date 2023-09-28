@@ -22,7 +22,7 @@ table {
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 10px;
 }
  
 tr:nth-child(even) {
@@ -35,7 +35,7 @@ tr:nth-child(even) {
 #anotar
 {
   position: relative;
-  left: 80%;
+  left: 45%;
 }
 .boton{
   width: 10%;
