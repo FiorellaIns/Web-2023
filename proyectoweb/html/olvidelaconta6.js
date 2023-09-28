@@ -10,14 +10,25 @@ boton.addEventListener("click",function()
     console.log(Box1.value);
 })
 
-function validateForm() {
-    res = true
-    var x = document.forms["myForm"]["fname"].value;
+
+function validarinputs(box1,box2){
+    var largo=box1.length;
     
-    if (x == null || x == "") {
-        alert("Debe completar el campo 'Nombre'");
-        res = false;
+    if (box1!=box2){
+        alert("Eror, los campos son distintos");
+    }
+    
+    else if(largo<8 && largo>16 ){
+        alert("La contraseña debe estar entre 8 y 16 caracteres");
     }
 
-    return res 
+    else if (box1 == null || box1 == "" || box2 == null || box2 == "" ){
+        alert("Eror, hay un campo esta vacio");
+    }
+    
+    else{
+        alert("Su contraseña se ha cambiado correctamente.");
+        i=0;
+    }
+
 }
