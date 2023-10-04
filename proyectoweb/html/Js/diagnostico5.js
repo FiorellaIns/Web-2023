@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
   
-      // Si todas las validaciones son exitosas, el formulario se enviará.
       return true;
     });
   });
