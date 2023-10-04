@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
 
-      // Validación del campo DNI
+      // Validación del campo DNI //buscar error
       const dni = document.querySelector('input[name="DNI"]').value;
       if (dni.trim() === "" || !/^[\d.]+$/.test(dni)) {
         alert("Por favor, ingrese un DNI válido.");
         event.preventDefault();
         return false;}
-
+      // Validación del campo matriculado //buscar error
       const Matricula = document.querySelector('input[name="Matricula"]').value;
       if (Matricula.trim() === "" || !/^[\d.]+$/.test(Matricula)) {
       alert("Por favor, ingrese un Matricula válida.");

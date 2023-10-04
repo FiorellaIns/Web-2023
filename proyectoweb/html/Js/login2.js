@@ -1,14 +1,24 @@
-function validarFormulario() {
-    var usuario = document.getElementById("usuario").value;
-    var contrasena = document.getElementById("contrasena").value;
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
 
-    // Realiza la validación en el lado del cliente
-    if (usuario === "" || contrasena === "") {
-        alert("Por favor, complete todos los campos.");
+    form.addEventListener("submit", function (event) {
+      // Validación del campo Usuario
+      const usuario = document.querySelector('#usuario').value;
+      if (usuario.trim() === "") {
+        alert("Por favor, ingrese su Usuario.");
+        event.preventDefault();
         return false;
-    }
+      }
 
-    // Puedes agregar más reglas de validación según tus necesidades aquí.
+      // Validación del campo Contraseña
+      const contrasena = document.querySelector('#contrasena').value;
+      if (contrasena.trim() === "") {
+        alert("Por favor, ingrese su Contraseña.");
+        event.preventDefault();
+        return false;
+      }
 
-    return true;
-}
+      return true;
+    });
+  });
+

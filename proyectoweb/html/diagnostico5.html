@@ -3,31 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnostico</title>
+    <title>Diagnóstico</title>
     <link rel="stylesheet" href="CSS/stylediag.css">
-
 </head>
-<body >
-    <div >
-    <fieldset class="login-caja">
-        <form action="" method="get"  >
-            <h1>Diagnóstico</h1>
-            <p class="texto">
-            <label for="text" >Fecha</label><br>
-            <input type="text" name="Fecha" value=""/><br>
-            <label for="text" >Motivo de concurrencia</label><br>
-            <input type="text" name="Motivo de concurrencia " value="" /><br>
-            <label for="text" >Nombre del Medico</label><br>
-            <input type="text" name="Nombre del medico " value="" /><br>
-            <label for="text" class="centrar">Diagnóstico medico</label><br>
-            <input type="text"class="diagnostico1"><br>
-            <label for="text" class="centrar">Descripción</label><br>
-            <input type="text"class="diagnostico1"><br>
-            <input type="submit" name="Enviar diagnostico" class="boton">
-            </p>
-        </form>
-    </fieldset>
-</div>
-<script src = "Js/diagnostico5.js"></script>
+<body>
+    <div>
+        <fieldset class="login-caja">
+            <form action="" method="get">
+                <h1>Diagnóstico</h1>
+                <p class="texto">
+                    <label for="text">Fecha</label><br>
+                    <input type="text" name="Fecha" value="" id="Fecha" /><br>
+                    <label for="text">Motivo de concurrencia</label><br>
+                    <input type="text" name="Motivo de concurrencia" value=""  id="Motivo"/><br>
+                    <label for="text">Nombre del Medico</label><br>
+                    <input type="text" name="Nombre del medico" value="" id="Nombre"/><br>
+                    <label for="text" class="centrar">Diagnóstico médico</label><br>
+                    <textarea class="diagnostico1" name="DiagnosticoMedico" id="Diag"></textarea><br>
+                    <label for="text" class="centrar">Descripción</label><br>
+                    <textarea class="diagnostico1" name="Descripcion" id="Descri"></textarea><br>
+                    <input type="submit" name="Enviar diagnostico" class="boton">
+                </p>
+            </form>
+        </fieldset>
+    </div>
+    <script src="Js/diagnostico5.js"></script>
 </body>
 </html>
