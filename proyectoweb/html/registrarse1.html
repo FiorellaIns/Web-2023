@@ -16,9 +16,9 @@
                 <label for="apellido">Apellido</label><br>
                 <input type="text" name="Apellido" id="apellido" value="" /><br>
                 <label for="dni">DNI</label><br>
-                <input type="text" name="DNI" id="dni" value="" inputmode="numeric" pattern="[0-9]" /><br>
+                <input type="text" name="DNI" id="dni" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}" value="" inputmode="numeric" title="Ingrese con formato: XX.XXX.XXX" placeholder="XX.XXX.XXX" required/><br>
                 <label for="matricula">Matricula del medico</label><br>
-                <input type="text" name="Numero_de_Afiliado" id="matricula" value="" inputmode="numeric" pattern="[0-9]" /><br>
+                <input type="text" name="Numero_de_Afiliado" id="matricula" value="" inputmode="numeric" pattern="[0-9]{5}" placeholder="XXXXX" /><br>
                 <label for="usuario">Usuario (email)</label><br>
                 <input type="text" name="email" id="usuario" value="" /><br>
                 <label for="password">Contraseña</label><br>

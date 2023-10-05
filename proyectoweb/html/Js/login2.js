@@ -2,23 +2,26 @@
     const form = document.querySelector("form");
 
     form.addEventListener("submit", function (event) {
-
+      const contrasena = document.querySelector('#contrasena').value;
       const usuario = document.querySelector('#usuario').value;
-      if (usuario.trim() === "") {
+      var retorno = true;
+      if(usuario.trim() === "" && contrasena.trim() === "")
+      {
+        alert("Por favor, ingrese su usuario y contraseña.");
+        event.preventDefault();
+        retorno = false;
+      }
+      else if (usuario.trim() === "") {
         alert("Por favor, ingrese su Usuario.");
         event.preventDefault();
-        return false;
+        retorno = false;
       }
-
-      
-      const contrasena = document.querySelector('#contrasena').value;
-      if (contrasena.trim() === "") {
+      else if (contrasena.trim() === "") {
         alert("Por favor, ingrese su Contraseña.");
         event.preventDefault();
-        return false;
+        retorno = false;
       }
-
-      return true;
+      return retorno;
     });
   });
 
