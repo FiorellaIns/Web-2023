@@ -1,34 +1,39 @@
-var Box1 = document.getElementById("hjñ");
-var Box2 = document.getElementById("hj");
-
-var boton = document.getElementById("boton");
 
 
 
-boton.addEventListener("click",function()
+document.addEventListener("DOMContentLoaded",function()
 {
-    console.log(Box1.value);
-})
-
-
-function validarinputs(box1,box2){
-    var largo=box1.length;
-    
-    if (box1!=box2){
-        alert("Eror, los campos son distintos");
-    }
-    
-    else if(largo<8 && largo>16 ){
-        alert("La contraseña debe estar entre 8 y 16 caracteres");
-    }
-
-    else if (box1 == null || box1 == "" || box2 == null || box2 == "" ){
-        alert("Eror, hay un campo esta vacio");
-    }
-    
-    else{
-        alert("Su contraseña se ha cambiado correctamente.");
-        i=0;
-    }
-
-}
+    const ENVIO_FORMULARIO = document.querySelector("form");
+    ENVIO_FORMULARIO.addEventListener("submit",function(event)
+    {
+        var retorno = true;
+        const CONTRASENA = document.querySelector("input[id = \"contrasena\"]");
+        const CONFIRMACION_CONTRASENA = document.querySelector("input[id = \"repeticion\"]");
+        
+        if(CONTRASENA.value === "" && CONFIRMACION_CONTRASENA.value === "")
+        {
+            alert("Rellene los dos campos");
+            event.preventDefault();
+            retorno = false;
+        }
+        else if(CONTRASENA.value === "")
+        {
+            alert("Rellene el campo de nueva contraseña");
+            event.preventDefault();
+            retorno = false;
+        }
+        else if(CONFIRMACION_CONTRASENA.value === "")
+        {
+            alert("Rellene el campo de repetir contraseña");
+            event.preventDefault();
+            retorno = false;
+        }
+        if(retorno && (CONTRASENA.value !== CONFIRMACION_CONTRASENA.value))
+        {
+            alert("Las contraseñas no coinciden");
+            event.preventDefault();
+            retorno = false;
+        }
+        return retorno;
+    });
+});
