@@ -8,24 +8,26 @@
 </head>
 <body>
     <div class="loginpan1">
-            <h1>Ingresar</h1>
-        <div>
-            <p class="texto"> <label for="" >Usuario  </label>
-            <input type="text" name="usuario" value="" class="input"/>
+        <h1>Ingresar</h1>
+        <form id="login-form" action="#" method="post">
+            <div>
+                <p class="texto">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" name="usuario" id="usuario" class="input" />
+                </p>
+            </div>
+            <div>
+                <p class="texto">
+                    <label for="contrasena">Contraseña</label> 
+                    <input type="password" name="contrasena" id="contrasena" class="input" />
+                </p>
+            </div>
+            <p>
+                <input type="submit" name="submit" value="Ingresar" class="boton" />
+                <h4 class="reg"> <a href="registrase1.html">Registrarse aquí.</a></h4>
             </p>
-        </div>
-        <div>
-            <p class="texto">
-            <label for="" >Contraseña </label> 
-            <input type="password" name="contrasena" value=""  class="input"/><br>
-            </p>
-        </div>
-        <p>
-            <input type="submit" name="submit" value="Ingresar" class="boton" />
-            <h4 class="reg"> <a href="registrase1.html">Registarse aca.</a></h4>
-
-        </p>
+        </form>
     </div>
-
+    <script src="Js/login2.js"></script>
 </body>
 </html>
