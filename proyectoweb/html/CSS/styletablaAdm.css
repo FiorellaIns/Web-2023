@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("fotoparafondoindex.jpg");
+    background-size: cover;
+      
+    
+  }
+  .login-caja{
+    position: absolute;   
+    color: rgb(25, 13, 13);
+    border-radius: 10px;
+     
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%; /*Hace que la tabla se agrande mantenerlo*/
+   }
+    
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+  }
+   
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .centrar{
+    position: relative;
+    left: 50%;
+    width: 50%;
+  }
+  #anotar
+  {
+    position: relative;
+    left: 45%;
+  }
+  .boton{
+    width: 10%;
+    background: none;
+    color: black;
+    padding: 2px;
+    font-size: 20px;
+    margin: 6px;
+    }
+  .boton1{
+    width: 50%;
+    background: none;
+    color: black;
+    padding: 2px;
+    font-size: 20px;
+    margin: 6px;
+  
+  }
+  .textoConAccion {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black; 
+    text-decoration: underline; 
+  }
