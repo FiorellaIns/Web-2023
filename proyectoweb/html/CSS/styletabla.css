@@ -16,7 +16,7 @@ body{
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%; /*Hace que la tabla se agrande mantenerlo*/
+  width: 100%; 
  }
   
 td, th {

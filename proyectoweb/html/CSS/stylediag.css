@@ -10,7 +10,7 @@ body {
 .login-caja {
     position: absolute;
     border-radius: 10px;
-    width: 400px; /* Aumenta el ancho del cuadro de texto */
+    width: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
