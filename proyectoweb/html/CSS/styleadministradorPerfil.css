@@ -48,4 +48,26 @@ h2 {
     font-size: 24px;
 }
 
-/* Puedes agregar estilos adicionales según tus necesidades */
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+table th {
+    background-color: #333;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Puedes ajustar estos estilos según tus preferencias */
