@@ -1,0 +1,44 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url("loginimgcopy.jpg"); /* Reemplaza 'ruta_de_la_imagen.jpg' con la URL de tu imagen de fondo */
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+span {
+  display: block;
+  margin: 5px 0;
+  color: #555;
+}
+
+input[type="file"] {
+  margin: 10px 0;
+}
+
+img {
+  max-width: 100%;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  margin-top: 10px;
+}

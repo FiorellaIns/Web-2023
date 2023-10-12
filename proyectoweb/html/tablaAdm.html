@@ -3,33 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tabla de Administración</title>
     <link rel="stylesheet" href="CSS/styletablaAdm.css">
 </head>
 <body>
     <div>
-        <li><a href="administradorPerfil.html">Volver</a></li>
+        <ul>
+            <li><a href="administradorPerfil.html">Volver</a></li>
+            <li><a href="#">Añadir Usuario</a></li>
+            <li><a href="#">Eliminar Usuario</a></li>
+            <li><a href="#">Editar Usuario</a></li>
+        </ul>
         <span>
             <span>
               <label>Buscar por: </label>
             </span>
             <span>
-              <select id = "caja" name = "Elementos">
-                <option value = "0">Nombre</option>
-                <option value = "1">Apellido</option>
-                <option value = "2">DNI</option>
-                <option value = "3">Matricula del medico</option>
-                <option value = "4">Usuario (email)</option>
+              <select id="caja" name="Elementos">
+                <option value="0">Nombre</option>
+                <option value="1">Apellido</option>
+                <option value="2">DNI</option>
+                <option value="3">Matrícula del médico</option>
+                <option value="4">Usuario (email)</option>
               </select>
             </span>
         </span>
     </div>
     <div>
       <fieldset>
-        <table id = "miTabla">
+        <table id="miTabla">
         </table>
       </fieldset>
     </div>
-    <script src = "Js/tablaAdm.js"></script>
+    <script src="Js/tablaAdm.js"></script>
 </body>
 </html>
