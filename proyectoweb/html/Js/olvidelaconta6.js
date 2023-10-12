@@ -1,6 +1,4 @@
 
-
-
 document.addEventListener("DOMContentLoaded",function()
 {
     const ENVIO_FORMULARIO = document.querySelector("form");
