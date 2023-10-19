@@ -62,3 +62,8 @@ tr:nth-child(even) {
   color: black; 
   text-decoration: underline; 
 }
+@media only screen and (min-width:70px) and (max-width:768px){
+	.form-register{
+		width: 5%;
+	}
+}
