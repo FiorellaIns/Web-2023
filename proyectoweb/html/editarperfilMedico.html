@@ -9,27 +9,32 @@
 <body>
     <div class="container">
         <h1>Perfil del Médico</h1>
-        <form action="guardar_datos.php" method="post" enctype="multipart/form-data">
+        <form action="guardar_datos.php" method="post" enctype="multipart/form-data"><!--linea que se usara mas adelante -->
             <div class="option">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="Nombre del Médico">
+                <input type="text" id="nombre" name="nombre" value="">
             </div>
+            <hr>
             <div class="option">
                 <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" value="Apellido del Médico">
+                <input type="text" id="apellido" name="apellido" value="">
             </div>
+            <hr>
             <div class="option">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="medico@example.com">
+                <input type="email" id="email" name="email" value="">
             </div>
+            <hr>
             <div class="option">
                 <label for="pacientes">Número de Pacientes:</label>
-                <input type="number" id="pacientes" name="pacientes" value="10">
+                <input type="number" id="pacientes" name="pacientes" value="">
             </div>
+            <hr>
             <div class="option">
                 <label for="foto">Foto de Perfil:</label>
                 <input type="file" id="foto" name="foto">
             </div>
+            <hr>
             <input type="submit" value="Guardar Cambios">
         </form>
     </div>

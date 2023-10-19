@@ -14,6 +14,8 @@ div {
   margin: 20px auto;
   max-width: 400px;
   text-align: center;
+  max-width: 400px; /* Establece un ancho máximo para el div principal */
+  margin: 0 auto; /* Centra el div en la página */
 }
 
 h1 {
@@ -41,4 +43,33 @@ img {
   border: 2px solid #007bff;
   border-radius: 50%;
   margin-top: 10px;
+}
+
+.texto{
+  width: 70%;
+  overflow: absolute;
+  font-size: 20px;
+  padding: 13px 0;
+  margin: 13px 0;
+  margin-bottom: 20px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc; /* Cambia el color y el grosor aquí */
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+      font-size: 14px; 
+  }
+
+  header {
+      padding: 10px 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }

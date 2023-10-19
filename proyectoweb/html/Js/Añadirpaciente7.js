@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
-
+  const form = document.getElementById("formulario");
+  console.log(form)
   form.addEventListener("submit", function (event) {
-    const nombre = document.querySelector('#nombre').value;
-    const apellido = document.querySelector('#apellido').value;
-    const nrodeafiliado = document.querySelector('#nrodeafiliado').value;
-    const nrodecelular = document.querySelector('#nrodecelular').value;
-    const nrodetelefono = document.querySelector('#nrodetelefono').value;
-    const Domicilio = document.querySelector('#Domicilio').value;
+    const nombre = document.getElementById('nombre');
+    const apellido = document.getElementById('apellido');
+    const nrodeafiliado = document.getElementById('nrodeafiliado');
+    const nrodecelular = document.getElementById('nrodecelular');
+    const nrodetelefono = document.getElementById('nrodetelefono');
+    const Domicilio = document.getElementById('Domicilio');
+
+    console.log(Domicilio);
 
     if (nombre.trim() === "") {
       alert("Por favor, ingrese el nombre.");
@@ -41,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       retorno = false;
     }
-
+    console.log("Hola");
+    event.preventDefault();
     return retorno;
   });
 });
