@@ -8,7 +8,7 @@
     </head>
     <body>
         <fieldset class="añadirpacientepan">
-            <form action="" method="post">
+            <form action="" method="post" id = "formulario">
                 <h1>Añadir paciente</h1>
                 <p class="texto">
                     <label for="text">Nombre</label><br>
@@ -26,15 +26,10 @@
                     <label for="text">Nro de celular</label><br>
                     <input type="text" name="Nro_de_celular" value="" id="nrodecelular" /><br>
                     <label for="text">Nro de Telefono</label><br>
-                    <input type="text" name="Nro_de_telefono" value="" id="nrodetelefono" /><br>
-                    <label for="text">Domicilio</label><br>
                     <input type="text" name="Domicilio" value="" id="Domicilio" /><br> 
                     <!--Hay un error con las fechas-->
-                    <label for="text">Fecha de primera consulta</label><br>
+                    <label for="text">Fecha de consulta</label><br>
                     <input type="text" name="Fechadeprimeraconsulta" id="Fechadeprimeraconsulta" pattern="[0-9]{2}\.[0-9]{2}\.[0-9]{4}" value="" inputmode="numeric" title="Ingrese con formato: XX.XX.XXXX" placeholder="XX.XX.XXXX" required/><br>
-
-                    <label for="text">Fecha de ultima consulta</label><br>
-                    <input type="text" name="Fechadeultimaconsulta" id="Fechadeultimaconsulta" pattern="[0-9]{2}\.[0-9]{2}\.[0-9]{4}" value="" inputmode="numeric" title="Ingrese con formato: XX.XX.XXXX" placeholder="XX.XX.XXXX" required/><br>
 
                     <input type="submit" name="submit" value="Añadir paciente" />
 

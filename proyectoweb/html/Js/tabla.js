@@ -66,7 +66,7 @@ class Buscador
     Encabezado(html)
     {
         var retorno = html + "<tr>\n";
-        const COLUMNAS = ["Nombre","Apellido","DNI","Nro de afiliado","Obra social","Nro de obra social","Nro de celular","Nro de telefono","Domicilio","Fecha de primera consulta","Fecha de ultima consulta"];
+        const COLUMNAS = ["Nombre","Apellido","DNI","Nro de afiliado","Obra social","Nro de obra social","Nro de celular","Nro de telefono","Domicilio","Fecha de consulta"];
         for(let i = 0;i<11;i++)
             retorno = retorno +  "<th>" + COLUMNAS[i] + "</th>" + "\n";
         return retorno + "</tr>\n";
@@ -109,7 +109,7 @@ class Buscador
 var comboBox = document.getElementById("caja");
 var tabla = Buscador;
 var tablaDeHTML = document.getElementById("miTabla");
-arrayArtificial = [["dasdas","asdasdsada","sdasdasdas","dasdaa","asddasdas","sdasda","asddas","sdasda","dasda","dasdasasda","sdasda"],["Coca cola","afil","pacien","das","zvb","ote","sa","mn","po","lo","ñl"],["Tercera","das","nb","fa","cv","cx","año","Nuevo","HD","lol","XD"]];
+arrayArtificial = [["dasdas","asdasdsada","sdasdasdas","dasdaa","asddasdas","sdasda","asddas","sdasda","dasda","dasdasasda"],["Coca cola","afil","pacien","das","zvb","ote","sa","mn","po","lo"],["Tercera","das","nb","fa","cv","cx","año","Nuevo","HD","lol"]];
 tabla = new Buscador(arrayArtificial,"miTabla");
 var control = document.getElementById("Entrada");
 control.addEventListener("input",function()
