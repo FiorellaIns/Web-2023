@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #333; /* Bordes de la tabla */
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #333; /* Bordes de las celdas */
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #333; /* Color de fondo de las celdas de encabezado */
+    color: white;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo de las filas pares */
+  }
+  
+  tr:hover {
+    background-color: #ddd; /* Cambia el color de fondo al pasar el mouse por una fila */
+  }
+  
