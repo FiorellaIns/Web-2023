@@ -3,6 +3,10 @@ body{
     background-color: #E5E5E5;
 }
 
+h1{
+    text-align: center;
+}
+
 *{
     box-sizing: border-box;
 }
