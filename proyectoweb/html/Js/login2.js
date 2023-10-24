@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const contrasena = document.getElementById("contrasena").value;
   
       if (usuario === "usuario_valido" && contrasena === "contrasena_valida") {
-        window.location.href = "tabla.html";
+        window.location.href = "tablaPrueba.html";
       }
       else if (usuario === "user" && contrasena === "user") {
-        window.location.href = "tabla.html";
+        window.location.href = "tablaPrueba.html";
       }
       else if (usuario === "admin" && contrasena === "admin") {
         window.location.href = "administradorPerfil.html";
