@@ -64,17 +64,39 @@ body{
   padding: 5px;
   font-size: 18px;
   cursor: pointer;
-  margin: 12px 0;
+  margin: 2px 0;
   
 }
-.reg{
-  float: center;
-  font-size: 16px;
-  
+.boton:hover {
+  background-color: #0056b3;
 }
 
+/*Reajunte resposive.*/
 @media only screen and (min-width:200px) and (max-width:768px){
 	.form-register{
 		width: 100%;
 	}
 }
+/* Estilo para los elementos de clase "error" */
+.error {
+  color: red;
+  padding: 10px; 
+}
+
+/* Estilo para los elementos de clase "reg" */
+.reg {
+  display: inline-block;
+  padding: 10px 20px; 
+  color: #0e0000; 
+  cursor: pointer; 
+  border: 2px solid rgb(65, 165, 226);
+  border-radius: 5px; 
+  font-size: 16px; 
+  margin: 8px;
+}
+.reg:hover {
+  background-color: #0056b3;
+}
+
+
+

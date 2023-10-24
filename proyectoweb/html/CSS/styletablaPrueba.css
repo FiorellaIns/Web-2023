@@ -1,0 +1,39 @@
+body{
+  font-family: 'Arial', sans-serif;
+  background-image: url("perrito.jpeg"); 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+ 
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black; /* Bordes de la tabla */
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #333; /* Bordes de las celdas */
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #333; /* Color de fondo de las celdas de encabezado */
+    color: blanchedalmond;
+    font-weight: bold;
+  }
+  
+  #miTabla{
+    background-color: antiquewhite;
+  }
+  tr:nth-child(even) {
+    background-color: hsl(336, 12%, 45%); /* Color de fondo de las filas pares */
+  }
+
+  
+  tr:hover {
+    background-color: #f2d1b5; /* Cambia el color de fondo al pasar el mouse por una fila */
+  }
+  

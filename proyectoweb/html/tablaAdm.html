@@ -20,19 +20,54 @@
             </span>
             <span>
               <select id="caja" name="Elementos">
+                <option value="todos">Todos</option>
                 <option value="0">Nombre</option>
                 <option value="1">Apellido</option>
                 <option value="2">DNI</option>
                 <option value="3">Matrícula del médico</option>
                 <option value="4">Usuario (email)</option>
               </select>
+              <input type="text" id="busqueda" placeholder="Buscar">
             </span>
         </span>
     </div>
     <div>
       <fieldset>
         <table id="miTabla">
-        </table>
+          <thead>
+              <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>DNI</th>
+                  <th>Matrícula del médico</th>
+                  <th>Usuario (email)</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Juan</td>
+                  <td>Pérez</td>
+                  <td>12345678</td>
+                  <td>Med1234</td>
+                  <td>flor@example.com</td>
+              </tr>
+              <tr>
+                <td>holder</td>
+                <td>Pérez</td>
+                <td>12345678</td>
+                <td>Med1234</td>
+                <td>vero@example.com</td>
+            </tr>
+            <tr>
+              <td>antony</td>
+              <td>Pérez</td>
+              <td>12345678</td>
+              <td>Med1234</td>
+              <td>juan@example.com</td>
+          </tr>
+              <!-- podemos seguir poniendo -->
+          </tbody>
+      </table>      
       </fieldset>
     </div>
     <script src="Js/tablaAdm.js"></script>
