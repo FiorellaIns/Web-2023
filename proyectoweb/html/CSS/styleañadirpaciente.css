@@ -31,3 +31,16 @@ body{
   .input{
     color: rgb(70, 63, 63);
   }
+  @media screen and (max-width: 768px) {
+    body {
+        font-size: 14px; 
+    }
+
+    .añadirpacientepan {
+        padding: 10px 0;
+    }
+
+    .texto {
+        margin-right: 5px; 
+    }
+}
