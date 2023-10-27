@@ -68,29 +68,45 @@ td, th {
 .boton:hover {
   background-color: #0056b3;
 }
-@media screen and (max-width: 768px) {
+
+/* Estoy configurando el responsive */
+@media screen and (max-width: 950px) {
   h3 {
-    font-size: 20px; /* Reduzca el tamaño de fuente */
-    margin-bottom: 8px; /* Reduzca el margen inferior */
+    font-size: 20px;
+    margin-bottom: 8px;
   }
 
   table {
-    margin-top: 10px; /* Aumenta el espacio entre la tabla y otros elementos */
+    margin-top: 10px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (min-width:70px) and (max-width: 950px) {
+  .centrar {
+    left: 0; /* Restablecer el posicionamiento en el centro */
+  }
+
   .boton1 {
-    width: 50%; /* Reduzca el ancho del botón */
+    width: -100%;
   }
 
   .boton {
-    width: 20%; /* Reduzca el ancho del botón */
+   
+    margin: 10px auto; /* Centra horizontalmente el botón */
+    
+    width: -20%;
+    margin-top: 10px;
+  }
+  #volver {
+    position: relative; /* Cambiar a posicionamiento relativo */
+    margin-left: 0; /* Superponer el botón sobre la tabla */
+    margin-top: 0; /* Restablecer el margen superior */
   }
 }
 
 
-@media only screen and (min-width:70px) and (max-width:768px){
+
+@media only screen and (min-width:70px) and (max-width:950px){
 	.form-register{
 		width: 5%;
     background-size: cover;

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded",function(){
     
     if(anotar){
         anotar.addEventListener("click",function() {
-            window.location.href = "Añadirpaciente.html"
+            window.location.href = "diagnostico.html"
         });
     }
 });

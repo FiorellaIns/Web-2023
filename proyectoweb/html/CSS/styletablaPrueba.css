@@ -48,6 +48,37 @@ tr:hover {
   background-color: #f2d1b5; /* Cambia el color de fondo al pasar el mouse por una fila */
 }
 
+.boton{
+  width: 10%;
+  background: none;
+  color: black;
+  padding: 2px;
+  font-size: 20px;
+  margin: 6px;
+  color: black;
+  background-color: beige;
+  left: 0;
+  }
+.boton:hover {
+  background-color: #0056b3;
+}
+.boton1{
+  width: 10%;
+  background: none;
+  color: black;
+  padding: 2px;
+  font-size: 20px;
+  margin: 6px;
+  color: black;
+  background-color: beige;
+  position: absolute;
+  top: 0%;
+  right: 0;
+  }
+.boton1:hover {
+  background-color: #0056b3;
+}
+
 @media screen and (max-width: 768px) {
   body {
     font-size: 14px;
