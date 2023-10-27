@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function validarEmail(email) {
-    // Validación simple de dirección de correo electrónico.
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   }
