@@ -16,10 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (pacientes < 0) {
       mostrarMensaje("El número de pacientes no puede ser negativo.");
     } else {
-      // Aquí puedes enviar el formulario o realizar otras acciones.
-      // Por ejemplo, puedes usar AJAX para enviar los datos al servidor.
-
-      // Cerrar la ventana o pestaña actual
+      //mandar a sql.
       window.close();
     }
   });
