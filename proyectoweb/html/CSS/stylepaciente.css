@@ -13,6 +13,12 @@ body{
   color: rgb(25, 13, 13);
    
 }
+
+h3{
+  font-size: 24px;
+  color: black;
+  margin-bottom: 10px;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -48,6 +54,9 @@ td, th {
   font-size: 20px;
 
 }
+.boton1:hover {
+  background-color: #0056b3;
+}
 .boton{
   width: 10%;
   background: none;
@@ -55,20 +64,37 @@ td, th {
   padding: 2px;
   font-size: 20px;
   margin: 6px;
-  
   }
-#botonennegro{
-  color: black;
-    
+.boton:hover {
+  background-color: #0056b3;
 }
 @media screen and (max-width: 768px) {
-  body {
-      font-size: 14px; 
-      background-size: 1000%;
-
+  h3 {
+    font-size: 20px; /* Reduzca el tamaño de fuente */
+    margin-bottom: 8px; /* Reduzca el margen inferior */
   }
 
   table {
-      margin-top: 5px;
+    margin-top: 10px; /* Aumenta el espacio entre la tabla y otros elementos */
   }
 }
+
+@media screen and (max-width: 768px) {
+  .boton1 {
+    width: 50%; /* Reduzca el ancho del botón */
+  }
+
+  .boton {
+    width: 20%; /* Reduzca el ancho del botón */
+  }
+}
+
+
+@media only screen and (min-width:70px) and (max-width:768px){
+	.form-register{
+		width: 5%;
+    background-size: cover;
+	}
+}
+
+
