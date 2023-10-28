@@ -7,17 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
     const email = document.getElementById("email").value.trim();
-    const pacientes = document.getElementById("pacientes").value;
 
-    if (nombre === "" || apellido === "" || email === "" || pacientes === "") {
+    if (nombre === "" || apellido === "" || email === "") {
       mostrarMensaje("Por favor, complete todos los campos.");
     } else if (!validarEmail(email)) {
       mostrarMensaje("Ingrese una dirección de correo electrónico válida.");
-    } else if (pacientes < 0) {
-      mostrarMensaje("El número de pacientes no puede ser negativo.");
     } else {
       //mandar a sql.
-      window.close();
+      window.location.href = "perfilMedico.html"; 
     }
   });
 

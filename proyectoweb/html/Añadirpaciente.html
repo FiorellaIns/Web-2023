@@ -11,29 +11,40 @@
         <form action="" method="post" id="formulario">
             <h1>Añadir paciente</h1>
             <p class="texto">
-                <label for="nombre">Nombre</label><br>
-                <input type="text" name="Nombre" value="" id="nombre" required /><br>
-
-                <label for="apellido">Apellido</label><br>
-                <input type="text" name="Apellido" value="" id="apellido" required /><br>
-
-                <label for="dni">DNI</label><br>
-                <input type="text" name="DNI" id="dni" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}" value="" inputmode="numeric" title="Ingrese con formato: XX.XXX.XXX" placeholder="XX.XXX.XXX" required /><br>
-
-                <label for="nrodeafiliado">Nro de Afiliado</label><br>
-                <input type="text" name="Nro_de_afiliado" value="" id="nrodeafiliado" required /><br>
-
-                <label for="obrasocial">Obra Social</label><br>
-                <input type="text" name="Obra_social" value="" id="obrasocial" required /><br>
-
-                <label for="Domicilio">Domicilio</label><br>
-                <input type="text" name="Domicilio" value="" id="Domicilio" required /><br>
-
+                <div class="option">
+                    <label for="nombre">Nombre</label><br>
+                    <input type="text" name="Nombre" value="" id="nombre" required /><br>
+                </div>
+                <hr>
+                <div class="option">
+                    <label for="apellido">Apellido</label><br>
+                    <input type="text" name="Apellido" value="" id="apellido" required /><br>
+                </div>
+                <hr>
+                <div>
+                    <label for="dni">DNI</label><br>
+                    <input type="text" name="DNI" id="dni" pattern="[0-9]{2}\.[0-9]{3}\.[0-9]{3}" value="" inputmode="numeric" title="Ingrese con formato: XX.XXX.XXX" placeholder="XX.XXX.XXX" required /><br>
+                </div>
+                <hr>
+                <div>
+                    <label for="nrodeafiliado">Nro de Afiliado</label><br>
+                    <input type="text" name="Nro_de_afiliado" value="" id="nrodeafiliado" required /><br>
+                </div>
+                <hr>
+                <div>
+                    <label for="obrasocial">Obra Social</label><br>
+                    <input type="text" name="Obra_social" value="" id="obrasocial" required /><br>
+                </div>
+                <hr>
+                <div>
+                    <label for="Domicilio">Domicilio</label><br>
+                    <input type="text" name="Domicilio" value="" id="Domicilio" required /><br>
+                </div>
                 </p>
             <input type="submit" name="submit" value="ACEPTAR" class="boton" id="enviar" />
         </form>
     </fieldset>
     <div id="mensaje-error" class="error"></div>
-    <script src="Añadirpaciente7.js"></script>
+    <script src="Js/Añadirpaciente7.js"></script>
 </body>
 </html>

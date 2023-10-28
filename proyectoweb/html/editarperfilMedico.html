@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil del Médico</title>
+    <title>Editar Perfil del Médico</title>
     <link rel="stylesheet" href="CSS/stylePerfilMedico.css">
 </head>
 <body>
     <div class="container">
-        <h1>Perfil del Médico</h1>
+        <h1>Editar Perfil del Médico</h1>
         <form action="guardar_datos.php" method="post" enctype="multipart/form-data"><!--linea que se usara mas adelante -->
             <div class="option">
                 <label for="nombre">Nombre:</label>
@@ -26,16 +26,11 @@
             </div>
             <hr>
             <div class="option">
-                <label for="pacientes">Número de Pacientes:</label>
-                <input type="number" id="pacientes" name="pacientes" value="">
-            </div>
-            <hr>
-            <div class="option">
                 <label for="foto">Foto de Perfil:</label>
                 <input type="file" id="foto" name="foto">
             </div>
             <hr>
-            <input type="submit" value="Guardar Cambios">
+            <input type="submit" value="Guardar Cambios" class="boton">
         </form>
     </div>
     <script src="Js/editarperfilMedico.js"></script>
