@@ -7,12 +7,16 @@ body {
 }
 
 .boton2 {
-  float: center; 
-  margin: 10px;
-  border: 1px solid #3498db; 
-  padding: 10px;
-  font-size: 16px;
+  text-decoration: none;
+  background-color: #000000; 
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 
+}
+.boton2:hover {
+  color: #ffcc00;
 }
 
 a {
@@ -26,6 +30,8 @@ a {
 
 a:hover {
   color: #ffcc00;
+  color: #000;
+  cursor: pointer; /* Cambia el cursor al estilo de "clic" al pasar el mouse */
 }
 
 
