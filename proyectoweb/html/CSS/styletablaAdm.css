@@ -31,7 +31,7 @@ a {
 a:hover {
   color: #ffcc00;
   color: #000;
-  cursor: pointer; /* Cambia el cursor al estilo de "clic" al pasar el mouse */
+  cursor: pointer; 
 }
 
 
