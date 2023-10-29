@@ -34,3 +34,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const volver = document.getElementById("volver");
+  
+    if (volver) {
+      volver.addEventListener("click", function() {
+        window.location.href = "Tabla.html";
+      });
+    }
+  });
+  
+document.addEventListener("DOMContentLoaded", function() {
+    const añadirpaciente = document.getElementById("añadirpaciente");
+  
+    if (añadirpaciente) {
+        añadirpaciente.addEventListener("click", function() {
+        window.location.href = "Añadirpaciente.html";
+    });
+}
+});

@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .botones {
   background: none;
   color: rgb(211, 197, 197);
@@ -79,13 +80,20 @@ tr:hover {
   background-color: #0056b3;
 }
 
+/* Estilos para pantallas más pequeñas */
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 14px;
-    background-size: cover; /* Cambiado a 'cover' para mantener la imagen de fondo igual en dispositivos móviles */
+  .boton {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin: 6px 0; /* Ajustar los márgenes */
+  }
+
+  .boton1 {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin: 6px 0; /* Ajustar los márgenes */
+    position: static; /* Eliminar la posición absoluta */
   }
 
   table {
-    margin-top: 5px;
+    font-size: 14px; /* Reducir el tamaño de fuente */
   }
 }
