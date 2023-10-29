@@ -39,17 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
     if (volver) {
       volver.addEventListener("click", function() {
-        window.location.href = "Tabla.html";
+        window.location.href = "administradorPerfil.html";
       });
     }
   });
   
-document.addEventListener("DOMContentLoaded", function() {
-    const añadirpaciente = document.getElementById("añadirpaciente");
-  
-    if (añadirpaciente) {
-        añadirpaciente.addEventListener("click", function() {
-        window.location.href = "Añadirpaciente.html";
-    });
-}
-});
