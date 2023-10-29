@@ -6,9 +6,13 @@ body {
   background-size: cover;
 }
 
-li {
-  float: left; 
+.boton2 {
+  float: center; 
   margin: 10px;
+  border: 1px solid #3498db; 
+  padding: 10px;
+  font-size: 16px;
+
 }
 
 a {
