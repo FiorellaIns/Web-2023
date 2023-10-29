@@ -94,7 +94,6 @@ tr:nth-child(even) {
   color: black;
   text-decoration: underline;
 }
-/* Estilos para pantallas más pequeñas */
 @media screen and (max-width: 768px) {
 .boton2 {
   display: block;
