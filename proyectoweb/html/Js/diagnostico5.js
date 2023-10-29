@@ -1,26 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("formulario");
+  const mensajeError = document.getElementById("mensaje-error");
+
   form.addEventListener("submit", function (event) {
-    const campos = form.querySelectorAll('input[required]');
+    event.preventDefault();
     
-    for (let i = 0; i < campos.length; i++) {
-      const campo = campos[i];
-      if (campo.value.trim() === "") {
-        mostrarError(campo);
-        event.preventDefault();
-        return;
-      }
-      else{
-        window.location.assign("paciente.html");
-      }
+    const nombre = document.getElementById("Fecha").value;
+    const apellido = document.getElementById("Motivo").value;
+    const dni = document.getElementById("Nombre").value;
+    const nrodeafiliado = document.getElementById("Diag").value;
+    const obrasocial = document.getElementById("Descri").value;
+    if (nombre && apellido && dni && nrodeafiliado && obrasocial ) {
+      window.location.href = "paciente.html";
+    } else {
+      mensajeError.textContent = "Por favor, complete todos los campos.";
     }
   });
-  
-  function mostrarError(input) {
-    const errorDiv = input.nextElementSibling;
-    errorDiv.textContent = "Campo Incompleto";
-    errorDiv.style.color = "red";
-  }
 });
-
   
