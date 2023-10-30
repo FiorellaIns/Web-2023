@@ -9,13 +9,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-    const volver = document.getElementById("volver");
-  
-    if (volver) {
-      volver.addEventListener("click", function() {
-        window.location.href = "index.html";
-      });
-    }
-  });

@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD:proyectoweb/html/olvidelaconta.html
     <title>Registrarse</title>
     <link rel="stylesheet" href="CSS/stylereg.css">
+=======
+    <title>Olvide la contraseña</title>
+    <link rel="stylesheet" href="CSS/stylelogin2.css">   
+>>>>>>> parent of 5b15b7e (a):proyectoweb/html/olvidelaconta6.html
 </head>
 <body id="registrarsepan2">
     <fieldset class="login-caja">
         <form action="" method="get" id="registro-form">
-            <h1>Registrarse</h1>
+            <h1>Recuperar Contraseña</h1>
             <p class="texto">
                 <label for="nombre">Nombre</label><br>
                 <input type="text" name="Nombre" id="nombre" value="" class="input" required /><br>
@@ -19,8 +24,8 @@
                 <input type="text" name="DNI" id="dni" class="input" pattern="[0-9]{2}\.[0-9]{3}\.[0-9}{3}" required value="" inputmode="numeric" title="Ingrese con formato: XX.XXX.XXX" placeholder="XX.XXX.XXX" required/><br>
                 <label for="matricula">Matricula del medico</label><br>
                 <input type="text" name="Numero_de_Afiliado" id="matricula" class="input" value="" required inputmode="numeric" pattern="[0-9]{5}" placeholder="XXXXX" /><br>
-                <label for="usuario">Usuario (email)</label><br>
-                <input type="text" name="email" id="usuario" value="" class="input" required /><br>
+                <label for="email">Email(usuario)</label>
+                <input type="email" id="usuario" class="input" name="email" value="" required>
                 <label for="password">Contraseña</label><br>
                 <input type="password" name="password" id="password" value="" class="input" required/><br>
                 <label for="confirm-password">Confirmar Contraseña</label><br>
@@ -30,6 +35,6 @@
             <input type="submit" name="submit" value="Registrarse" class="boton"/>
         </form>
     </fieldset>
-    <script src="Js/registrarse.js"></script>
+    <script src="Js/olvidelaconta6.js"></script>
 </body>
 </html>

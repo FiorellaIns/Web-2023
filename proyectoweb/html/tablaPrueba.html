@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla</title>
+    <link rel="stylesheet" href="CSS/styletablaPrueba.css">
+</head>
+<body>
+<div>
+  <select id="criterio">
+    <option value="todos">Todos</option>
+    <option value="nombre">Nombre</option>
+    <option value="apellido">Apellido</option>
+    <option value="dni">DNI</option>
+    <option value="nroAfiliado">Nro de Afiliado</option>
+    <option value="obraSocial">Obra Social</option>
+    <option value="nroObraSocial">Nro de Obra Social</option>
+    <option value="nroTelefono">Nro de Teléfono</option>
+    <option value="domicilio">Domicilio</option>
+    <option value="fechaConsulta">Fecha de Consulta</option>
+  </select>
+  
+    <input type="text" id="buscador" placeholder="Buscar">
+  </div>
+<table id="miTabla">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>Nro de Afiliado</th>
+            <th>Obra Social</th>
+            <th>Nro de Obra Social</th>
+            <th>Nro de Teléfono</th>
+            <th>Domicilio</th>
+            <th>Fecha de Consulta</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-href="paciente4.html">
+            <td>Juan</td>
+            <td>Pérez</td>
+            <td>12345678</td>
+            <td>56789</td>
+            <td>ObraSocial A</td>
+            <td>12345</td>
+            <td>555-555-5555</td>
+            <td>Dirección 123</td>
+            <td>2023-10-25</td>
+        </tr>
+        <tr data-href="paciente4.html">
+          <td>fiorella</td>
+          <td>clavalero</td>
+          <td>12345678</td>
+          <td>56789</td>
+          <td>osde A</td>
+          <td>12345</td>
+          <td>234455433</td>
+          <td>Dirección 123</td>
+          <td>2023-10-25</td>
+      </tr>
+      <tr data-href="paciente4.html">
+        <td>nacho</td>
+        <td>guti</td>
+        <td>12345678</td>
+        <td>56789</td>
+        <td>osba A</td>
+        <td>12345</td>
+        <td>111111111</td>
+        <td>Dirección 234</td>
+        <td>2021-10-25</td>
+    </tr>
+        <!-- Otras filas de datos -->
+    </tbody>
+</table>
+
+
+  
+  
+    <script src = "Js/tablaPrueba.js"></script>
+</body>
+</html>

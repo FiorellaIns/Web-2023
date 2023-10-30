@@ -11,18 +11,6 @@ header {
     padding: 20px 0;
 }
 
-header a.reg {
-    color: #fff;
-    text-decoration: underline;
-    cursor: pointer;
-    margin: 0 10px;
-}
-
-header a.reg:hover {
-    color: #ffcc00;
-}
-
-
 nav ul {
     list-style: none;
     padding: 0;
