@@ -34,3 +34,13 @@ document.addEventListener("DOMContentLoaded", function() {
     return regex.test(email);
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const volver = document.getElementById("volver");
+
+  if (volver) {
+    volver.addEventListener("click", function() {
+      window.location.href = "perfilMedico.html";
+    });
+  }
+});

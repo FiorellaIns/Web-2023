@@ -59,6 +59,7 @@ tr:hover {
   color: black;
   background-color: beige;
   left: 0;
+  cursor: pointer;
   }
 .boton:hover {
   background-color: #0056b3;
@@ -75,6 +76,7 @@ tr:hover {
   position: absolute;
   top: 0%;
   right: 0;
+  cursor: pointer;
   }
 .boton1:hover {
   background-color: #0056b3;

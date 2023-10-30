@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (volver) {
     volver.addEventListener("click", function() {
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     });
   }
 });
