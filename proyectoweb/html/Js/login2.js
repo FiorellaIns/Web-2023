@@ -32,6 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   registrarseLink.addEventListener("click", function() {
-      window.location.href = "registrarse.html"; 
+      window.location.href = "registrarsePruebaFran.html"; 
   });
 });
