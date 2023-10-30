@@ -4,78 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla</title>
-    <link rel="stylesheet" href="CSS/styletablaPrueba.css">
+    <link rel="stylesheet" href="CSS/styletabla.css">
 </head>
-<body>
-
-<span><button class="boton" id="volver">Volver</button></span>
-<span><button class="boton1" id="añadirpaciente">Añadir Paciente</button></span>
-
-
-
-<div>
-  <select id="criterio">
-    <option value="todos">Todos</option>
-    <option value="nombre">Nombre</option>
-    <option value="apellido">Apellido</option>
-  </select>
-  
-    <input type="text" id="buscador" placeholder="Buscar">
-</div>
-<table id="miTabla">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>DNI</th>
-            <th>Nro de Afiliado</th>
-            <th>Obra Social</th>
-            <th>Nro de Obra Social</th>
-            <th>Nro de Teléfono</th>
-            <th>Domicilio</th>
-            <th>Fecha de Consulta</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr data-href="paciente.html">
-            <td>Juan</td>
-            <td>Pérez</td>
-            <td>12345678</td>
-            <td>56789</td>
-            <td>ObraSocial A</td>
-            <td>12345</td>
-            <td>555-555-5555</td>
-            <td>Dirección 123</td>
-            <td>2023-10-25</td>
-        </tr>
-        <tr data-href="paciente.html">
-          <td>fiorella</td>
-          <td>clavalero</td>
-          <td>12345678</td>
-          <td>56789</td>
-          <td>osde A</td>
-          <td>12345</td>
-          <td>234455433</td>
-          <td>Dirección 123</td>
-          <td>2023-10-25</td>
-      </tr>
-      <tr data-href="paciente.html">
-        <td>nacho</td>
-        <td>guti</td>
-        <td>12345678</td>
-        <td>56789</td>
-        <td>osba A</td>
-        <td>12345</td>
-        <td>111111111</td>
-        <td>Dirección 234</td>
-        <td>2021-10-25</td>
-    </tr>|
-    </tbody>
-</table>
-
-
-  
-  
-    <script src = "Js/tablaPrueba.js"></script>
+<body class="login-caja"> 
+      <div>
+        <span><button class="boton">Volver</button>
+        </span>
+        <span>
+            <span>
+              <label>Buscar por: </label>
+            </span>
+            <span>
+              <select id = "caja" name = "Elementos">
+                <option value = "0">Nombre</option>
+                <option value = "1">Apellido</option>
+                <option value = "2">DNI</option>
+                <option value = "3">Nro de Afiliado</option>
+                <option value = "4">Obra social</option>
+                <option value = "5">Nro de obra social</option>
+                <option value = "6">Nro de celular</option>
+                <option value = "7">Nro de telefono</option>
+                <option value = "8">Domicilio</option>
+                <option value = "9">Fecha de consulta</option>
+              </select>
+            </span>
+        </span>
+        <span><input id = "Entrada" type="text"></span>
+        
+        <span><button class="boton" id = "anotar">Añadir paciente</button></span>
+      </div>
+    <div>
+      <div class = "centrar">
+        <h1>Pacientes</h1>
+      </div>
+      <div>
+        <fieldset>
+          <table id = "miTabla">
+          </table>
+        </fieldset>
+      </div>
+   
+    <script src = "Js/tabla.js"></script>
 </body>
 </html>
