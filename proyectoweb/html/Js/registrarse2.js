@@ -121,6 +121,8 @@ formulario.addEventListener('submit', (e) => {
     if (campos.usuario && campos.password && campos.nombre && campos.apellido && campos.email && campos.dni && campos.matriculamedica ){
         formulario.reset();
 
+        window.location.href = "login2.html";
+
         document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
         setTimeout(() => {
             document.getElementById('form_msj_exito').classList.remove('form_msj_exito_activo');
