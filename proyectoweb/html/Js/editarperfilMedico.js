@@ -7,20 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
     const email = document.getElementById("email").value.trim();
-    const pacientes = document.getElementById("pacientes").value;
 
-    if (nombre === "" || apellido === "" || email === "" || pacientes === "") {
+    if (nombre === "" || apellido === "" || email === "") {
       mostrarMensaje("Por favor, complete todos los campos.");
     } else if (!validarEmail(email)) {
       mostrarMensaje("Ingrese una dirección de correo electrónico válida.");
-    } else if (pacientes < 0) {
-      mostrarMensaje("El número de pacientes no puede ser negativo.");
     } else {
-      // Aquí puedes enviar el formulario o realizar otras acciones.
-      // Por ejemplo, puedes usar AJAX para enviar los datos al servidor.
-
-      // Cerrar la ventana o pestaña actual
-      window.close();
+      //mandar a sql.
+      window.location.href = "perfilMedico.html"; 
     }
   });
 
@@ -36,8 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function validarEmail(email) {
-    // Validación simple de dirección de correo electrónico.
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const volver = document.getElementById("volver");
+
+  if (volver) {
+    volver.addEventListener("click", function() {
+      window.location.href = "perfilMedico.html";
+    });
   }
 });

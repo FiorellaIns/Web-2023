@@ -6,14 +6,22 @@ body {
   background-size: cover;
 }
 
-li {
-  float: left; 
-  margin: 10px;
+.boton2 {
+  text-decoration: none;
+  background-color: #000000; 
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+
+}
+.boton2:hover {
+  color: #ffcc00;
 }
 
 a {
   text-decoration: none;
-  background-color: #3498db; 
+  background-color: #000000; 
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
@@ -21,7 +29,9 @@ a {
 }
 
 a:hover {
-  background-color: #2074a0; 
+  color: #ffcc00;
+  color: #000;
+  cursor: pointer; 
 }
 
 
@@ -89,4 +99,31 @@ tr:nth-child(even) {
   cursor: pointer;
   color: black;
   text-decoration: underline;
+}
+@media screen and (max-width: 768px) {
+.boton2 {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  float: none;
+}
+
+table {
+  font-size: 14px;
+}
+.boton,
+.boton1 {
+  width: 100%;
+}
+  
+.centrar, #anotar {
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.textoConAccion {
+  display: block;
+  text-align: center;
+}
 }

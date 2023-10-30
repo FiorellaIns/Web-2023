@@ -9,19 +9,30 @@
 <body>
     <div>
         <fieldset class="login-caja">
-            <form action="" method="get">
+            <form id="formulario" action="" method="get">
                 <h1>Diagnóstico</h1>
                 <p class="texto">
-                    <label for="text">Fecha</label><br>
-                    <input type="text" name="Fecha" value="" id="Fecha" /><br>
+                <div>
+                    <label for="Fecha">Fecha</label><br>
+                    <input type="date" name="Fecha" id="Fecha" title="Ingrese una fecha" required><br>
+
+                </div>
+                <div>
                     <label for="text">Motivo de concurrencia</label><br>
-                    <input type="text" name="Motivo de concurrencia" value=""  id="Motivo"/><br>
+                    <input type="text" name="Motivo de concurrencia" value=""  id="Motivo" required /><br>
+                </div>
+                <div>
                     <label for="text">Nombre del Medico</label><br>
-                    <input type="text" name="Nombre del medico" value="" id="Nombre"/><br>
+                    <input type="text" name="Nombre del medico" value="" id="Nombre" required /><br>
+                </div>   
+                <div> 
                     <label for="text" class="centrar">Diagnóstico médico</label><br>
-                    <textarea class="diagnostico1" name="DiagnosticoMedico" id="Diag"></textarea><br>
+                    <textarea class="diagnostico1" name="DiagnosticoMedico" id="Diag" required ></textarea><br>
+                </div>
+                <div>
                     <label for="text" class="centrar">Descripción</label><br>
-                    <textarea class="diagnostico1" name="Descripcion" id="Descri"></textarea><br>
+                    <textarea class="diagnostico1" name="Descripcion" id="Descri" required ></textarea><br>
+                </div>    
                     <input type="submit" name="Enviar diagnostico" class="boton">
                 </p>
             </form>
