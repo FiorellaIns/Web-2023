@@ -3,6 +3,7 @@ body{
   padding: 0;
   font-family: 'Times New Roman', Times, serif;
   background-image: url("fondopaciente.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
     
   
@@ -11,6 +12,12 @@ body{
   position: absolute;   
   color: rgb(25, 13, 13);
    
+}
+
+h3{
+  font-size: 24px;
+  color: black;
+  margin-bottom: 10px;
 }
 table {
   font-family: arial, sans-serif;
@@ -45,7 +52,11 @@ td, th {
   color: black;
   padding: 2px;
   font-size: 20px;
+  cursor: pointer;
 
+}
+.boton1:hover {
+  background-color: #0056b3;
 }
 .boton{
   width: 10%;
@@ -54,9 +65,54 @@ td, th {
   padding: 2px;
   font-size: 20px;
   margin: 6px;
-  
+  cursor: pointer;
   }
-#botonennegro{
-  color: black;
-    
+.boton:hover {
+  background-color: #0056b3;
 }
+
+/* Estoy configurando el responsive */
+@media screen and (max-width: 950px) {
+  h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  table {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (min-width:70px) and (max-width: 950px) {
+  .centrar {
+    left: 0; /* Restablecer el posicionamiento en el centro */
+  }
+
+  .boton1 {
+    width: -100%;
+  }
+
+  .boton {
+   
+    margin: 10px auto; /* Centra horizontalmente el botón */
+    
+    width: -20%;
+    margin-top: 10px;
+  }
+  #volver {
+    position: relative; /* Cambiar a posicionamiento relativo */
+    margin-left: 0; /* Superponer el botón sobre la tabla */
+    margin-top: 0; /* Restablecer el margen superior */
+  }
+}
+
+
+
+@media only screen and (min-width:70px) and (max-width:950px){
+	.form-register{
+		width: 5%;
+    background-size: cover;
+	}
+}
+
+

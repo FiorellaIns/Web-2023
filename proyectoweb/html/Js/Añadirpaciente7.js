@@ -1,48 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("formulario");
+  const mensajeError = document.getElementById("mensaje-error");
+
   form.addEventListener("submit", function (event) {
-    const nombre = document.getElementById('nombre');
-    const apellido = document.getElementById('apellido');
-    const nrodeafiliado = document.getElementById('nrodeafiliado');
-    const nrodecelular = document.getElementById('nrodecelular');
-    const nrodetelefono = document.getElementById('Domicilio');
-    const Domicilio = document.getElementById('Fechadeprimeraconsulta');
-
-    var retorno = true;
-
-    if (nombre.value === "") {
-      alert("Por favor, ingrese el nombre.");
-      event.preventDefault();
-      retorno = false;
-    }
-    if (apellido.value === "") {
-      alert("Por favor, ingrese el apellido.");
-      event.preventDefault();
-      retorno = false;
-    }
-    if (nrodeafiliado.value === "") {
-      alert("Por favor, ingrese el Nro de Afiliado.");
-      event.preventDefault();
-      retorno = false;
-    }
-
-    if (nrodecelular.value === "") {
-      alert("Por favor, ingrese el Nro de Celular.");
-      event.preventDefault();
-      retorno = false;
-    }
-
-    if (nrodetelefono.value === "") {
-      alert("Por favor, ingrese el Nro de Teléfono.");
-      event.preventDefault();
-      retorno = false;
-    }
-    if (Domicilio.value === "") {
-      alert("Por favor, ingrese el Domicilio.");
-      event.preventDefault();
-      retorno = false;
-    }
+    event.preventDefault();
     
-    return retorno;
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById("apellido").value;
+    const dni = document.getElementById("dni").value;
+    const nrodeafiliado = document.getElementById("nrodeafiliado").value;
+    const obrasocial = document.getElementById("obrasocial").value;
+    const domicilio = document.getElementById("Domicilio").value;
+    
+    if (nombre && apellido && dni && nrodeafiliado && obrasocial && domicilio) {
+      window.location.href = "tabla.html";
+    } else {
+      mensajeError.textContent = "Por favor, complete todos los campos.";
+    }
   });
 });
