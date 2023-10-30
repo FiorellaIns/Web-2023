@@ -1,37 +1,27 @@
-
-document.addEventListener("DOMContentLoaded",function()
-{
-    const ENVIO_FORMULARIO = document.querySelector("form");
-    ENVIO_FORMULARIO.addEventListener("submit",function(event)
-    {
-        var retorno = true;
-        const CONTRASENA = document.querySelector("input[id = \"contrasena\"]");
-        const CONFIRMACION_CONTRASENA = document.querySelector("input[id = \"repeticion\"]");
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("registro-form");
+        const mensajeError = document.getElementById("mensaje-error");
+    
+        form.addEventListener("submit", function (event) {
+        event.preventDefault();
         
-        if(CONTRASENA.value === "" && CONFIRMACION_CONTRASENA.value === "")
-        {
-            alert("Rellene los dos campos");
-            event.preventDefault();
-            retorno = false;
+        const nombre = document.getElementById("nombre").value;
+        const apellido = document.getElementById("apellido").value;
+        const dni = document.getElementById("dni").value;
+        const matricula = document.getElementById("matricula").value;
+        const usuario = document.getElementById("usuario").value;
+        const password = document.getElementById("password").value;
+        const confirmpassword = document.getElementById("confirm-password").value;
+        
+        if (nombre && apellido && dni && matricula && usuario && password && confirmpassword) {
+            if (password === confirmpassword) {
+            window.location.href = "login.html";
+            } else {
+            mensajeError.textContent = "Contraseña y Confirmar contraseña son distintos.";
+            }
+        } else {
+            mensajeError.textContent = "Complete todos los campos.";
         }
-        else if(CONTRASENA.value === "")
-        {
-            alert("Rellene el campo de nueva contraseña");
-            event.preventDefault();
-            retorno = false;
-        }
-        else if(CONFIRMACION_CONTRASENA.value === "")
-        {
-            alert("Rellene el campo de repetir contraseña");
-            event.preventDefault();
-            retorno = false;
-        }
-        if(retorno && (CONTRASENA.value !== CONFIRMACION_CONTRASENA.value))
-        {
-            alert("Las contraseñas no coinciden");
-            event.preventDefault();
-            retorno = false;
-        }
-        return retorno;
+        });
     });
-});
+    
