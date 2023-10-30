@@ -17,10 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
       if (password === confirmpassword) {
         window.location.href = "login.html";
       } else {
-        mensajeError.textContent = "Contraseña y Confirmar contraseña son distintos.";
+          mensajeError.textContent = "Contraseña y Confirmar contraseña son distintos.";
+          setTimeout(function() {
+            mensajeError.textContent = "";
+        }, 3000); // 3000 milisegundos = 3 segundos
       }
     } else {
-      mensajeError.textContent = "Complete todos los campos.";
+        mensajeError.textContent = "Complete todos los campos.";
+        setTimeout(function() {
+          mensajeError.textContent = "";
+      }, 3000); // 3000 milisegundos = 3 segundos
     }
   });
 });
