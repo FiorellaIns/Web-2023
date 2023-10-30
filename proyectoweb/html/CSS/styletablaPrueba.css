@@ -29,6 +29,7 @@ th, td {
   border: 1px solid #333; /* Bordes de las celdas */
   padding: 8px;
   text-align: center;
+  cursor: pointer;
 }
 
 th {
@@ -46,7 +47,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-  background-color: #f2d1b5; /* Cambia el color de fondo al pasar el mouse por una fila */
+  background-color:white;
 }
 
 .boton{
@@ -82,20 +83,20 @@ tr:hover {
   background-color: #0056b3;
 }
 
-/* Estilos para pantallas más pequeñas */
+
 @media screen and (max-width: 768px) {
   .boton {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    margin: 6px 0; /* Ajustar los márgenes */
+    width: 100%; 
+    margin: 6px 0; 
   }
 
   .boton1 {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    margin: 6px 0; /* Ajustar los márgenes */
-    position: static; /* Eliminar la posición absoluta */
+    width: 100%; 
+    margin: 6px 0; 
+    position: static;
   }
 
   table {
-    font-size: 14px; /* Reducir el tamaño de fuente */
+    font-size: 14px; 
   }
 }

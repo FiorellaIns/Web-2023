@@ -52,6 +52,7 @@ td, th {
   color: black;
   padding: 2px;
   font-size: 20px;
+  cursor: pointer;
 
 }
 .boton1:hover {
@@ -64,6 +65,7 @@ td, th {
   padding: 2px;
   font-size: 20px;
   margin: 6px;
+  cursor: pointer;
   }
 .boton:hover {
   background-color: #0056b3;
