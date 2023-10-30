@@ -47,6 +47,13 @@ body{
   background-color: white;
 
 }
+.error {
+  color: red;
+  padding: 10px; 
+  font-size: 25px;
+  border: 2px  black;
+}
+
 
 
 @media screen and (min-width: 400px) and (max-width:1000px) {
@@ -72,6 +79,10 @@ body{
 }
   .boton:hover {
   background-color: #0056b3;
+}
+.error {
+  color: red;
+  padding: 10px; 
 }
 
   .input{
