@@ -1,8 +1,8 @@
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("registro-form");
-        const mensajeError = document.getElementById("mensaje-error");
-    
-        form.addEventListener("submit", function (event) {
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("registro-form");
+    const mensajeError = document.getElementById("mensaje-error");
+
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
         
         const nombre = document.getElementById("nombre").value;
@@ -15,13 +15,18 @@
         
         if (nombre && apellido && dni && matricula && usuario && password && confirmpassword) {
             if (password === confirmpassword) {
-            window.location.href = "login.html";
+                window.location.href = "login.html";
             } else {
-            mensajeError.textContent = "Contraseña y Confirmar contraseña son distintos.";
+                mensajeError.textContent = "Contraseña y Confirmar contraseña son distintos.";
+                setTimeout(function() {
+                    mensajeError.textContent = "";
+                }, 3000); // 3000 milisegundos = 3 segundos
             }
         } else {
             mensajeError.textContent = "Complete todos los campos.";
+            setTimeout(function() {
+                mensajeError.textContent = "";
+            }, 3000); // 3000 milisegundos = 3 segundos
         }
-        });
     });
-    
+});

@@ -32,10 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   registrarseLink.addEventListener("click", function() {
-<<<<<<< HEAD
-      window.location.href = "registrarse.html"; 
-=======
-      window.location.href = "registrarsePruebaFran.html"; 
->>>>>>> parent of f1fa377 (a)
+      window.location.href = "registrarse1.html"; 
   });
 });
