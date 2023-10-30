@@ -1,9 +1,4 @@
-function val(){
-    form.addEventListener("submit", function (val)
-var x = document.getElementById("usuario");
-var l =x.innerHTML;
 
-}
 document.addEventListener("DOMContentLoaded", function () {
     const formulario = document.getElementById("login-form");
     const mensajeError = document.getElementById("mensaje-error");
