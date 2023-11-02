@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const nrodeafiliado = document.getElementById("nrodeafiliado").value;
     const obrasocial = document.getElementById("obrasocial").value;
     const domicilio = document.getElementById("Domicilio").value;
+    const telefono = document.getElementById("telefono").value;
     
-    if (nombre && apellido && dni && nrodeafiliado && obrasocial && domicilio) {
+    if (nombre && apellido && dni && nrodeafiliado && obrasocial && domicilio && telefono) {
       window.location.href = "tabla.html";
     } else {
       mensajeError.textContent = "Por favor, complete todos los campos.";
