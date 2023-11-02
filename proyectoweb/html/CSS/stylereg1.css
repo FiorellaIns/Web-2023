@@ -27,6 +27,8 @@ main{
     cursor: pointer;
 }
 
+    
+
 .log__forminput{
     width: 100%;
     background: #fff;
@@ -37,8 +39,8 @@ main{
     padding: 0 40px 0 10px;
     transition: .3s ease all;
 
-}
 
+}
 .log__forminput:focus{
     border: 3px solid #0075ff;
     outline: none;

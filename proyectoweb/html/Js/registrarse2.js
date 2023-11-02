@@ -56,7 +56,6 @@ const validarFormulario = (e) => {
         break;
         case "password2":
             validarPassword2();
-            validarCampo(expresiones.password2, e.target, 'password2')
             
         break;
     }
@@ -121,7 +120,7 @@ formulario.addEventListener('submit', (e) => {
     if (campos.usuario && campos.password && campos.nombre && campos.apellido && campos.email && campos.dni && campos.matriculamedica ){
         formulario.reset();
 
-        window.location.href = "login2.html";
+        window.location.href = "login.html";
 
         document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
         setTimeout(() => {
