@@ -1,6 +1,11 @@
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #E5E5E5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url("../upload/login3.jpg");
+    background-size: cover;
 }
 
 h1{
@@ -136,3 +141,22 @@ main{
 
 }
 
+@media screen and (max-width: 600px)  {
+    main {
+        padding: 20px;
+    }
+
+    .form_label {
+        font-size: 14px;
+    }
+
+    .log__forminput {
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .form__boton {
+        width: 70%; 
+        font-size: 12px;
+    }
+}
