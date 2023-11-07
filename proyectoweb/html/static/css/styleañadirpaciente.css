@@ -1,65 +1,121 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #E5E5E5;
 }
 
-
-html, body, .añadirpacientepan {
-    height: 100%;
+h1 {
+    text-align: center;
 }
 
-
-@media screen and (max-width: 912px) {
-    .añadirpacientepan {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    label, input {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    input[type="submit"] {
-        width: 100%;
-    }
-
-    .texto {
-        padding: 10px;
-    }
+* {
+    box-sizing: border-box;
 }
 
-
-@media screen and (min-width: 913px) {
-    .añadirpacientepan {
-        width: 98%;
-        padding: 40px;
-    }
-
-    label, input {
-        width: 98%;
-        margin-bottom: 40px; 
-    }
+.main {
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: 40px;
 }
 
-.boton{
-    width: 99%;
-    background: none;
-    border: 2px solid rgb(0, 0, 0);
-    padding: 5px;
-    font-size: 18px;
+.form_label {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
     cursor: pointer;
-    margin: 2px 0;
-    color: black;
-    background-color: white;
 }
-.boton:hover {
-    background-color: #0056b3;
+
+.log__forminput {
+    width: 100%;
+    background: #fff;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
 }
-.error {
-    color: red;
+
+.log__forminput:focus {
+    border: 3px solid #0075ff;
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+}
+
+.log__form__input_error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.log__form__input_error_activo {
+    display: block;
+}
+
+.formulario__mensaje {
+    height: 45px;
+    line-height: 45px;
+    background: #F66060;
+    padding: 0 15px;
+    border-radius: 3px;
+    display: none;
+}
+
+.formulario__mensaje-activo {
+    display: block;
+}
+
+.formulario__mensaje p {
+    margin: 0;
+}
+
+.formulario__boton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__boton {
+    height: 45px;
+    line-height: 45px;
+    width: 30%;
+    background: black;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .1s ease all;
+}
+
+.form__boton:hover {
+    box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+}
+
+.form_msj_exito {
     font-size: 14px;
-    display: none; /* Inicialmente, los mensajes de error no se muestran */
-    margin-top: 5px;
+    color: #119200;
+    display: none;
+}
+
+.form_msj_exito_activo {
+    display: block;
+}
+
+.formulario__grupo_incorrecto .form_label{
+    color: #bb2929;
+
+}
+
+.formulario__grupo_incorrecto .log__forminput{
+    border: 3px solid #bb2929;
+
+}
+
+
+
+
+.formulario__grupo_correcto .log__forminput{
+    border:3px solid #1ed12d;
+
 }
