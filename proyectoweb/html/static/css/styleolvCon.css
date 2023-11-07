@@ -102,14 +102,39 @@ body {
     display: block;
   }
   
-  #grupo__email.formulario__grupo_incorrecto .form_label {
-    color: #bb2929;
-  }
+.formulario__grupo_incorrecto .olvCon__input{
+  border: 3px solid #bb2929
+}
+.formulario__grupo_incorrecto .form_label{
+  color: #bb2929;
+}
+
   
-  #grupo__email.formulario__grupo_incorrecto .olvCon__input {
-    border: 3px solid #bb2929;
-  }
   
-  #grupo__email.formulario__grupo_correcto .olvCon__input {
+.formulario__grupo_correcto .olvCon__input {
     border: 3px solid #1ed12d;
   }
+
+  @media screen and (max-width: 600px) {
+    .main {
+        padding: 20px;
+    }
+
+    .form_label {
+        font-size: 16px;
+    }
+
+    .olvCon__input {
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+
+    .form__boton {
+        width: 50%;
+    }
+
+    .form_msj_exito {
+        font-size: 12px;
+    }
+}
