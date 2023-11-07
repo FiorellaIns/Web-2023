@@ -1,6 +1,6 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url("perrito.jpeg");
+  background-image: url("../upload/perrito.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
