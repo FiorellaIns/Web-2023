@@ -1,3 +1,12 @@
+
+fetch("/consultarseccion").then(responde => responde.json()).then(
+    datos =>
+    {
+        usuarioID = datos.id;
+        console.log(usuarioID);
+    }
+)
+
 document.addEventListener("DOMContentLoaded", function() {
     const pacienteLink = document.getElementById("paciente");
     const PerfilLink = document.getElementById("Perfil");

@@ -9,7 +9,7 @@
 <body>
     <div class="loginpan1">
         <h1>Ingresar</h1>
-        <form id="login-form" action="" method="post">
+        <form id="login-form" action="/GuardarDatosPerfil" method="post">
             <div>
                 <p class="texto">
                     <label for="usuario">Usuario</label>
@@ -24,7 +24,7 @@
             </div>
             <p>
                 <input type="submit" name="submit" value="Ingresar" class="boton"  />
-                <div> <p id="mensaje-error" class="error"></p> </div>
+                <div> <p id="mensaje-error" class="error">{{errorVar}}</p> </div>
                 <h5 class="reg" id="olvideContra">Olvide la contraseña.</h5>
                 <h4 class="reg" id="registrarse">Registrarse aquí.</h4>
             </p>

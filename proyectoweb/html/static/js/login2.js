@@ -1,25 +1,19 @@
+/*fetch("/SeHaProducidoError").then(response => response.json()).then(
+  data =>
+  {
+    if(data.error)
+    {
+      document.getElementById("mensaje-error").textContent = "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo."
+    }
+  }
+)*/
+
 document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("login-form");
   const mensajeError = document.getElementById("mensaje-error");
 
   formulario.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const usuario = document.getElementById("usuario").value;
-    const contrasena = document.getElementById("contrasena").value;
-
-    if (usuario === "usuario_valido" && contrasena === "contrasena_valida") {
-      window.location.href = "index.html";
-    }
-    else if (usuario === "user" && contrasena === "user") {
-      window.location.href = "index.html";
-    }
-    else if (usuario === "admin" && contrasena === "admin") {
-      window.location.href = "administradorPerfil.html";
-    } 
-    else {
-      mensajeError.textContent = "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.";
-    }
+    
   });
 });
 
