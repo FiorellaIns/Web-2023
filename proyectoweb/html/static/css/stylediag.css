@@ -61,3 +61,40 @@ body {
         margin-top: 5px;
     }
 }
+.diag__form__error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.diag__form__error__activo {
+    display: block;
+}
+
+.form_msj_exito {
+    font-size: 14px;
+    color: #119200;
+    display: none;
+}
+
+.form_msj_exito_activo {
+    display: block;
+}
+
+.formulario__grupo_incorrecto .diag_label{
+    color: #bb2929;
+
+}
+
+.formulario__grupo_incorrecto .diag__forminput{
+    border: 3px solid #bb2929;
+
+}
+
+
+
+
+.formulario__grupo_correcto .diag__forminput{
+    border:3px solid #1ed12d;
+
+}

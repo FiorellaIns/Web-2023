@@ -12,28 +12,42 @@
             <form id="formulario" action="" method="get">
                 <h1>Diagnóstico</h1>
                 <p class="texto">
-                <div>
-                    <label for="Fecha">Fecha</label><br>
-                    <input type="date" name="Fecha" id="Fecha" title="Ingrese una fecha" required><br>
+                <div class="diagnostico_grupo" id="grupo_fecha">
+                    <label for="Fecha" class="diag_label">Fecha</label><br>
+                    <input type="date" name="Fecha" id="Fecha" title="Ingrese una fecha" class="diag_forminput"/><br>
+                    <p class="diag__form__error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
 
                 </div>
-                <div>
-                    <label for="text">Motivo de concurrencia</label><br>
-                    <input type="text" name="Motivo de concurrencia" value=""  id="Motivo" required /><br>
+                <div class="diagnostico_grupo" id="grupo_motivo">
+                    <label for="text" class="diag_label">Motivo de concurrencia</label><br>
+                    <input type="text" name="Motivo de concurrencia"   id="Motivo"  class="diag_forminput"/><br>
+                    <p class="diag__form__error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
                 </div>
-                <div>
-                    <label for="text">Nombre del Medico</label><br>
-                    <input type="text" name="Nombre del medico" value="" id="Nombre" required /><br>
-                </div>   
-                <div> 
+                <div class="diagnostico_grupo" id="grupo_nombre">
+                    <label for="text" class="diag_label">Nombre del Medico</label><br>
+                    <input type="text" name="Nombre del medico"  id="Nombre" class="diag_forminput" /><br>
+                    <p class="diag__form__error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
+                </div> 
+
+                <div class="diagnostico_grupo" id="grupo_diagnostico"> 
                     <label for="text" class="centrar">Diagnóstico médico</label><br>
-                    <textarea class="diagnostico1" name="DiagnosticoMedico" id="Diag" required ></textarea><br>
+                    <textarea class="diagnostico1" name="DiagnosticoMedico" id="Diagnostico"  ></textarea><br>
                 </div>
-                <div>
+
+                <div class="diagnostico_grupo" id="grupo_descripcion">
                     <label for="text" class="centrar">Descripción</label><br>
-                    <textarea class="diagnostico1" name="Descripcion" id="Descri" required ></textarea><br>
-                </div>    
-                    <input type="submit" name="Enviar diagnostico" class="boton">
+                    <textarea class="diagnostico1" name="Descripcion" id="Descripcion"  ></textarea><br>
+                </div>  
+
+                <div class="formulario__mensaje" id="formulario__mensaje">
+                     <p> <b>Error:</b>Por favor rellene el formulario correctamente</p>
+                </div>
+                <br>
+            
+                <div class="formulario__boton">
+                    <button type="submit" class="form__boton" name="Enviar diagnostico">Enviar Diagnostico</button>
+                    <p class="form_msj_exito" id="form_msj_exito">El formulario fue enviado con exito</p>
+                </div>
                 </p>
             </form>
         </fieldset>
