@@ -1,3 +1,13 @@
+const formulario = document.getElementById('login-form');
+const inputs = document.querySelectorAll('#login-form input');
+
+const expresion = {
+    mail: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+}
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("registro-form");
     const mensajeError = document.getElementById("mensaje-error");
