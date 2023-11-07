@@ -7,11 +7,11 @@ const validarEmail = () => {
   if (expresionEmail.test(emailInput.value)) {
     document.getElementById('grupo__email').classList.remove('formulario__grupo_incorrecto');
     document.getElementById('grupo__email').classList.add('formulario__grupo_correcto');
-    document.getElementById('#grupo__email .olvCon__input_error').classList.remove('olvCon_input_error_activo');
+    document.getElementById('grupo__email').classList.remove('olvCon_input_error_activo');
   } else {
     document.getElementById('grupo__email').classList.add('formulario__grupo_incorrecto');
     document.getElementById('grupo__email').classList.remove('formulario__grupo_correcto');
-    document.getElementById('#grupo__email .olvCon__input_error').classList.add('olvCon_input_error_activo');
+    document.getElementById('#grupo__email').classList.add('olvCon_input_error_activo');
   }
 };
 
