@@ -1,42 +1,41 @@
-const formulario = document.getElementById('login-form');
-const inputs = document.querySelectorAll('#login-form input');
+const formulario = document.getElementById('olvCon-form');
+const emailInput = document.getElementById('email');
 
-const expresion = {
-    mail: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-}
+const expresionEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ ;
 
+const validarEmail = () => {
+  if (expresionEmail.test(emailInput.value)) {
+    document.getElementById('grupo__email').classList.remove('formulario__grupo_incorrecto');
+    document.getElementById('grupo__email').classList.add('formulario__grupo_correcto');
+    document.getElementById('#grupo__email .olvCon__input_error').classList.remove('olvCon_input_error_activo');
+  } else {
+    document.getElementById('grupo__email').classList.add('formulario__grupo_incorrecto');
+    document.getElementById('grupo__email').classList.remove('formulario__grupo_correcto');
+    document.getElementById('#grupo__email .olvCon__input_error').classList.add('olvCon_input_error_activo');
+  }
+};
 
+emailInput.addEventListener('keyup', validarEmail);
+emailInput.addEventListener('blur', validarEmail);
 
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("registro-form");
-    const mensajeError = document.getElementById("mensaje-error");
+  if (expresionEmail.test(emailInput.value)) {
+    formulario.reset();
+    window.location.href = 'login.html';
+    document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
+    setTimeout(() => {
+      document.getElementById('form_msj_exito').classList.remove('form_msj_exito_activo');
+    }, 5000);
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        
-        const nombre = document.getElementById("nombre").value;
-        const apellido = document.getElementById("apellido").value;
-        const dni = document.getElementById("dni").value;
-        const matricula = document.getElementById("matricula").value;
-        const usuario = document.getElementById("usuario").value;
-        const password = document.getElementById("password").value;
-        const confirmpassword = document.getElementById("confirm-password").value;
-        
-        if (nombre && apellido && dni && matricula && usuario && password && confirmpassword) {
-            if (password === confirmpassword) {
-                window.location.href = "login.html";
-            } else {
-                mensajeError.textContent = "Contraseña y Confirmar contraseña son distintos.";
-                setTimeout(function() {
-                    mensajeError.textContent = "";
-                }, 3000); // 3000 milisegundos = 3 segundos
-            }
-        } else {
-            mensajeError.textContent = "Complete todos los campos.";
-            setTimeout(function() {
-                mensajeError.textContent = "";
-            }, 3000); // 3000 milisegundos = 3 segundos
-        }
+    document.querySelectorAll('.formulario__grupo_correcto').forEach((margen) => {
+      margen.classList.remove('formulario__grupo_correcto');
     });
+  } else {
+    document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    setTimeout(() => {
+      document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+    }, 6000);
+  }
 });
