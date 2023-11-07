@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../static/css/styleañadirpaciente.css">
 </head>
 <body>
+<<<<<<< HEAD:proyectoweb/html/templates/Añadirpaciente.html
     <fieldset class="añadirpacientepan">
         <form action="" method="post" id="formulario">
             <h1>Añadir paciente</h1>
@@ -51,5 +52,68 @@
     </fieldset>
     <div id="mensaje-error" class="error"></div>
     <script src="../static/js/Añadirpaciente7.js"></script>
+=======
+    <form action="" id="login-form" method="post" class="login-form">
+        <div class="formulario__grupo" id="grupo__nombre">
+            <label for="nombre" class="form_label">Nombre</label><br>
+            <input type="text" name="nombre" id="nombre" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El nombre tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__apellido">
+            <label for="apellido" class="form_label">Apellido</label><br>
+            <input type="text" name="apellido" id="apellido" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__dni">
+            <label for="dni" class="form_label">DNI</label><br>
+            <input type="number" name="dni" id="dni" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El DNI tiene que ser de 7 a 8 digitos y solo puede contener numeros</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__matriculamedica">
+            <label for="matriculamedica" class="form_label">Matricula del medico/a</label><br>
+            <input type="number" name="matriculamedica" id="matriculamedica" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">La matricula tiene que ser de 7 a 15 digitos  numeros</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__usuario">
+            <label for="usuario" class="form_label">Usuario</label><br>
+            <input type="text" name="usuario" id="usuario" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El usuario tiene que ser de 4 a 16 digitos y solo puede contener letras y numeros</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__password">
+            <label for="password" class="form_label">Contraseña</label><br>
+            <input type="password" name="password" id="password" class="log__forminput" />
+            <p class="log__form__input_error">La contraseña tiene que ser de 4 a 12 digitos y puede contener letras, numeros y simbolos</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__password2">
+            <label for="password2" class="form_label">Confirmar Contraseña</label><br>
+            <input type="password" name="password2" id="password2" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">Ambas contraseñas deben ser iguales</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__email">
+            <label for="email" class="form_label">Email</label><br>
+            <input type="email" name="email" id="email" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El email tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
+        </div>
+        
+
+        <div class="formulario__mensaje" id="formulario__mensaje">
+            <p> <b>Error:</b>Por favor rellene el formulario correctamente</p>
+        </div>
+        <br>
+
+        <div class="formulario__boton">
+            <button type="submit" class="form__boton">Ingresar</button>
+            <p class="form_msj_exito" id="form_msj_exito">El formulario fue enviado con exito</p>
+        </div>
+    </form>
+    <script src="Js/registrarse2.js"></script>
+>>>>>>> 75d911efd4d18e35fbed462ae77f953b216910e7:proyectoweb/html/Añadirpaciente.html
 </body>
 </html>
