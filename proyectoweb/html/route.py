@@ -10,9 +10,12 @@ def Route(aplicacion = Flask):
         return render_template("login.html",errorVar = error)
     @aplicacion.route("/GuardarDatosPerfil",methods = ["post"])
     def DeterminarValidez():
-        usuario = request.form["usuario"]
+        id = -1
+        usuario = request.form["email"]
         contrasena = request.form["contrasena"]
-        session["id"] = IniciarSeccion([usuario,contrasena])
+        id = IniciarSeccion([usuario,contrasena])
+        session["id"] = id
+        session["contraseña"] = contrasena
         if id != -1:
             return redirect("/index")
         else:
