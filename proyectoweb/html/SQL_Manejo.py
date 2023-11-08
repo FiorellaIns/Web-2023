@@ -3,7 +3,7 @@ import mysql.connector
 def IniciarSeccion(lista=[]):
     retorno = -1
 
-    conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "consultorio")
+    conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "NuevaBaseConsultorio")
 
     herramienta = conexion.cursor()
 
