@@ -1,6 +1,16 @@
 const formulario = document.getElementById('login-form');
 const inputs = document.querySelectorAll('#login-form input');
 
+document.addEventListener("DOMContentLoaded", function() {
+    const volver = document.getElementById("volver");
+  
+    if (volver) {
+      volver.addEventListener("click", function() {
+        window.location.href = "login.html";
+      });
+    }
+  });
+
 
 const expresiones = {
     usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, 

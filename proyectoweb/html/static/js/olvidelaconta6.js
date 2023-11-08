@@ -1,6 +1,17 @@
 const formulario = document.getElementById('olvCon-form');
 const emailInput = document.getElementById('email');
 
+document.addEventListener("DOMContentLoaded", function() {
+  const volver = document.getElementById("volver");
+
+  if (volver) {
+    volver.addEventListener("click", function() {
+      window.location.href = "login.html";
+    });
+  }
+});
+
+
 const expresionEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ ;
 
 const validarEmail = () => {
