@@ -7,12 +7,12 @@ def IniciarSeccion(lista=[]):
 
     herramienta = conexion.cursor()
 
-    herramienta.execute("SELECT * FROM usuario")
+    herramienta.execute("SELECT * FROM usuarios")
 
     consulta = herramienta.fetchall()
 
     for listas in consulta:
-        if(lista[0] == listas[1] and lista[1] == listas[2]):
+        if(lista[0] == listas[6] and lista[1] == listas[5]):
             retorno = listas[0]
             break
     return retorno
