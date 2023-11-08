@@ -24,7 +24,7 @@ const validarFormulario = (e) => {
   
 }
 
-const fecha = 
+
 
 
 const validarCampo = (expresion, input, campo) => {
