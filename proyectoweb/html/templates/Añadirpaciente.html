@@ -7,69 +7,66 @@
     <link rel="stylesheet" href="../static/css/styleañadirpaciente.css">
 </head>
 <body><h1>Añadir Paciente</h1>
-    <main>
-        <span><button class="boton1" id="volver">Volver</button></span>
-        <form action="" id="agregarpaciente-form" method="post" class="agregarpaciente-form">
-            <div class="formulario__grupo" id="grupo__nombre">
-                <label for="nombre" class="form_label">Nombre</label><br>
-                <input type="text" name="nombre" id="nombre" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El nombre tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__apellido">
-                <label for="apellido" class="form_label">Apellido</label><br>
-                <input type="text" name="apellido" id="apellido" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__dni">
-                <label for="dni" class="form_label">DNI</label><br>
-                <input type="number" name="dni" id="dni" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El DNI tiene que ser de 7 a 8 digitos y solo puede contener numeros</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__numerodeafiliado">
-                <label for="numerodeafiliado" class="form_label">Numero de afiliado</label><br>
-                <input type="number" name="numerodeafiliado" id="numerodeafiliado" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">La matricula tiene que ser de 7 a 15 digitos  numeros</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__obraSocial">
-                <label for="obraSocial" class="form_label">Obra Social</label><br>
-                <input type="text" name="obraSocial" id="obraSocial" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El obraSocial tiene que ser de 4 a 16 digitos y solo puede contener letras y numeros</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__numObraSocial">
-                <label for="numObraSocial" class="form_label">Numero de Obra Social</label><br>
-                <input type="number" name="numObraSocial" id="numObraSocial" class="log__forminput" />
-                <p class="log__form__input_error">La contraseña tiene que ser de 4 a 12 digitos y puede contener letras, numeros y simbolos</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__nroTelefono">
-                <label for="nroTelefono" class="form_label">Numero de Telefono</label><br>
-                <input type="number" name="nroTelefono" id="nroTelefono" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">Ambas contraseñas deben ser iguales</p>
-            </div>
-    
-            <div class="formulario__grupo" id="grupo__email">
-                <label for="email" class="form_label">Email</label><br>
-                <input type="email" name="email" id="email" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El email tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
-            </div>
-            
-    
-            <div class="formulario__mensaje" id="formulario__mensaje">
-                <p> <b>Error:</b>Por favor rellene el formulario correctamente</p>
-            </div>
-            <br>
-    
-            <div class="formulario__boton">
-                <button type="submit" class="form__boton">Ingresar</button>
-                <p class="form_msj_exito" id="form_msj_exito">El formulario fue enviado con exito</p>
-            </div>
-        </form>
-    </main>
+    <form action="" id="agregarpaciente-form" method="post" class="agregarpaciente-form">
+        <div class="formulario__grupo" id="grupo__nombre">
+            <label for="nombre" class="form_label">Nombre</label><br>
+            <input type="text" name="nombre" id="nombre" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El nombre tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__apellido">
+            <label for="apellido" class="form_label">Apellido</label><br>
+            <input type="text" name="apellido" id="apellido" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__dni">
+            <label for="dni" class="form_label">DNI</label><br>
+            <input type="number" name="dni" id="dni" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El DNI tiene que ser de 7 a 8 digitos y solo puede contener numeros</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__numerodeafiliado">
+            <label for="numerodeafiliado" class="form_label">Numero de afiliado</label><br>
+            <input type="number" name="numerodeafiliado" id="numerodeafiliado" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">La matricula tiene que ser de 7 a 15 digitos  numeros</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__obraSocial">
+            <label for="obraSocial" class="form_label">Obra Social</label><br>
+            <input type="text" name="obraSocial" id="obraSocial" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El obraSocial tiene que ser de 4 a 16 digitos y solo puede contener letras y numeros</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__numObraSocial">
+            <label for="numObraSocial" class="form_label">Numero de Obra Social</label><br>
+            <input type="number" name="numObraSocial" id="numObraSocial" class="log__forminput" />
+            <p class="log__form__input_error">La contraseña tiene que ser de 4 a 12 digitos y puede contener letras, numeros y simbolos</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__nroTelefono">
+            <label for="nroTelefono" class="form_label">Numero de Telefono</label><br>
+            <input type="number" name="nroTelefono" id="nroTelefono" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">Ambas contraseñas deben ser iguales</p>
+        </div>
+
+        <div class="formulario__grupo" id="grupo__email">
+            <label for="email" class="form_label">Email</label><br>
+            <input type="email" name="email" id="email" class="log__forminput" placeholder=""/>
+            <p class="log__form__input_error">El email tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
+        </div>
+        
+
+        <div class="formulario__mensaje" id="formulario__mensaje">
+            <p> <b>Error:</b>Por favor rellene el formulario correctamente</p>
+        </div>
+        <br>
+
+        <div class="formulario__boton">
+            <button type="submit" class="form__boton">Ingresar</button>
+            <p class="form_msj_exito" id="form_msj_exito">El formulario fue enviado con exito</p>
+        </div>
+    </form>
     <script src="../static/js/Añadirpaciente7.js"></script>
 </body>
 </html>
