@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const volver = document.getElementById("volver");
+
+  if (volver) {
+    volver.addEventListener("click", function() {
+      window.location.href = "tabla.html";
+    });
+  }
+});
+
+
+
 const formulario = document.getElementById('agregarpaciente-form');
 const inputs = document.querySelectorAll('#agregarpaciente-form input');
 
