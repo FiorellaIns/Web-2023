@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mensajeError = document.getElementById("mensaje-error");
 
   formulario.addEventListener("submit", function (event) {
-    
+    window.location.href="index.html";
   });
 });
 
@@ -26,6 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   registrarseLink.addEventListener("click", function() {
-      window.location.href = "templates/registrarse1.html"; 
+      window.location.href = "registrarse1.html"; 
   });
 });
