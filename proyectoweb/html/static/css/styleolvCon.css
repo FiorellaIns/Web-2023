@@ -92,6 +92,7 @@ body {
   
   .form__boton:hover {
     box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+    background-color: #0075ff;
   }
 
   .boton1{
@@ -106,7 +107,9 @@ body {
     cursor: pointer;
     transition: .1s ease all;
   }
-  
+  .boton1:hover{
+    background-color: #0075ff;
+  }
 
 
   .form_msj_exito {
@@ -150,6 +153,7 @@ body {
     .form__boton {
         width: 50%;
     }
+
 
     .form_msj_exito {
         font-size: 12px;

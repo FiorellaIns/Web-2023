@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mensajeError = document.getElementById("mensaje-error");
 
   formulario.addEventListener("submit", function (event) {
-    
+    window.location.href="index.html";
   });
 });
 

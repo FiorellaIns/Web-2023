@@ -102,6 +102,9 @@ main{
     cursor: pointer;
     transition: .1s ease all;
 }
+.boton1:hover{
+    background-color: #0075ff;
+}
 .form__boton{
     height: 45px;
     line-height: 45px;
