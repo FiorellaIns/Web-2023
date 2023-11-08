@@ -26,6 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   registrarseLink.addEventListener("click", function() {
-      window.location.href = "registrarse1.html"; 
+      window.location.href = "templates/registrarse1.html"; 
   });
 });
