@@ -16,6 +16,20 @@ h1 {
     box-sizing: border-box;
 }
 
+.boton1{
+    height: 45px;
+    line-height: 45px;
+    width: 30%;
+    background: black;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .1s ease all;
+  }
+
+
 main {
     max-width: 800px;
     width: 90%;
