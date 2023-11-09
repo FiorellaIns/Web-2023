@@ -1,13 +1,3 @@
-/*fetch("/SeHaProducidoError").then(response => response.json()).then(
-  data =>
-  {
-    if(data.error)
-    {
-      document.getElementById("mensaje-error").textContent = "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo."
-    }
-  }
-)*/
-
 document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("login-form");
   const mensajeError = document.getElementById("mensaje-error");
