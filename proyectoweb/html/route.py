@@ -27,6 +27,8 @@ def Route(aplicacion = Flask):
     def seccionActual():
         usuario = {"id":session["id"]}
         return jsonify(usuario)
+    
+    
 
 
 
