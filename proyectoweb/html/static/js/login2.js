@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 588cdcd (aa)
 const formulario = document.getElementById('login-form');
 const emailinput = document.getElementById('email');
 
@@ -25,6 +28,7 @@ formulario.addEventListener('submit', (e) => {
     formulario.reset();
     window.location.href = 'index.html';
   } 
+<<<<<<< HEAD
 });
 
 >>>>>>> parent of 588cdcd (aa)
@@ -83,11 +87,33 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 =======
+=======
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const formulario = document.getElementById("login-form");
+  const mensajeError = document.getElementById("mensaje-error");
+
+  formulario.addEventListener("submit", function (event) {
+    window.location.href="index.html";
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const olvideContraLink = document.getElementById("olvideContra");
+  const registrarseLink = document.getElementById("registrarse");
+  
+  olvideContraLink.addEventListener("click", function() {
+>>>>>>> parent of 588cdcd (aa)
     window.location.href = "olvidelaconta.html"; 
   });
 
   registrarseLink.addEventListener("click", function() {
     window.location.href = "registrarse1.html"; 
   });
+<<<<<<< HEAD
+});
+>>>>>>> parent of 588cdcd (aa)
+=======
 });
 >>>>>>> parent of 588cdcd (aa)
