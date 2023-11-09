@@ -83,6 +83,22 @@ body{
 .boton:hover {
   background-color: #0056b3;
 }
+.formulario__mensaje {
+  height: 45px;
+  line-height: 45px;
+  background: #F66060;
+  padding: 0 15px;
+  border-radius: 3px;
+  display: none;
+}
+
+.formulario__mensaje-activo {
+  display: block;
+}
+
+.formulario__mensaje p {
+  margin: 0;
+}
 
 /*Reajunte resposive.*/
 @media only screen and (min-width:200px) and (max-width:768px){

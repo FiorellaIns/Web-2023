@@ -1,20 +1,18 @@
 const formulario = document.getElementById('login-form');
 const emailinput = document.getElementById('email');
 
-const expresionEmail =  /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ ;
-
-
-emailinput.addEventListener('keyup', validarEmail);
-emailinput.addEventListener('blur', validarEmail);
-
+const expresionEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
 const validarEmail = () => {
   if (expresionEmail.test(emailinput.value)) {
-    document.querySelector('#grupo__email .log__form__input_error').classList.remove('log__form__input_error_activo');
+    document.querySelector('#grupo_email .log__form__input_error').classList.remove('log__form__input_error_activo');
   } else {
-    document.querySelector('#grupo__email .log__form__input_error').classList.add('log__form__input_error_activo');
+    document.querySelector('#grupo_email .log__form__input_error').classList.add('log__form__input_error_activo');
   }
 };
+
+emailinput.addEventListener('keyup', validarEmail);
+emailinput.addEventListener('blur', validarEmail);
 
 formulario.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -23,7 +21,14 @@ formulario.addEventListener('submit', (e) => {
     formulario.reset();
     window.location.href = 'index.html';
   } 
+  else {
+    document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    setTimeout(() => {
+      document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+    }, 6000);
+  }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("login-form");
