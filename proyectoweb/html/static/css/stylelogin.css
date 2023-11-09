@@ -44,7 +44,7 @@ body{
   text-align: center;
 }
 
-.input{
+.log__form__input{
   border: none;
   outline: none;
   background: none;
@@ -68,6 +68,17 @@ body{
   cursor: pointer;
   margin: 2px 0;
   
+}
+
+.log__form__input_error{
+  font-size: 12px;
+  margin-bottom: 0;
+  display: none;
+
+}
+
+.log__form__input_error_activo{
+  display: block;
 }
 .boton:hover {
   background-color: #0056b3;
