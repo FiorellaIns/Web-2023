@@ -1,4 +1,4 @@
-const formulario = document.getElementById('login-form');
+/*const formulario = document.getElementById('login-form');
 const emailinput = document.getElementById('email');
 
 const expresionEmail =  /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/ ;
@@ -23,14 +23,31 @@ formulario.addEventListener('submit', (e) => {
     formulario.reset();
     window.location.href = 'index.html';
   } 
+});*/
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const olvideContraLink = document.getElementById("olvideContra");
+  const registrarseLink = document.getElementById("registrarse");
+
+  olvideContraLink.addEventListener("click", function() {
+    window.location.href = "olvidelaconta.html";
+  });
+
+  registrarseLink.addEventListener("click", function() {
+    window.location.href = "registrarse1.html";
+  });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+
+
+/*document.addEventListener("DOMContentLoaded", function () {
   const formulario = document.getElementById("login-form");
   const mensajeError = document.getElementById("mensaje-error");
 
   formulario.addEventListener("submit", function (event) {
-    window.location.href="index.html";
+    const urlRegistro = window.location.origin + "/registro";
+    window.location.href = urlRegistro;
   });
 });
 
@@ -39,10 +56,22 @@ document.addEventListener("DOMContentLoaded", function() {
   const registrarseLink = document.getElementById("registrarse");
   
   olvideContraLink.addEventListener("click", function() {
+<<<<<<< HEAD
     window.location.href = "olvidelaconta.html"; 
   });
 
   registrarseLink.addEventListener("click", function() {
     window.location.href = "registrarse1.html"; 
+=======
+    const urlOlvidelaContra = window.location.origin + "/olvidelacontraseña";
+    window.location.href = urlOlvidelaContra;
   });
-});
+
+  registrarseLink.addEventListener("click", function() {
+    const urlRegistro = window.location.origin + "/registro";
+    window.location.href = urlRegistro;
+>>>>>>> 9849048cf591e10b4766ddcdb3b6862407c14ddd
+  });
+});*/
+
+
