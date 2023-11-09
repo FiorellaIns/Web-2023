@@ -37,12 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function() {
   const olvideContraLink = document.getElementById("olvideContra");
   const registrarseLink = document.getElementById("registrarse");
-
+  
   olvideContraLink.addEventListener("click", function() {
-      window.location.href = "olvidelaconta.html"; 
+    window.location.href = "olvidelaconta.html"; 
   });
 
   registrarseLink.addEventListener("click", function() {
-      window.location.href = "registrarse1.html"; 
+    window.location.href = "registrarse1.html"; 
   });
 });
