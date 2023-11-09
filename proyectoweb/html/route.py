@@ -27,17 +27,7 @@ def Route(aplicacion = Flask):
     def seccionActual():
         usuario = {"id":session["id"]}
         return jsonify(usuario)
-    @aplicacion.route("/registro")
-    def registro():
-        return render_template("registrarse1.html")
-    @aplicacion.route("/olvidelacontraseña")
-    def olvidelacontraseña():
-        return render_template("olvidelaconta.html")
-
     
-    
-
-
     
 
 
