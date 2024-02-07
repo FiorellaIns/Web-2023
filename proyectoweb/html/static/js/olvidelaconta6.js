@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (volver) {
     volver.addEventListener("click", function() {
-      window.location.href = "login.html";
+      if(window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0)
+        window.location.href = "/";
+      else
+        window.location.href = "login.html";
     });
   }
 });

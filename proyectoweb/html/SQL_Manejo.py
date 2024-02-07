@@ -16,3 +16,9 @@ def IniciarSeccion(lista=[]):
             retorno = listas[0]
             break
     return retorno
+def CodigosDeHabilitacion():
+    conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basededatos")
+
+    herramienta = conexion.cursor()
+
+    herramienta.execute("SELECT codigo FROM Registro")

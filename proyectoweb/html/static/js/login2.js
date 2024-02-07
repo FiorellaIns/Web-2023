@@ -10,16 +10,17 @@ function validarEmail() {
   }
 }
 
-formulario.addEventListener('submit', (e) => {
+formulario.addEventListener('submit', (e) => 
+{
   e.preventDefault();
-  if (expresionEmail.test(emailinput.value)) {
+  if (expresionEmail.test(emailinput.value)) 
+  {
     formulario.reset();
 
-    if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) {
+    if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) 
       window.location.href = "/";
-    } else {
+    else 
       window.location.href = "index.html";
-    }
   }
 });
 
@@ -27,17 +28,15 @@ const olvideContraLink = document.getElementById("olvideContra");
 const registrarseLink = document.getElementById("registrarse");
 
 olvideContraLink.addEventListener("click", function () {
-  if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) {
-    window.location.href = "/olvidelacontraseña";
-  } else {
+  if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) 
+    window.location.href = "/Olvidado"; 
+  else 
     window.location.href = "olvidelaconta.html";
-  }
 });
 
 registrarseLink.addEventListener("click", function () {
-  if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) {
-    window.location.href = "/registro";
-  } else {
+  if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) 
+    window.location.href = "/Registro";
+  else 
     window.location.href = "registrarse1.html";
-  }
 });

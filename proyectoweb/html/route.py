@@ -34,9 +34,13 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/Registro")
     def registro():
         return render_template("registrarse1.html")
+    
+    @aplicacion.route("/Registro_Post",methods=["POST"])
+    def Posteo():
+        return request.form.get("nombre")
 
-    @aplicacion.route("/Olvide la contraseña")
-    def olvidelacontraseña():
+    @aplicacion.route("/Olvidado")
+    def olvidado():
         return render_template("olvidelaconta.html")
     @aplicacion.route("/Administrador Perfil")
     def administradorperfill():

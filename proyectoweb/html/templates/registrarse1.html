@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,41 +11,41 @@
 
     <main>
         <span><button class="boton1" id="volver">Volver</button></span>
-        <form action="" id="login-form" method="post" class="login-form">
+        <form action="/Registro_Post" id="login-form" method="post" class="login-form">
             <div class="formulario__grupo" id="grupo__nombre">
                 <label for="nombre" class="form_label">Nombre</label><br>
                 <input type="text" name="nombre" id="nombre" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El nombre tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
+                <p class="log__form__input_error">Este campo debe estar lleno</p>
             </div>
     
             <div class="formulario__grupo" id="grupo__apellido">
                 <label for="apellido" class="form_label">Apellido</label><br>
                 <input type="text" name="apellido" id="apellido" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
+                <p class="log__form__input_error">Este campo debe estar lleno</p>
             </div>
     
             <div class="formulario__grupo" id="grupo__dni">
                 <label for="dni" class="form_label">DNI</label><br>
                 <input type="number" name="dni" id="dni" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El DNI tiene que ser de 7 a 8 digitos y solo puede contener numeros</p>
+                <p class="log__form__input_error">El DNI tiene que ser de 7 a 8 digitos</p>
             </div>
     
             <div class="formulario__grupo" id="grupo__matriculamedica">
                 <label for="matriculamedica" class="form_label">Matricula del medico/a</label><br>
                 <input type="number" name="matriculamedica" id="matriculamedica" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">La matricula tiene que ser de 7 a 15 digitos  numeros</p>
+                <p class="log__form__input_error">La matricula tiene que ser de 7 a 15 digitos</p>
             </div>
     
             <div class="formulario__grupo" id="grupo__usuario">
                 <label for="usuario" class="form_label">Usuario</label><br>
                 <input type="text" name="usuario" id="usuario" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El usuario tiene que ser de 4 a 16 digitos y solo puede contener letras y numeros</p>
+                <p class="log__form__input_error">Este campo debe estar lleno</p>
             </div>
     
             <div class="formulario__grupo" id="grupo__password">
                 <label for="password" class="form_label">Contraseña</label><br>
                 <input type="password" name="password" id="password" class="log__forminput" />
-                <p class="log__form__input_error">La contraseña tiene que ser de 4 a 12 digitos y puede contener letras, numeros y simbolos</p>
+                <p class="log__form__input_error">La contraseña tiene que ser de 4 a 12 caracteres</p>
             </div>
     
             <div class="formulario__grupo" id="grupo__password2">
@@ -57,7 +57,16 @@
             <div class="formulario__grupo" id="grupo__email">
                 <label for="email" class="form_label">Email</label><br>
                 <input type="email" name="email" id="email" class="log__forminput" placeholder=""/>
-                <p class="log__form__input_error">El email tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
+                <p class="log__form__input_error">El formato del EMAIL debe ser valido ej.: ejemplo@correo.com</p>
+            </div>
+            <div class = "formulario__grupo" id = "grupo__codigoUnico">
+                <label for = "codigoUnico" class = "form_label">Codigo Unico</label>
+                <input type = "codigoUnico" name = "codigoUnico" id = "codigoUnico" class = "log__forminput" placeholder="Ingrese el codigo dado">
+                <p class = "log__form__input_error">Debe llenarse el campo</p>
+            </div>
+
+            <div class = "formulario__grupo">
+
             </div>
             
     
@@ -73,7 +82,7 @@
         </form>
     </main>
 
-    <script src="../static/js/registrarse2.js"></script>
+   <script src="../static/js/registrarse2.js"></script>
     
 </body>
 </html>
