@@ -16,9 +16,19 @@ def IniciarSeccion(lista=[]):
             retorno = listas[0]
             break
     return retorno
-def CodigosDeHabilitacion():
+def CodigoValido(claveDada):
+    retorno = False
+
     conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basededatos")
 
     herramienta = conexion.cursor()
 
-    herramienta.execute("SELECT codigo FROM Registro")
+    herramienta.execute("SELECT codigo FROM Claves")
+
+    consulta = herramienta.fetchall()
+
+    for claves in consulta:
+        if(claveDada == claves):
+            retorno = True
+            break
+    return retorno

@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, request, render_template, jsonify, session
 from SQL_Manejo import IniciarSeccion
+import time
 
 error = ""
 
@@ -37,7 +38,11 @@ def Route(aplicacion=Flask):
     
     @aplicacion.route("/Registro_Post",methods=["POST"])
     def Posteo():
-        return request.form.get("nombre")
+        #if CodigoValido(request.form.get("codigoUnico")):
+        return redirect(url_for("exito"))
+    @aplicacion.route("/Exito")
+    def exito():
+        return render_template("exito.html")
 
     @aplicacion.route("/Olvidado")
     def olvidado():
@@ -63,8 +68,3 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/Añadir paciente")
     def añadirpaciente():
         return render_template("Añadirpaciente.html")
-    
-    
-
-
-
