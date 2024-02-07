@@ -100,19 +100,19 @@ body{
   margin: 0;
 }
 
-/*Reajunte resposive.*/
+
 @media only screen and (min-width:200px) and (max-width:768px){
 	.form-register{
 		width: 100%;
 	}
 }
-/* Estilo para los elementos de clase "error" */
+
 .error {
   color: red;
   padding: 10px; 
 }
 
-/* Estilo para los elementos de clase "reg" */
+
 .reg {
   display: inline-block;
   padding: 10px 20px; 
