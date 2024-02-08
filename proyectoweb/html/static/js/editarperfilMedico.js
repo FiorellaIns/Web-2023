@@ -12,8 +12,9 @@ document.addEventListener("DOMContentLoaded", function() {
       mostrarMensaje("Por favor, complete todos los campos.");
     } else if (!validarEmail(email)) {
       mostrarMensaje("Ingrese una dirección de correo electrónico válida.");
+    } else if (!validarNombreApellido(nombre) || !validarNombreApellido(apellido)) {
+      mostrarMensaje("El nombre y el apellido no pueden contener números.");
     } else {
-      //mandar a sql.
       window.location.href = "perfilMedico.html"; 
     }
   });
@@ -30,8 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function validarEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regex = /^[a-zA-ZÀ-ÿ0-9._-]+@[a-zA-ZÀ-ÿ0-9.-]+\.[a-zA-ZÀ-ÿ]{2,}$/;
     return regex.test(email);
+  }
+
+  function validarNombreApellido(valor) {
+    const regex = /^[a-zA-ZÀ-ÿ\s]+$/;
+    return regex.test(valor);
   }
 });
 

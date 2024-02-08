@@ -90,6 +90,10 @@ hr {
   background-color: #0056b3;
 }
 
+.invalido {
+  border-color: #ff0000; /* Cambia el color del borde */
+}
+
 @media screen and (max-width: 768px) {
   body {
       font-size: 14px; 
