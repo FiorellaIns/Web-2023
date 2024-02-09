@@ -1,14 +1,26 @@
-$(document).ready(function() {
-    $(".inicio").on("click", ".reg", function() {
-        const targetId = $(this).attr("id");
-        let url = "";
-        if (targetId === "paciente") {
-            url = "/tabla";
-        } else if (targetId === "Perfil") {
-            url = "/perfil_medico";
-        } else if (targetId === "cerrar") {
-            url = "/";
-        }
-        window.location.href = url;
+
+fetch("/consultarseccion").then(responde => responde.json()).then(
+    datos =>
+    {
+        usuarioID = datos.id;
+        console.log(usuarioID);
+    }
+)
+
+document.addEventListener("DOMContentLoaded", function() {
+    const pacienteLink = document.getElementById("paciente");
+    const PerfilLink = document.getElementById("Perfil");
+    const cerrarLink = document.getElementById("cerrar");
+  
+    pacienteLink.addEventListener("click", function() {
+        window.location.href = "Tabla.html"; 
     });
-});
+  
+    PerfilLink.addEventListener("click", function() {
+        window.location.href = "perfilMedico.html"; 
+    });
+
+    cerrarLink.addEventListener("click", function() {
+        window.location.href = "login.html"; 
+    });
+})

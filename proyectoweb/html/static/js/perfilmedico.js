@@ -1,12 +1,21 @@
-$(document).ready(function() {
-  $(".boton1").click(function() {
-      navigateTo("/index");
-  });
-  $(".boton").click(function() {
-      navigateTo("/editar_perfil_medico"); 
-  });
-
-  function navigateTo(url) {
-      window.location.href = url; 
-  }
+document.addEventListener("DOMContentLoaded", function() {
+    const editarPerfilLink = document.getElementById("siguiente");
+  
+    if (editarPerfilLink) {
+        editarPerfilLink.style.cursor = "pointer"; // Cambia el cursor al estilo de enlace
+        editarPerfilLink.addEventListener("click", function() {
+            // Redirige a la página de edición
+            window.location.href = "editarperfilMedico.html";
+        });
+    }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const volver = document.getElementById("volver");
+  
+    if (volver) {
+      volver.addEventListener("click", function() {
+        window.location.href = "index.html";
+      });
+    }
+  });
