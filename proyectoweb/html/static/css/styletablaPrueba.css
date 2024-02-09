@@ -61,7 +61,7 @@ tr:hover {
   background-color: beige;
   left: 0;
   cursor: pointer;
-  }
+}
 .boton:hover {
   background-color: #0056b3;
 }
@@ -78,7 +78,7 @@ tr:hover {
   top: 0%;
   right: 0;
   cursor: pointer;
-  }
+}
 .boton1:hover {
   background-color: #0056b3;
 }
@@ -98,5 +98,16 @@ tr:hover {
 
   table {
     font-size: 14px; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  th:nth-child(1),
+  td:nth-child(1) {
+    display: none;
+  }
+
+  table {
+    font-size: 12px;
   }
 }
