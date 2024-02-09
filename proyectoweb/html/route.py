@@ -56,10 +56,10 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/paciente")
     def paciente():
         return render_template("paciente.html")
-    @aplicacion.route("/Perfil medico")
+    @aplicacion.route("/perfil_medico")
     def perfilmedico():
         return render_template("perfilMedico.html")
-    @aplicacion.route("/Editar perfil medico")
+    @aplicacion.route("/editar_perfil_medico")
     def editarperfilmedico():
         return render_template("editarperfilMedico.html")
     @aplicacion.route("/Diagnostico")
@@ -68,3 +68,6 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/Añadir paciente")
     def añadirpaciente():
         return render_template("Añadirpaciente.html")
+    @aplicacion.route("/tabla")
+    def tablapacientes():
+        return render_template("Tabla.html")
