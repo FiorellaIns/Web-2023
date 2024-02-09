@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const volverButton = document.getElementById("volver");
   const editarPerfilButton = document.getElementById("siguiente");
 
-  volverButton.addEventListener("click", function() {
-      redireccionar("/index"); 
-  });
+  if (volverButton) {
+    volverButton.addEventListener("click", function() {
+      window.location.href = "/index";
+    });
+  }
 
-  editarPerfilButton.addEventListener("click", function() {
-      redireccionar("/editar_perfil_medico"); 
-  });
-
-  function redireccionar(url) {
-      window.location.href = url;
+  if (editarPerfilButton) {
+    editarPerfilButton.addEventListener("click", function() {
+      window.location.href = "/editar_perfil_medico";
+    });
   }
 });
