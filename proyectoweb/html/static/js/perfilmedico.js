@@ -1,12 +1,16 @@
-$(document).ready(function() {
-  $(".boton1").click(function() {
-      navigateTo("/index");
-  });
-  $(".boton").click(function() {
-      navigateTo("/editar_perfil_medico"); 
+document.addEventListener("DOMContentLoaded", function() {
+  const volverButton = document.getElementById("volver");
+  const editarPerfilButton = document.getElementById("siguiente");
+
+  volverButton.addEventListener("click", function() {
+      redireccionar("/index"); 
   });
 
-  function navigateTo(url) {
-      window.location.href = url; 
+  editarPerfilButton.addEventListener("click", function() {
+      redireccionar("/editar_perfil_medico"); 
+  });
+
+  function redireccionar(url) {
+      window.location.href = url;
   }
 });
