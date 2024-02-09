@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (!validarNombreApellido(nombre) || !validarNombreApellido(apellido)) {
       mostrarMensaje("El nombre y el apellido no pueden contener números.");
     } else {
-      redireccionar("/perfil_medico");
+      window.location.href = "/perfil_medico";
     }
   });
 
@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const regex = /^[a-zA-ZÀ-ÿ\s]+$/;
     return regex.test(valor);
   }
-
-
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -48,24 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (volver) {
     volver.addEventListener("click", function() {
-      redireccionar("/perfil_medico");
+      window.location.href = "/perfil_medico";
     });
   }
 });
-
-function redireccionar(url) {
-  // Realizar una solicitud AJAX para obtener la página solicitada
-  $.ajax({
-    url: url,
-    method: "GET",
-    success: function(response) {
-      // Insertar la respuesta en el cuerpo del documento actual
-      $("body").html(response);
-      // Actualizar la URL en la barra de direcciones del navegador
-      window.history.pushState({}, "", url);
-    },
-    error: function(xhr, status, error) {
-      console.error("Error al cargar la página:", error);
-    }
-  });
-}
