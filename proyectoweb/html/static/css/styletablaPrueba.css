@@ -1,23 +1,31 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url("../upload/perrito.jpeg");
+  background-image: url("../upload/imagen1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 }
 
-.botones {
-  background: none;
-  color: rgb(211, 197, 197);
-  padding: 10px 20px; /* Aumenta el espacio alrededor del texto */
-  font-size: 16px; /* Reduce el tamaño de fuente */
+/* Estilo mejorado para los botones */
+.boton, .boton1 {
+  background-color: #6893e8; /* Color de fondo */
+  border: none;
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
   margin: 6px;
-  display: inline-block; /* Coloca los botones en línea en lugar de ocupar todo el ancho */
-  border: 1px solid rgb(218, 201, 201); /* Agrega un borde al botón */
-  border-radius: 5px; /* Añade esquinas redondeadas */
+  cursor: pointer;
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s ease; /* Transición suave */
 }
 
+/* Cambio de color al pasar el cursor */
+.boton:hover, .boton1:hover {
+  background-color: #abd9ef; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilo de la tabla */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -26,74 +34,35 @@ table {
 }
 
 th, td {
-  border: 1px solid #333; /* Bordes de las celdas */
+  border: 1px solid #766868; /* Bordes de las celdas */
   padding: 8px;
   text-align: center;
   cursor: pointer;
 }
 
 th {
-  background-color: #333; /* Color de fondo de las celdas de encabezado */
-  color: blanchedalmond;
+  background-color: #abd9ef; /* Color de fondo de las celdas de encabezado */
+  color: rgb(3, 12, 15);
   font-weight: bold;
 }
 
 #miTabla {
-  background-color: antiquewhite;
+  background-color: rgb(215, 247, 250);
 }
 
 tr:nth-child(even) {
-  background-color: hsl(336, 12%, 45%); /* Color de fondo de las filas pares */
+  background-color: hsl(231, 27%, 45%); /* Color de fondo de las filas pares */
 }
 
 tr:hover {
   background-color:white;
 }
 
-.boton{
-  width: 10%;
-  background: none;
-  color: black;
-  padding: 2px;
-  font-size: 20px;
-  margin: 6px;
-  color: black;
-  background-color: beige;
-  left: 0;
-  cursor: pointer;
-}
-.boton:hover {
-  background-color: #0056b3;
-}
-.boton1{
-  width: 10%;
-  background: none;
-  color: black;
-  padding: 2px;
-  font-size: 20px;
-  margin: 6px;
-  color: black;
-  background-color: beige;
-  position: absolute;
-  top: 0%;
-  right: 0;
-  cursor: pointer;
-}
-.boton1:hover {
-  background-color: #0056b3;
-}
-
-
+/* Media queries para ajustar los estilos en dispositivos móviles */
 @media screen and (max-width: 768px) {
-  .boton {
+  .boton, .boton1 {
     width: 100%; 
     margin: 6px 0; 
-  }
-
-  .boton1 {
-    width: 100%; 
-    margin: 6px 0; 
-    position: static;
   }
 
   table {
