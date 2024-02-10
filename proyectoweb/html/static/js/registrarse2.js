@@ -158,6 +158,7 @@ formulario.addEventListener('submit', (e) => {
                 if(respuesta.respuesta === "Hecho")
                 {
                     alert("Hecho");
+                    console.log("Error");
                     envioAlServidor.open("GET","/");
                 }
                 else
