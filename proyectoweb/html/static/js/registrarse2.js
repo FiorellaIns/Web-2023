@@ -36,7 +36,6 @@ campos = {
 }
 
 const validarFormulario = (e) => {
-    console.log(e.target.name);
     switch (e.target.name){
         case "usuario":
             validarCampo(undefined, e.target, 'usuario' );
@@ -91,7 +90,6 @@ const validarCampo = (expresion, input, campo) => {
     }
     else
     {
-        console.log("Funn234");
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo_incorrecto');
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo_correcto');
         document.querySelector(`#grupo__${campo} .log__form__input_error`).classList.add('log__form__input_error_activo');
@@ -158,15 +156,13 @@ formulario.addEventListener('submit', (e) => {
                 if(respuesta.respuesta === "Hecho")
                 {
                     alert("Hecho");
-                    console.log("Error");
-                    envioAlServidor.open("GET","/");
+                    window.location.href = "/";
                 }
                 else
                     alert(respuesta.respuesta);
             }
-            else
-                alert("Se ha producido un error en la comunicacion con el servidor.")
         };
+        envioAlServidor.send(formatoDeData);
     }
 });
 
