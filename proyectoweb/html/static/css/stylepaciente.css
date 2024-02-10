@@ -1,74 +1,79 @@
-body{
+body {
   margin: 0;
   padding: 0;
   font-family: 'Times New Roman', Times, serif;
   background-image: url("../upload/fondopaciente.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-    
-  
-}
-.login-caja{
-  position: absolute;   
-  color: rgb(25, 13, 13);
-   
 }
 
-h3{
+.login-caja {
+  /* position: absolute; */
+  color: rgb(25, 13, 13);
+}
+
+h3 {
   font-size: 24px;
   color: black;
   margin-bottom: 10px;
 }
+
+.tabla-responsive {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 table {
-  font-family: arial, sans-serif;
+  width: 100%;
   border-collapse: collapse;
+  border: 2px solid black;
+  margin-top: 20px;
+  background-color: #fff;
+}
 
- }
-  
-td, th {
-  border: 2px solid #151414;
-  text-align: center;
+th, td {
+  border: 1px solid #333;
   padding: 8px;
+  text-align: center;
 }
 
-.centrar{
-  position: relative;
-  left: 30%;
+th {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
 }
-#anotar
-{
-  position: relative;
-  left: 70%;
-  border: 1px solid black;
-  margin-bottom: center;
-  width: 20%;
-  color: black;
-  padding: 3px;
-  font-size: 20px;
 
+
+.centrar {
+  text-align: center; /* Alinear al centro */
 }
-.boton1{
-  width: 40%;
-  color: black;
-  padding: 2px;
+
+#anotar {
+  background-color: #ddd;
+  color: rgb(19, 19, 19);
   font-size: 20px;
   cursor: pointer;
+  margin-top: 10px; /* Añadir margen superior */
+}
 
+.boton1 {
+  width: auto; /* Ancho automático */
+  color: black;
+  padding: 8px 16px; /* Aumentar el espacio interior */
+  font-size: 20px;
+  margin: 10px; /* Aumentar el margen */
+  float: right;
+  cursor: pointer;
 }
-.boton1:hover {
-  background-color: #0056b3;
-}
-.boton{
-  width: 10%;
+
+.boton {
+  width: auto; /* Ancho automático */
   background: none;
   color: black;
-  padding: 2px;
+  padding: 8px 16px; /* Aumentar el espacio interior */
   font-size: 20px;
-  margin: 6px;
+  margin: 10px; /* Aumentar el margen */
   cursor: pointer;
-  }
-.boton:hover {
-  background-color: #0056b3;
 }
 
 /* Estoy configurando el responsive */
@@ -82,37 +87,4 @@ td, th {
     margin-top: 10px;
   }
 }
-
-@media only screen and (min-width:70px) and (max-width: 950px) {
-  .centrar {
-    left: 0; /* Restablecer el posicionamiento en el centro */
-  }
-
-  .boton1 {
-    width: -100%;
-  }
-
-  .boton {
-   
-    margin: 10px auto; /* Centra horizontalmente el botón */
-    
-    width: -20%;
-    margin-top: 10px;
-  }
-  #volver {
-    position: relative; /* Cambiar a posicionamiento relativo */
-    margin-left: 0; /* Superponer el botón sobre la tabla */
-    margin-top: 0; /* Restablecer el margen superior */
-  }
-}
-
-
-
-@media only screen and (min-width:70px) and (max-width:950px){
-	.form-register{
-		width: 5%;
-    background-size: cover;
-	}
-}
-
 

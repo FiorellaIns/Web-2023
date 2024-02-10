@@ -1,26 +1,19 @@
-
-fetch("/consultarseccion").then(responde => responde.json()).then(
-    datos =>
-    {
-        usuarioID = datos.id;
-        console.log(usuarioID);
-    }
-)
-
 document.addEventListener("DOMContentLoaded", function() {
-    const pacienteLink = document.getElementById("paciente");
-    const PerfilLink = document.getElementById("Perfil");
-    const cerrarLink = document.getElementById("cerrar");
-  
-    pacienteLink.addEventListener("click", function() {
-        window.location.href = "Tabla.html"; 
-    });
-  
-    PerfilLink.addEventListener("click", function() {
-        window.location.href = "perfilMedico.html"; 
-    });
+    const links = document.querySelectorAll(".reg");
 
-    cerrarLink.addEventListener("click", function() {
-        window.location.href = "login.html"; 
+    links.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            const targetId = event.target.id;
+            let url = "";
+
+            if (targetId === "paciente") {
+                url = "/tabla";
+            } else if (targetId === "Perfil") {
+                url = "/perfil_medico";
+            } else if (targetId === "cerrar") {
+                url = "/";
+            }
+            window.location.href = url;
+        });
     });
-})
+});

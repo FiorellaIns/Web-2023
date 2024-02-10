@@ -1,18 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const volver = document.getElementById("volver");
-  
-    if (volver) {
-      volver.addEventListener("click", function() {
-        window.location.href = "tabla.html";
+  const links = document.querySelectorAll(".boton");
+
+  links.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+          const targetId = event.target.id;
+          let url = "/tabla";
+          window.location.href = url;
       });
-    }
   });
-document.addEventListener("DOMContentLoaded",function(){
-    const aniadir = document.getElementById("anotar");
-    
-    if(anotar){
-        anotar.addEventListener("click",function() {
-            window.location.href = "diagnostico.html"
-        });
-    }
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll(".boton1");
+
+  links.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+          const targetId = event.target.id;
+          let url = "/diagnostico";
+          window.location.href = url;
+      });
+  });
 });

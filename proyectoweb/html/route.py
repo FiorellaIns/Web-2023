@@ -33,7 +33,7 @@ def Route(aplicacion=Flask):
         usuario = {"id": session["id"]}
         return jsonify(usuario)
 
-    @aplicacion.route("/Registro")
+    @aplicacion.route("/registro")
     def registro():
         return render_template("registrarse1.html")
     
@@ -61,28 +61,28 @@ def Route(aplicacion=Flask):
     def exito():
         return render_template("exito.html")
 
-    @aplicacion.route("/Olvidado")
+    @aplicacion.route("/olvidado")
     def olvidado():
         return render_template("olvidelaconta.html")
-    @aplicacion.route("/Administrador Perfil")
+    @aplicacion.route("/administrador_perfil")
     def administradorperfill():
         return render_template("administradorPerfil.html")
-    @aplicacion.route("/tabla administrador")
+    @aplicacion.route("/tabla_administrador")
     def administradortabla():
         return render_template("tablaAdm.html")
     @aplicacion.route("/paciente")
     def paciente():
         return render_template("paciente.html")
-    @aplicacion.route("/Perfil medico")
+    @aplicacion.route("/perfil_medico")
     def perfilmedico():
         return render_template("perfilMedico.html")
-    @aplicacion.route("/Editar perfil medico")
+    @aplicacion.route("/editar_perfil_medico")
     def editarperfilmedico():
         return render_template("editarperfilMedico.html")
-    @aplicacion.route("/Diagnostico")
+    @aplicacion.route("/diagnostico")
     def diagnostico():
         return render_template("diagnostico.html")
-    @aplicacion.route("/Añadir paciente")
+    @aplicacion.route("/añadir_paciente")
     def añadirpaciente():
         return render_template("Añadirpaciente.html")
     

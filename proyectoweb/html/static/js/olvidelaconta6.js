@@ -53,3 +53,19 @@ formulario.addEventListener('submit', (e) => {
     }, 6000);
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll(".reg");
+
+  links.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+          const targetId = event.target.id;
+          let url = "";
+
+          if (targetId === "volver") {
+              url = "/";
+          }
+          window.location.href = url;
+      });
+  });
+});
