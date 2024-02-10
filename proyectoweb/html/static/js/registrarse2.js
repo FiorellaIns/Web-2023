@@ -1,17 +1,6 @@
 const formulario = document.getElementById('login-form');
 const inputs = document.querySelectorAll('#login-form input');
 
-document.addEventListener("DOMContentLoaded", function() {
-    const volver = document.getElementById("volver");
-  
-    if (volver) {
-      volver.addEventListener("click", function() {
-            window.location.href = "login.html";
-      });
-    }
-  });
-
-
 const expresiones = {
     password: /^.{4,12}$/, 
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -160,3 +149,19 @@ function EsValido()
         retorno = campos[CAMPOS_A_VALIDAR[i]];
     return retorno;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll(".boton1");
+  
+    links.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            const targetId = event.target.id;
+            let url = "";
+  
+            if (targetId === "volver") {
+                url = "/";
+            }
+            window.location.href = url;
+        });
+    });
+  });

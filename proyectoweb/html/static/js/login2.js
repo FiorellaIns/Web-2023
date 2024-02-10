@@ -18,19 +18,26 @@ formulario.addEventListener('submit', (e) =>
     formulario.reset();
 
     if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) 
-      window.location.href = "/";
+      window.location.href = "/a";
     else 
       window.location.href = "index.html";
   }
 });
 
-const olvideContraLink = document.getElementById("olvideContra");
-const registrarseLink = document.getElementById("registrarse");
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll(".reg");
 
-olvideContraLink.addEventListener("click", function () {
-    window.location.href = "olvidelaconta.html";
-});
+  links.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+          const targetId = event.target.id;
+          let url = "";
 
-registrarseLink.addEventListener("click", function () {
-    window.location.href = "registrarse1.html";
+          if (targetId === "olvideContra") {
+              url = "/olvidado";
+          } else if (targetId === "registrarse") {
+              url = "/registro";
+          }
+          window.location.href = url;
+      });
+  });
 });
