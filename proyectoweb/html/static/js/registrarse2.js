@@ -91,7 +91,6 @@ const validarCampo = (expresion, input, campo) => {
     }
     else
     {
-        console.log("Funn234");
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo_incorrecto');
         document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo_correcto');
         document.querySelector(`#grupo__${campo} .log__form__input_error`).classList.add('log__form__input_error_activo');
