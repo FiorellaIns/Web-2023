@@ -158,15 +158,13 @@ formulario.addEventListener('submit', (e) => {
                 if(respuesta.respuesta === "Hecho")
                 {
                     alert("Hecho");
-                    console.log("Error");
-                    envioAlServidor.open("GET","/");
+                    window.location.href = "/";
                 }
                 else
                     alert(respuesta.respuesta);
             }
-            else
-                alert("Se ha producido un error en la comunicacion con el servidor.")
         };
+        envioAlServidor.send(formatoDeData);
     }
 });
 
@@ -203,3 +201,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
   });
+
+  function PedirRedirrecion()
+  {
+    var envioAlServidor = new XMLHttpRequest();
+    envioAlServidor.open("GET","/",true);
+    envioAlServidor.send();
+  }

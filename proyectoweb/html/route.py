@@ -48,6 +48,7 @@ def Route(aplicacion=Flask):
                         request.form.get("password"),
                         request.form.get("email"),
                         request.form.get("codigoUnico")]
+        print("Error")
         if(EstaCompleto(listaDeDatos)):
             if(CodigoValido(listaDeDatos[7])):
                 CargarEnUsuario(listaDeDatos)
@@ -85,4 +86,3 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/añadir_paciente")
     def añadirpaciente():
         return render_template("Añadirpaciente.html")
-    
