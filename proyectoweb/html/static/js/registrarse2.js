@@ -201,10 +201,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
   });
-
-  function PedirRedirrecion()
-  {
-    var envioAlServidor = new XMLHttpRequest();
-    envioAlServidor.open("GET","/",true);
-    envioAlServidor.send();
-  }
