@@ -1,6 +1,9 @@
 const formulario = document.getElementById('login-form');
 const inputs = document.querySelectorAll('#login-form input');
 
+const SOLICITUDHECHA = 4;
+const RESPUESTAEXITOSA = 200;
+
 document.addEventListener("DOMContentLoaded", function() {
     const volver = document.getElementById("volver");
   
@@ -140,6 +143,29 @@ formulario.addEventListener('submit', (e) => {
         setTimeout(() => {
             document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
         }, 6000);
+    }
+    else
+    {
+        e.preventDefault();
+        var envioAlServidor = new XMLHttpRequest();
+        var formatoDeData = new FormData(document.getElementById("login-form"));
+        envioAlServidor.open("POST","/Registro_Post",true);
+        envioAlServidor.onreadystatechange = function() 
+        {
+            if(envioAlServidor.readyState === SOLICITUDHECHA && envioAlServidor.status === RESPUESTAEXITOSA)
+            {
+                var respuesta = JSON.parse(envioAlServidor.responseText);
+                if(respuesta.respuesta === "Hecho")
+                {
+                    alert("Hecho");
+                    envioAlServidor.open("GET","/");
+                }
+                else
+                    alert(respuesta.respuesta);
+            }
+            else
+                alert("Se ha producido un error en la comunicacion con el servidor.")
+        };
     }
 });
 

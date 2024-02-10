@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, request, render_template, jsonify, session
-from SQL_Manejo import IniciarSeccion
+from SQL_Manejo import *
 import time
+from FuncionesExtras import *
 
 error = ""
 
@@ -38,8 +39,24 @@ def Route(aplicacion=Flask):
     
     @aplicacion.route("/Registro_Post",methods=["POST"])
     def Posteo():
-        #if CodigoValido(request.form.get("codigoUnico")):
-        return redirect(url_for("exito"))
+        respuesta = ""
+        listaDeDatos = [request.form.get("nombre"),
+                        request.form.get("apellido"),
+                        request.form.get("dni"),
+                        request.form.get("matriculamedica"),
+                        request.form.get("usuario"),
+                        request.form.get("password"),
+                        request.form.get("email"),
+                        request.form.get("codigoUnico")]
+        if(EstaCompleto(listaDeDatos)):
+            if(CodigoValido(listaDeDatos[7])):
+                CargarEnUsuario(listaDeDatos)
+                respuesta = "Hecho"
+            else:
+                respuesta = "Clave no valida."
+        else:
+            respuesta = "No se recibieron todos los datos."
+        return jsonify({"respuesta":respuesta})
     @aplicacion.route("/Exito")
     def exito():
         return render_template("exito.html")
@@ -68,3 +85,4 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/Añadir paciente")
     def añadirpaciente():
         return render_template("Añadirpaciente.html")
+    
