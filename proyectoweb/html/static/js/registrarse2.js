@@ -36,7 +36,6 @@ campos = {
 }
 
 const validarFormulario = (e) => {
-    console.log(e.target.name);
     switch (e.target.name){
         case "usuario":
             validarCampo(undefined, e.target, 'usuario' );
