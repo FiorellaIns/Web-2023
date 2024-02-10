@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Título Genérico{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Enlaces a tus estilos CSS comunes -->
+</head>
+<body>
+    <header>
+        <!-- Aquí puedes colocar el encabezado común a todas las páginas -->
+        <h1>Encabezado Genérico</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('about') }}">Acerca de</a></li>
+                <li><a href="{{ url_for('contact') }}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Aquí se colocará el contenido específico de cada página -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Pie de página común -->
+        <p>&copy; {{ current_year }} Mi Sitio Web</p>
+    </footer>
+</body>
+</html>

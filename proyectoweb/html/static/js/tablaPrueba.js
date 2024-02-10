@@ -37,13 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  const volver = document.getElementById("volver");
+  const links = document.querySelectorAll(".boton");
 
-  if (volver) {
-    volver.addEventListener("click", function() {
-      window.location.href = "index.html";
-    });
-  }
+  links.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+          const targetId = event.target.id;
+          let url = "";
+
+          if (targetId === "volver") {
+              url = "/index";
+          }
+          window.location.href = url;
+      });
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -54,4 +60,16 @@ document.addEventListener("DOMContentLoaded", function() {
       window.location.href = "Añadirpaciente.html";
     });
   }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll(".fila");
+
+  links.forEach(function(link) {
+      link.addEventListener("click", function(event) {
+          const targetId = event.target.id;
+          let url = "/paciente";
+          window.location.href = url;
+      });
+  });
 });
