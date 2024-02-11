@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ]{4,16}$/,
+    apellido: /^[a-zA-ZÀ-ÿ]{4,40}$/,
     password: /^.{4,12}$/, 
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     dni: /^\d{7,8}$/, 
@@ -41,7 +43,7 @@ const validarFormulario = (e) => {
             validarCampo(undefined, e.target, 'usuario' );
         break;
         case "nombre":
-            validarCampo(undefined,e.target, 'nombre');
+            validarCampo(expresiones,e.target, 'nombre');
            
         break;
         case "password":
@@ -49,7 +51,7 @@ const validarFormulario = (e) => {
             
         break;
         case "apellido":
-            validarCampo(undefined,e.target, 'apellido'); 
+            validarCampo(expresiones,e.target, 'apellido'); 
         break;
         case "dni":
             validarCampo(expresiones.dni,e.target, 'dni');
