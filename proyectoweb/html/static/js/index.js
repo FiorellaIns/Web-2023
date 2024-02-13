@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 window.location.href = url;
             } else if (targetId === "cerrar") 
             {
+                url="/"
                 peticion = new XMLHttpRequest();
                 peticion.open("GET","/CerrarSeccion",true);
                 peticion.onreadystatechange = function()
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         if(respuesta.exito)
                         {
                             alert("Se ha cerrado la sección");
-                            window.location.href = "/";
+                            window.location.href = url;
                         }
                         else
                             alert("A ocurrido un error...");
