@@ -51,6 +51,20 @@ def Route(aplicacion=Flask):
         except KeyError:
             retorno = {"exito":False}
         return jsonify(retorno)
+    @aplicacion.route("/ObtenerPacientes",methods = ["GET"])
+    def ObtenerPacientes():
+        retorno = {"exito":False}
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuario(id)
+            if usuario != "":
+                print(ObtenerPacientes())
+            else:
+                retorno = {"exito":False}
+        except KeyError:
+          retorno = {"exito":False}
+        return jsonify(retorno)
+        
     @aplicacion.route("/registro")
     def registro():
         return render_template("registrarse1.html")
@@ -90,7 +104,7 @@ def Route(aplicacion=Flask):
         return render_template("tablaAdm.html")
     @aplicacion.route("/paciente")
     def paciente():
-        return render_template("paciente.html")
+        return render_template("Tabla.html")
     @aplicacion.route("/perfil_medico")
     def perfilmedico():
         return render_template("perfilMedico.html")

@@ -86,5 +86,13 @@ def ObtenerUsuario(ID):
     retorno = (herramienta.fetchall())[0][0]
     return retorno
 
+def ObtenerPacientes():
+    retorno = []
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM pacientes")
+    retorno = herramienta.fetchall()
+    return retorno
+
 def  InicializarConexion():
     return mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")
