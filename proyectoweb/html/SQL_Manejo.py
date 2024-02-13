@@ -22,6 +22,8 @@ def IniciarSeccion(lista=[]):
                    mensaje = "Usuario y/o: contraseña incorrecto/s"
            else:
                 mensaje = "Usuario y/o: contraseña incorrecto/s"
+           conexion.close()
+           herramienta.close()
    return mensaje
 
 def CodigoValido(claveDada):
@@ -40,6 +42,8 @@ def CodigoValido(claveDada):
         if(claveDada == claves[0]):
             retorno = True
             break
+    herramienta.close()
+    conexion.close()
     return retorno
 
 def ObtenerID(conexion,dato):
@@ -84,6 +88,8 @@ def ObtenerUsuario(ID):
     herramienta = conexion.cursor()
     herramienta.execute("SELECT Usuario FROM usuarios WHERE ID = {}".format(ID))
     retorno = (herramienta.fetchall())[0][0]
+    herramienta.close()
+    conexion.close()
     return retorno
 
 def ObtenerPacientes():
@@ -92,6 +98,8 @@ def ObtenerPacientes():
     herramienta = conexion.cursor()
     herramienta.execute("SELECT * FROM pacientes")
     retorno = herramienta.fetchall()
+    herramienta.close()
+    conexion.close()
     return retorno
 
 def  InicializarConexion():

@@ -39,16 +39,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-function Pacientes()
-{
-
-}
-function CerrarSeccion()
-{
-
-}
-function APerfilDeMedico()
-{
-
-}
