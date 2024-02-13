@@ -21,6 +21,7 @@ def Route(aplicacion=Flask):
         if(division[0] == "Hecho"):
             esAdmin = bool(int(division[2]))
             session["ID"] = division[3]
+            print(division)
             if esAdmin:
                 retorno = {"mensaje":division[0],"usuario":division[1],"url":"/administrador_perfil"}
             else:
@@ -44,21 +45,13 @@ def Route(aplicacion=Flask):
         return jsonify(retorno)
 
     @aplicacion.route("/ObtenerPacientes",methods = ["GET"])
-    def ObtenerPacientesO():
+    def ObtenerPacientes():
         retorno = {"exito":False}
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
             if usuario != "":
-                datos = ObtenerPacientes()
-                print("{} {}".format(len(datos[0]),len(datos[1])))
-                if len(datos[0]) == 10:
-                    convertido = []
-                    for lista in datos:
-                        lista = ConvertirADiccionario(lista)
-                        convertido.append(lista)
-                    if convertido[0]["exito"]:
-                        retorno = convertido
+                print(ObtenerPacientes())
             else:
                 retorno = {"exito":False}
         except KeyError:
@@ -126,11 +119,9 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
-            paciente="pedro"
             return render_template("paciente.html",usuario = usuario)
         except KeyError:
             return redirect(url_for("home"))
-        
 
     @aplicacion.route("/perfil_medico")
     def perfil_medico():
