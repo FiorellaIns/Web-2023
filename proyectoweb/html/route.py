@@ -89,7 +89,7 @@ def Route(aplicacion=Flask):
         else:
             respuesta = "No se recibieron todos los datos."
         return jsonify({"respuesta":respuesta})
-    @aplicacion.route("/Exito")
+    @aplicacion.route("/exito")
     def exito():
         return render_template("exito.html")
 
@@ -116,4 +116,8 @@ def Route(aplicacion=Flask):
         return render_template("diagnostico.html")
     @aplicacion.route("/añadir_paciente")
     def añadirpaciente():
-        return render_template("Añadirpaciente.html")
+        return render_template("añadirpaciente.html")
+    @aplicacion.route("/tabla")
+    def tabla():
+        return render_template("Tabla.html")
+    
