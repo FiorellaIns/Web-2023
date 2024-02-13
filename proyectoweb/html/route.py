@@ -7,10 +7,14 @@ error = ""
 
 def Route(aplicacion=Flask):
 
+    
+    
     @aplicacion.route("/")
     def home():
         return render_template("login.html", errorVar=error)
 
+    
+    
     @aplicacion.route("/Acceder", methods=["POST"])
     def IniciarSeccionR():
         retorno = {}
@@ -30,6 +34,8 @@ def Route(aplicacion=Flask):
             retorno = {"mensaje":(division[0] + division[1])}
         return jsonify(retorno)
 
+    
+    
     @aplicacion.route("/index")
     def indice():
         try:
@@ -39,10 +45,15 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
 
+    
+    
     @aplicacion.route("/consultarseccion", methods=["GET"])
     def seccionActual():
         usuario = {"id": session["id"]}
         return jsonify(usuario)
+    
+    
+    
     @aplicacion.route("/CerrarSeccion",methods=["GET"])
     def TerminarSeccion():
         retorno = {"exito":True}
@@ -51,6 +62,8 @@ def Route(aplicacion=Flask):
         except KeyError:
             retorno = {"exito":False}
         return jsonify(retorno)
+    
+    
     @aplicacion.route("/ObtenerPacientes",methods = ["GET"])
     def ObtenerPacientes():
         retorno = {"exito":False}
@@ -65,10 +78,14 @@ def Route(aplicacion=Flask):
           retorno = {"exito":False}
         return jsonify(retorno)
         
+    
+    
     @aplicacion.route("/registro")
     def registro():
         return render_template("registrarse1.html")
     
+
+
     @aplicacion.route("/Registro_Post",methods=["POST"])
     def Posteo():
         respuesta = ""
@@ -89,35 +106,59 @@ def Route(aplicacion=Flask):
         else:
             respuesta = "No se recibieron todos los datos."
         return jsonify({"respuesta":respuesta})
+    
+    
     @aplicacion.route("/exito")
     def exito():
         return render_template("exito.html")
 
+    
+    
     @aplicacion.route("/olvidado")
     def olvidado():
         return render_template("olvidelaconta.html")
+    
+    
     @aplicacion.route("/administrador_perfil")
     def administradorperfill():
         return render_template("administradorPerfil.html")
+    
+    
     @aplicacion.route("/tabla_administrador")
     def administradortabla():
         return render_template("tablaAdm.html")
+    
+    
     @aplicacion.route("/paciente")
     def paciente():
-        return render_template("Tabla.html")
+        return render_template("paciente.html")
+    
+    
     @aplicacion.route("/perfil_medico")
     def perfilmedico():
         return render_template("perfilMedico.html")
+    
+    
     @aplicacion.route("/editar_perfil_medico")
     def editarperfilmedico():
         return render_template("editarperfilMedico.html")
+    
+    
     @aplicacion.route("/diagnostico")
     def diagnostico():
         return render_template("diagnostico.html")
+    
+    
     @aplicacion.route("/añadir_paciente")
     def añadirpaciente():
         return render_template("añadirpaciente.html")
+    
+    
     @aplicacion.route("/tabla")
     def tabla():
-        return render_template("Tabla.html")
-    
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuario(id)
+            return render_template("tabla.html",usuario = usuario)
+        except KeyError:
+            return redirect(url_for("home"))

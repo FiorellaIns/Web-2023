@@ -11,11 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
             if (targetId === "paciente") 
             {
                 peticion = new XMLHttpRequest();
-
                 url = "/tabla";
+                window.location.href = url;
             } else if (targetId === "Perfil") 
             {
                 url = "/perfil_medico";
+                window.location.href = url;
             } else if (targetId === "cerrar") 
             {
                 peticion = new XMLHttpRequest();
@@ -39,16 +40,3 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-function Pacientes()
-{
-
-}
-function CerrarSeccion()
-{
-
-}
-function APerfilDeMedico()
-{
-
-}
