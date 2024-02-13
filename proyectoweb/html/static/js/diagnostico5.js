@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (formularioCompleto) {
           formulario.reset();
-          window.location.href = "paciente.html";
+          window.location.href = "/paciente";
       } else {
           mostrarMensajeGeneral("Por favor, complete todos los campos.");
       }

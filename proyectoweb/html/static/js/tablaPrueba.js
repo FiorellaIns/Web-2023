@@ -2,14 +2,32 @@ const SOLICITUDHECHA = 4;
 const RESPUESTAEXITOSA = 200;
 
 document.addEventListener("DOMContentLoaded", function() {
-    const miTabla = document.getElementById("miTabla");
-
-    // Escuchar clics en la tabla
-    miTabla.addEventListener("click", function(evento) {
-        const objetivo = evento.target;
-        if (objetivo.tagName.toLowerCase() === "td") {
-            // Aquí puedes agregar lógica para manejar el clic en una celda de la tabla
+    const input = document.getElementById("buscador");
+    const criterio = document.getElementById("criterio");
+    const table = document.getElementById("miTabla");
+  
+    input.addEventListener("input", function() {
+      const filtro = input.value.toLowerCase();
+      const filas = table.querySelectorAll("tbody tr");
+  
+      for (let i = 0; i < filas.length; i++) {
+        const tds = filas[i].querySelectorAll("td");
+        let filaCoincide = false;
+  
+        for (let j = 0; j < tds.length; j++) {
+          const valorCriterio = tds[j].textContent.toLowerCase();
+          if (valorCriterio.includes(filtro)) {
+            filaCoincide = true;
+            break;
+          }
         }
+  
+        if (filaCoincide) {
+          filas[i].style.display = "";
+        } else {
+          filas[i].style.display = "none";
+        }
+      }
     });
 
     // Hacer la solicitud AJAX al cargar la página
@@ -24,10 +42,36 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
     peticion.send();
+
+    const links = document.querySelectorAll(".fila");
+    links.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            const targetId = event.target.id;
+            let url = "/paciente";
+            window.location.href = url;
+        });
+    });
+
+
+    const volver = document.querySelectorAll("#volver");
+    volver.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            let url = "/index";
+            window.location.href = url;
+        });
+    });
+
+    const añadir = document.querySelectorAll("#añadirpaciente");
+    añadir.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            let url = "/añadir_paciente";
+            window.location.href = url;
+        });
+    });
 });
 
 function actualizarTabla(datos) {
-    const tablaBody = document.getElementById("tabla");
+    const tablaBody = document.getElementById("miTabla").getElementsByTagName("tbody")[0];
     // Eliminar filas existentes de la tabla
     while (tablaBody.firstChild) {
         tablaBody.removeChild(tablaBody.firstChild);
@@ -41,4 +85,5 @@ function actualizarTabla(datos) {
         fila.appendChild(celdaNombre);
         tablaBody.appendChild(fila);
     });
+
 }

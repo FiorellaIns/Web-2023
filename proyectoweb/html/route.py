@@ -119,9 +119,11 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
+            paciente="pedro"
             return render_template("paciente.html",usuario = usuario)
         except KeyError:
             return redirect(url_for("home"))
+        
 
     @aplicacion.route("/perfil_medico")
     def perfil_medico():
