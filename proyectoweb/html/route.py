@@ -45,13 +45,21 @@ def Route(aplicacion=Flask):
         return jsonify(retorno)
 
     @aplicacion.route("/ObtenerPacientes",methods = ["GET"])
-    def ObtenerPacientesR():
+    def ObtenerPacientesO():
         retorno = {"exito":False}
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
             if usuario != "":
-                print(ObtenerPacientes())
+                datos = ObtenerPacientes()
+                print("{} {}".format(len(datos[0]),len(datos[1])))
+                if len(datos[0]) == 10:
+                    convertido = []
+                    for lista in datos:
+                        lista = ConvertirADiccionario(lista)
+                        convertido.append(lista)
+                    if convertido[0]["exito"]:
+                        retorno = convertido
             else:
                 retorno = {"exito":False}
         except KeyError:
