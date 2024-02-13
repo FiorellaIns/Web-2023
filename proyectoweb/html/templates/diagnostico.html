@@ -8,50 +8,39 @@
 </head>
 <body>
     <div>
+        <span><button class="boton1" id="volver">Volver</button></span>
         <fieldset class="login-caja">
             <form id="formulario" action="" method="get">
                 <h1>Diagnóstico</h1>
-                <p class="texto">
                 <div class="diagnostico_grupo" id="grupo_fecha">
                     <label for="Fecha" class="diag_label">Fecha</label><br>
-                    <input type="date" name="Fecha" id="Fecha" title="Ingrese una fecha" class="diag_forminput"/><br>
-                    <p class="diag__form__error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
-
+                    <input type="text" name="Fecha" id="Fecha" title="Ingrese una fecha" class="diag_forminput"/><br>
                 </div>
                 <div class="diagnostico_grupo" id="grupo_motivo">
                     <label for="text" class="diag_label">Motivo de concurrencia</label><br>
                     <input type="text" name="motivo"   id="Motivo"  class="diag_forminput"/><br>
-                    <p class="diag__form__error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
                 </div>
                 <div class="diagnostico_grupo" id="grupo_nombre">
-                    <label for="text" class="diag_label">Nombre del Medico</label><br>
+                    <label for="text" class="diag_label">Nombre del Médico</label><br>
                     <input type="text" name="nombreM"  id="Nombre" class="diag_forminput" /><br>
-                    <p class="diag__form__error">El apellido tiene que ser de 4 a 40 digitos y solo puede contener letras</p>
                 </div> 
-
                 <div class="diagnostico_grupo" id="grupo_diagnostico"> 
                     <label for="text" class="centrar">Diagnóstico médico</label><br>
                     <textarea class="diagnostico1" name="DiagnosticoMedico" id="Diag"  ></textarea><br>
                 </div>
-
                 <div class="diagnostico_grupo" id="grupo_descripcion">
                     <label for="text" class="centrar">Descripción</label><br>
                     <textarea class="diagnostico1" name="Descripcion" id="Descri"  ></textarea><br>
-                </div>  
-
-                <div class="formulario__mensaje" id="formulario__mensaje">
-                    
-                </div>
+                </div> 
                 <br>
-            
                 <div class="formulario__boton">
-                    <button type="submit" class="boton" name="Enviar diagnostico" id="boton">Enviar Diagnostico</button>
-                    <p class="form_msj_exito" id="form_msj_exito">El formulario fue enviado con exito</p>
+                    <button type="submit" class="boton" name="Enviar diagnóstico" id="boton">Enviar Diagnóstico</button>
                 </div>
-                </p>
+                <div class="formulario__mensaje" id="formulario__mensaje"></div>
             </form>
         </fieldset>
     </div>
     <script src="../static/js/diagnostico5.js"></script>
 </body>
 </html>
+

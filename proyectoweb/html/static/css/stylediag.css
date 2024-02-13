@@ -48,6 +48,21 @@ body {
     text-align: center;
     font-size: 16px;
 }
+
+.boton1{
+    width: 12%;
+    background: none;
+    border: 2px solid black;
+    color:black;
+    font-size: 20px;
+    cursor: pointer;
+    background: white;
+    
+
+}
+.boton1:hover{
+    background-color: #0075ff;
+}
 @media screen and (max-width: 760px) {
     body {
         font-size: 14px; 
@@ -63,7 +78,19 @@ body {
     .boton{
         width: 100%;
         background: none;
-        border: 2px solid rgb(65, 165, 226);
+        border: 2px solid black;
+        color:black;
+        padding: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        margin: 2px 0;
+        
+    }
+
+    .boton1{
+        width: 100%;
+        background: white;
+        border: 2px solid black;
         color:black;
         padding: 5px;
         font-size: 18px;
@@ -107,3 +134,18 @@ body {
 
 }
 
+.visible {
+    display: block; 
+    border: 1px solid black;
+    background-color: white;
+    color: black; /* Puedes ajustar el color según tus preferencias */
+    font-size: 20px; /* Puedes ajustar el tamaño de fuente según tus preferencias */
+    padding: 13px 0;
+    margin: 13px 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.oculto {
+    display: none;
+}
