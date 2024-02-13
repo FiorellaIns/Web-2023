@@ -15,10 +15,30 @@ formulario.addEventListener('submit', (e) =>
   e.preventDefault();
   if (expresionEmail.test(emailinput.value)) 
   {
-    formulario.reset();
+    if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0)
+    {
+      const SOLICITUDHECHA = 4;
+      const RESPUESTAEXITOSA = 200;
+      peticion = new XMLHttpRequest();
+      datos = new FormData(document.getElementById("login-form"));
 
-    if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) 
-      window.location.href = "/a";
+      peticion.open("POST","/Acceder",true);
+      peticion.onreadystatechange = function()
+      {
+        if(peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA)
+        {
+          let respuesta = JSON.parse(peticion.responseText);
+          if(respuesta.mensaje === "Hecho")
+          {
+            alert("Bienvenido " + respuesta.usuario);
+            window.location.href = respuesta.url;
+          }
+        else
+          alert(respuesta.mensaje);
+    }
+  };
+  peticion.send(datos);
+    }
     else 
       window.location.href = "index.html";
   }
@@ -41,3 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 });
+
+function HacerPeticion(id = String,url = String)
+{
+  
+}

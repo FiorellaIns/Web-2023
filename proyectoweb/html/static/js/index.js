@@ -1,3 +1,5 @@
+const SOLICITUDHECHA = 4;
+const RESPUESTAEXITOSA = 200;
 document.addEventListener("DOMContentLoaded", function() {
     const links = document.querySelectorAll(".reg");
 
@@ -6,14 +8,47 @@ document.addEventListener("DOMContentLoaded", function() {
             const targetId = event.target.id;
             let url = "";
 
-            if (targetId === "paciente") {
+            if (targetId === "paciente") 
+            {
+                peticion = new XMLHttpRequest();
+
                 url = "/tabla";
-            } else if (targetId === "Perfil") {
+            } else if (targetId === "Perfil") 
+            {
                 url = "/perfil_medico";
-            } else if (targetId === "cerrar") {
-                url = "/";
+            } else if (targetId === "cerrar") 
+            {
+                peticion = new XMLHttpRequest();
+                peticion.open("GET","/CerrarSeccion",true);
+                peticion.onreadystatechange = function()
+                {
+                    if(peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA)
+                    {
+                        respuesta = JSON.parse(peticion.responseText);
+                        if(respuesta.exito)
+                        {
+                            alert("Se ha cerrado la sección");
+                            window.location.href = "/";
+                        }
+                        else
+                            alert("A ocurrido un error...");
+                    }
+                };
+                peticion.send();
             }
-            window.location.href = url;
         });
     });
 });
+
+function Pacientes()
+{
+
+}
+function CerrarSeccion()
+{
+
+}
+function APerfilDeMedico()
+{
+
+}

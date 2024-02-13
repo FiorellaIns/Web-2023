@@ -1,25 +1,33 @@
 import mysql.connector
 
 def IniciarSeccion(lista=[]):
-    retorno = -1
+   mensaje = "Datos: incompletos"
+   if len(lista) == 2:
+       if lista[0] != "" and lista[1] != "":
+           conexion = InicializarConexion()
+           herramienta = conexion.cursor()
+           comando = "SELECT Contraseña FROM usuarios WHERE EMail = \"{}\"".format(lista[0])
+           herramienta.execute(comando)
+           respuesta = herramienta.fetchall()
+           if len(respuesta) > 0:
+               if respuesta[0][0] == lista[1]:
+                   mensaje = "Hecho"
+                   herramienta.execute("SELECT Usuario FROM usuarios WHERE EMail=\"{}\"".format(lista[0]))
+                   mensaje = mensaje + ":{}".format((herramienta.fetchall())[0][0])
+                   herramienta.execute("SELECT Administrador FROM usuarios WHERE EMail=\"{}\"".format(lista[0]))
+                   mensaje = mensaje + ":{}".format((herramienta.fetchall())[0][0])
+                   herramienta.execute("SELECT ID FROM usuarios WHERE EMail=\"{}\"".format(lista[0]))
+                   mensaje = mensaje + ":{}".format((herramienta.fetchall())[0][0])
+               else:
+                   mensaje = "Usuario y/o: contraseña incorrecto/s"
+           else:
+                mensaje = "Usuario y/o: contraseña incorrecto/s"
+   return mensaje
 
-    conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")
-
-    herramienta = conexion.cursor()
-
-    herramienta.execute("SELECT * FROM usuarios")
-
-    consulta = herramienta.fetchall()
-
-    for listas in consulta:
-        if(lista[0] == listas[6] and lista[1] == listas[5]):
-            retorno = listas[0]
-            break
-    return retorno
 def CodigoValido(claveDada):
     retorno = False
 
-    conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")
+    conexion = InicializarConexion()
 
     herramienta = conexion.cursor()
 
@@ -29,7 +37,6 @@ def CodigoValido(claveDada):
 
     
     for claves in consulta:
-        print(claves)
         if(claveDada == claves[0]):
             retorno = True
             break
@@ -37,7 +44,6 @@ def CodigoValido(claveDada):
 
 def ObtenerID(conexion,dato):
     herramienta = conexion.cursor()
-    print(dato)
     comando = "SELECT ID FROM claves WHERE Clave = " + "\"" + dato + "\""
     herramienta.execute(comando)
     consulta = herramienta.fetchall()
@@ -51,17 +57,34 @@ def QuitarColumna(conexion,ID):
     conexion.commit()
     herramienta.close()
 
+def EsAdministrador(herramienta,clave):
+    retorno = False
+    comando = "SELECT Administrador FROM claves WHERE Clave=\"{}\"".format(clave)
+    herramienta.execute(comando)
+    retorno = (herramienta.fetchall())[0][0]
+    return retorno
+
 def CargarEnUsuario(lista = []):
     longitud = 0
-    conexion = mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")
+    conexion = InicializarConexion()
     herramienta = conexion.cursor()
     longitud = len(lista)
     if longitud == 8:
-        comando = "INSERT INTO usuarios (ID,Nombre,Apellido,DNI,`Matricula medica`,Usuario,Contraseña,EMail) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
-        argumentos = (None,lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],lista[6])
+        comando = "INSERT INTO usuarios (ID,Nombre,Apellido,DNI,`Matricula medica`,Usuario,Contraseña,EMail,Administrador) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        argumentos = (None,lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],lista[6],EsAdministrador(herramienta,lista[7]))
         herramienta.execute(comando,argumentos)
         conexion.commit()
         herramienta.close()
         ID = ObtenerID(conexion,lista[7])
         QuitarColumna(conexion,ID)
         conexion.close()
+def ObtenerUsuario(ID):
+    retorno = ""
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT Usuario FROM usuarios WHERE ID = {}".format(ID))
+    retorno = (herramienta.fetchall())[0][0]
+    return retorno
+
+def  InicializarConexion():
+    return mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")

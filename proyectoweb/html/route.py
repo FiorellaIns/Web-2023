@@ -11,28 +11,46 @@ def Route(aplicacion=Flask):
     def home():
         return render_template("login.html", errorVar=error)
 
-    @aplicacion.route("/GuardarDatosPerfil", methods=["POST"])
-    def DeterminarValidez():
-        id = -1
-        usuario = request.form["email"]
-        contrasena = request.form["contrasena"]
-        id = IniciarSeccion([usuario, contrasena])
-        session["id"] = id
-        session["contraseña"] = contrasena
-        if id != -1:
-            return redirect("/index")
+    @aplicacion.route("/Acceder", methods=["POST"])
+    def IniciarSeccionR():
+        retorno = {}
+        datos = [request.form.get("email"),request.form.get("contrasena")]
+        mensaje = IniciarSeccion(datos)
+        division = mensaje.split(":")
+        print(division)
+        if(division[0] == "Hecho"):
+            esAdmin = bool(int(division[2]))
+            session["ID"] = division[3]
+            print(division)
+            if esAdmin:
+                retorno = {"mensaje":division[0],"usuario":division[1],"url":"/administrador_perfil"}
+            else:
+                retorno = {"mensaje":division[0],"usuario":division[1],"url":"/index"}
         else:
-            return render_template("login.html", errorVar="Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo")
+            retorno = {"mensaje":(division[0] + division[1])}
+        return jsonify(retorno)
 
     @aplicacion.route("/index")
     def indice():
-        return render_template("index.html")
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuario(id)
+            return render_template("index.html",usuario = usuario)
+        except KeyError:
+            return redirect(url_for("home"))
 
     @aplicacion.route("/consultarseccion", methods=["GET"])
     def seccionActual():
         usuario = {"id": session["id"]}
         return jsonify(usuario)
-
+    @aplicacion.route("/CerrarSeccion",methods=["GET"])
+    def TerminarSeccion():
+        retorno = {"exito":True}
+        try:
+            session.pop("ID",None)
+        except KeyError:
+            retorno = {"exito":False}
+        return jsonify(retorno)
     @aplicacion.route("/registro")
     def registro():
         return render_template("registrarse1.html")
@@ -48,7 +66,6 @@ def Route(aplicacion=Flask):
                         request.form.get("password"),
                         request.form.get("email"),
                         request.form.get("codigoUnico")]
-        print("Error")
         if(EstaCompleto(listaDeDatos)):
             if(CodigoValido(listaDeDatos[7])):
                 CargarEnUsuario(listaDeDatos)
