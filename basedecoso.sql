@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-02-2024 a las 17:47:48
+-- Tiempo de generación: 13-02-2024 a las 20:27:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,15 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `claves` (
   `ID` int(11) NOT NULL,
-  `Clave` text NOT NULL
+  `Clave` text NOT NULL,
+  `Administrador` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `claves`
---
-
-INSERT INTO `claves` (`ID`, `Clave`) VALUES
-(2, 'fd234zxzxc234');
 
 -- --------------------------------------------------------
 
@@ -71,8 +65,18 @@ CREATE TABLE `pacientes` (
   `Nro de obra social` int(11) NOT NULL,
   `Nro de telefono` int(11) NOT NULL,
   `Domicilio` text NOT NULL,
-  `ID del medico` int(11) NOT NULL
+  `Fecha_De_Consulta` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pacientes`
+--
+
+INSERT INTO `pacientes` (`ID`, `Nombre`, `Apellido`, `DNI`, `Nro de afiliado`, `Obra social`, `Nro de obra social`, `Nro de telefono`, `Domicilio`, `Fecha_De_Consulta`) VALUES
+(1, 'fdfds', 'fdsfs534', 534534, 5345343, 'gfd453dfdfg', 423423, 645242, 'fsdfsdy535gs', '2024-02-06'),
+(2, 'asai553za', '42342zsgsh', 721872, 781421, 'df53wffz', 5126213, 8566241, 'fsdfs235a', '2024-02-17'),
+(3, 'fdfds', 'fdsfs534', 534534, 5345343, 'gfd453dfdfg', 423423, 645242, 'fsdfsdy535gs', '2024-02-06'),
+(4, 'asai553za', '42342zsgsh', 721872, 781421, 'df53wffz', 5126213, 8566241, 'fsdfs235a', '2024-02-17');
 
 -- --------------------------------------------------------
 
@@ -88,25 +92,17 @@ CREATE TABLE `usuarios` (
   `Matricula medica` int(11) NOT NULL,
   `Usuario` text NOT NULL,
   `Contraseña` text NOT NULL,
-  `EMail` text NOT NULL
+  `EMail` text NOT NULL,
+  `Administrador` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`ID`, `Nombre`, `Apellido`, `DNI`, `Matricula medica`, `Usuario`, `Contraseña`, `EMail`) VALUES
-(1, 'Tomas', 'Ferreyra', 44690211, 33242342, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(2, 'fsdfsdfsd', 'fsdfsdfsdf', 45453452, 24342423, 'fsfsdfsdfsd', 'Tomas0126', 'tomasferreyra40@gmail.com'),
-(3, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(4, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(5, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(6, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(7, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(8, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(9, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(10, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com'),
-(11, 'fsdfsd', 'fsdfsd', 4232324, 3242424, 'toto234', 'Tomas0125', 'tomasferreyra40@gmail.com');
+INSERT INTO `usuarios` (`ID`, `Nombre`, `Apellido`, `DNI`, `Matricula medica`, `Usuario`, `Contraseña`, `EMail`, `Administrador`) VALUES
+(20, 'Tomas', 'Ferreyra', 44690211, 52342142, 'Toto45', 'Tomas0125', 'tomasferreyra40@gmail.com', 0),
+(22, 'dasdasad', 'dasdasdasda', 535353, 5345353, 'toto41', 'Tomas0125', 'ferreyratomas326@gmail.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -146,7 +142,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `claves`
 --
 ALTER TABLE `claves`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `historias clinicas`
@@ -158,13 +154,13 @@ ALTER TABLE `historias clinicas`
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

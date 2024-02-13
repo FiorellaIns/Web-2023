@@ -10,9 +10,7 @@ document.getElementById("miTabla").addEventListener("click",function(evento)
   }
 });
 
-document.addEventListener("DOMContentLoaded", function() 
-{
-  peticion = new XMLHttpRequest();
+peticion = new XMLHttpRequest();
   peticion.open("GET","/ObtenerPacientes");
   peticion.onreadystatechange = function()
   {
@@ -22,4 +20,8 @@ document.addEventListener("DOMContentLoaded", function()
     }
   };
   peticion.send();
-});
+
+/*document.addEventListener("DOMContentLoaded", function() 
+{
+  
+});*/
