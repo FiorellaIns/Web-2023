@@ -17,11 +17,9 @@ def Route(aplicacion=Flask):
         datos = [request.form.get("email"),request.form.get("contrasena")]
         mensaje = IniciarSeccion(datos)
         division = mensaje.split(":")
-        print(division)
         if(division[0] == "Hecho"):
             esAdmin = bool(int(division[2]))
             session["ID"] = division[3]
-            print(division)
             if esAdmin:
                 retorno = {"mensaje":division[0],"usuario":division[1],"url":"/administrador_perfil"}
             else:
@@ -45,13 +43,20 @@ def Route(aplicacion=Flask):
         return jsonify(retorno)
 
     @aplicacion.route("/ObtenerPacientes",methods = ["GET"])
-    def ObtenerPacientesR():
+    def ObtenerPacientesO():
         retorno = {"exito":False}
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
             if usuario != "":
-                print(ObtenerPacientes())
+                datos = ObtenerPacientes()
+                if len(datos[0]) == 10:
+                    convertido = []
+                    for lista in datos:
+                        lista = ConvertirADiccionario(lista)
+                        convertido.append(lista)
+                    if convertido[0]["exito"]:
+                        retorno = convertido
             else:
                 retorno = {"exito":False}
         except KeyError:
@@ -118,8 +123,9 @@ def Route(aplicacion=Flask):
     def paciente():
         try:
             id = session["ID"]
-            usuario = ObtenerUsuario(id)
-            return render_template("paciente.html",usuario = usuario)
+            ID_Paciente = session["ID_Paciente"]
+            session.pop("ID_Paciente",None)
+            return render_template("paciente.html",paciente = (ObtenerNombrePaciente(ID_Paciente) + " " + ObtenerApellidoPaciente(ID_Paciente)))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -167,6 +173,14 @@ def Route(aplicacion=Flask):
             return render_template("tabla.html",usuario = usuario)
         except KeyError:
             return redirect(url_for("home"))
+    @aplicacion.route("/SeleccionarPaciente",methods = ["POST"])
+    def GuardarSeleccion():
+        retorno = {"exito":False}
+        id = (request.get_json()).get("ID_Paciente",None)
+        if ObtenerNombrePaciente(id) != "":
+            session["ID_Paciente"] = id
+            retorno = {"exito":True}
+        return jsonify(retorno)
 
     @aplicacion.route('/<name>', methods=['POST', 'GET'])
     def noEncontrada(name):

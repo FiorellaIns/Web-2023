@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla</title>
     <link rel="stylesheet" href="../static/css/styletablaPrueba.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='upload/icono.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='upload/icono.png') }}" type="image/x-icon">
 </head>
 <body>
 
@@ -41,7 +43,7 @@
             <th>Fecha de indexación</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id = "cuerpo">
         <tr class="fila">
             <td id = "1">Juan</td>
             <td id = "1">Pérez</td>

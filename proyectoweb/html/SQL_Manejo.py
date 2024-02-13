@@ -92,6 +92,26 @@ def ObtenerUsuario(ID):
     conexion.close()
     return retorno
 
+def ObtenerNombrePaciente(ID_Paciente):
+    retorno = ""
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT Nombre FROM pacientes WHERE ID = {}".format(ID_Paciente))
+    retorno = (herramienta.fetchall())[0][0]
+    herramienta.close()
+    conexion.close()
+    return retorno
+
+def ObtenerApellidoPaciente(ID_Paciente):
+    retorno = ""
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT Apellido FROM pacientes WHERE ID = {}".format(ID_Paciente))
+    retorno = (herramienta.fetchall())[0][0]
+    herramienta.close()
+    conexion.close()
+    return retorno
+
 def ObtenerPacientes():
     retorno = []
     conexion = InicializarConexion()
