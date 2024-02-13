@@ -45,7 +45,7 @@ def Route(aplicacion=Flask):
         return jsonify(retorno)
 
     @aplicacion.route("/ObtenerPacientes",methods = ["GET"])
-    def ObtenerPacientes():
+    def ObtenerPacientesR():
         retorno = {"exito":False}
         try:
             id = session["ID"]

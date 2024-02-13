@@ -35,10 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
     peticion.open("GET", "/ObtenerPacientes");
     peticion.onreadystatechange = function() {
         if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
-            // Aquí puedes manejar los datos recibidos del servidor
             const respuesta = JSON.parse(peticion.responseText);
-            // Por ejemplo, podrías actualizar la tabla con los datos recibidos
-            actualizarTabla(respuesta);
+            
         }
     };
     peticion.send();
