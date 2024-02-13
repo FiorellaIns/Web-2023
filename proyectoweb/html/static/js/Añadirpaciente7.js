@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const volver = document.getElementById("volver");
   if (volver) {
     volver.addEventListener("click", function() {
-      window.location.href = "tabla.html";
+      window.location.href = "/tabla";
     });
   }
 });
@@ -102,7 +102,7 @@ formulario.addEventListener('submit', (e) => {
   if (campos.numObraSocial && campos.obraSocial && campos.nombre && campos.apellido && campos.email && campos.dni && campos.numerodeafiliado && campos.nroTelefono){
       formulario.reset();
 
-      window.location.href = "tabla.html";
+      window.location.href = "/tabla";
 
       document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
       setTimeout(() => {

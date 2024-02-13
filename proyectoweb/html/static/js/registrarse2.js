@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     if (volver) {
       volver.addEventListener("click", function() {
-            window.location.href = "login.html";
+            window.location.href = "";
       });
     }
   });
@@ -43,7 +43,7 @@ const validarFormulario = (e) => {
             validarCampo(undefined, e.target, 'usuario' );
         break;
         case "nombre":
-            validarCampo(expresiones,e.target, 'nombre');
+            validarCampo(expresiones.nombre,e.target, 'nombre');
            
         break;
         case "password":
@@ -51,7 +51,7 @@ const validarFormulario = (e) => {
             
         break;
         case "apellido":
-            validarCampo(expresiones,e.target, 'apellido'); 
+            validarCampo(expresiones.apellido,e.target, 'apellido'); 
         break;
         case "dni":
             validarCampo(expresiones.dni,e.target, 'dni');
@@ -185,19 +185,3 @@ function EsValido()
         retorno = campos[CAMPOS_A_VALIDAR[i]];
     return retorno;
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    const links = document.querySelectorAll(".boton1");
-  
-    links.forEach(function(link) {
-        link.addEventListener("click", function(event) {
-            const targetId = event.target.id;
-            let url = "";
-  
-            if (targetId === "volver") {
-                url = "/";
-            }
-            window.location.href = url;
-        });
-    });
-  });

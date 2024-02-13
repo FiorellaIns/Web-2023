@@ -1,45 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const formulario = document.getElementById('formulario');
-  const inputs = document.querySelectorAll('#formulario input, #formulario textarea');
-  const mensajeError = document.getElementById('formulario__mensaje');
+    const fechaInput = document.getElementById('Fecha');
+    const fechaHoy = new Date().toISOString().split('T')[0]; // Obtiene la fecha actual en formato ISO
+    fechaInput.setAttribute('value', fechaHoy); // Establece el valor del campo de fecha
 
-  formulario.addEventListener('submit', function (e) {
-      e.preventDefault();
+    const volver = document.getElementById("volver");
+    if (volver) {
+        volver.addEventListener("click", function () {
+            window.location.href = "/paciente";
+        });
+    }
 
-      let formularioCompleto = true;
+    const formulario = document.getElementById('formulario');
+    const inputs = document.querySelectorAll('#formulario input, #formulario textarea');
+    const mensajeError = document.getElementById('formulario__mensaje');
 
-      inputs.forEach(input => {
-          if (!input.value.trim()) {
-              formularioCompleto = false;
-              mostrarMensajeError();
-          } else {
-              ocultarMensajeError();
-          }
-      });
+    formulario.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-      if (formularioCompleto) {
-          formulario.reset();
-          window.location.href = "paciente.html";
-      } else {
-          mostrarMensajeGeneral("Por favor, complete todos los campos.");
-      }
-  });
+        let formularioCompleto = true;
 
-  function mostrarMensajeError() {
-      mensajeError.classList.remove('oculto');
-      mensajeError.classList.add('visible');
-  }
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                formularioCompleto = false;
+                mostrarMensajeError("Por favor, complete todos los campos.");
+            } else {
+                ocultarMensajeError();
+            }
+        });
 
-  function ocultarMensajeError() {
-      mensajeError.classList.remove('visible');
-      mensajeError.classList.add('oculto');
-  }
+        if (formularioCompleto) {
+            formulario.reset();
+            window.location.href = "/paciente";
+        }
+    });
 
-  function mostrarMensajeGeneral(mensaje) {
-      mensajeError.textContent = mensaje;
-      mostrarMensajeError();
-      setTimeout(() => {
-          ocultarMensajeError();
-      }, 3000);
-  }
+    function mostrarMensajeError(mensaje) {
+        mensajeError.textContent = mensaje;
+        mensajeError.classList.add("visible");
+        mensajeError.classList.remove("oculto");
+
+        setTimeout(function () {
+            ocultarMensajeError();
+        }, 3000);
+    }
+
+    function ocultarMensajeError() {
+        mensajeError.textContent = "";
+        mensajeError.classList.remove("visible");
+        mensajeError.classList.add("oculto");
+    }
 });

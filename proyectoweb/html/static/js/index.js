@@ -11,13 +11,15 @@ document.addEventListener("DOMContentLoaded", function() {
             if (targetId === "paciente") 
             {
                 peticion = new XMLHttpRequest();
-
                 url = "/tabla";
+                window.location.href = url;
             } else if (targetId === "Perfil") 
             {
                 url = "/perfil_medico";
+                window.location.href = url;
             } else if (targetId === "cerrar") 
             {
+                url="/"
                 peticion = new XMLHttpRequest();
                 peticion.open("GET","/CerrarSeccion",true);
                 peticion.onreadystatechange = function()
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         if(respuesta.exito)
                         {
                             alert("Se ha cerrado la sección");
-                            window.location.href = "/";
+                            window.location.href = url;
                         }
                         else
                             alert("A ocurrido un error...");
