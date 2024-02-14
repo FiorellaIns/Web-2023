@@ -58,6 +58,11 @@ tr:hover {
   background-color:white;
 }
 
+.oculto {
+  display: none; /* Oculta los elementos con la clase oculto */
+}
+
+
 /* Media queries para ajustar los estilos en dispositivos móviles */
 @media screen and (max-width: 768px) {
   .boton, .boton1 {

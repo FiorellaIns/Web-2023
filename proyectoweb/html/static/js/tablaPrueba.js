@@ -3,31 +3,30 @@ const RESPUESTAEXITOSA = 200;
 
 document.addEventListener("DOMContentLoaded", function() {
     const input = document.getElementById("buscador");
-    const criterio = document.getElementById("criterio");
     const table = document.getElementById("miTabla");
-  
+
     input.addEventListener("input", function() {
-      const filtro = input.value.toLowerCase();
-      const filas = table.querySelectorAll("tbody tr");
-  
-      for (let i = 0; i < filas.length; i++) {
-        const tds = filas[i].querySelectorAll("td");
-        let filaCoincide = false;
-  
-        for (let j = 0; j < tds.length; j++) {
-          const valorCriterio = tds[j].textContent.toLowerCase();
-          if (valorCriterio.includes(filtro)) {
-            filaCoincide = true;
-            break;
-          }
+        const filtro = input.value.toLowerCase();
+        const filas = table.querySelectorAll("tbody tr");
+
+        for (let i = 0; i < filas.length; i++) {
+            const tds = filas[i].querySelectorAll("td");
+            let filaCoincide = false;
+
+            for (let j = 0; j < tds.length; j++) {
+                const valorCriterio = tds[j].textContent.toLowerCase();
+                if (valorCriterio.includes(filtro)) {
+                    filaCoincide = true;
+                    break;
+                }
+            }
+
+            if (filaCoincide) {
+                filas[i].classList.remove("oculto");
+            } else {
+                filas[i].classList.add("oculto");
+            }
         }
-  
-        if (filaCoincide) {
-          filas[i].style.display = "";
-        } else {
-          filas[i].style.display = "none";
-        }
-      }
     });
 
     // Hacer la solicitud AJAX al cargar la página
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     peticion.onreadystatechange = function() {
         if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
             const respuesta = JSON.parse(peticion.responseText);
-            
+            actualizarTabla(respuesta);
         }
     };
     peticion.send();
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = url;
         });
     });
-
 
     const volver = document.querySelectorAll("#volver");
     volver.forEach(function(button) {
@@ -83,5 +81,4 @@ function actualizarTabla(datos) {
         fila.appendChild(celdaNombre);
         tablaBody.appendChild(fila);
     });
-
 }

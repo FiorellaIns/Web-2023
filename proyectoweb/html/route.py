@@ -16,12 +16,10 @@ def Route(aplicacion=Flask):
         retorno = {}
         datos = [request.form.get("email"),request.form.get("contrasena")]
         mensaje = IniciarSeccion(datos)
-        division = mensaje.split(":")
-        print(division)
+        division = mensaje.split(":")   
         if(division[0] == "Hecho"):
             esAdmin = bool(int(division[2]))
             session["ID"] = division[3]
-            print(division)
             if esAdmin:
                 retorno = {"mensaje":division[0],"usuario":division[1],"url":"/administrador_perfil"}
             else:
@@ -52,7 +50,6 @@ def Route(aplicacion=Flask):
             usuario = ObtenerUsuario(id)
             if usuario != "":
                 datos = ObtenerPacientes()
-                print("{} {}".format(len(datos[0]),len(datos[1])))
                 if len(datos[0]) == 10:
                     convertido = []
                     for lista in datos:
