@@ -33,29 +33,25 @@ document.addEventListener("DOMContentLoaded", function()
       }
   });
 
+    // Hacer la solicitud AJAX al cargar la página
+    const peticion = new XMLHttpRequest();
+    peticion.open("GET", "/ObtenerPacientes");
+    peticion.onreadystatechange = function() {
+        if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+            const respuesta = JSON.parse(peticion.responseText);
+            
+        }
+    };
+    peticion.send();
 
-  const peticion = new XMLHttpRequest();
-  peticion.open("GET", "/ObtenerPacientes");
-  peticion.onreadystatechange = function() 
-  {
-    if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) 
-    {
-      const respuesta = JSON.parse(peticion.responseText);
-      ActualizarTabla(respuesta);
-    }
-  };
-  peticion.send();
-
-  const links = document.querySelectorAll(".fila");
-  links.forEach(function(link) 
-  {
-    link.addEventListener("click", function(event) 
-    {
-      const targetId = event.target.id;
-      let url = "/paciente";
-      window.location.href = url;
+    const links = document.querySelectorAll(".fila");
+    links.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            const targetId = event.target.id;
+            let url = "/paciente";
+            window.location.href = url;
+        });
     });
-  });
 
 
   const volver = document.querySelectorAll("#volver");

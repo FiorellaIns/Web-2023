@@ -16,7 +16,7 @@ def Route(aplicacion=Flask):
         retorno = {}
         datos = [request.form.get("email"),request.form.get("contrasena")]
         mensaje = IniciarSeccion(datos)
-        division = mensaje.split(":")
+        division = mensaje.split(":")   
         if(division[0] == "Hecho"):
             esAdmin = bool(int(division[2]))
             session["ID"] = division[3]
@@ -49,6 +49,14 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             usuario = ObtenerUsuario(id)
             if usuario != "":
+                datos = ObtenerPacientes()
+                if len(datos[0]) == 10:
+                    convertido = []
+                    for lista in datos:
+                        lista = ConvertirADiccionario(lista)
+                        convertido.append(lista)
+                    if convertido[0]["exito"]:
+                        retorno = convertido
                 datos = ObtenerPacientes()
                 if len(datos[0]) == 10:
                     convertido = []
