@@ -1,6 +1,8 @@
 const SOLICITUDHECHA = 4;
 const RESPUESTAEXITOSA = 200;
 
+var datosRecibidos;
+
 document.addEventListener("DOMContentLoaded", function() 
 {
   const input = document.getElementById("buscador");
@@ -9,30 +11,9 @@ document.addEventListener("DOMContentLoaded", function()
 
   input.addEventListener("input", function() 
   {
-    const filtro = input.value.toLowerCase();
-    const filas = table.querySelectorAll("tbody tr");
-  
-    for (let i = 0; i < filas.length; i++) 
-    {
-      const tds = filas[i].querySelectorAll("td");
-      let filaCoincide = false;
-  
-      for (let j = 0; j < tds.length; j++) 
-      {
-        const valorCriterio = tds[j].textContent.toLowerCase();
-        if (valorCriterio.includes(filtro)) 
-        {
-            filaCoincide = true;
-            break;
-        }
-      }
-        if (filaCoincide) 
-          filas[i].style.display = "";
-         else 
-          filas[i].style.display = "none";
-      }
+    nuevo = BuscarEnLista(input.value,datosRecibidos,criterio.value);
+    ActualizarTabla(nuevo);
   });
-
 
   const peticion = new XMLHttpRequest();
   peticion.open("GET", "/ObtenerPacientes");
@@ -42,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function()
     {
       const respuesta = JSON.parse(peticion.responseText);
       ActualizarTabla(respuesta);
+      datosRecibidos = respuesta;
     }
   };
   peticion.send();
@@ -126,4 +108,21 @@ function ConstruirStringTabla(diccionario = {})
 function ConstruirStringColumna(id,dato)
 {
   return "<td id = \"" + id + "\">" + dato + "</td>";
+}
+
+function BuscarEnLista(palabra = "",diccionario = [],filtro = "")
+{
+  var retorno = [];
+  for(let i = 0,lon = diccionario.length;i<lon;i++)
+  {
+    if(VerificarIgualdad(palabra,diccionario[i][filtro]))
+      retorno.push(diccionario[i]);
+  }
+  return retorno;
+}
+
+function VerificarIgualdad(palabra = "",rec)
+{
+  var sAux = "" + rec;
+  return sAux.includes(palabra);
 }
