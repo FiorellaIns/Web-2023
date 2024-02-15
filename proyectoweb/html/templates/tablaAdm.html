@@ -8,45 +8,43 @@
 </head>
 <body>
 
-
     <div>
-      <a class="boton2" id="volver">Volver</a>
-      <a class="boton2" id="añadirpaciente">Añadir Usuario</a>  
-      <a class="boton2" id="eliminarusuario">Eliminar Usuario</a>
-      <a class="boton2" id="editarusuario">Editar Usuario</a>
+        <a class="boton2" id="volver">Volver</a>
+        <a class="boton2" id="añadirpaciente">Añadir Usuario</a>  
+        <a class="boton2" id="eliminarusuario">Eliminar Usuario</a>
+        <a class="boton2" id="editarusuario">Editar Usuario</a>
     </div>
     <div>
-      <select id="criterio">
-        <option value="Nombre">Nombre</option>
-        <option value="Apellido">Apellido</option>
-        <option value ="DNI">DNI</option>
-        <option value ="Nro de afiliado">Nro de Afiliado</option>
-        <option value ="Obra social">Obra Social</option>
-        <option value = "Nro de obra social">Nro de obra social</option>
-        <option value = "Nro de telefono">Nro de telefono</option>
-        <option value = "Domicilo">Domicilio</option>
-        <option value = "Fecha de consulta">Fecha de indexación</option>
-      </select>
+        <select id="criterio">
+            <option value="Nombre">Nombre</option>
+            <option value="Apellido">Apellido</option>
+            <option value ="DNI">DNI</option>
+            <option value ="Nro de afiliado">Matrícula del médico</option>
+            <option value ="Obra social">Usuario</option>
+            <option value = "Nro de obra social">Nro de obra social</option>
+            <option value = "Nro de telefono">Email</option>
+        </select>
         <input type="text" id="buscador" placeholder="Buscar">
     </div>
     <div>
-      <fieldset>
-        <table id="miTabla">
-          <thead>
-              <tr>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>DNI</th>
-                  <th>Matrícula del médico</th>
-                  <th>Usuario</th>
-                  <th>Contraseña</th>
-                  <th>Email</th>
-              </tr>
-          </thead>
-          <tbody id = "cuerpo">
-          </tbody>
-      </table>      
-      </fieldset>
+        <fieldset>
+            <table id="miTabla">
+                <thead>
+                    <tr>
+                        <th>Seleccionar</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Matrícula del médico</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo">
+                </tbody>
+            </table>      
+        </fieldset>
     </div>
     <script src="../static/js/tablaAdm.js"></script>
 </body>

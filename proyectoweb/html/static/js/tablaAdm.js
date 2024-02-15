@@ -30,27 +30,25 @@ document.addEventListener("DOMContentLoaded", function() {
     window.location.href = url;
   });
 
-  table.addEventListener("click", function(evento) {
-    objetivo = evento.target;
-    if (objetivo.tagName.toLowerCase() === "td") {
-      let peticion = new XMLHttpRequest();
-      peticion.open("POST", "/SeleccionarPaciente", true);
-      peticion.setRequestHeader("Content-Type", "application/json");
-      peticion.onreadystatechange = function() {
-        if (peticion.readyState == SOLICITUDHECHA && peticion.status == RESPUESTAEXITOSA) {
-          conversion = JSON.parse(peticion.responseText);
-          if (conversion.exito)
-            window.location.href = "/paciente";
-          else
-            alert("Ha ocurrido un error en el servidor");
+  table.addEventListener("change", function(event) {
+    if (event.target.type === "checkbox") {
+      const checkboxId = event.target.id;
+      const userId = checkboxId.split("_")[1]; // Obtener el ID de usuario de la casilla de verificación
+      const usuarioSeleccionado = datosRecibidos.find(usuario => usuario.ID === parseInt(userId));
+      
+      
+      // Desmarcar todas las casillas de verificación excepto la seleccionada
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox.id !== checkboxId) {
+          checkbox.checked = false;
         }
-      };
-      peticion.send(JSON.stringify({
-        "ID_Paciente": objetivo.id
-      }));
+      });
+      
+      console.log("Medico seleccionado:", usuarioSeleccionado.Nombre,usuarioSeleccionado.Apellido,",con usuario:",usuarioSeleccionado.Usuario,"y ID:",userId);
+      // futuras acciones adicionales que desees con el usuario seleccionado
     }
   });
-
 });
 
 function ActualizarTabla(diccionarios = []) {
@@ -63,8 +61,9 @@ function ActualizarTabla(diccionarios = []) {
 
 function ConstruirStringTabla(diccionario = {}) {
   const datos = ["Nombre", "Apellido", "DNI", "Matricula medica", "Usuario", "Contraseña", "EMail"];
-  var retorno = "<tr class = \"fila\">";
+  var retorno = "<tr class=\"fila\">";
   let id = diccionario["ID"];
+  retorno += "<td><input type=\"checkbox\" class=\"checkFila\" id=\"checkbox_" + id + "\"></td>";
   for (let i = 0; i < datos.length; i++)
     retorno = retorno + ConstruirStringColumna(id, diccionario[datos[i]]);
   retorno = retorno + "</tr>";
@@ -72,7 +71,7 @@ function ConstruirStringTabla(diccionario = {}) {
 }
 
 function ConstruirStringColumna(id, dato) {
-  return "<td id = \"" + id + "\">" + dato + "</td>";
+  return "<td id=\"" + id + "\">" + dato + "</td>";
 }
 
 function BuscarEnLista(palabra = "", diccionario = [], filtro = "") {
