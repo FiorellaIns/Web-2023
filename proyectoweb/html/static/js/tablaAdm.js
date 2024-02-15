@@ -87,3 +87,19 @@ function VerificarIgualdad(palabra = "", rec) {
   var sAux = "" + rec;
   return sAux.includes(palabra);
 }
+
+
+//programar...
+function editar(){
+    const boton = document.getElementById("editarusuario")
+    boton.addEventListener("click",function(){
+        
+    });
+}
+
+function eliminar(){
+    const boton = document.getElementById("eliminarusuario")
+    boton.addEventListener("click",function(){
+
+    });
+}
