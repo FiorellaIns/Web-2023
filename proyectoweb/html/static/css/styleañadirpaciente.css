@@ -94,7 +94,7 @@ main {
     align-items: center;
 }
 
-.form__boton {
+.boton {
     height: 45px;
     line-height: 45px;
     width: 30%;
@@ -107,7 +107,7 @@ main {
     transition: .1s ease all;
 }
 
-.form__boton:hover {
+.boton:hover {
     box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
 }
 
@@ -153,7 +153,7 @@ main {
         line-height: 40px;
     }
 
-    .form__boton {
+    .boton {
         width: 70%; 
         font-size: 12px;
     }

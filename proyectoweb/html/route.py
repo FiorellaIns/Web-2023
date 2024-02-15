@@ -132,7 +132,7 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             ID_Paciente = session["ID_Paciente"]
-            session.pop("ID_Paciente",None)
+            #session.pop("ID_Paciente",None)
             return render_template("paciente.html",paciente = (ObtenerNombrePaciente(ID_Paciente) + " " + ObtenerApellidoPaciente(ID_Paciente)))
         except KeyError:
             return redirect(url_for("home"))

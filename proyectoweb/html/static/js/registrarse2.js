@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     if (volver) {
       volver.addEventListener("click", function() {
-            window.location.href = "";
+            window.location.href = "/";
       });
     }
   });
