@@ -12,3 +12,9 @@ def ConvertirADiccionario(lista=[]):
         retorno = {"exito":True,"ID":lista[0],"Nombre":lista[1],"Apellido":lista[2],"DNI":lista[3],"Nro de afiliado":lista[4]
                    ,"Obra social":lista[5],"Nro de obra social":lista[6],"Nro de telefono":lista[7],"Domicilo":lista[8],"Fecha de consulta":lista[9].strftime('%d/%m/%Y')}
     return retorno
+
+def ConvertirADiccionarioUsuarios(lista=[]):
+    retorno = {"exito":False}
+    if len(lista) == 9:
+        retorno = {"exito":True,"ID":lista[0],"Nombre":lista[1],"Apellido":lista[2],"DNI":lista[3],"Matricula medica":lista[4],"Usuario":lista[5],"Contraseña":lista[6],"EMail":lista[7]}
+    return retorno

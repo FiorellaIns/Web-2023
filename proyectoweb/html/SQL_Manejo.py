@@ -124,3 +124,13 @@ def ObtenerPacientes():
 
 def  InicializarConexion():
     return mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")
+
+def ObtenerUsuarios():
+    retorno = []
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM usuarios WHERE administrador = 0")
+    retorno = herramienta.fetchall()
+    herramienta.close()
+    conexion.close()
+    return retorno

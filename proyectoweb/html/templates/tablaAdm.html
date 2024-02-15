@@ -14,17 +14,20 @@
       <a class="boton2" id="añadirpaciente">Añadir Usuario</a>  
       <a class="boton2" id="eliminarusuario">Eliminar Usuario</a>
       <a class="boton2" id="editarusuario">Editar Usuario</a>
-        <span>
-            <span>
-              <label>Buscar por: </label>
-            </span>
-            <span>
-              <select id="caja" name="Elementos">
-                <option value="todos">Todos</option>
-              </select>
-              <input type="text" id="busqueda" placeholder="Buscar">
-            </span>
-        </span>
+    </div>
+    <div>
+      <select id="criterio">
+        <option value="Nombre">Nombre</option>
+        <option value="Apellido">Apellido</option>
+        <option value ="DNI">DNI</option>
+        <option value ="Nro de afiliado">Nro de Afiliado</option>
+        <option value ="Obra social">Obra Social</option>
+        <option value = "Nro de obra social">Nro de obra social</option>
+        <option value = "Nro de telefono">Nro de telefono</option>
+        <option value = "Domicilo">Domicilio</option>
+        <option value = "Fecha de consulta">Fecha de indexación</option>
+      </select>
+        <input type="text" id="buscador" placeholder="Buscar">
     </div>
     <div>
       <fieldset>
@@ -35,31 +38,12 @@
                   <th>Apellido</th>
                   <th>DNI</th>
                   <th>Matrícula del médico</th>
-                  <th>Usuario (email)</th>
+                  <th>Usuario</th>
+                  <th>Contraseña</th>
+                  <th>Email</th>
               </tr>
           </thead>
-          <tbody>
-              <tr>
-                  <td>Juan</td>
-                  <td>Pérez</td>
-                  <td>12345678</td>
-                  <td>Med1234</td>
-                  <td>flor@example.com</td>
-              </tr>
-              <tr>
-                <td>holder</td>
-                <td>Pérez</td>
-                <td>12345678</td>
-                <td>Med1234</td>
-                <td>vero@example.com</td>
-            </tr>
-            <tr>
-              <td>antony</td>
-              <td>Pérez</td>
-              <td>12345678</td>
-              <td>Med1234</td>
-              <td>juan@example.com</td>
-          </tr>
+          <tbody id = "cuerpo">
           </tbody>
       </table>      
       </fieldset>

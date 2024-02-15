@@ -118,15 +118,6 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
 
-    @aplicacion.route("/tabla_administrador")
-    def tabla_administrador():
-        try:
-            id = session["ID"]
-            usuario = ObtenerUsuario(id)
-            return render_template("tablaAdm.html",usuario = usuario)
-        except KeyError:
-            return redirect(url_for("home"))
-
     @aplicacion.route("/paciente")
     def paciente():
         try:
@@ -181,6 +172,7 @@ def Route(aplicacion=Flask):
             return render_template("tabla.html",usuario = usuario)
         except KeyError:
             return redirect(url_for("home"))
+        
     @aplicacion.route("/SeleccionarPaciente",methods = ["POST"])
     def GuardarSeleccion():
         retorno = {"exito":False}
@@ -193,3 +185,31 @@ def Route(aplicacion=Flask):
     @aplicacion.route('/<name>', methods=['POST', 'GET'])
     def noEncontrada(name):
         return redirect(url_for("home"))
+    
+    
+    
+    
+    
+    
+    @aplicacion.route("/tabla_administrador", methods=['POST','GET'])
+    def tabla_administrador():
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuario(id)
+            return render_template("tablaAdm.html",usuario = usuario)
+        except KeyError:
+            return redirect(url_for("home"))
+        
+    @aplicacion.route("/Datos_usuarios",methods=["GET"])
+    def datos_usuarios():
+        retorno = []
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuarios()
+            for lista in usuario:
+                retorno.append(ConvertirADiccionarioUsuarios(lista))
+            return jsonify(retorno)
+        except KeyError:
+            return redirect(url_for("home"))
+
+        
