@@ -207,18 +207,18 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
 
-    @aplicacion.route("/obtenerdatosdepacientes", methods=["POST","GET"])
-    def obtener_diagnostico(ID_paciente):
+    @aplicacion.route("/obtenerdatosdepacientes", methods=["GET"])
+    def obtener_diagnostico():
+        retorno=[]
         try:
-            # Aquí deberías tener una función para obtener los diagnósticos del paciente con el ID dado
-            datos_diagnostico = ObtenerDatosDiagnosticoPaciente(ID_paciente)
-            if datos_diagnostico:
-                retorno = [ConvertirADiccionarioPacientes(diagnostico) for diagnostico in datos_diagnostico]
-                return jsonify(retorno)
-            else:
-                return jsonify({"mensaje": "No se encontraron diagnósticos para el paciente con ID {}".format(ID_paciente)})
-        except Exception as e:
-            print("Error:", e)
-            return jsonify({"error": "Hubo un error al obtener los diagnósticos del paciente"})
+            id = session["ID"]
+            datos_diagnostico = ObtenerDatosDiagnosticoPaciente(id)
+            for diagnostico in datos_diagnostico:
+                retorno.append(ConvertirADiccionarioPacientes(diagnostico))
+            return jsonify(retorno)           
+                
+        except KeyError:
+            return redirect(url_for("home"))
+
 
         

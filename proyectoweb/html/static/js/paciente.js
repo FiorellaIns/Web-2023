@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 const peticion = new XMLHttpRequest();
-const table = document.getElementById("miTabla");//table
 
 peticion.open("GET", "/obtenerdatosdepacientes");
 peticion.onreadystatechange = function() {
@@ -26,29 +25,6 @@ peticion.onreadystatechange = function() {
   }
 };
 peticion.send();
-//post
-table.addEventListener("click",function(evento)
-  {
-    objetivo = evento.target;
-    if(objetivo.tagName.toLowerCase() === "td")
-    {
-      let peticion = new XMLHttpRequest();
-      peticion.open("POST","/SeleccionarPaciente",true);
-      peticion.setRequestHeader("Content-Type","application/json");
-      peticion.onreadystatechange = function()
-      {
-        if(peticion.readyState == SOLICITUDHECHA && peticion.status == RESPUESTAEXITOSA)
-        {
-          conversion = JSON.parse(peticion.responseText);
-          if(conversion.exito)
-            window.location.href = "/paciente";
-          else
-            alert("Ha ocurrido un error en el servidor");
-        }
-      };
-      peticion.send(JSON.stringify({"ID_paciente":objetivo.id}));
-    }
-  });
 
 
 });

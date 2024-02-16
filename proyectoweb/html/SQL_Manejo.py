@@ -135,19 +135,15 @@ def ObtenerUsuarios():
     conexion.close()
     return retorno
 
-def ObtenerDatosDiagnosticoPaciente(ID_paciente):
-    try:
-        conexion = InicializarConexion()
-        herramienta = conexion.cursor()
-        comando = "SELECT * FROM historias clinicas WHERE ID paciente = {}".format(ID_paciente)
-        print("Consulta SQL:", comando)
-        herramienta.execute(comando)
-        retorno = herramienta.fetchall()
-        herramienta.close()
-        conexion.close()
-        return retorno
-    except Exception as e:
-        print("Error en la consulta SQL:", e)
-        return None  # Devolver algo significativo en caso de error
-
+def ObtenerDatosDiagnosticoPaciente(id):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    comando = "SELECT * FROM historias clinicas WHERE ID paciente = {}".format(id)
+    print("Consulta SQL:", comando)
+    herramienta.execute(comando)
+    retorno = herramienta.fetchall()
+    herramienta.close()
+    conexion.close()
+    return retorno
+  
 
