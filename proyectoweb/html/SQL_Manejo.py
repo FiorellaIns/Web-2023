@@ -138,10 +138,11 @@ def ObtenerUsuarios():
 def ObtenerDatosDiagnosticoPaciente(id):
     conexion = InicializarConexion()
     herramienta = conexion.cursor()
-    comando = "SELECT * FROM historias clinicas WHERE ID paciente = {}".format(id)
-    print("Consulta SQL:", comando)
+    comando = "SELECT * FROM `historias clinicas` WHERE `ID paciente` = {}".format(id)
     herramienta.execute(comando)
+    
     retorno = herramienta.fetchall()
+    
     herramienta.close()
     conexion.close()
     return retorno

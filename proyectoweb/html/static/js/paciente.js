@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const peticion = new XMLHttpRequest();
 
-peticion.open("GET", "/obtenerdatosdepacientes");
+peticion.open("GET", "/obtenerdatosdepacientes",true);
+
 peticion.onreadystatechange = function() {
   if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
     const respuesta = JSON.parse(peticion.responseText);
