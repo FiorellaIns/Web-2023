@@ -212,7 +212,8 @@ def Route(aplicacion=Flask):
         retorno=[]
         try:
             id = session["ID"]
-            datos_diagnostico = ObtenerDatosDiagnosticoPaciente(id)
+            ID_Paciente = session["ID_Paciente"]
+            datos_diagnostico = ObtenerDatosDiagnosticoPaciente(ID_Paciente)
             for diagnostico in datos_diagnostico:
                 retorno.append(ConvertirADiccionarioPacientes(diagnostico))
             return jsonify(retorno)           
