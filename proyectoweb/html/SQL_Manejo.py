@@ -141,7 +141,6 @@ def ObtenerDatosDiagnosticoPaciente(id):
     comando = "SELECT * FROM `historias clinicas` WHERE `ID paciente` = {}".format(id)
     herramienta.execute(comando)    
     retorno = herramienta.fetchall()
-    print(retorno)
     herramienta.close()
     conexion.close()
     return retorno
