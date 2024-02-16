@@ -18,3 +18,9 @@ def ConvertirADiccionarioUsuarios(lista=[]):
     if len(lista) == 9:
         retorno = {"exito":True,"ID":lista[0],"Nombre":lista[1],"Apellido":lista[2],"DNI":lista[3],"Matricula medica":lista[4],"Usuario":lista[5],"Contraseña":lista[6],"EMail":lista[7]}
     return retorno
+
+def ConvertirADiccionarioPacientes(lista=[]):
+    retorno = {"exito":False}
+    if len(lista) == 8:
+        retorno = {"exito":True,"ID":lista[0],"Diagnostico medico":lista[1],"Descripcion":lista[2],"Fecha de atencion":lista[3].strftime('%d/%m/%Y'),"Motivo de la atencion":lista[5],"ID medico":lista[6],"ID paciente":lista[7]}
+    return retorno
