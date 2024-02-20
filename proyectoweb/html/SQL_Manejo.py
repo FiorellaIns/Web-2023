@@ -144,5 +144,13 @@ def ObtenerDatosDiagnosticoPaciente(id):
     herramienta.close()
     conexion.close()
     return retorno
-  
 
+def VerificarSiEsAdministrador(ID):
+    conexion = InicializarConexion()
+    herrramienta = conexion.cursor()
+    comando = "SELECT Administrador FROM usuarios WHERE ID = {}".format(id)
+    herrramienta.execute(comando)
+    retorno = (herrramienta.fetchall())[0][0]
+    herrramienta.close()
+    conexion.close()
+    return bool(retorno)
