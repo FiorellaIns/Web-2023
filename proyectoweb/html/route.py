@@ -220,6 +220,20 @@ def Route(aplicacion=Flask):
                 
         except KeyError:
             return redirect(url_for("home"))
+        
+    @aplicacion.route("/eliminar_perfiles",methods=["GET","POST"])
+    def eliminar():
+        retorno=[]
+        try:
+            id = session["ID"]
+            ID_Paciente = session["ID_Paciente"]
+            datos_diagnostico = ObtenerDatosDiagnosticoPaciente(ID_Paciente)
+            for diagnostico in datos_diagnostico:
+                retorno.append(ConvertirADiccionarioPacientes(diagnostico))
+            return jsonify(retorno)           
+                
+        except KeyError:
+            return redirect(url_for("home"))
 
 
         

@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const boton = document.getElementById("eliminarusuario");
   boton.addEventListener("click", function() {
-    eliminar(usuariosSeleccionados);
+    eliminarUsuarios(usuariosSeleccionados);
   });
 
   const peticion = new XMLHttpRequest();
@@ -120,9 +120,11 @@ function VerificarIgualdad(palabra = "", rec) {
   return sAux.includes(palabra);
 }
 
-function eliminar(usuariosSeleccionados) {
-  // Aquí deberías enviar una solicitud al servidor para eliminar los usuarios seleccionados
-  // Por ejemplo, podrías usar una solicitud XMLHttpRequest o fetch para enviar una solicitud DELETE al servidor
+function eliminarUsuarios(usuariosSeleccionados) {
+  const ids = usuariosSeleccionados.map(usuario => usuario.ID);
+  console.log("Eliminar usuarios con IDs:", ids);
+  // Aquí deberías enviar una solicitud al servidor para eliminar los usuarios con los IDs obtenidos
+  // Por ejemplo, puedes usar una solicitud XMLHttpRequest o fetch para enviar una solicitud DELETE al servidor
   // y pasar los IDs de los usuarios como parámetros en la URL o en el cuerpo de la solicitud
   // Una vez que se eliminen los usuarios, puedes recargar la página o actualizar la tabla de usuarios
 }
