@@ -30,7 +30,6 @@ formulario.addEventListener('submit', (e) =>
           let respuesta = JSON.parse(peticion.responseText);
           if(respuesta.mensaje === "Hecho")
           {
-            alert("Bienvenido " + respuesta.usuario);
             window.location.href = respuesta.url;
           }
         else

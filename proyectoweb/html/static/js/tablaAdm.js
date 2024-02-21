@@ -53,6 +53,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
   peticion.send();
+
+
+  const columnas = document.querySelectorAll("#columna");
+  columnas.forEach(function(columna) {
+  columna.addEventListener("click", function(event) {
+    window.location.href = "/administrador_perfil"; // Reemplaza "/ruta_destino/" con la ruta que deseas
+  });
+
+
+});
+
 });
 
 function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) {
@@ -65,7 +76,8 @@ function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionado
   }
   cuerpoTabla.innerHTML = lectura;
 
-  const filas = document.querySelectorAll(".fila");
+  /*const columnSeleccionar = document.getElementById("seleccionar");
+  const filas = document.querySelectorAll("tr");
   filas.forEach(function(fila) {
     fila.addEventListener("click", function(event) {
       const checkbox = fila.querySelector("input[type='checkbox']");
@@ -86,7 +98,7 @@ function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionado
         console.log("Usuarios seleccionados:", usuariosSeleccionados);
       }
     });
-  });
+  });*/
 }
 
 function ConstruirStringTabla(diccionario = {}) {

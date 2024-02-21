@@ -125,15 +125,7 @@ def ObtenerPacientes():
 def  InicializarConexion():
     return mysql.connector.connect(host = "localhost",user = "root",password = "",database = "basedecoso")
 
-def ObtenerUsuarios():
-    retorno = []
-    conexion = InicializarConexion()
-    herramienta = conexion.cursor()
-    herramienta.execute("SELECT * FROM usuarios WHERE administrador = 0")
-    retorno = herramienta.fetchall()
-    herramienta.close()
-    conexion.close()
-    return retorno
+
 
 def ObtenerDatosDiagnosticoPaciente(id):
     conexion = InicializarConexion()
@@ -148,9 +140,30 @@ def ObtenerDatosDiagnosticoPaciente(id):
 def VerificarSiEsAdministrador(ID):
     conexion = InicializarConexion()
     herrramienta = conexion.cursor()
-    comando = "SELECT Administrador FROM usuarios WHERE ID = {}".format(id)
+    comando = "SELECT Administrador FROM usuarios WHERE ID = {}".format(ID)
     herrramienta.execute(comando)
     retorno = (herrramienta.fetchall())[0][0]
     herrramienta.close()
     conexion.close()
     return bool(retorno)
+
+
+def ObtenerUsuarios():
+    retorno = []
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM usuarios WHERE administrador = 0")
+    retorno = herramienta.fetchall()
+    herramienta.close()
+    conexion.close()
+    return retorno
+
+def eliminar(ID):
+    retorno=[]
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("DELETE FROM usuarios WHERE ID = %s", (ID,))
+    conexion.commit()
+    herramienta.close()
+    conexion.close()
+    return retorno

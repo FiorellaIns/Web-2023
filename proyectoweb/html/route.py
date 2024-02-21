@@ -112,9 +112,12 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/administrador_perfil")
     def administradorPerfil():
         try:
-            id = session["ID"]
-            usuario = ObtenerUsuario(id)
-            return render_template("administradorPerfil.html",usuario = usuario)
+            id_usuario = session["ID"]
+            usuario = ObtenerUsuario(id_usuario)
+            if VerificarSiEsAdministrador(id_usuario):
+                return render_template("administradorPerfil.html", usuario=usuario)
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -189,11 +192,15 @@ def Route(aplicacion=Flask):
     @aplicacion.route("/tabla_administrador", methods=['POST','GET'])
     def tabla_administrador():
         try:
-            id = session["ID"]
-            usuario = ObtenerUsuario(id)
-            return render_template("tablaAdm.html",usuario = usuario)
+            id_usuario = session["ID"]
+            usuario = ObtenerUsuario(id_usuario)
+            if VerificarSiEsAdministrador(id_usuario):
+                return render_template("tablaAdm.html", usuario=usuario)
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
+
         
     @aplicacion.route("/Datos_usuarios",methods=["GET"])
     def datos_usuarios():
@@ -221,19 +228,23 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
         
-    @aplicacion.route("/eliminar_perfiles",methods=["GET","POST"])
-    def eliminar():
-        retorno=[]
+    @aplicacion.route("/eliminar_perfiles", methods=["POST"])
+    def eliminar_perfiles():
+        exito = False
+        mnj = ""
         try:
             id = session["ID"]
-            ID_Paciente = session["ID_Paciente"]
-            datos_diagnostico = ObtenerDatosDiagnosticoPaciente(ID_Paciente)
-            for diagnostico in datos_diagnostico:
-                retorno.append(ConvertirADiccionarioPacientes(diagnostico))
-            return jsonify(retorno)           
-                
+            if VerificarSiEsAdministrador(id):
+                perfiles_a_eliminar = request.json.get("perfiles_a_eliminar", [])
+                for ID in perfiles_a_eliminar:
+                    eliminar(ID)
+                exito = True
+                mnj = "PERFIL ELIMINADO EXITOSAMENTE."
+            else:
+                mnj = "Acceso no autorizado. No eres administrador."
         except KeyError:
-            return redirect(url_for("home"))
+            mnj = "Acceso no autorizado. No has iniciado sesión."
+        return jsonify({"success": exito, "message": mnj})
 
 
         

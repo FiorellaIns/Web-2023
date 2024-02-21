@@ -50,7 +50,7 @@ formulario.addEventListener('submit', (e) => {
     document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
     setTimeout(() => {
       document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
-    }, 6000);
+    }, 3500);
   }
 });
 

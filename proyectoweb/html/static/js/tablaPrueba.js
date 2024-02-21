@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function()
       peticion.send(JSON.stringify({"ID_Paciente":objetivo.id}));
     }
   });
-
+  
 });
 
 function ActualizarTabla(diccionarios = [])
