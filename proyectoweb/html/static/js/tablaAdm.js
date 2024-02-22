@@ -1,7 +1,8 @@
 const SOLICITUDHECHA = 4;
 const RESPUESTAEXITOSA = 200;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() 
+{
   const input = document.getElementById("buscador");
   const criterio = document.getElementById("criterio");
   const table = document.getElementById("miTabla");
@@ -18,25 +19,14 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   const usuariosSeleccionados = [];
-  table.addEventListener("change", function(event) {
-    if (event.target.type === "checkbox") {
-      const checkboxId = event.target.id;
-      const userId = checkboxId.split("_")[1];
-      const usuarioSeleccionado = datosRecibidos.find(usuario => usuario.ID === parseInt(userId));
-
-      if (event.target.checked) {
-        usuariosSeleccionados.push(usuarioSeleccionado);
-      } else {
-        const index = usuariosSeleccionados.findIndex(u => u.ID === usuarioSeleccionado.ID);
-        if (index !== -1) {
-          usuariosSeleccionados.splice(index, 1);
-        }
-      }
-
-      if (usuariosSeleccionados.length > 0) {
-        console.log("Usuarios seleccionados:", usuariosSeleccionados);
-      }
-    }
+  table.addEventListener("change", function(event) 
+  {
+    if(event.target.type === "checkbox")
+      if(event.target.checked)
+        usuariosSeleccionados.push(event.target.id);
+      else
+        usuariosSeleccionados.pop(event.target.id);
+      console.log(usuariosSeleccionados);
   });
 
   const boton = document.getElementById("eliminarusuario");
@@ -50,70 +40,47 @@ document.addEventListener("DOMContentLoaded", function() {
     if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
       const respuesta = JSON.parse(peticion.responseText);
       ActualizarTabla(respuesta, respuesta, usuariosSeleccionados);
+      elementos = table.getElementsByTagName("td");
+      for(let i = 0,c = elementos.length;i<c;i++)
+      {
+        clases = elementos[i].classList
+        arrClases = Array.from(clases);
+        if(arrClases[0] !== "checkFila")
+          elementos[i].addEventListener("click",function(evento)
+        {
+          console.log("fun");
+        })
+      }
     }
   };
   peticion.send();
 
-
-  const columnas = document.querySelectorAll("#columna");
-  columnas.forEach(function(columna) {
-  columna.addEventListener("click", function(event) {
-    window.location.href = "/administrador_perfil"; // Reemplaza "/ruta_destino/" con la ruta que deseas
-  });
-
-
 });
 
-});
-
-function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) {
+function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) 
+{
   let lectura = "";
   const cuerpoTabla = document.getElementById("cuerpo");
   cuerpoTabla.innerHTML = "";
 
-  for (let i = 0; i < diccionarios.length; i++) {
+  for (let i = 0; i < diccionarios.length; i++) 
     lectura += ConstruirStringTabla(diccionarios[i]);
-  }
   cuerpoTabla.innerHTML = lectura;
-
-  /*const columnSeleccionar = document.getElementById("seleccionar");
-  const filas = document.querySelectorAll("tr");
-  filas.forEach(function(fila) {
-    fila.addEventListener("click", function(event) {
-      const checkbox = fila.querySelector("input[type='checkbox']");
-      checkbox.checked = !checkbox.checked;
-      const userId = checkbox.id.split("_")[1];
-      const usuarioSeleccionado = datosRecibidos.find(usuario => usuario.ID === parseInt(userId));
-
-      if (checkbox.checked) {
-        usuariosSeleccionados.push(usuarioSeleccionado);
-      } else {
-        const index = usuariosSeleccionados.findIndex(u => u.ID === usuarioSeleccionado.ID);
-        if (index !== -1) {
-          usuariosSeleccionados.splice(index, 1);
-        }
-      }
-
-      if (usuariosSeleccionados.length > 0) {
-        console.log("Usuarios seleccionados:", usuariosSeleccionados);
-      }
-    });
-  });*/
 }
 
 function ConstruirStringTabla(diccionario = {}) {
   const datos = ["Nombre", "Apellido", "DNI", "Matricula medica", "Usuario", "Contraseña", "EMail"];
   let retorno = "<tr class=\"fila\">";
   const id = diccionario["ID"];
-  retorno += "<td><input type=\"checkbox\" class=\"checkFila\" id=\"checkbox_" + id + "\"></td>";
-  for (let i = 0; i < datos.length; i++) {
+  retorno += "<td class=\"checkFila\"><input type=\"checkbox\" id=\"" + id + "\"></td>";
+  for (let i = 0; i < datos.length; i++) 
     retorno += ConstruirStringColumna(id, diccionario[datos[i]]);
-  }
   retorno += "</tr>";
   return retorno;
 }
 
-function ConstruirStringColumna(id, dato) {
+function ConstruirStringColumna(id, dato) 
+{
   return "<td id=\"" + id + "\">" + dato + "</td>";
 }
 
