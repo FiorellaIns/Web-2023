@@ -10,58 +10,110 @@ function validarEmail() {
   }
 }
 
-formulario.addEventListener('submit', (e) => 
-{
-  e.preventDefault();
-  if (expresionEmail.test(emailinput.value)) 
-  {
-    if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0)
-    {
-      const SOLICITUDHECHA = 4;
-      const RESPUESTAEXITOSA = 200;
-      peticion = new XMLHttpRequest();
-      datos = new FormData(document.getElementById("login-form"));
+function mostrarError() {
+  const mensajeError = document.getElementById('mensaje-error');
+  const caja = document.getElementById('caja');
+  caja.style.display = "block";
+  mensajeError.style.display = "block"; 
+  
+  setTimeout(function () {
+    ocultarError();
+}, 3000);
+}
 
-      peticion.open("POST","/Acceder",true);
-      peticion.onreadystatechange = function()
-      {
-        if(peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA)
-        {
-          let respuesta = JSON.parse(peticion.responseText);
-          if(respuesta.mensaje === "Hecho")
-          {
-            window.location.href = respuesta.url;
-          }
-        else
-          alert(respuesta.mensaje);
+function ocultarError() {
+  const mensajeError = document.getElementById('mensaje-error');
+  const caja = document.getElementById('caja');
+  caja.style.display = "none";
+  mensajeError.style.display = "none";
+}
+
+function mostrarError2(mensaje) {
+  const mensajeError = document.getElementById('mensaje-error');
+  const caja = document.getElementById('caja');
+  caja.style.display = "block";
+  mensajeError.textContent=mensaje
+  mensajeError.style.display = "block"; 
+  
+  setTimeout(function () {
+    ocultarError();
+}, 3000);
+}
+
+function ocultarError2() {
+  const mensajeError = document.getElementById('mensaje-error');
+  caja.style.display = "none";
+  mensajeError.style.display = "none";
+}
+
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (expresionEmail.test(emailinput.value)) {
+    enviarFormulario();
+  } else {
+    mostrarError();
+  }
+});
+
+function enviarFormulario() {
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
+  const peticion = new XMLHttpRequest();
+
+  const datos = new FormData(formulario);
+  peticion.open("POST", "/Acceder", true);
+  peticion.onreadystatechange = function() {
+    if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+      let respuesta = JSON.parse(peticion.responseText);
+      if (respuesta.mensaje === "Hecho") {
+        window.location.href = respuesta.url;
+      } else {
+        mostrarError2(respuesta.mensaje);
+      }
     }
   };
   peticion.send(datos);
-    }
-    else 
-      window.location.href = "index.html";
-  }
-});
+}
 
 document.addEventListener("DOMContentLoaded", function() {
   const links = document.querySelectorAll(".reg");
 
   links.forEach(function(link) {
-      link.addEventListener("click", function(event) {
-          const targetId = event.target.id;
-          let url = "";
+    link.addEventListener("click", function(event) {
+      const targetId = event.target.id;
+      if (targetId === "olvideContra") {
+        const SOLICITUDHECHA = 4;
+        const RESPUESTAEXITOSA = 200;
+        const peticion = new XMLHttpRequest();
 
-          if (targetId === "olvideContra") {
-              url = "/olvidado";
-          } else if (targetId === "registrarse") {
-              url = "/registro";
+        peticion.open("POST", "/redireccion", true);
+        peticion.setRequestHeader("Content-Type","application/json");
+        peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+            let respuesta = JSON.parse(peticion.responseText);
+            window.location.href = respuesta.url; 
           }
-          window.location.href = url;
-      });
+        };
+        peticion.send(JSON.stringify({"peticion":"olvide"}));
+      } 
+
+       if (targetId === "registrarse") {
+        const SOLICITUDHECHA = 4;
+        const RESPUESTAEXITOSA = 200;
+        const peticion = new XMLHttpRequest();
+
+        peticion.open("POST", "/redireccion", true);
+        
+        peticion.setRequestHeader("Content-Type","application/json");
+        peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+            let respuesta = JSON.parse(peticion.responseText);
+            window.location.href = respuesta.url;
+            console.log(respuesta.url) 
+          }
+        };
+        peticion.send(JSON.stringify({"peticion":"registra"}));
+      }
+    });
   });
 });
-
-function HacerPeticion(id = String,url = String)
-{
-  
-}

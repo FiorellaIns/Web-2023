@@ -9,6 +9,7 @@ def Route(aplicacion=Flask):
 
     @aplicacion.route("/")
     def home():
+        error="email o contraseña incorrectos."
         return render_template("login.html", errorVar=error)
 
     @aplicacion.route("/Acceder", methods=["POST"])
@@ -71,7 +72,7 @@ def Route(aplicacion=Flask):
           retorno = {"exito":False}
         return jsonify(retorno)
 
-    @aplicacion.route("/registro")
+    @aplicacion.route("/registro",methods=["GET"])
     def registro():
         return render_template("registrarse1.html")
     
@@ -245,6 +246,20 @@ def Route(aplicacion=Flask):
         except KeyError:
             mnj = "Acceso no autorizado. No has iniciado sesión."
         return jsonify({"success": exito, "message": mnj})
+    
+    @aplicacion.route("/redireccion",methods=["GET","POST"])
+    def redireccion():
+        retorno = {"url":"valor"}
+        #id = session["ID"]
+        json = request.get_json()
+        if request.get_json().get("peticion",None) == "olvide":
+            retorno["url"] = "/olvidado"
+        elif request.get_json().get("peticion",None) == "registra":
+            retorno["url"] = "/registro"
+        elif request.get_json().get("peticion",None) == "volverl":
+            retorno["url"] = "/login"
+        
+        return jsonify(retorno)
 
 
         

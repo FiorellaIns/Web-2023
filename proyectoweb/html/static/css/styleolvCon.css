@@ -1,8 +1,8 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #E5E5E5;
-    background-image: url("../upload/login3.jpg");
-    background-size: cover;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background: url("../upload/login3.jpg")no-repeat center center fixed;
+  background-size: cover;
   }
   
   h1 {

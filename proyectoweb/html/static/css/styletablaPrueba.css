@@ -1,8 +1,8 @@
 body {
+  min-height: 100vh;
   font-family: 'Arial', sans-serif;
-  background-image: url("../upload/imagen1.jpg");
+  background: url("../upload/imagen1.jpg") no-repeat center center fixed;
   background-size: cover;
-  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 }

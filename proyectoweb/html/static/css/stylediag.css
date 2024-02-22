@@ -1,9 +1,9 @@
 body {
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
-    background-image: url("../upload/paciente.jpg");
-    background-repeat: no-repeat;
+    background: url("../upload/paciente.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -138,8 +138,8 @@ body {
     display: block; 
     border: 1px solid black;
     background-color: white;
-    color: black; /* Puedes ajustar el color según tus preferencias */
-    font-size: 20px; /* Puedes ajustar el tamaño de fuente según tus preferencias */
+    color: black;
+    font-size: 20px; 
     padding: 13px 0;
     margin: 13px 0;
     margin-bottom: 20px;

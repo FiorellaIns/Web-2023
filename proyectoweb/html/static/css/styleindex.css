@@ -1,12 +1,11 @@
 body{  
-    margin: 0;
-    padding: 0;
-    font-family:'Times New Roman', Times, serif;
-    background-image: url("../upload/login3.jpg");
-    background-size: cover;
-  
-    
-    }
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family:'Arial', sans-serif;
+  background: url("../upload/login3.jpg") no-repeat center center fixed;
+  background-size: cover;
+  }
   .inicio{
     width: 300px;
     position: absolute;   

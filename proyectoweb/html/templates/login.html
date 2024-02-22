@@ -13,25 +13,21 @@
         <h1>Ingresar</h1>
         <form id="login-form" action="/GuardarDatosPerfil" method="post" class="login-form">
             <div id="grupo_email">
-                <label for="email">Email</label>
+                <label for="email" class="label">Email</label>
                 <input type="text" name="email" id="email" class="log__form__input" />
-                <p class="log__form__input_error">El email tiene que ser escrito correctamente</p>
             </div>
             <div  id="grupo_contrasena">
                 <p class="texto">
-                    <label for="contrasena">Contraseña</label> 
+                    <label for="contrasena" class="label">Contraseña</label> 
                     <input type="password" name="contrasena" id="contrasena" class="log__form__input"  />
                 </p>
             
             </div>
-            <div class="formulario__mensaje" id="formulario__mensaje">
-                <p> <b>Error:</b>Por favor rellene el formulario correctamente</p>
-           </div>
             <p>
                 <input type="submit" name="submit" value="Ingresar" class="boton"  />
-                <div> <p id="mensaje-error" class="error">{{errorVar}}</p> </div>
-                <h5 class="reg" id="olvideContra">Olvide la contraseña.</h5>
-                <h4 class="reg" id="registrarse">Registrarse aquí.</h4>
+                <div class="caja_error" id="caja"> <p id="mensaje-error" class="error">{{errorVar}}</p> </div>
+                <div class="reg" id="olvideContra">Olvide la contraseña.</div>
+                <div class="reg" id="registrarse">Registrarse aquí.</div>
             </p>
         </form>
     </div>

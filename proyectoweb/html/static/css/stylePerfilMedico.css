@@ -1,6 +1,7 @@
 body {
+  min-height: 100vh;
   font-family: 'Arial', sans-serif;
-  background-image: url("../upload/loginimgcopy.jpg"); 
+  background: url("../upload/loginimgcopy.jpg") no-repeat center center fixed; 
   background-size: cover;
   margin: 0;
   padding: 0;

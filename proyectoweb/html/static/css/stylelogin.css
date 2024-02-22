@@ -1,11 +1,10 @@
 body{  
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  font-family:'Times New Roman', Times, serif;
-  background-image: url("../upload/login3.jpg");
+  font-family:'Arial';
+  background: url("../upload/login3.jpg") no-repeat center center fixed;
   background-size: cover;
-
-  
   }
 
 
@@ -31,17 +30,12 @@ body{
 
 }
 .texto{
-  width: 70%;
-  overflow: absolute;
-  font-size: 20px;
-  padding: 13px 0;
-  margin: 13px 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
-.texto p{
-  width: 26px;
-  float: left;
-  text-align: center;
+
+.label{
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .log__form__input{
@@ -49,13 +43,14 @@ body{
   outline: none;
   background: none;
   color: rgb(0, 0, 0);
-  font-size: 18px;
-  width: 90%;
+  font-size: 23px;
+  width: 100%;
   float: left;
   margin: 0 10px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color:  rgb(65, 165, 226);
+  margin-bottom: 15px;
 
 }
 .boton{
@@ -67,7 +62,7 @@ body{
   font-size: 18px;
   cursor: pointer;
   margin: 2px 0;
-  
+  border-radius: 10px;
 }
 
 .log__form__input_error{
@@ -107,25 +102,39 @@ body{
 	}
 }
 
-.error {
-  color: red;
-  padding: 10px; 
+.caja_error{
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: none;
+  text-align: center;
 }
 
 
-.reg {
-  display: inline-block;
-  padding: 10px 20px; 
-  color: #0e0000; 
-  cursor: pointer; 
-  border: 2px solid rgb(65, 165, 226);
+.error {
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  display: none;
   border-radius: 5px; 
-  font-size: 16px; 
-  margin: 8px;
+}
+
+
+
+
+.reg {
+  background: none;
+  padding: 10px 20px; 
+  color: black; 
+  cursor: pointer; 
+  border: 2px solid rgb(65, 165, 226); 
+  font-size: 18px; 
+  margin: 2px 2px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 .reg:hover {
   background-color: #0056b3;
 }
+
 
 
 

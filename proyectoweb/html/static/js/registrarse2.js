@@ -1,18 +1,26 @@
 const formulario = document.getElementById('login-form');
 const inputs = document.querySelectorAll('#login-form input');
 
-const SOLICITUDHECHA = 4;
-const RESPUESTAEXITOSA = 200;
+
 
 document.addEventListener("DOMContentLoaded", function() {
-    const volver = document.getElementById("volver");
-  
-    if (volver) {
-      volver.addEventListener("click", function() {
-            window.location.href = "/";
-      });
-    }
-  });
+    const targetId = document.getElementById("volver");
+    targetId.addEventListener("click", function(event) {
+        const SOLICITUDHECHA = 4;
+        const RESPUESTAEXITOSA = 200;
+        const peticion = new XMLHttpRequest();
+
+        peticion.open("POST", "/redireccion", true);
+        peticion.setRequestHeader("Content-Type", "application/json");
+        peticion.onreadystatechange = function() {
+            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+                let respuesta = JSON.parse(peticion.responseText);
+                window.location.href = respuesta.url; 
+            }
+        };
+        peticion.send(JSON.stringify({"peticion": "volver"}));
+    });
+});
 
 
 const expresiones = {
@@ -135,7 +143,8 @@ inputs.forEach((input) => {
 
 
 formulario.addEventListener('submit', (e) => {
-
+    const SOLICITUDHECHA = 4;
+    const RESPUESTAEXITOSA = 200;
     if (!EsValido())
     {
         e.preventDefault();
