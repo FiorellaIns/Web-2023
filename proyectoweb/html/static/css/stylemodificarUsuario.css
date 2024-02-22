@@ -1,0 +1,103 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: url("../upload/imagen2.jpg") no-repeat center center fixed;
+    background-size: cover;
+    align-items: center;
+}
+
+form
+{
+    text-align: center;
+    position: relative;
+    margin-left: 17%;
+    margin-top: 5%;
+}
+
+.separacion
+{
+    margin-right: 25%;
+}
+
+.cuadro_de_texto
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color:  rgb(65, 165, 226);
+    margin-bottom: 60px;
+}
+
+.etiqueta
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.boton
+{
+    margin-top: 1%;
+    background: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 160px;
+    height: 35px;
+    cursor: pointer;
+}
+
+#enviar
+{
+    margin-left: -20%;
+}
+
+#administrador
+{
+    background: transparent;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width:700px) 
+{
+    .etiqueta
+    {
+        text-align: center;
+        margin-left: 10%;
+        margin-right: 90%;
+        width: 50%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+    }
+    .cuadro_de_texto
+    {
+        margin-left: 10%;
+        margin-right: 90%;
+    }
+    .boton
+    {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 25px;
+        height: 40px;
+        width: 215px;
+        margin-bottom: 2%;
+        margin-left: 50%;
+        margin-right: 50%;
+    }
+    #enviar
+    {
+        margin-left: 40%;
+    }
+    #administrador
+    {
+        margin-left: 10%;
+        margin-right: 90%;
+        height: 25px;
+        width: 25px;
+    }
+}
