@@ -249,17 +249,21 @@ def Route(aplicacion=Flask):
     
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
-        retorno = {"url":"valor"}
-        #id = session["ID"]
-        json = request.get_json()
-        if request.get_json().get("peticion",None) == "olvide":
-            retorno["url"] = "/olvidado"
-        elif request.get_json().get("peticion",None) == "registra":
-            retorno["url"] = "/registro"
-        elif request.get_json().get("peticion",None) == "volverl":
-            retorno["url"] = "/login"
-        
-        return jsonify(retorno)
+        """El session no funciona si no existe la Key ID, no existe porque no se ha iniciado seccion,
+            la verificación la debes poner en cada parte que este logueado, de lo contrario no la pongas,
+            te recomendaría que quites el route de CerrarSeccion, y lo pongas aquí como una condicional"""
+        try:
+            retorno = {"url":"valor"}
+            json = request.get_json()
+            if request.get_json().get("peticion",None) == "olvide":
+                retorno["url"] = "/olvidado"
+            elif request.get_json().get("peticion",None) == "registra":
+                retorno["url"] = "/registro"
+            elif request.get_json().get("peticion",None) == "volver":
+                retorno["url"] = "/login"
+            return jsonify(retorno)
+        except KeyError:
+            return redirect(url_for("home"))
 
 
         
