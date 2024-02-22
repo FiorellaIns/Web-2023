@@ -31,6 +31,7 @@ table {
   border-collapse: collapse;
   border: 2px solid black; /* Bordes de la tabla */
   margin-top: 20px;
+  
 }
 
 th, td {
@@ -38,6 +39,9 @@ th, td {
   padding: 8px;
   text-align: center;
   cursor: pointer;
+  white-space: nowrap; /*Evita el ajuste del texto automatico y el de abajo ajusta el ancho*/
+  width: auto;
+  
 }
 
 th {
@@ -62,17 +66,19 @@ tr:hover {
   display: none; /* Oculta los elementos con la clase oculto */
 }
 
-
-/* Media queries para ajustar los estilos en dispositivos móviles */
 @media screen and (max-width: 768px) {
   .boton, .boton1 {
-    width: 100%; 
+    width: 100%;
     margin: 6px 0; 
+    
   }
 
-  table {
+  .table,#cuerpo, .miTabla {
     font-size: 14px; 
+    overflow: auto;
+    width: auto;
   }
+   
 }
 
 @media screen and (max-width: 600px) {
@@ -81,7 +87,9 @@ tr:hover {
     display: none;
   }
 
-  table {
+  #cuerpo,.miTabla {
     font-size: 12px;
+    overflow: auto;
+    width: auto;
   }
 }
