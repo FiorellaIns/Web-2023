@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function()
         if(arrClases[0] !== "checkFila")
           elementos[i].addEventListener("click",function(evento)
         {
-          console.log("fun");
+          console.log(evento.target.id);
         })
       }
     }
