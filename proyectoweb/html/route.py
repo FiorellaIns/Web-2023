@@ -202,7 +202,7 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
 
-        
+    
     @aplicacion.route("/Datos_usuarios",methods=["GET"])
     def datos_usuarios():
         retorno = []
@@ -214,7 +214,6 @@ def Route(aplicacion=Flask):
             return jsonify(retorno)
         except KeyError:
             return redirect(url_for("home"))
-
     @aplicacion.route("/obtenerdatosdepacientes", methods=["GET"])
     def obtener_diagnostico():
         retorno=[]
@@ -228,7 +227,7 @@ def Route(aplicacion=Flask):
                 
         except KeyError:
             return redirect(url_for("home"))
-        
+    
     @aplicacion.route("/eliminar_perfiles", methods=["POST"])
     def eliminar_perfiles():
         exito = False
@@ -246,7 +245,24 @@ def Route(aplicacion=Flask):
         except KeyError:
             mnj = "Acceso no autorizado. No has iniciado sesión."
         return jsonify({"success": exito, "message": mnj})
-    
+    @aplicacion.route("/ModificarUsuario",methods = ["GET"])
+    def ObtenerInfoDeMedico():
+        try:
+            id = session["ID"]
+            medico = session["ID_Usuario_Gestion"]
+            datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
+            return render_template(
+                                    "modificarUsuario.html",
+                                    nombre = datos[1],
+                                    apellido = datos[2],
+                                    dni = datos[3],
+                                    matricula = datos[4],
+                                    usuario = datos[5],
+                                    contrasenia = datos[6],
+                                    email = datos[7],
+                                    administrador = datos[8])
+        except KeyError:
+            return redirect(url_for("home"))
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         """El session no funciona si no existe la Key ID, no existe porque no se ha iniciado seccion,
@@ -254,13 +270,15 @@ def Route(aplicacion=Flask):
             te recomendaría que quites el route de CerrarSeccion, y lo pongas aquí como una condicional"""
         try:
             retorno = {"url":"valor"}
-            json = request.get_json()
             if request.get_json().get("peticion",None) == "olvide":
                 retorno["url"] = "/olvidado"
             elif request.get_json().get("peticion",None) == "registra":
                 retorno["url"] = "/registro"
             elif request.get_json().get("peticion",None) == "volver":
                 retorno["url"] = "/login"
+            elif request.get_json().get("peticion",None) == "Gestionar_Datos_Por_Admin":
+                session["ID_Usuario_Gestion"] = request.get_json().get("ID",None)
+                retorno["url"] = "/ModificarUsuario"
             return jsonify(retorno)
         except KeyError:
             return redirect(url_for("home"))

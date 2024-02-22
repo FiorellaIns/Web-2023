@@ -48,7 +48,21 @@ document.addEventListener("DOMContentLoaded", function()
         if(arrClases[0] !== "checkFila")
           elementos[i].addEventListener("click",function(evento)
         {
-          console.log(evento.target.id);
+          var enviarData = new XMLHttpRequest();
+          enviarData.open("POST","/redireccion",true);
+          enviarData.setRequestHeader("Content-Type","application/json");
+          enviarData.onreadystatechange = function()
+          {
+            if(enviarData.readyState === SOLICITUDHECHA && enviarData.status === RESPUESTAEXITOSA)
+            {
+              var datosRecibidos = JSON.parse(enviarData.responseText);
+              if(datosRecibidos["url"] !== "valor")
+                window.location.href = datosRecibidos["url"];
+              else
+                alert("Error en el servidor...");
+            }
+          };
+          enviarData.send(JSON.stringify({"peticion":"Gestionar_Datos_Por_Admin","ID":evento.target.id}));
         })
       }
     }

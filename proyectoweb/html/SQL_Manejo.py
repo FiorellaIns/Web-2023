@@ -167,3 +167,13 @@ def eliminar(ID):
     herramienta.close()
     conexion.close()
     return retorno
+
+def ObtenerUsuarioPorID(ID):
+    retorno = ""
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM usuarios WHERE ID = {}".format(ID))
+    retorno = (herramienta.fetchall())[0]
+    herramienta.close()
+    conexion.close()
+    return retorno
