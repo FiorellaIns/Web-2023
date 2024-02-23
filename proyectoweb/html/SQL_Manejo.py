@@ -152,7 +152,7 @@ def ObtenerUsuarios():
     retorno = []
     conexion = InicializarConexion()
     herramienta = conexion.cursor()
-    herramienta.execute("SELECT * FROM usuarios WHERE administrador = 0")
+    herramienta.execute("SELECT * FROM usuarios")
     retorno = herramienta.fetchall()
     herramienta.close()
     conexion.close()
