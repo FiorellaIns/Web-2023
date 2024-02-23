@@ -1,10 +1,5 @@
-const SOLICITUDHECHA = 4;
-const RESPUESTAEXITOSA = 200;
-
-var datosRecibidos;
 document.addEventListener("DOMContentLoaded", function() {
   const links = document.querySelectorAll(".boton");
-
   links.forEach(function(link) {
       link.addEventListener("click", function(event) {
           const targetId = event.target.id;
@@ -31,6 +26,9 @@ peticion.send();
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
+  var datosRecibidos;
   const links = document.querySelectorAll(".boton1");
 
   links.forEach(function(link) {

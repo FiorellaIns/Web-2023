@@ -245,6 +245,9 @@ def Route(aplicacion=Flask):
         except KeyError:
             mnj = "Acceso no autorizado. No has iniciado sesión."
         return jsonify({"success": exito, "message": mnj})
+    
+
+
     @aplicacion.route("/ModificarUsuario",methods = ["GET"])
     def ObtenerInfoDeMedico():
         try:
@@ -263,6 +266,8 @@ def Route(aplicacion=Flask):
                                     administrador = datos[8])
         except KeyError:
             return redirect(url_for("home"))
+        
+
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         """El session no funciona si no existe la Key ID, no existe porque no se ha iniciado seccion,
@@ -270,15 +275,43 @@ def Route(aplicacion=Flask):
             te recomendaría que quites el route de CerrarSeccion, y lo pongas aquí como una condicional"""
         try:
             retorno = {"url":"valor"}
+
+
             if request.get_json().get("peticion",None) == "olvide":
                 retorno["url"] = "/olvidado"
+
             elif request.get_json().get("peticion",None) == "registra":
                 retorno["url"] = "/registro"
+
             elif request.get_json().get("peticion",None) == "volver":
                 retorno["url"] = "/login"
+
             elif request.get_json().get("peticion",None) == "Gestionar_Datos_Por_Admin":
                 session["ID_Usuario_Gestion"] = request.get_json().get("ID",None)
                 retorno["url"] = "/ModificarUsuario"
+
+            elif request.get_json().get("peticion",None) == "Tabla_Pacientes":
+                retorno["url"] = "/tabla"
+
+            elif request.get_json().get("peticion",None) == "Perfil_Del_Medico":
+                retorno["url"] = "/perfil_medico"
+
+            elif request.get_json().get("peticion",None) == "volverI":
+                retorno["url"] = "/index"
+
+            elif request.get_json().get("peticion",None) == "editar":
+                retorno["url"] = "/editar_perfil_medico"
+        
+            elif request.get_json().get("peticion",None) == "volverP":
+                retorno["url"] = "/perfil_medico"
+
+            elif request.get_json().get("peticion",None) == "añadir_paciente":
+                retorno["url"] = "/añadir_paciente"
+
+            elif request.get_json().get("peticion",None) == "volverT":
+                retorno["url"] = "/tabla"
+
+
             return jsonify(retorno)
         except KeyError:
             return redirect(url_for("home"))

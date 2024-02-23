@@ -1,6 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const form = document.querySelector("form");
+  const targetId = document.getElementById("volver");
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
+  targetId.addEventListener("click", function(event) {
+      const peticion = new XMLHttpRequest();
+      peticion.open("POST", "/redireccion", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url; 
+          }
+      };
+      peticion.send(JSON.stringify({"peticion": "volverP"}));
+  });
 
+  /*const form = document.querySelector("form");
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -38,15 +53,5 @@ document.addEventListener("DOMContentLoaded", function() {
   function validarNombreApellido(valor) {
     const regex = /^[a-zA-ZÀ-ÿ\s]+$/;
     return regex.test(valor);
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  const volver = document.getElementById("volver");
-
-  if (volver) {
-    volver.addEventListener("click", function() {
-      window.location.href = "/perfil_medico";
-    });
-  }
+  }*/ //Lo comente porque hay que hacerlo(recomendaria usar las varibles ajax globales. Mañana dia 23/2 lo empiezo)
 });

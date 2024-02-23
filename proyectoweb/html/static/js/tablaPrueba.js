@@ -1,20 +1,41 @@
-const SOLICITUDHECHA = 4;
-const RESPUESTAEXITOSA = 200;
-
-var datosRecibidos;
-
 document.addEventListener("DOMContentLoaded", function() 
 {
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
+  var datosRecibidos;
+  
+  const volver = document.getElementById("volver");
+  volver.addEventListener("click", function(event) {
+      const peticion = new XMLHttpRequest();
+      peticion.open("POST", "/redireccion", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url;}};
+        peticion.send(JSON.stringify({"peticion": "volverI"}));
+  });
+  
+  const añadir = document.getElementById("añadirpaciente");
+  añadir.addEventListener("click", function(event) {
+      const peticion = new XMLHttpRequest();
+      peticion.open("POST", "/redireccion", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url;}};
+      peticion.send(JSON.stringify({"peticion": "añadir_paciente"}));
+  });
+
   const input = document.getElementById("buscador");
   const criterio = document.getElementById("criterio");
   const table = document.getElementById("miTabla");
-
   input.addEventListener("input", function() 
   {
     nuevo = BuscarEnLista(input.value,datosRecibidos,criterio.value);
     ActualizarTabla(nuevo);
   });
-
   const peticion = new XMLHttpRequest();
   peticion.open("GET", "/ObtenerPacientes");
   peticion.onreadystatechange = function() 
@@ -27,38 +48,6 @@ document.addEventListener("DOMContentLoaded", function()
     }
   };
   peticion.send();
-
-  const links = document.querySelectorAll(".fila");
-  links.forEach(function(link) 
-  {
-    link.addEventListener("click", function(event) 
-    {
-      const targetId = event.target.id;
-      let url = "/paciente";
-      window.location.href = url;
-    });
-  });
-
-
-  const volver = document.querySelectorAll("#volver");
-  volver.forEach(function(button) 
-  {
-    button.addEventListener("click", function(event) 
-    {
-      let url = "/index";
-      window.location.href = url;
-    });
-  });
-
-  const añadir = document.querySelectorAll("#añadirpaciente");
-  añadir.forEach(function(button) 
-  {
-    button.addEventListener("click", function(event) 
-    {
-      let url = "/añadir_paciente";
-      window.location.href = url;
-    });
-  });
 
   table.addEventListener("click",function(evento)
   {
