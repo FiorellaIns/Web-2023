@@ -1,8 +1,7 @@
-const SOLICITUDHECHA = 4;
-const RESPUESTAEXITOSA = 200;
-
 document.addEventListener("DOMContentLoaded", function() 
 {
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
   const input = document.getElementById("buscador");
   const criterio = document.getElementById("criterio");
   const table = document.getElementById("miTabla");
@@ -14,9 +13,16 @@ document.addEventListener("DOMContentLoaded", function()
 
   const volver = document.getElementById("volver");
   volver.addEventListener("click", function(event) {
-    let url = "/administrador_perfil";
-    window.location.href = url;
+    const peticion = new XMLHttpRequest();
+      peticion.open("POST", "/redireccion", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url;}};
+        peticion.send(JSON.stringify({"peticion": "perfil_admin"}));
   });
+
 
   const usuariosSeleccionados = [];
   table.addEventListener("change", function(event) 

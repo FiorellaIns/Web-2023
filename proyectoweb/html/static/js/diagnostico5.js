@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mensajeError.classList.add("oculto");
     }
     
-
+    
     
 });
 

@@ -62,10 +62,18 @@ document.addEventListener("DOMContentLoaded", function()
         if(peticion.readyState == SOLICITUDHECHA && peticion.status == RESPUESTAEXITOSA)
         {
           conversion = JSON.parse(peticion.responseText);
-          if(conversion.exito)
-            window.location.href = "/paciente";
-          else
-            alert("Ha ocurrido un error en el servidor");
+          if(conversion.exito){
+            const peticion = new XMLHttpRequest();
+            peticion.open("POST", "/redireccion", true);
+            peticion.setRequestHeader("Content-Type", "application/json");
+            peticion.onreadystatechange = function() {
+            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+                let respuesta = JSON.parse(peticion.responseText);
+                window.location.href = respuesta.url;}};
+            peticion.send(JSON.stringify({"peticion": "todos_los_pacientes"}));
+          }
+          else{
+            alert("Ha ocurrido un error en el servidor");}
         }
       };
       peticion.send(JSON.stringify({"ID_Paciente":objetivo.id}));
