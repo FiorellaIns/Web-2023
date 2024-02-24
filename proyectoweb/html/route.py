@@ -311,6 +311,9 @@ def Route(aplicacion=Flask):
             elif request.get_json().get("peticion",None) == "volverT":
                 retorno["url"] = "/tabla"
 
+            elif request.get_json().get("peticion",None) == "obtener_diagnostico":
+                retorno["url"] = "/diagnostico"
+
 
             return jsonify(retorno)
         except KeyError:
