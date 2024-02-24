@@ -8,7 +8,6 @@ body {
 }
 
 .login-caja {
-  /* position: absolute; */
   color: rgb(25, 13, 13);
 }
 
@@ -49,22 +48,27 @@ th {
 }
 
 #anotar {
-  background-color: #ddd;
   color: rgb(19, 19, 19);
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   margin-top: 10px; /* Añadir margen superior */
 }
 
 .boton1 {
-  width: auto; /* Ancho automático */
+  float: right; /* Alinea el botón a la derecha */
+  width: auto;
+  background: none;
   color: black;
-  padding: 8px 16px; /* Aumentar el espacio interior */
+  padding: 8px 16px;
   font-size: 20px;
-  margin: 10px; /* Aumentar el margen */
-  float: right;
+  margin: 10px;
   cursor: pointer;
 }
+
+.boton1:hover {
+  background-color: #007bff;
+}
+
 
 .boton {
   width: auto; /* Ancho automático */
@@ -74,6 +78,10 @@ th {
   font-size: 20px;
   margin: 10px; /* Aumentar el margen */
   cursor: pointer;
+}
+
+.boton:hover {
+  background-color: #007bff;
 }
 
 /* Estoy configurando el responsive */

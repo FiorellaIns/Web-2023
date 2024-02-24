@@ -1,14 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const SOLICITUDHECHA = 4;
+    const RESPUESTAEXITOSA = 200;
     const fechaInput = document.getElementById('Fecha');
-    const fechaHoy = new Date().toISOString().split('T')[0]; // Obtiene la fecha actual en formato ISO
-    fechaInput.setAttribute('value', fechaHoy); // Establece el valor del campo de fecha
+    const fechaHoy = new Date().toISOString().split('T')[0];
+    fechaInput.setAttribute('value', fechaHoy);
 
     const volver = document.getElementById("volver");
-    if (volver) {
-        volver.addEventListener("click", function () {
-            window.location.href = "/paciente";
-        });
-    }
+    volver.addEventListener("click", function(event) {
+        const SOLICITUDHECHA = 4;
+        const RESPUESTAEXITOSA = 200;
+        const peticion = new XMLHttpRequest();
+
+        peticion.open("POST", "/redireccion", true);
+        peticion.setRequestHeader("Content-Type", "application/json");
+        peticion.onreadystatechange = function() {
+            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+                let respuesta = JSON.parse(peticion.responseText);
+                window.location.href = respuesta.url; 
+            }
+        };
+        peticion.send(JSON.stringify({"peticion": "todos_los_pacientes"}));
+    });
 
     
     const formulario = document.getElementById('formulario');
@@ -50,18 +62,28 @@ document.addEventListener("DOMContentLoaded", function () {
         mensajeError.classList.remove("visible");
         mensajeError.classList.add("oculto");
     }
-
-    const SOLICITUDHECHA = 4;
-    const RESPUESTAEXITOSA = 200;
     
-    volver.addEventListener("click", function(event) {
-      const peticion = new XMLHttpRequest();
-      peticion.open("POST", "/enviarDiagnostico", true);
-      peticion.setRequestHeader("Content-Type", "application/json");
-      peticion.onreadystatechange = function() {
-          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
-              let respuesta = JSON.parse(peticion.responseText);
-              window.location.href = respuesta.url;}};
-        peticion.send(JSON.stringify({"peticion": "volverT"}));
-  });
+    
 });
+
+/*
+document.addEventListener("DOMContentLoaded", function() {
+    const targetId = document.getElementById("volver");
+    targetId.addEventListener("click", function(event) {
+        const SOLICITUDHECHA = 4;
+        const RESPUESTAEXITOSA = 200;
+        const peticion = new XMLHttpRequest();
+
+        peticion.open("POST", "/redireccion", true);
+        peticion.setRequestHeader("Content-Type", "application/json");
+        peticion.onreadystatechange = function() {
+            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+                let respuesta = JSON.parse(peticion.responseText);
+                window.location.href = respuesta.url; 
+            }
+        };
+        peticion.send(JSON.stringify({"peticion": "volver"}));
+    });
+});
+
+*/
