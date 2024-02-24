@@ -17,30 +17,20 @@
     
     <h2>Bienvenido, Administrador: "{{ usuario }}"</h2>
     <p>En esta página, puedes realizar las acciones de administración.</p>
+
+    <p><button id="boton_generador">GENERADOR DE CLAVES AUTOMATICAS</button>  
+    </p>
+    <div>
+        ¿Es administrador?
+        <input type="checkbox" id="es_administrador" name="es_administrador">
+    </div>
+    
+    <div> <p id="clave_generada">Clave Generada:</p>
+    <div id="resultado_generacion"></div>
+    </div>
+    
+    
         
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>DNI</th>
-            <th>Matrícula</th>
-            <th>Usuario (Email)</th>
-            <th>Motivo</th>
-            <th>Acciones</th> 
-            </tr>
-        <tr>
-            <td>Nombre1</td>
-            <td>Apellido1</td>
-            <td>DNI1</td>
-            <td>Matrícula1</td>
-            <td>usuario1@email.com</td>
-            <td>Olvide la contraseña</td>
-            <td>
-                <a href="administradorPerfil.html">Aceptar</a> |
-                <a href="administradorPerfil.html">Rechazar</a>
-            </td>
-        </tr>
-        </table>
-        <script src="../static/js/administradorPerfil.js"></script>
+    <script src="../static/js/administradorPerfil.js"></script>
 </body>
 </html>

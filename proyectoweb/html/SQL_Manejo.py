@@ -190,3 +190,14 @@ def Datosdediagnostico(lista=[]):
         conexion.commit()
         herramienta.close()
         conexion.close()
+
+def InsertarClave(clave,admin):
+    conexion = InicializarConexion()
+    herrramienta = conexion.cursor()
+    comando = "INSERT INTO claves (ID,Clave,Administrador) VALUES(%s,%s,%s)"
+    argumentos = (None,clave,admin)
+    herrramienta.execute(comando,argumentos)
+    conexion.commit()
+    herrramienta.close()
+    conexion.close()
+    return "exito"

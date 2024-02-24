@@ -344,3 +344,11 @@ def Route(aplicacion=Flask):
             else:
                 respuesta = "No se recibieron todos los datos."
             return jsonify({"respuesta": respuesta})
+    
+    @aplicacion.route("/Generador",methods=["POST"])
+    def generar():
+        retorno = GeneradorDeClaves()
+        admin = request.get_json().get("administrador",None)
+        InsertarClave(retorno,admin)
+
+        return retorno

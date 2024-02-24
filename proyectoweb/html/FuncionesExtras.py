@@ -1,3 +1,4 @@
+import random
 def EstaCompleto(lista = []):
     retorno = True
     for s in lista:
@@ -38,3 +39,9 @@ def ConfigurarParaJinja(tupla=()):
         else:
             retorno.append("")
     return retorno
+
+def GeneradorDeClaves():
+    retoro=""
+    for i in range (10):
+        retoro += chr(random.randint(33,127))
+    return retoro

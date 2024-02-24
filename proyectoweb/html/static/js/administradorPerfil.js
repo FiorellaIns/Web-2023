@@ -40,4 +40,26 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
+
+    const generar_clave = document.getElementById("boton_generador");
+    const clave_generada = document.getElementById("clave_generada");
+    const es_administrador = document.getElementById("es_administrador");
+    
+    generar_clave.addEventListener("click", function(event) {
+        const admin = es_administrador.checked ? 1 : 0;
+        const peticion = new XMLHttpRequest();
+        peticion.open("POST", "/Generador", true);
+        peticion.setRequestHeader("Content-Type", "application/json");
+        peticion.onreadystatechange = function() {
+            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+                const respuesta = peticion.responseText;
+                document.getElementById("resultado_generacion").textContent = respuesta;
+                clave_generada.style.display = "block";
+            }
+        };
+        peticion.send(JSON.stringify({administrador:admin}));
+    });
+    
+    
 });

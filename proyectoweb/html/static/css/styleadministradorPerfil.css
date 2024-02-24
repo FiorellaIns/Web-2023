@@ -81,6 +81,9 @@ table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
+#clave_generada{
+    display: none;
+}
 @media screen and (max-width: 768px) {
     body {
         font-size: 14px; 
