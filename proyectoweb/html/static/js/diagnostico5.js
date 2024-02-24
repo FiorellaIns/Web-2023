@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const SOLICITUDHECHA = 4;
     const RESPUESTAEXITOSA = 200;
+    
     const fechaInput = document.getElementById('Fecha');
     const fechaHoy = new Date().toISOString().split('T')[0];
     fechaInput.setAttribute('value', fechaHoy);
@@ -22,6 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
         peticion.send(JSON.stringify({"peticion": "todos_los_pacientes"}));
     });
 
+    boton.addEventListener("click", function(event) {
+        const peticion = new XMLHttpRequest();
+        const formData = new FormData(document.getElementById("formulario"));
+        
+        peticion.open("POST", "/enviarDiagnostico", true);
+        
+        peticion.onreadystatechange = function() {
+            if (peticion.readyState === XMLHttpRequest.DONE && peticion.status === 200) {
+                let respuesta = JSON.parse(peticion.responseText);
+                if (respuesta && respuesta.url) {
+                    window.location.href = respuesta.url;
+                } else {
+                    console.error("El servidor no devolvió una URL válida.");
+                }
+            }
+        };
+        
+        peticion.send(JSON.stringify(formData));
+    });
+    
     
     const formulario = document.getElementById('formulario');
     const inputs = document.querySelectorAll('#formulario input, #formulario textarea');
@@ -43,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (formularioCompleto) {
             formulario.reset();
-            window.location.href = "/paciente";
+            //window.location.href = "/paciente";
         }
     });
 

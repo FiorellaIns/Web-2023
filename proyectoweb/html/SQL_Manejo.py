@@ -184,8 +184,8 @@ def Datosdediagnostico(lista=[]):
     herramienta = conexion.cursor()
     longitud = len(lista)
     if longitud == 5:  
-        comando = "INSERT INTO `historias clinicas` (ID, `Diagnostico medico`, Descripcion, `Fecha de atencion`, `Motivo de atencion`) VALUES (%s,%s,%s,%s,%s)"
-        argumentos = (None, lista[0], lista[1], lista[2], lista[3], lista[4])  # Ajuste de argumentos
+        comando = "INSERT INTO `historias clinicas` (ID,`Diagnostico medico`, Descripcion, `Fecha de atencion`, `Motivo de atencion`) VALUES (%s,%s,%s,%s,%s)"
+        argumentos = (None, lista[0], lista[1], lista[2], lista[3])  # Ajuste de argumentos
         herramienta.execute(comando, argumentos)
         conexion.commit()
         herramienta.close()
