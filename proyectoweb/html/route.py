@@ -252,27 +252,27 @@ def Route(aplicacion=Flask):
     def ObtenerInfoDeMedico():
         try:
             id = session["ID"]
-            medico = session["ID_Usuario_Gestion"]
-            datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
-            return render_template(
-                                    "modificarUsuario.html",
-                                    nombre = datos[1],
-                                    apellido = datos[2],
-                                    dni = datos[3],
-                                    matricula = datos[4],
-                                    usuario = datos[5],
-                                    contrasenia = datos[6],
-                                    email = datos[7],
-                                    administrador = datos[8])
+            if VerificarSiEsAdministrador(id):
+                medico = session["ID_Usuario_Gestion"]
+                datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
+                return render_template(
+                                        "modificarUsuario.html",
+                                        nombre = datos[1],
+                                        apellido = datos[2],
+                                        dni = datos[3],
+                                        matricula = datos[4],
+                                        usuario = datos[5],
+                                        contrasenia = datos[6],
+                                        email = datos[7],
+                                        administrador = datos[8])
+            else:
+                 return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
         
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
-        """El session no funciona si no existe la Key ID, no existe porque no se ha iniciado seccion,
-            la verificación la debes poner en cada parte que este logueado, de lo contrario no la pongas,
-            te recomendaría que quites el route de CerrarSeccion, y lo pongas aquí como una condicional"""
         try:
             retorno = {"url":"valor"}
 

@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         respuesta = JSON.parse(peticion.responseText);
                         if(respuesta.exito)
                         {
-                            alert("Se ha cerrado la sección");
                             window.location.href = url;
                         }
                         else
