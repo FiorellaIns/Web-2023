@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    
     const formulario = document.getElementById('formulario');
     const inputs = document.querySelectorAll('#formulario input, #formulario textarea');
     const mensajeError = document.getElementById('formulario__mensaje');
@@ -49,4 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
         mensajeError.classList.remove("visible");
         mensajeError.classList.add("oculto");
     }
+
+    const SOLICITUDHECHA = 4;
+    const RESPUESTAEXITOSA = 200;
+    
+    volver.addEventListener("click", function(event) {
+      const peticion = new XMLHttpRequest();
+      peticion.open("POST", "/enviarDiagnostico", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url;}};
+        peticion.send(JSON.stringify({"peticion": "volverT"}));
+  });
 });
