@@ -320,4 +320,18 @@ def Route(aplicacion=Flask):
             return redirect(url_for("home"))
 
 
-        
+    @aplicacion.route("/enviarDiagnostico", methods=["POST"])
+    def Enviardatosdiagnostico():
+            respuesta = ""
+            listaDeDatos = [request.form.get("Fecha"),
+                            request.form.get("motivo"),
+                            request.form.get("nombreM"),
+                            request.form.get("DiagnosticoMedico"),
+                            request.form.get("Descripcion")]
+
+            if EstaCompleto(listaDeDatos):
+                Datosdediagnostico(listaDeDatos)
+                respuesta = "Hecho"
+            else:
+                respuesta = "No se recibieron todos los datos."
+            return jsonify({"respuesta": respuesta})
