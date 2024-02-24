@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const SOLICITUDHECHA = 4;
     const RESPUESTAEXITOSA = 200;
     
-    volver.addEventListener("click", function(event) {
+    boton.addEventListener("click", function(event) {
       const peticion = new XMLHttpRequest();
       peticion.open("POST", "/enviarDiagnostico", true);
       peticion.setRequestHeader("Content-Type", "application/json");
