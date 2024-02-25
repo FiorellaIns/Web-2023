@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
@@ -21,7 +22,16 @@ header a.reg {
 header a.reg:hover {
     color: #ffcc00;
 }
+h2{
+    margin-left: 10px; 
+}
+p{
+    margin-left: 10px; 
+}
 
+.admin{
+    margin-left: 75px; 
+}
 
 nav ul {
     list-style: none;
@@ -50,7 +60,6 @@ footer {
     padding: 10px;
 }
 
-
 h1 {
     margin: 0;
 }
@@ -58,7 +67,6 @@ h1 {
 h2 {
     font-size: 24px;
 }
-
 
 table {
     width: 100%;
@@ -81,9 +89,33 @@ table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#clave_generada{
+#clave_generada {
     display: none;
 }
+
+#boton_generador {
+    background-color: #72a7e3;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; 
+}
+
+#boton_generador:hover {
+    background-color: #0058b3;
+}
+
+
+#es_administrador {
+    margin-left: 10px; 
+    vertical-align: middle;
+
+}
+/* Estilos para dispositivos móviles */
 @media screen and (max-width: 768px) {
     body {
         font-size: 14px; 
@@ -101,3 +133,5 @@ table tr:nth-child(even) {
         margin-top: 5px;
     }
 }
+
+
