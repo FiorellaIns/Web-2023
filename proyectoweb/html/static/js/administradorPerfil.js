@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const generar_clave = document.getElementById("boton_generador");
     const clave_generada = document.getElementById("clave_generada");
     const es_administrador = document.getElementById("es_administrador");
+    const resultado_generacion=document.getElementById("resultado_generacion")
     
     generar_clave.addEventListener("click", function(event) {
         const admin = es_administrador.checked ? 1 : 0;
@@ -56,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const respuesta = peticion.responseText;
                 document.getElementById("resultado_generacion").textContent = respuesta;
                 clave_generada.style.display = "block";
+                resultado_generacion.style.display="inline-block";
+
             }
         };
         peticion.send(JSON.stringify({administrador:admin}));

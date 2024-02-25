@@ -108,7 +108,16 @@ table tr:nth-child(even) {
 #boton_generador:hover {
     background-color: #0058b3;
 }
-
+#clave_generada, #resultado_generacion{
+    margin-left: 90px;
+}
+#resultado_generacion{
+    font-family: arial black;
+    margin-left: 100px;
+    border: 2px solid black;
+    display: none;
+    
+}
 
 #es_administrador {
     margin-left: 10px; 
