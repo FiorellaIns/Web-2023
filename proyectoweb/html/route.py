@@ -331,7 +331,7 @@ def Route(aplicacion=Flask):
 
     @aplicacion.route("/enviarDiagnostico", methods=["POST"])
     def Enviardatosdiagnostico():
-            respuesta = ""
+            respuesta = {"respuesta":"Mal"}
             listaDeDatos = [request.form.get("Fecha"),
                             request.form.get("motivo"),
                             request.form.get("nombreM"),
@@ -339,11 +339,13 @@ def Route(aplicacion=Flask):
                             request.form.get("Descripcion")]
 
             if EstaCompleto(listaDeDatos):
-                Datosdediagnostico(listaDeDatos)
-                respuesta = "Hecho"
+                Datosdediagnostico(listaDeDatos,session["ID"],session["ID_Paciente"])
+                respuesta["respuesta"] = "Hecho"
+                respuesta["url"] = "/paciente"
+
             else:
                 respuesta = "No se recibieron todos los datos."
-            return jsonify({"respuesta": respuesta})
+            return jsonify(respuesta)
     
     @aplicacion.route("/Generador",methods=["POST"])
     def generar():

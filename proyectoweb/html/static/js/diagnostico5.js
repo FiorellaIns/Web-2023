@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () 
+{
+    formulario = document.getElementById("formulario");
+    formulario
+    boton = document.getElementById("boton");
     const SOLICITUDHECHA = 4;
     const RESPUESTAEXITOSA = 200;
     
@@ -23,32 +27,32 @@ document.addEventListener("DOMContentLoaded", function () {
         peticion.send(JSON.stringify({"peticion": "todos_los_pacientes"}));
     });
 
-    boton.addEventListener("click", function(event) {
+    formulario.addEventListener("submit", function(event) {
+        event.preventDefault();
         const peticion = new XMLHttpRequest();
-        const formData = new FormData(document.getElementById("formulario"));
+        const formData = new FormData(formulario);
         
         peticion.open("POST", "/enviarDiagnostico", true);
         
         peticion.onreadystatechange = function() {
             if (peticion.readyState === XMLHttpRequest.DONE && peticion.status === 200) {
                 let respuesta = JSON.parse(peticion.responseText);
-                if (respuesta && respuesta.url) {
+                console.log(respuesta.respuesta);
+                if (respuesta.respuesta === "Hecho") 
                     window.location.href = respuesta.url;
-                } else {
-                    console.error("El servidor no devolvió una URL válida.");
-                }
+                else 
+                    mostrarMensajeError("Por favor, complete todos los campos.");
             }
         };
         
-        peticion.send(JSON.stringify(formData));
+        peticion.send(formData);
     });
     
     
-    const formulario = document.getElementById('formulario');
     const inputs = document.querySelectorAll('#formulario input, #formulario textarea');
     const mensajeError = document.getElementById('formulario__mensaje');
 
-    formulario.addEventListener('submit', function (e) {
+    /*formulario.addEventListener('submit', function (e) {
         e.preventDefault();
 
         let formularioCompleto = true;
@@ -63,10 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (formularioCompleto) {
-            formulario.reset();
             //window.location.href = "/paciente";
         }
-    });
+    });*/
 
     function mostrarMensajeError(mensaje) {
         mensajeError.textContent = mensaje;
@@ -87,5 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
 });
+
+
+
 
 
