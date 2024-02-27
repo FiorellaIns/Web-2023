@@ -25,12 +25,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (nombre === "" || apellido === "" || email === "") {
       mostrarMensaje("Por favor, complete todos los campos.");
-    } else if (!validarEmail(email)) {
+    } 
+    else if (!validarEmail(email)) {
       mostrarMensaje("Ingrese una dirección de correo electrónico válida.");
-    } else if (!validarNombreApellido(nombre) || !validarNombreApellido(apellido)) {
+    } 
+    else if (!validarNombreApellido(nombre) || !validarNombreApellido(apellido)) {
       mostrarMensaje("El nombre y el apellido no pueden contener números.");
-    } else {
-      window.location.href = "/perfil_medico";
+    } 
+    else {
+      const peticion = new XMLHttpRequest(); 
+      peticion.open("POST", "/redireccion", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === 4 && peticion.status === 200) {      
+              const peticionEdicion = new XMLHttpRequest();
+              peticionEdicion.open("POST", "/Edicion_de_perfil_medico", true);
+              const formatoDeData = new FormData(document.getElementById("form")); // Reemplaza "form" con el ID de tu formulario
+              peticionEdicion.onreadystatechange = function() {
+                  if (peticionEdicion.readyState === 4 && peticionEdicion.status === 200) {
+                      const respuestaEdicion = JSON.parse(peticionEdicion.responseText);
+                  }
+              };
+              peticionEdicion.send(formatoDeData);
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url; 
+          }
+      };
+      peticion.send(JSON.stringify({"peticion": "Perfil_Del_Medico"}));
+      
     }
   });
 
@@ -53,5 +75,5 @@ document.addEventListener("DOMContentLoaded", function() {
   function validarNombreApellido(valor) {
     const regex = /^[a-zA-ZÀ-ÿ\s]+$/;
     return regex.test(valor);
-  } //Lo comente porque hay que hacerlo(recomendaria usar las varibles ajax globales. Mañana dia 23/2 lo empiezo)
+  } 
 });

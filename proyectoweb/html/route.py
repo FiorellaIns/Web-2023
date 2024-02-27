@@ -342,6 +342,25 @@ def Route(aplicacion=Flask):
         InsertarClave(retorno,admin)
         return retorno
         
+    @aplicacion.route("/Edicion_de_perfil_medico",methods=["POST"])
+    def edicion():
+        Exito=""
+        Fallo="Fallo de acción"
+        try:
+            id=session["ID"]
+            if VerificarSiEsMedico(id):
+                nombre = request.form.get("nombre")
+                apellido = request.form.get("apellido")
+                dni = request.form.get("dni")
+                matricula = request.form.get("matricula")
+                usuario = request.form.get("usuario")
+                email = request.form.get("email")
+                print(nombre,apellido,dni,matricula,usuario,email)
+                exito = EditarPerfilDelMedico(id, nombre, apellido, dni, matricula, usuario, email)
+            return exito
+        except KeyError:
+            return Fallo
+
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():

@@ -12,7 +12,7 @@
     <span><button class="boton1" id="volver">Volver</button></span>
     <div class="container">
         <h1>Editar Perfil del Médico</h1>
-        <form >
+        <form action="/Edicion_de_perfil_medico" id="form">
             <div class="option">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" {{ nombre }}>
@@ -25,8 +25,8 @@
             <hr>
             <hr>
             <div class="option">
-                <label for="foto">DNI:</label>
-                <input type="text" id="dni" name="foto" {{ dni }}>
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni"{{ dni }}>
             </div>
             <hr>
             <div class="option">

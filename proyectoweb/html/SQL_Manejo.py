@@ -210,3 +210,14 @@ def VerificarSiEsMedico(ID):
     herrramienta.close()
     conexion.close()
     return not bool(retorno)
+
+def EditarPerfilDelMedico(id, nombre, apellido, dni, matricula, usuario, email):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    comando = "UPDATE usuarios SET Nombre = %s, Apellido = %s, DNI = %s, `Matricula medica` = %s, Usuario = %s, Email = %s WHERE id = %s"
+    valores = (nombre, apellido, dni, matricula, usuario, email, id)
+    herramienta.execute(comando, valores)
+    conexion.commit()
+    herramienta.close()
+    conexion.close()
+    return("Cambio exitoso")
