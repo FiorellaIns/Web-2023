@@ -3,6 +3,28 @@ document.addEventListener("DOMContentLoaded", function() {
   const SOLICITUDHECHA = 4;
   const RESPUESTAEXITOSA = 200;
   
+  formulario.addEventListener("submit", function(event) {
+    var envioAlServidor = new XMLHttpRequest();
+    var formatoDeData = new FormData(document.getElementById("agregarpaciente-form"));
+    envioAlServidor.open("POST","/subirdatospacientes",true);
+    envioAlServidor.onreadystatechange = function() 
+    {
+        if(envioAlServidor.readyState === SOLICITUDHECHA && envioAlServidor.status === RESPUESTAEXITOSA)
+        {
+            var respuesta = JSON.parse(envioAlServidor.responseText);
+            if(respuesta.respuesta === "Hecho")
+            {
+                alert("Hecho");
+                window.location.href = "/";
+            }
+            else
+                alert(respuesta.respuesta);
+        }
+    };
+    envioAlServidor.send(formatoDeData);
+});
+
+});
   volver.addEventListener("click", function(event) {
     const peticion = new XMLHttpRequest();
     peticion.open("POST", "/redireccion", true);
@@ -12,10 +34,14 @@ document.addEventListener("DOMContentLoaded", function() {
             let respuesta = JSON.parse(peticion.responseText);
             window.location.href = respuesta.url;}};
       peticion.send(JSON.stringify({"peticion": "volverT"}));
-});
+    });
 
   const formulario = document.getElementById('agregarpaciente-form');
   const inputs = document.querySelectorAll('#agregarpaciente-form input');
+
+    const fechaInput = document.getElementById('Fecha');
+    const fechaHoy = new Date().toISOString().split('T')[0];
+    fechaInput.setAttribute('value', fechaHoy);
 
   const expresiones = {
       nombre: /^[a-zA-ZÀ-ÿ]{4,16}$/,
@@ -25,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function() {
       obraSocial: /^[a-zA-Z0-9]{4,16}$/,
       numObraSocial: /^.{4,12}$/,
       nroTelefono: /^.{4,12}$/,
-      email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+      domicilio:/^[a-zA-ZÀ-ÿ]{4,40}$/ 
+
   };
 
   const campos = {
@@ -36,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
       obraSocial: false,
       numObraSocial: false,
       nroTelefono: false,
-      email: false
+      domicilio: false
   };
 
   const validarFormulario = (e) => {
@@ -59,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
           case "numObraSocial":
               validarCampo(expresiones.numObraSocial,e.target, 'numObraSocial');
               break;
-          case "email":
-              validarCampo(expresiones.email,e.target, 'email');
+          case "domicilio":
+              validarCampo(expresiones.domicilio,e.target, 'domicilio');
               break;
           case "nroTelefono":
               validarCampo(expresiones.nroTelefono,e.target, 'nroTelefono');
@@ -91,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function() {
   formulario.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      if (campos.numObraSocial && campos.obraSocial && campos.nombre && campos.apellido && campos.email && campos.dni && campos.numerodeafiliado && campos.nroTelefono){
+      if (campos.numObraSocial && campos.obraSocial && campos.nombre && campos.apellido && campos.domicilio && campos.dni && campos.numerodeafiliado && campos.nroTelefono){
           formulario.reset();
-          window.location.href = "/tabla";
+          //window.location.href = "/tabla";
           document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
           setTimeout(() => {
               document.getElementById('form_msj_exito').classList.remove('form_msj_exito_activo');
@@ -108,4 +135,4 @@ document.addEventListener("DOMContentLoaded", function() {
           }, 6000);
       }
   });
-});
+

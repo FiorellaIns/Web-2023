@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, request, render_template, jsonify, session
 from SQL_Manejo import *
 import time
+from datetime import datetime
 from FuncionesExtras import *
 
 error = ""
