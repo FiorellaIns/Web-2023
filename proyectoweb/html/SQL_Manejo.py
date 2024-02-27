@@ -160,14 +160,12 @@ def ObtenerUsuarios():
     return retorno
 
 def eliminar(ID):
-    retorno=[]
     conexion = InicializarConexion()
     herramienta = conexion.cursor()
     herramienta.execute("DELETE FROM usuarios WHERE ID = %s", (ID,))
     conexion.commit()
     herramienta.close()
     conexion.close()
-    return retorno
 
 def ObtenerUsuarioPorID(ID):
     retorno = ""
@@ -186,8 +184,7 @@ def Datosdediagnostico(lista=[],id_medico = 0,id_paciente = 0):
     longitud = len(lista)
     if longitud == 5:  
         comando = "INSERT INTO `historias clinicas` (ID,`Diagnostico medico`, Descripcion, `Fecha de atencion`, `Motivo de atencion`,`ID medico`,`ID paciente`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
-        argumentos = (None, lista[3], lista[4], datetime.now().date(), lista[1],id_medico,id_paciente)  # Ajuste de argumentos
-        herramienta.execute(comando, argumentos)
+        argumentos = (None, lista[3], lista[4], datetime.now().date(), lista[1],id_medico,id_paciente)  
         conexion.commit()
         herramienta.close()
         conexion.close()

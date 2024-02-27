@@ -211,10 +211,15 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             usuario = ObtenerUsuarios()
             for lista in usuario:
-                retorno.append(ConvertirADiccionarioUsuarios(lista))
+                print(lista[0])
+                if int(lista[0]) != int(id):
+                    retorno.append(ConvertirADiccionarioUsuarios(lista))
             return jsonify(retorno)
         except KeyError:
             return redirect(url_for("home"))
+        
+
+
     @aplicacion.route("/obtenerdatosdepacientes", methods=["GET"])
     def obtener_diagnostico():
         retorno=[]
@@ -229,23 +234,7 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
     
-    @aplicacion.route("/eliminar_perfiles", methods=["POST"])
-    def eliminar_perfiles():
-        exito = False
-        mnj = ""
-        try:
-            id = session["ID"]
-            if VerificarSiEsAdministrador(id):
-                perfiles_a_eliminar = request.json.get("perfiles_a_eliminar", [])
-                for ID in perfiles_a_eliminar:
-                    eliminar(ID)
-                exito = True
-                mnj = "PERFIL ELIMINADO EXITOSAMENTE."
-            else:
-                mnj = "Acceso no autorizado. No eres administrador."
-        except KeyError:
-            mnj = "Acceso no autorizado. No has iniciado sesión."
-        return jsonify({"success": exito, "message": mnj})
+    
     
 
 
@@ -355,3 +344,23 @@ def Route(aplicacion=Flask):
         InsertarClave(retorno,admin)
 
         return retorno
+    
+
+    @aplicacion.route("/eliminar_perfiles", methods=["POST"])
+    def eliminar_perfiles():
+        exito = False
+        mnj = ""
+        try:
+            id = session["ID"]
+            if VerificarSiEsAdministrador(id):
+                perfiles_a_eliminar = request.get_json().get("perfiles_a_eliminar", None)
+                print(perfiles_a_eliminar)
+                for ID in perfiles_a_eliminar:
+                    eliminar(ID)
+                exito = True
+                mnj = "PERFILES ELIMINADOS EXITOSAMENTE."
+            else:
+                mnj = "Acceso no autorizado. No eres administrador."
+        except KeyError:
+            mnj = "Acceso no autorizado. No has iniciado sesión."
+        return jsonify({"success": exito, "message": mnj})
