@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (peticion.readyState === 4 && peticion.status === 200) {      
               const peticionEdicion = new XMLHttpRequest();
               peticionEdicion.open("POST", "/Edicion_de_perfil_medico", true);
-              const formatoDeData = new FormData(document.getElementById("form")); // Reemplaza "form" con el ID de tu formulario
+              const formatoDeData = new FormData(document.getElementById("form"));
               peticionEdicion.onreadystatechange = function() {
                   if (peticionEdicion.readyState === 4 && peticionEdicion.status === 200) {
                       const respuestaEdicion = JSON.parse(peticionEdicion.responseText);
@@ -48,7 +48,9 @@ document.addEventListener("DOMContentLoaded", function() {
               };
               peticionEdicion.send(formatoDeData);
               let respuesta = JSON.parse(peticion.responseText);
-              window.location.href = respuesta.url; 
+              setTimeout(function() {
+                window.location.href = respuesta.url;
+            }, 100);
           }
       };
       peticion.send(JSON.stringify({"peticion": "Perfil_Del_Medico"}));
