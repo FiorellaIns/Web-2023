@@ -341,7 +341,25 @@ def Route(aplicacion=Flask):
         admin = request.get_json().get("administrador",None)
         InsertarClave(retorno,admin)
         return retorno
-        
+    
+    @aplicacion.route("/subirdatospacientes", methods=["POST"])
+    def subirdatospacientessss():
+            respuesta = ""
+            listaDeDatos = [request.form.get("nombre"),
+                            request.form.get("apellido"),
+                            request.form.get("dni"),
+                            request.form.get("numerodeafiliado"),
+                            request.form.get("obraSocial"),
+                            request.form.get("numObraSocial"),
+                            request.form.get("nroTelefono"),
+                            request.form.get("domicilio"),
+                            request.form.get("Fecha")]
+            if(EstaCompleto(listaDeDatos)):
+                datospacientess(listaDeDatos)
+                respuesta= "Hecho"
+            else:
+                respuesta = "No se recibieron todos los datos."
+            return jsonify({"respuesta":respuesta})  
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():

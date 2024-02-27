@@ -184,7 +184,8 @@ def Datosdediagnostico(lista=[],id_medico = 0,id_paciente = 0):
     longitud = len(lista)
     if longitud == 5:  
         comando = "INSERT INTO `historias clinicas` (ID,`Diagnostico medico`, Descripcion, `Fecha de atencion`, `Motivo de atencion`,`ID medico`,`ID paciente`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
-        argumentos = (None, lista[3], lista[4], datetime.now().date(), lista[1],id_medico,id_paciente)  
+        argumentos = (None, lista[3], lista[4], datetime.now().date(), lista[1],id_medico,id_paciente)
+        herramienta.execute(comando,argumentos)
         conexion.commit()
         herramienta.close()
         conexion.close()
@@ -210,3 +211,16 @@ def VerificarSiEsMedico(ID):
     herrramienta.close()
     conexion.close()
     return not bool(retorno)
+
+def datospacientess(lista=[]):
+    longitud = 0
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    longitud = len(lista)
+    if longitud == 9:  
+        comando = "INSERT INTO `pacientes` (`ID`, `Nombre`, `Apellido`, `DNI`, `Nro de afiliado`, `Obra social`, `Nro de obra social`, `Nro de telefono`, `Domicilio`, `Fecha_De_Consulta`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        argumentos = (None, lista[0], lista[1], lista[2], lista[3], lista[4], lista[5], lista[6], lista[7], datetime.now().date())  # Corrección de índices
+        herramienta.execute(comando, argumentos)
+        conexion.commit()
+        herramienta.close()
+        conexion.close()

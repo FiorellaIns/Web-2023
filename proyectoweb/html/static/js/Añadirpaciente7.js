@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const volver = document.getElementById("volver");
   const SOLICITUDHECHA = 4;
   const RESPUESTAEXITOSA = 200;
-  
+  const formulario = document.getElementById('agregarpaciente-form');
+
   formulario.addEventListener("submit", function(event) {
     var envioAlServidor = new XMLHttpRequest();
     var formatoDeData = new FormData(document.getElementById("agregarpaciente-form"));
@@ -22,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
     envioAlServidor.send(formatoDeData);
-});
+    });
+/*
 
-});
   volver.addEventListener("click", function(event) {
     const peticion = new XMLHttpRequest();
     peticion.open("POST", "/redireccion", true);
@@ -42,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const fechaInput = document.getElementById('Fecha');
     const fechaHoy = new Date().toISOString().split('T')[0];
     fechaInput.setAttribute('value', fechaHoy);
+
 
   const expresiones = {
       nombre: /^[a-zA-ZÀ-ÿ]{4,16}$/,
@@ -114,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
       input.addEventListener('keyup', validarFormulario)
       input.addEventListener('blur',validarFormulario)
   });
-
   formulario.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -133,6 +134,6 @@ document.addEventListener("DOMContentLoaded", function() {
           setTimeout(() => {
               document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
           }, 6000);
-      }
-  });
+      }*/
+});
 
