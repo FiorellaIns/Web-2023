@@ -138,7 +138,15 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
-            return render_template("perfilMedico.html",usuario = usuario)
+            datos = ConfigurarParaJinja2(ObtenerUsuarioPorID(id))
+            return render_template("perfilMedico.html",
+                                    nombre = datos[1],
+                                    apellido = datos[2],
+                                    dni = datos[3],
+                                    matricula = datos[4],
+                                    usuario = datos[5],
+                                    contrasenia = datos[6],
+                                    email = datos[7],)
         except KeyError:
             return redirect(url_for("home"))
 

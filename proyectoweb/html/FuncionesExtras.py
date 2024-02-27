@@ -45,3 +45,23 @@ def GeneradorDeClaves():
     for i in range (10):
         retoro += chr(random.randint(33,127))
     return retoro
+
+def ConfigurarParaJinja2(tupla=()):
+    retorno = []
+    longitud = len(tupla)
+    if longitud == 9:
+        i = 0
+        while(i < 8):
+            retorno.append(str(tupla[i]))
+            i = i + 1
+        if bool(tupla[8]):
+            retorno.append("checked")
+        else:
+            retorno.append("")
+    return retorno
+
+def GeneradorDeClaves():
+    retoro=""
+    for i in range (10):
+        retoro += chr(random.randint(33,127))
+    return retoro
