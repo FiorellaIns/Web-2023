@@ -15,22 +15,35 @@
         <form >
             <div class="option">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="">
+                <input type="text" id="nombre" name="nombre" {{ nombre }}>
             </div>
             <hr>
             <div class="option">
                 <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" value="">
+                <input type="text" id="apellido" name="apellido" {{ apellido }}>
+            </div>
+            <hr>
+            <hr>
+            <div class="option">
+                <label for="foto">DNI:</label>
+                <input type="text" id="dni" name="foto" {{ dni }}>
             </div>
             <hr>
             <div class="option">
                 <label for="email">Email:</label>
-                <input type="text" id="email" name="email" value="">
+                <input type="text" id="email" name="email" {{ email }}>
             </div>
             <hr>
+            <hr>
             <div class="option">
-                <label for="foto">Foto de Perfil:</label>
-                <input type="file" id="foto" name="foto">
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" name="usuario" {{ usuario }}>
+            </div>
+            <hr>
+            <hr>
+            <div class="option">
+                <label for="matricula">Matricula:</label>
+                <input type="text" id="matricula" name="matricula" {{ matricula }}>
             </div>
             <hr>
             <input type="submit" value="Guardar Cambios" class="boton">

@@ -107,7 +107,10 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
-            return render_template("index.html",usuario = usuario)
+            if VerificarSiEsMedico(id):
+                return render_template("index.html",usuario = usuario)
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -128,8 +131,10 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             ID_Paciente = session["ID_Paciente"]
-            #session.pop("ID_Paciente",None)
-            return render_template("paciente.html",paciente = (ObtenerNombrePaciente(ID_Paciente) + " " + ObtenerApellidoPaciente(ID_Paciente)))
+            if VerificarSiEsMedico(id):
+                return render_template("paciente.html",paciente = (ObtenerNombrePaciente(ID_Paciente) + " " + ObtenerApellidoPaciente(ID_Paciente)))
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -137,16 +142,18 @@ def Route(aplicacion=Flask):
     def perfil_medico():
         try:
             id = session["ID"]
-            usuario = ObtenerUsuario(id)
-            datos = ConfigurarParaJinja2(ObtenerUsuarioPorID(id))
-            return render_template("perfilMedico.html",
+            user = ObtenerUsuarioPorID(id)
+            datos = ConfigurarParaJinja2(user)
+            if VerificarSiEsMedico(id):
+                return render_template("perfilMedico.html",
                                     nombre = datos[1],
                                     apellido = datos[2],
                                     dni = datos[3],
                                     matricula = datos[4],
                                     usuario = datos[5],
-                                    contrasenia = datos[6],
-                                    email = datos[7],)
+                                    email = datos[7])
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -154,8 +161,18 @@ def Route(aplicacion=Flask):
     def editar_perfilMedico():
         try:
             id = session["ID"]
-            usuario = ObtenerUsuario(id)
-            return render_template("editarperfilMedico.html",usuario = usuario)
+            user = ObtenerUsuarioPorID(id)
+            if VerificarSiEsMedico(id):
+                datos = ConfigurarParaJinja(user)
+                return render_template("editarperfilMedico.html",
+                                    nombre = datos[1],
+                                    apellido = datos[2],
+                                    dni = datos[3],
+                                    matricula = datos[4],
+                                    usuario = datos[5],
+                                    email = datos[7])
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -164,7 +181,10 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
-            return render_template("diagnostico.html",usuario = usuario)
+            if VerificarSiEsMedico(id):
+                return render_template("diagnostico.html",usuario = usuario)
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -173,7 +193,10 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
-            return render_template("Añadirpaciente.html",usuario = usuario)
+            if VerificarSiEsMedico(id):
+                return render_template("Añadirpaciente.html",usuario = usuario)
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
 
@@ -182,7 +205,10 @@ def Route(aplicacion=Flask):
         try:
             id = session["ID"]
             usuario = ObtenerUsuario(id)
-            return render_template("tabla.html",usuario = usuario)
+            if VerificarSiEsMedico(id):
+                return render_template("tabla.html",usuario = usuario)
+            else:
+                return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
         
@@ -208,6 +234,7 @@ def Route(aplicacion=Flask):
                 return render_template("tablaAdm.html", usuario=usuario)
             else:
                 return redirect(url_for("home"))
+            
         except KeyError:
             return redirect(url_for("home"))
 
@@ -269,6 +296,53 @@ def Route(aplicacion=Flask):
             return redirect(url_for("home"))
         
 
+    
+    @aplicacion.route("/eliminar_perfiles", methods=["POST"])
+    def eliminar_perfiles():
+        exito = False
+        mnj = ""
+        try:
+            id = session["ID"]
+            if VerificarSiEsAdministrador(id):
+                perfiles_a_eliminar = request.get_json().get("perfiles_a_eliminar", None)
+                print(perfiles_a_eliminar)
+                for ID in perfiles_a_eliminar:
+                    eliminar(ID)
+                exito = True
+                mnj = "PERFILES ELIMINADOS EXITOSAMENTE."
+            else:
+                mnj = "Acceso no autorizado. No eres administrador."
+        except KeyError:
+            mnj = "Acceso no autorizado. No has iniciado sesión."
+        return jsonify({"success": exito, "message": mnj})
+    
+
+    @aplicacion.route("/enviarDiagnostico", methods=["POST"])
+    def Enviardatosdiagnostico():
+            respuesta = {"respuesta":"Mal"}
+            listaDeDatos = [request.form.get("Fecha"),
+                            request.form.get("motivo"),
+                            request.form.get("nombreM"),
+                            request.form.get("DiagnosticoMedico"),
+                            request.form.get("Descripcion")]
+
+            if EstaCompleto(listaDeDatos):
+                Datosdediagnostico(listaDeDatos,session["ID"],session["ID_Paciente"])
+                respuesta["respuesta"] = "Hecho"
+                respuesta["url"] = "/paciente"
+
+            else:
+                respuesta = "No se recibieron todos los datos."
+            return jsonify(respuesta)
+    
+    @aplicacion.route("/Generador",methods=["POST"])
+    def generar():
+        retorno = GeneradorDeClaves()
+        admin = request.get_json().get("administrador",None)
+        InsertarClave(retorno,admin)
+        return retorno
+        
+
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         try:
@@ -327,48 +401,6 @@ def Route(aplicacion=Flask):
             return redirect(url_for("home"))
 
 
-    @aplicacion.route("/enviarDiagnostico", methods=["POST"])
-    def Enviardatosdiagnostico():
-            respuesta = {"respuesta":"Mal"}
-            listaDeDatos = [request.form.get("Fecha"),
-                            request.form.get("motivo"),
-                            request.form.get("nombreM"),
-                            request.form.get("DiagnosticoMedico"),
-                            request.form.get("Descripcion")]
 
-            if EstaCompleto(listaDeDatos):
-                Datosdediagnostico(listaDeDatos,session["ID"],session["ID_Paciente"])
-                respuesta["respuesta"] = "Hecho"
-                respuesta["url"] = "/paciente"
-
-            else:
-                respuesta = "No se recibieron todos los datos."
-            return jsonify(respuesta)
-    
-    @aplicacion.route("/Generador",methods=["POST"])
-    def generar():
-        retorno = GeneradorDeClaves()
-        admin = request.get_json().get("administrador",None)
-        InsertarClave(retorno,admin)
-
-        return retorno
     
 
-    @aplicacion.route("/eliminar_perfiles", methods=["POST"])
-    def eliminar_perfiles():
-        exito = False
-        mnj = ""
-        try:
-            id = session["ID"]
-            if VerificarSiEsAdministrador(id):
-                perfiles_a_eliminar = request.get_json().get("perfiles_a_eliminar", None)
-                print(perfiles_a_eliminar)
-                for ID in perfiles_a_eliminar:
-                    eliminar(ID)
-                exito = True
-                mnj = "PERFILES ELIMINADOS EXITOSAMENTE."
-            else:
-                mnj = "Acceso no autorizado. No eres administrador."
-        except KeyError:
-            mnj = "Acceso no autorizado. No has iniciado sesión."
-        return jsonify({"success": exito, "message": mnj})

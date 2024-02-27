@@ -200,3 +200,13 @@ def InsertarClave(clave,admin):
     herrramienta.close()
     conexion.close()
     return "exito"
+
+def VerificarSiEsMedico(ID):
+    conexion = InicializarConexion()
+    herrramienta = conexion.cursor()
+    comando = "SELECT Administrador FROM usuarios WHERE ID = {}".format(ID)
+    herrramienta.execute(comando)
+    retorno = (herrramienta.fetchall())[0][0]
+    herrramienta.close()
+    conexion.close()
+    return not bool(retorno)

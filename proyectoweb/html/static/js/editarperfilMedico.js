@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
       peticion.send(JSON.stringify({"peticion": "volverP"}));
   });
 
-  /*const form = document.querySelector("form");
+  const form = document.querySelector("form");
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -53,5 +53,5 @@ document.addEventListener("DOMContentLoaded", function() {
   function validarNombreApellido(valor) {
     const regex = /^[a-zA-ZÀ-ÿ\s]+$/;
     return regex.test(valor);
-  }*/ //Lo comente porque hay que hacerlo(recomendaria usar las varibles ajax globales. Mañana dia 23/2 lo empiezo)
+  } //Lo comente porque hay que hacerlo(recomendaria usar las varibles ajax globales. Mañana dia 23/2 lo empiezo)
 });
