@@ -27,12 +27,18 @@ document.addEventListener("DOMContentLoaded", function()
   const usuariosSeleccionados = [];
   table.addEventListener("change", function(event) 
   {
-    if(event.target.type === "checkbox")
-      if(event.target.checked)
+    if (event.target.type === "checkbox") {
+      if (event.target.checked) {
         usuariosSeleccionados.push(event.target.id);
-      else
-        usuariosSeleccionados.pop(event.target.id);
+      } else {
+        const seleccionado = usuariosSeleccionados.indexOf(event.target.id);
+        if (seleccionado !== -1) {
+          usuariosSeleccionados.splice(seleccionado, 1);
+        }
+      }
       console.log(usuariosSeleccionados);
+    }    
+
   });
 
   const boton = document.getElementById("eliminarusuario");
@@ -74,8 +80,24 @@ document.addEventListener("DOMContentLoaded", function()
     }
   };
   peticion.send();
-
 });
+
+function eliminarUsuarios(usuariosSeleccionados) {
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
+  const peticion = new XMLHttpRequest();
+  peticion.open("POST", "/eliminar_perfiles", true);
+  peticion.setRequestHeader("Content-Type", "application/json");
+  peticion.onreadystatechange = function() {
+    if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+      const respuesta = peticion.responseText;
+      console.log("Respuesta del servidor:", respuesta);
+      window.location.reload();
+    }
+  };
+  peticion.send(JSON.stringify({ perfiles_a_eliminar: usuariosSeleccionados }));
+}
+
 
 function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) 
 {
@@ -119,11 +141,3 @@ function VerificarIgualdad(palabra = "", rec) {
   return sAux.includes(palabra);
 }
 
-function eliminarUsuarios(usuariosSeleccionados) {
-  const ids = usuariosSeleccionados.map(usuario => usuario.ID);
-  console.log("Eliminar usuarios con IDs:", ids);
-  // Aquí deberías enviar una solicitud al servidor para eliminar los usuarios con los IDs obtenidos
-  // Por ejemplo, puedes usar una solicitud XMLHttpRequest o fetch para enviar una solicitud DELETE al servidor
-  // y pasar los IDs de los usuarios como parámetros en la URL o en el cuerpo de la solicitud
-  // Una vez que se eliminen los usuarios, puedes recargar la página o actualizar la tabla de usuarios
-}
