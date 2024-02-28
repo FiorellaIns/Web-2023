@@ -262,8 +262,12 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             ID_Paciente = session["ID_Paciente"]
             datos_diagnostico = ObtenerDatosDiagnosticoPaciente(ID_Paciente)
+            
             for diagnostico in datos_diagnostico:
                 retorno.append(ConvertirADiccionarioPacientes(diagnostico))
+            print(retorno)
+            retorno=proporcionarelnombredelmedicoynoelid(retorno)
+            print(retorno)
             return jsonify(retorno)           
                 
         except KeyError:
@@ -322,7 +326,6 @@ def Route(aplicacion=Flask):
             respuesta = {"respuesta":"Mal"}
             listaDeDatos = [request.form.get("Fecha"),
                             request.form.get("motivo"),
-                            request.form.get("nombreM"),
                             request.form.get("DiagnosticoMedico"),
                             request.form.get("Descripcion")]
 

@@ -1,4 +1,6 @@
 import random
+from SQL_Manejo import *
+
 def EstaCompleto(lista = []):
     retorno = True
     for s in lista:
@@ -65,3 +67,15 @@ def GeneradorDeClaves():
     for i in range (10):
         retoro += chr(random.randint(33,127))
     return retoro
+
+def proporcionarelnombredelmedicoynoelid(lista=[]):
+    longitud=len(lista)
+    retornodelista=[]
+    for diccionario in lista:
+        diccionario['ID medico']=obtener_nombre_medico(diccionario['ID medico'])
+        retornodelista.append(diccionario)
+    return retornodelista
+
+    
+    
+    
