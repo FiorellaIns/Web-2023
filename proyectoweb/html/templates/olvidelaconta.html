@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,8 @@
 <body>
     <span><button class="boton1" id="volver">Volver</button></span>
     <form action="" method="post" id="olvCon-form" class="olvCon-form">
-        <h1>Recuperar Contraseña</h1>
+        <h1 class = "etiqueta_principal">Recuperar Contraseña</h1>
+        {% if primero %}
         <div class="formulario__grupo" id="grupo__email">
             <label for="email" class="form_label">Email</label><br>
             <input type="email" name="email" id="email" class="olvCon__input" placeholder=""/>
@@ -23,10 +24,15 @@
         <br>
     
         <div class="formulario__boton">
-             <button type="submit" class="form__boton">Verificar</button>
+             <button class="form__boton" id = "enviar">Verificar</button>
              <p class="form_msj_exito" id="form_msj_exito">El mail fue enviado con exito</p>
          </div>
-    </form>
+    {% elif segundoPaso %}
+    <div>
+        <input type="text" name="clave" id="clave" class="olvCon__input" placeholder=""/>
+    </div>
+    {% endif %}
+    </form> 
     <script src="../static/js/olvidelaconta6.js"></script>
     
 </body>

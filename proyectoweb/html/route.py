@@ -79,7 +79,11 @@ def Route(aplicacion=Flask):
     
     @aplicacion.route("/olvidado")
     def olvidado():
-        return render_template("olvidelaconta.html")
+        argumentos = {
+            "primero":False,
+            "segundoPaso":True
+        }
+        return render_template("olvidelaconta.html",**argumentos)
 
     @aplicacion.route("/Registro_Post",methods=["POST"])
     def Posteo():
