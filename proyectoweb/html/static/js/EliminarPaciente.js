@@ -108,6 +108,7 @@ function ConstruirStringTabla(diccionario = {})
   const datos = ["Nombre","Apellido","DNI","Nro de afiliado","Obra social","Nro de obra social","Nro de telefono","Domicilo","Fecha de consulta"];
   var retorno = "<tr class = \"fila\">";
   let id = diccionario["ID"];
+  retorno += "<td class=\"checkFila\"><input type=\"checkbox\" id=\"" + id + "\"></td>";
   for(let i = 0;i<datos.length;i++)
     retorno = retorno + ConstruirStringColumna(id,diccionario[datos[i]]);
   retorno = retorno + "</tr>";
