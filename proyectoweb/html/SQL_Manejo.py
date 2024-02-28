@@ -237,3 +237,11 @@ def datospacientess(lista=[]):
         conexion.commit()
         herramienta.close()
         conexion.close()
+
+def eliminar_pacientes(ID):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("DELETE FROM pacientes WHERE ID = %s", (ID,))
+    conexion.commit()
+    herramienta.close()
+    conexion.close()

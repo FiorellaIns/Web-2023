@@ -11,7 +11,6 @@
 <body>
 
 <span><button class="boton" id="volver">Volver</button></span>
-<span><button class="boton1" id="añadirpaciente">Añadir Paciente</button></span>
 <span><button class="boton1" id="eliminarpaciente">Eliminar Paciente</button></span>
 
 
@@ -30,9 +29,12 @@
   </select>
     <input type="text" id="buscador" placeholder="Buscar">
 </div>
+<div>
+    
 <table id="miTabla">
     <thead>
         <tr>
+            <th id="seleccionar">Seleccionar</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>DNI</th>
@@ -42,12 +44,11 @@
             <th>Nro de Teléfono</th>
             <th>Domicilio</th>
             <th>Fecha de indexación</th>
-            <th id="seleccionar">Seleccionar</th>
         </tr>
     </thead>
     <tbody id = "cuerpo">
     </tbody>
 </table>
-    <script src = "../static/js/tablaPrueba.js"></script>
+    <script src = "../static/js/EliminarPaciente.js"></script>
 </body>
 </html>

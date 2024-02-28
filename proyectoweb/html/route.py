@@ -394,6 +394,37 @@ def Route(aplicacion=Flask):
             return redirect(url_for("home"))
 
     
+    @aplicacion.route("/Editar_al_paciente",methods=["GET","POST"])
+    def editar_al_paciente():
+        try:
+            id=session["ID"]
+            ID_Paciente = session["ID_Paciente"]
+            if VerificarSiEsMedico(id):
+                return render_template("PacienteEdit.html",paciente = (ObtenerNombrePaciente(ID_Paciente) + " " + ObtenerApellidoPaciente(ID_Paciente)))
+            else:
+                return redirect(url_for("home"))
+        except KeyError:
+            return redirect(url_for("home"))
+        
+    @aplicacion.route("/eliminar_pacientes", methods=["POST"])
+    def eliminar_paciente():
+        exito = False
+        mnj = ""
+        try:
+            id = session["ID"]
+            if VerificarSiEsMedico(id):
+                pacientes_a_eliminar = request.get_json().get("pacientes_a_eliminar", None)
+                print(pacientes_a_eliminar)
+                for ID in pacientes_a_eliminar:
+                    eliminar_pacientes(ID)
+                exito = True
+                mnj = "PACIENTES ELIMINADOS EXITOSAMENTE."
+            else:
+                mnj = "Acceso no autorizado. No eres medico."
+        except KeyError:
+            mnj = "Acceso no autorizado. No has iniciado sesión."
+        return jsonify({"success": exito, "message": mnj})
+
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
@@ -449,6 +480,9 @@ def Route(aplicacion=Flask):
 
             elif request.get_json().get("peticion",None) == "editar_paciente":
                 retorno["url"] = "/EditarPacientes"
+
+            elif request.get_json().get("peticion",None) == "editar_al_paciente":
+                retorno["url"] = "/Editar_al_paciente"
 
 
             return jsonify(retorno)
