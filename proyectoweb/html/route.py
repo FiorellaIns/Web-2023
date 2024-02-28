@@ -458,8 +458,3 @@ def Route(aplicacion=Flask):
             return jsonify(retorno)
         except KeyError:
             return redirect(url_for("home"))
-
-
-
-    
-
