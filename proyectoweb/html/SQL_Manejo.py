@@ -177,18 +177,29 @@ def ObtenerUsuarioPorID(ID):
     conexion.close()
     return retorno
 
+def obtener_nombre_medico(id_medico):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    comando = "SELECT Nombre FROM usuarios WHERE ID = %s"
+    herramienta.execute(comando, (id_medico,))
+    nombre_medico = herramienta.fetchone()[0]
+    herramienta.close()
+    conexion.close()
+    return nombre_medico
+
 def Datosdediagnostico(lista=[],id_medico = 0,id_paciente = 0):
     longitud = 0
     conexion = InicializarConexion()
     herramienta = conexion.cursor()
     longitud = len(lista)
-    if longitud == 5:  
+    if longitud == 4:  
         comando = "INSERT INTO `historias clinicas` (ID,`Diagnostico medico`, Descripcion, `Fecha de atencion`, `Motivo de atencion`,`ID medico`,`ID paciente`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
-        argumentos = (None, lista[3], lista[4], datetime.now().date(), lista[1],id_medico,id_paciente)
+        argumentos = (None, lista[2], lista[3], datetime.now().date(), lista[1],id_medico,id_paciente)
         herramienta.execute(comando,argumentos)
         conexion.commit()
         herramienta.close()
         conexion.close()
+
 
 
 def InsertarClave(clave,admin):
