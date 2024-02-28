@@ -58,14 +58,14 @@ document.addEventListener("DOMContentLoaded", function() {
     fechaInput.setAttribute('value', fechaHoy);
 
     const expresiones = {
-        nombre: /^[a-zA-ZÀ-ÿ]{4,16}$/,
-        apellido: /^[a-zA-ZÀ-ÿ]{4,40}$/,
+        nombre: /^[a-zA-ZÀ-ÿ]{3,20}$/,
+        apellido: /^[a-zA-ZÀ-ÿ]{3,40}$/,
         dni: /^\d{7,8}$/,
         numerodeafiliado: /^\d{7,15}$/,
         obraSocial: /^[a-zA-Z0-9]{4,16}$/,
         numObraSocial: /^.{4,12}$/,
-        nroTelefono: /^.{4,12}$/,
-        domicilio:/^[a-zA-ZÀ-ÿ]{4,40}$/
+        nroTelefono: /^.{8,14}$/,
+        domicilio:/^[a-zA-Z0-9 ]+.{4,40}$/
     };
 
     const campos = {
