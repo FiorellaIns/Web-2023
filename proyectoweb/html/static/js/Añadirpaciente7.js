@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputs = document.querySelectorAll('#agregarpaciente-form input');
 
     formulario.addEventListener("submit", function(event) {
-        event.preventDefault(); // Evitar el envío del formulario por defecto
-
+        event.preventDefault(); 
         if (validateForm()) {
             var envioAlServidor = new XMLHttpRequest();
             var formatoDeData = new FormData(document.getElementById("agregarpaciente-form"));
@@ -24,9 +23,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             };
             envioAlServidor.send(formatoDeData);
+            formulario.reset();
+            window.location.href = "/tabla";
+            document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
+            setTimeout(() => {
+                document.getElementById('form_msj_exito').classList.remove('form_msj_exito_activo');
+            }, 5000);
+            document.querySelectorAll('.formulario__grupo_correcto').forEach((margen) => {
+                margen.classList.remove('formulario__grupo_correcto');
+            });
+        } else {
+            document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+            setTimeout(() => {
+                document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+            }, 6000);
         }
     });
-
+    
     volver.addEventListener("click", function(event) {
         const peticion = new XMLHttpRequest();
         peticion.open("POST", "/redireccion", true);
@@ -127,24 +140,4 @@ document.addEventListener("DOMContentLoaded", function() {
         return formValido;
     };
 
-    formulario.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        if (validateForm()) {
-            formulario.reset();
-            window.location.href="/tabla"
-            document.getElementById('form_msj_exito').classList.add('form_msj_exito_activo');
-            setTimeout(() => {
-                document.getElementById('form_msj_exito').classList.remove('form_msj_exito_activo');
-            }, 5000);
-            document.querySelectorAll('.formulario__grupo_correcto').forEach((margen) => {
-                margen.classList.remove('formulario__grupo_correcto');
-            });
-        } else {
-            document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-            setTimeout(() => {
-                document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
-            }, 6000);
-        }
-    });
 });
