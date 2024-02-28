@@ -18,17 +18,14 @@ document.addEventListener("DOMContentLoaded", function()
   
   const editar = document.getElementById("eliminarpaciente");
   editar.addEventListener("click", function(event) {
-    console.log("No programado")
-    /*
-    const peticion = new XMLHttpRequest();
-    peticion.open("POST", "/redireccion", true);
-    peticion.setRequestHeader("Content-Type", "application/json");
-    peticion.onreadystatechange = function() {
-        if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
-            let respuesta = JSON.parse(peticion.responseText);
-            window.location.href = respuesta.url;}};
-    peticion.send(JSON.stringify({"peticion": "editar_paciente"}));
-    */
+      const peticion = new XMLHttpRequest();
+      peticion.open("POST", "/redireccion", true);
+      peticion.setRequestHeader("Content-Type", "application/json");
+      peticion.onreadystatechange = function() {
+          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+              let respuesta = JSON.parse(peticion.responseText);
+              window.location.href = respuesta.url;}};
+      peticion.send(JSON.stringify({"peticion": "editar_paciente"}));
   });
 
   const añadir = document.getElementById("añadirpaciente");

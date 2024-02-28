@@ -380,6 +380,20 @@ def Route(aplicacion=Flask):
             else:
                 respuesta = "No se recibieron todos los datos."
             return jsonify({"respuesta":respuesta})  
+    
+    @aplicacion.route("/EditarPacientes",methods=["GET"])
+    def editar_pacientes():
+        try:
+            id=session["ID"]
+            usuario = ObtenerUsuario(id)
+            if VerificarSiEsMedico(id):
+                return render_template("EliminarPaciente.html")
+            else:
+                return redirect(url_for("home"))
+        except KeyError:
+            return redirect(url_for("home"))
+
+    
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
@@ -432,6 +446,9 @@ def Route(aplicacion=Flask):
 
             elif request.get_json().get("peticion",None) == "tabla_admin":
                 retorno["url"] = "/tabla_administrador"
+
+            elif request.get_json().get("peticion",None) == "editar_paciente":
+                retorno["url"] = "/EditarPacientes"
 
 
             return jsonify(retorno)
