@@ -269,9 +269,7 @@ def Route(aplicacion=Flask):
             
             for diagnostico in datos_diagnostico:
                 retorno.append(ConvertirADiccionarioPacientes(diagnostico))
-            print(retorno)
             retorno=proporcionarelnombredelmedicoynoelid(retorno)
-            print(retorno)
             return jsonify(retorno)           
                 
         except KeyError:
