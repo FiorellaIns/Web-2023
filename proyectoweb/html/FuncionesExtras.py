@@ -77,5 +77,60 @@ def proporcionarelnombredelmedicoynoelid(lista=[]):
     return retornodelista
 
     
-    
-    
+def ConvertirADiccionarioClaves(lista=[]):
+    retorno = {"exito":False}
+    if len(lista) == 3:
+        retorno = {"exito":True,"ID":lista[0],"Clave":lista[1],"Administrador":lista[2]}
+    return retorno
+
+
+def TratamientoDeDiccionarioTAD(lista = []):
+    retorno = []
+    for diccionarios in lista:
+        dato = diccionarios["Administrador"]
+        diccionarios.pop("Administrador",None)
+        if bool(dato):
+            diccionarios["Administrador"] = "Si"
+        else:
+            diccionarios["Administrador"] = "No"
+        retorno.append(diccionarios)
+    return retorno
+
+def PasarDePaso(diccionario = {}):
+    retorno = {
+        "primero":True,
+        "segundoPaso": False,
+        "tercerPaso": False
+    }
+    if "ID_Medico_Recuperar" in diccionario:
+        retorno["primero"] = False
+        retorno["segundoPaso"] = True
+        retorno["tercerPaso"] = False
+    if "ID_Medico_Recuperar" in diccionario and "Clave_Obtenida" in diccionario:
+        retorno["primero"] = False
+        retorno["segundoPaso"] = False
+        retorno["tercerPaso"] = True
+    return retorno
+def VerificarSiExisteClave(clave = ""):
+    retorno = -1
+    conexion = InicializarConexion()
+    lista = ObtenerID(conexion,clave)
+    conexion.close()
+    if len(lista) > 0:
+        retorno = lista[0][0]
+    return retorno
+def VerificacionFacilAClave(ID_Clave):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    retorno = EsAdministrador(herramienta,ID_Clave)
+    herramienta.close()
+    conexion.close()
+    return retorno
+def ModificarContrasenia(ID_Clave = 0,ID_Usuario = 0,contrasenia = ""):
+    retorno = False
+    if ActulizarContrasenia(contrasenia,ID_Usuario):
+        conexion = InicializarConexion()
+        QuitarClavePorId(conexion,ID_Clave)
+        conexion.close()
+        retorno = True
+    return retorno

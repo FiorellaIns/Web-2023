@@ -24,6 +24,7 @@ body
   
   .form_label {
     display: block;
+    width: 25%;
     margin-left: 36%;
     margin-right: 64%;
     font-weight: 700;
@@ -81,6 +82,8 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 10%;
+    padding-bottom: 90%;
   }
   
   .form__boton {

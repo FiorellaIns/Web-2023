@@ -302,13 +302,65 @@ def EditarPerfilDelPaciente(id,nombre,apellido,dni,afiliado,obra_social,nro_obra
     conexion.close()
     return("Cambio exitoso")
 
-'''def EditarPerfilDelUsuario(id,nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha):
+
+
+
+def EditarPerfilDelUsuario(id_usuario,nombre,apellido,dni,Matricula_medica,Usuario,Contraseña,EMail):
     conexion = InicializarConexion()
     herramienta = conexion.cursor()
-    comando = "UPDATE pacientes SET Nombre = %s, Apellido = %s, DNI = %s, `Nro de afiliado` = %s, `Obra social` = %s,`Nro de obra social` = %s, `Nro de telefono` = %s,Domicilio = %s ,Fecha_De_Consulta = %s  WHERE id = %s"
-    valores = (nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha,id)
+    comando = "UPDATE usuarios SET Nombre = %s, Apellido = %s, DNI = %s, `Matricula medica` = %s, Usuario = %s,Contraseña = %s, EMail = %s WHERE ID = %s"
+    valores = (nombre,apellido,dni,Matricula_medica,Usuario,Contraseña,EMail,id_usuario)
     herramienta.execute(comando, valores)
     conexion.commit()
     herramienta.close()
     conexion.close()
-    return("Cambio exitoso")'''
+    return("Cambio exitoso")
+
+
+
+def ObtenerClaves():
+    retorno = []
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM claves")
+    retorno = herramienta.fetchall()
+    herramienta.close()
+    conexion.close()
+    return retorno
+
+def ObtenerIDMedicoEMail(EMail = ""):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    print(EMail)
+    comando = "SELECT ID FROM usuarios WHERE EMail = %s"
+    valor = EMail
+    herramienta.execute(comando,(valor,))
+    retorno = herramienta.fetchall()
+    if len(retorno) > 0:
+        retorno = retorno[0][0]
+    else:
+        retorno = ""
+    herramienta.close()
+    conexion.close()
+    return retorno
+def ActulizarContrasenia(contrasenia = "",ID_Usuario = 0):
+    retorno = False
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    try:
+        comando = "UPDATE usuarios SET Contraseña = %s WHERE id = %s"
+        valores = (contrasenia,ID_Usuario)
+        herramienta.execute(comando, valores)
+        conexion.commit()
+        retorno = True
+    except mysql.connector.Error as a:
+        print("Error al cargar los usuarios: {}".format(a))
+    herramienta.close()
+    conexion.close()
+    return retorno
+def QuitarClavePorId(conexion,ID):
+    herramienta = conexion.cursor()
+    comando = "DELETE FROM claves WHERE ID = {}".format(ID)
+    herramienta.execute(comando)
+    conexion.commit()
+    herramienta.close()

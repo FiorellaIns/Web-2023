@@ -10,6 +10,10 @@ def Route(aplicacion=Flask):
 
     @aplicacion.route("/")
     def home():
+        if "ID_Medico_Recuperar" in session:
+            session.pop("ID_Medico_Recuperar",None)
+        if "Clave_Obtenida" in session:
+            session.pop("Clave_Obtenida",None)
         error="email o contraseña incorrectos."
         return render_template("login.html", errorVar=error)
 
@@ -79,10 +83,7 @@ def Route(aplicacion=Flask):
     
     @aplicacion.route("/olvidado")
     def olvidado():
-        argumentos = {
-            "primero":False,
-            "segundoPaso":True
-        }
+        argumentos = PasarDePaso(session)
         return render_template("olvidelaconta.html",**argumentos)
 
     @aplicacion.route("/Registro_Post",methods=["POST"])
@@ -278,27 +279,7 @@ def Route(aplicacion=Flask):
     
 
 
-    @aplicacion.route("/ModificarUsuario",methods = ["GET"])
-    def ObtenerInfoDeMedico():
-        try:
-            id = session["ID"]
-            if VerificarSiEsAdministrador(id):
-                medico = session["ID_Usuario_Gestion"]
-                datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
-                return render_template(
-                                        "modificarUsuario.html",
-                                        nombre = datos[1],
-                                        apellido = datos[2],
-                                        dni = datos[3],
-                                        matricula = datos[4],
-                                        usuario = datos[5],
-                                        contrasenia = datos[6],
-                                        email = datos[7],
-                                        administrador = datos[8])
-            else:
-                 return redirect(url_for("home"))
-        except KeyError:
-            return redirect(url_for("home"))
+
         
 
     
@@ -477,8 +458,8 @@ def Route(aplicacion=Flask):
     def edita_usuarios():
         try:
             id = session["ID"]
-            id_usuario = session["ID_Paciente"]
-
+            id_medico = session["ID_Usuario_Gestion"]
+            Exito=""
             if VerificarSiEsAdministrador(id):
                 nombre = request.form.get("nombre")
                 apellido = request.form.get("apellido")
@@ -487,30 +468,89 @@ def Route(aplicacion=Flask):
                 usuario = request.form.get("usuario")
                 contrasenia = request.form.get("contrasenia")
                 email = request.form.get("email")
-
-                print(nombre,apellido,dni,matricula,usuario,contrasenia,email)
-            
-            # Realizar la edición del usuario aquí
-            
-            # Devolver una respuesta exitosa en caso de éxito
-                return jsonify({"success": True, "message": "Usuario editado correctamente"})
-            else:
-            # Devolver un mensaje de error si el usuario no es un administrador
-                return jsonify({"success": False, "error": "No autorizado para editar usuarios"})
+                Exito = EditarPerfilDelUsuario(id_medico,nombre,apellido,dni,matricula,usuario,contrasenia,email)
+                return Exito
         except KeyError:
-        # Devolver un mensaje de error si ocurre una excepción
-            return jsonify({"success": False, "error": "Error en la edición del usuario"}) 
+            return jsonify({"success": False, "error": "Error: Clave no encontrada en la sesión"})
+        return jsonify({"success": False, "error": "Error desconocido al editar usuario"})
 
 
+    @aplicacion.route("/ModificarUsuario",methods = ["GET"])
+    def ObtenerInfoDeMedico():
+        try:
+            id = session["ID"]
+            if VerificarSiEsAdministrador(id):
+                medico = session["ID_Usuario_Gestion"]
+                datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
+                return render_template(
+                                        "modificarUsuario.html",
+                                        nombre = datos[1],
+                                        apellido = datos[2],
+                                        dni = datos[3],
+                                        matricula = datos[4],
+                                        usuario = datos[5],
+                                        contrasenia = datos[6],
+                                        email = datos[7],
+                                        administrador = datos[8])
+            else:
+                 return redirect(url_for("home"))
+        except KeyError:
+            return redirect(url_for("home"))
 
 
-        '''
-        '''     
-
-
-
-
-
+    @aplicacion.route("/claves",methods=["GET"])
+    def clave():
+        retorno = []
+        try:
+            id = session["ID"]
+            if VerificarSiEsAdministrador(id):
+                clave = ObtenerClaves()
+                for lista in clave:
+                    retorno.append(ConvertirADiccionarioClaves(lista))
+                retorno = TratamientoDeDiccionarioTAD(retorno)
+            return jsonify(retorno)
+        except KeyError:
+            return redirect(url_for("home"))
+        
+    '''
+    @aplicacion.route("/Datos_usuarios",methods=["GET"])
+    def datos_usuarios():
+        retorno = []
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuarios()
+            for lista in usuario:
+                if int(lista[0]) != int(id):
+                    retorno.append(ConvertirADiccionarioUsuarios(lista))
+            return jsonify(retorno)
+        except KeyError:
+            return redirect(url_for("home"))
+    '''
+    @aplicacion.route("/ControladorDeContrasenia", methods=["POST"])
+    def ControladorDeContrasenia():
+        diccionario = {"exito":False}
+        modo = request.get_json().get("modo")
+        if modo == "ObtenerEMail":
+            mail = request.get_json().get("mail")
+            id = ObtenerIDMedicoEMail(mail)
+            if id != "":
+                session["ID_Medico_Recuperar"] = id
+                diccionario["exito"] = True
+        if modo == "ConfirmarClave":
+            clave = request.get_json().get("clave")
+            existe = VerificarSiExisteClave(clave)
+            if existe > -1:
+                if VerificarSiEsAdministrador(session["ID_Medico_Recuperar"]) == VerificacionFacilAClave(clave):
+                    session["Clave_Obtenida"] = existe
+                    diccionario["exito"] = True
+        if modo == "ConfirmarContrasenia":
+            contrasenia = request.get_json().get("contrasenia")
+            if ModificarContrasenia(session["Clave_Obtenida"],session["ID_Medico_Recuperar"],contrasenia):
+                session.pop("ID_Medico_Recuperar",None)
+                session.pop("Clave_Obtenida",None)
+                diccionario["exito"] = True
+                diccionario["url"] = "/"
+        return jsonify(diccionario)
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         try:

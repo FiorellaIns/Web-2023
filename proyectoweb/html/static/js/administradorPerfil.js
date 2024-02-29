@@ -10,25 +10,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (elemento === "editar") 
             {
-                const peticion = new XMLHttpRequest();
-                peticion.open("POST", "/redireccion", true);
-                peticion.setRequestHeader("Content-Type", "application/json");
-                peticion.onreadystatechange = function() {
-                if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
-                    let respuesta = JSON.parse(peticion.responseText);
-                    window.location.href = respuesta.url;}};
-                peticion.send(JSON.stringify({"peticion": "tabla_admin"}));
+                const peticionEditar = new XMLHttpRequest();
+                peticionEditar.open("POST", "/redireccion", true);
+                peticionEditar.setRequestHeader("Content-Type", "application/json");
+                peticionEditar.onreadystatechange = function() {
+                    if (peticionEditar.readyState === SOLICITUDHECHA && peticionEditar.status === RESPUESTAEXITOSA) {
+                        let respuestaEditar = JSON.parse(peticionEditar.responseText);
+                        window.location.href = respuestaEditar.url;
+                    }
+                };
+                peticionEditar.send(JSON.stringify({"peticion": "tabla_admin"}));
             } else if (elemento === "cerrar") 
             {
                 url="/"
-                peticion = new XMLHttpRequest();
-                peticion.open("GET","/CerrarSeccion",true);
-                peticion.onreadystatechange = function()
+                const peticionCerrar = new XMLHttpRequest();
+                peticionCerrar.open("GET","/CerrarSeccion",true);
+                peticionCerrar.onreadystatechange = function()
                 {
-                    if(peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA)
+                    if(peticionCerrar.readyState === SOLICITUDHECHA && peticionCerrar.status === RESPUESTAEXITOSA)
                     {
-                        respuesta = JSON.parse(peticion.responseText);
-                        if(respuesta.exito)
+                        respuestaCerrar = JSON.parse(peticionCerrar.responseText);
+                        if(respuestaCerrar.exito)
                         {
                             window.location.href = url;
                         }
@@ -36,33 +38,91 @@ document.addEventListener("DOMContentLoaded", function() {
                             alert("A ocurrido un error...");
                     }
                 };
-                peticion.send();
+                peticionCerrar.send();
             }
         });
     });
 
-
-    const generar_clave = document.getElementById("boton_generador");
+    const boton_generador = document.getElementById("boton_generador");
     const clave_generada = document.getElementById("clave_generada");
     const es_administrador = document.getElementById("es_administrador");
-    const resultado_generacion=document.getElementById("resultado_generacion")
+    const resultado_generacion = document.getElementById("resultado_generacion");
     
-    generar_clave.addEventListener("click", function(event) {
+    boton_generador.addEventListener("click", function(event) {
         const admin = es_administrador.checked ? 1 : 0;
-        const peticion = new XMLHttpRequest();
-        peticion.open("POST", "/Generador", true);
-        peticion.setRequestHeader("Content-Type", "application/json");
-        peticion.onreadystatechange = function() {
-            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
-                const respuesta = peticion.responseText;
-                document.getElementById("resultado_generacion").textContent = respuesta;
+        const peticionGenerar = new XMLHttpRequest();
+        peticionGenerar.open("POST", "/Generador", true);
+        peticionGenerar.setRequestHeader("Content-Type", "application/json");
+        peticionGenerar.onreadystatechange = function() {
+            if (peticionGenerar.readyState === SOLICITUDHECHA && peticionGenerar.status === RESPUESTAEXITOSA) {
+                const respuestaGenerar = peticionGenerar.responseText;
+                document.getElementById("resultado_generacion").textContent = respuestaGenerar;
                 clave_generada.style.display = "block";
                 resultado_generacion.style.display="inline-block";
 
+                setTimeout(function() {
+                    location.reload()
+                }, 10000);
             }
         };
-        peticion.send(JSON.stringify({administrador:admin}));
+        peticionGenerar.send(JSON.stringify({administrador:admin}));
     });
-    
-    
+
+    const peticionObtenerClaves = new XMLHttpRequest();
+    peticionObtenerClaves.open("GET", "/claves");
+    peticionObtenerClaves.onreadystatechange = function() {
+      if (peticionObtenerClaves.readyState === SOLICITUDHECHA && peticionObtenerClaves.status === RESPUESTAEXITOSA) {
+        const respuestaObtenerClaves = JSON.parse(peticionObtenerClaves.responseText);
+        ActualizarTabla(respuestaObtenerClaves, respuestaObtenerClaves);
+        const elementos = table.getElementsByTagName("td");
+        for (let i = 0, c = elementos.length; i < c; i++) {
+          clases = elementos[i].classList;
+          arrClases = Array.from(clases);
+        }
+      }
+    };
+    peticionObtenerClaves.send();
 });
+
+function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) {
+    let lectura = "";
+    const cuerpoTabla = document.getElementById("cuerpo");
+    cuerpoTabla.innerHTML = "";
+  
+    for (let i = 0; i < diccionarios.length; i++) {
+      lectura += ConstruirStringTabla(diccionarios[i]);
+    }
+    cuerpoTabla.innerHTML = lectura;
+  }
+  
+  function ConstruirStringTabla(diccionario = {}) {
+    const datos = ["ID","Clave","Administrador"];
+    let retorno = "<tr class=\"fila\">";
+    const id = diccionario["ID"];
+    for (let i = 0; i < datos.length; i++) {
+      retorno += ConstruirStringColumna(id, diccionario[datos[i]]);
+    }
+    retorno += "</tr>";
+    return retorno;
+  }
+  
+  function ConstruirStringColumna(id, dato) {
+    return "<td id=\"" + id + "\">" + dato + "</td>";
+  }
+  
+  function BuscarEnLista(palabra = "",diccionario = [],filtro = "")
+  {
+    var retorno = [];
+    for(let i = 0,lon = diccionario.length;i<lon;i++)
+    {
+      if(VerificarIgualdad(palabra,diccionario[i][filtro]))
+        retorno.push(diccionario[i]);
+    }
+    return retorno;
+  }
+  
+  function VerificarIgualdad(palabra = "",rec)
+  {
+    var sAux = "" + rec;
+    return sAux.includes(palabra);
+  }
