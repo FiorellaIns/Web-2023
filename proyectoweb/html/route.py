@@ -405,7 +405,7 @@ def Route(aplicacion=Flask):
 
 
 
-    '''@aplicacion.route("/Editar_al_paciente",methods=["GET","POST"])
+    @aplicacion.route("/Editar_al_paciente",methods=["GET","POST"])
     def editar_al_paciente():
         try:
             id=session["ID"]
@@ -417,7 +417,7 @@ def Route(aplicacion=Flask):
                 return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
-        
+    
     @aplicacion.route("/Edita_datos_paciente",methods=["POST"])
     def cambiar_paciente():
         Exito = ""
@@ -436,7 +436,7 @@ def Route(aplicacion=Flask):
                 print(nombre,apellido,dni,obra_social,nro_obra,tel,domicilio,fecha)
             return Exito
         except KeyError:
-            return Fallo'''
+            return Fallo
         
 
 

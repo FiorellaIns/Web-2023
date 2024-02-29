@@ -14,42 +14,42 @@
         <form action="/Edita_datos_paciente" id="form">
             <div>
                 <div class="separacion">
-                    <label class="etiqueta">Nombre</label>
-                    <input type="text" id="nombre" class="cuadro_de_texto" value="{{ paciente.Nombre }}">
+                    <label for="nombre" class="etiqueta">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" class="cuadro_de_texto" value="{{ paciente.Nombre }}">
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Apellido</label>
-                    <input type="text" id="apellido" class="cuadro_de_texto" value="{{ paciente.Apellido }}">
+                    <label for="apellido" class="etiqueta">Apellido</label>
+                    <input type="text" name="apellido" id="apellido" class="cuadro_de_texto" value="{{ paciente.Apellido }}">
                 </div>
             </div>
             <div>
                 <div class="separacion" id="dnist">
-                    <label class="etiqueta">DNI</label>
-                    <input type="text" id="dni" class="cuadro_de_texto" value="{{ paciente.DNI }}">
+                    <label for="dni" class="etiqueta">DNI</label>
+                    <input type="number" name="dni" id="dni" class="cuadro_de_texto" value="{{ paciente.DNI }}">
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Obra social</label>
-                    <input type="text" id="obra" class="cuadro_de_texto" value="{{ paciente.Obra_social }}">
-                </div>
-            </div>
-            <div>
-                <div class="separacion">
-                    <label class="etiqueta">Número de obra social</label>
-                    <input type="text" id="nro_obra" class="cuadro_de_texto" value="{{ paciente.Nro_de_obra_social }}">
-                </div>
-                <div class="separacion">
-                    <label class="etiqueta">Número de telefono</label>
-                    <input type="text" id="tel" class="cuadro_de_texto" value="{{ paciente.Nro_de_telefono }}">
+                    <label for="obra" class="etiqueta">Obra social</label>
+                    <input type="text" id="cuadro_de_texto" class="cuadro_de_texto" value="{{ paciente.Obra_social }}">
                 </div>
             </div>
             <div>
                 <div class="separacion">
-                    <label class="etiqueta">Domicilio</label>
-                    <input type="text" id="dom" class="cuadro_de_texto" value="{{ paciente.Domicilio }}">
+                    <label for="nro_obra" class="etiqueta">Número de obra social</label>
+                    <input type="text" name="nro_obra" id="nro_obra" class="cuadro_de_texto" value="{{ paciente.Nro_de_obra_social }}">
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Fecha de consulta</label>
-                    <input type="text" id="fecha" value="{{ paciente.Fecha_de_consulta }}">
+                    <label for="tel" class="etiqueta">Número de telefono</label>
+                    <input type="text" name="tel" id="tel" class="cuadro_de_texto" value="{{ paciente.Nro_de_telefono }}">
+                </div>
+            </div>
+            <div>
+                <div class="separacion">
+                    <label for="dom" class="etiqueta">Domicilio</label>
+                    <input type="text" name="dom" id="dom" class="cuadro_de_texto" value="{{ paciente.Domicilio }}">
+                </div>
+                <div class="separacion">
+                    <label for="fecha" class="etiqueta">Fecha de consulta</label>
+                    <input type="text" name="fecha" id="fecha" value="{{ paciente.Fecha_de_consulta }}">
                 </div>
             </div>
             <div class="contenedor-boton">
