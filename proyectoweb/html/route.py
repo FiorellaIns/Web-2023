@@ -407,7 +407,6 @@ def Route(aplicacion=Flask):
                 tel = request.form.get("tel")
                 domicilio = request.form.get("dom")
                 fecha = request.form.get("fecha")
-                print(nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha)
                 Exito = EditarPerfilDelPaciente(id_paciente,nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha)
             return Exito
         except KeyError:
@@ -440,7 +439,6 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             if VerificarSiEsMedico(id):
                 diagnostico_a_eliminar = request.get_json().get("diagnostico_a_eliminar", None)
-                print(diagnostico_a_eliminar)
                 for ID in diagnostico_a_eliminar:
                     eliminar_diagnostico(ID)
                 exito = True
@@ -512,20 +510,9 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
         
-    '''
-    @aplicacion.route("/Datos_usuarios",methods=["GET"])
-    def datos_usuarios():
-        retorno = []
-        try:
-            id = session["ID"]
-            usuario = ObtenerUsuarios()
-            for lista in usuario:
-                if int(lista[0]) != int(id):
-                    retorno.append(ConvertirADiccionarioUsuarios(lista))
-            return jsonify(retorno)
-        except KeyError:
-            return redirect(url_for("home"))
-    '''
+
+
+
     @aplicacion.route("/ControladorDeContrasenia", methods=["POST"])
     def ControladorDeContrasenia():
         diccionario = {"exito":False}
@@ -551,6 +538,10 @@ def Route(aplicacion=Flask):
                 diccionario["exito"] = True
                 diccionario["url"] = "/"
         return jsonify(diccionario)
+    
+
+
+
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         try:

@@ -4,6 +4,7 @@ body
   font-family: 'Roboto', sans-serif;
   background: url("../upload/login3.jpg")no-repeat center center fixed;
   background-size: cover;
+  overflow: hidden;
   }
   
   h1 
@@ -139,7 +140,9 @@ body
 }
 
   
-  
+.error{
+  display: none;
+}
 .formulario__grupo_correcto .olvCon__input {
     border: 3px solid #1ed12d;
   }
