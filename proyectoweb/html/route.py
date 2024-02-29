@@ -10,6 +10,10 @@ def Route(aplicacion=Flask):
 
     @aplicacion.route("/")
     def home():
+        if "ID_Medico_Recuperar" in session:
+            session.pop("ID_Medico_Recuperar",None)
+        if "Clave_Obtenida" in session:
+            session.pop("Clave_Obtenida",None)
         error="email o contraseña incorrectos."
         return render_template("login.html", errorVar=error)
 
@@ -79,10 +83,7 @@ def Route(aplicacion=Flask):
     
     @aplicacion.route("/olvidado")
     def olvidado():
-        argumentos = {
-            "primero":False,
-            "segundoPaso":True
-        }
+        argumentos = PasarDePaso(session)
         return render_template("olvidelaconta.html",**argumentos)
 
     @aplicacion.route("/Registro_Post",methods=["POST"])
@@ -525,9 +526,31 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
     '''
-
-
-
+    @aplicacion.route("/ControladorDeContrasenia", methods=["POST"])
+    def ControladorDeContrasenia():
+        diccionario = {"exito":False}
+        modo = request.get_json().get("modo")
+        if modo == "ObtenerEMail":
+            mail = request.get_json().get("mail")
+            id = ObtenerIDMedicoEMail(mail)
+            if id != "":
+                session["ID_Medico_Recuperar"] = id
+                diccionario["exito"] = True
+        if modo == "ConfirmarClave":
+            clave = request.get_json().get("clave")
+            existe = VerificarSiExisteClave(clave)
+            if existe > -1:
+                if VerificarSiEsAdministrador(session["ID_Medico_Recuperar"]) == VerificacionFacilAClave(clave):
+                    session["Clave_Obtenida"] = existe
+                    diccionario["exito"] = True
+        if modo == "ConfirmarContrasenia":
+            contrasenia = request.get_json().get("contrasenia")
+            if ModificarContrasenia(session["Clave_Obtenida"],session["ID_Medico_Recuperar"],contrasenia):
+                session.pop("ID_Medico_Recuperar",None)
+                session.pop("Clave_Obtenida",None)
+                diccionario["exito"] = True
+                diccionario["url"] = "/"
+        return jsonify(diccionario)
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         try:

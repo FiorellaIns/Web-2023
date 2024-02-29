@@ -15,7 +15,7 @@
         {% if primero %}
         <div class="formulario__grupo" id="grupo__email">
             <label for="email" class="form_label">Email</label><br>
-            <input type="email" name="email" id="email" class="olvCon__input" placeholder=""/>
+            <input type="text" name="email" id="email" class="olvCon__input" placeholder=""/>
             <p class="olvCon__input_error">El email tiene que ser de 4 a 16 digitos y solo puede contener letras, numeros y guion bajo</p>
         </div>
         <div class="formulario__mensaje" id="formulario__mensaje">
@@ -24,12 +24,30 @@
         <br>
     
         <div class="formulario__boton">
-             <button class="form__boton" id = "enviar">Verificar</button>
+             <button class="form__boton" id = "enviar" type = "button">Verificar</button>
              <p class="form_msj_exito" id="form_msj_exito">El mail fue enviado con exito</p>
          </div>
     {% elif segundoPaso %}
     <div>
-        <input type="text" name="clave" id="clave" class="olvCon__input" placeholder=""/>
+        <div class="formulario__grupo">
+            <label for = "clave" class = "form_label">Claves</label>
+            <input type="text" name="clave" id="clave" class="olvCon__input" placeholder=""/>
+        </div>
+        <div class="formulario__boton">
+            <button class="form__boton" id = "confirmarClave" type = "button">Confirmar</button>
+        </div>
+    </div>
+    {% elif tercerPaso %}
+    <div>
+        <div class="formulario__grupo">
+            <label for = "nuevaContra" class = "form_label">Nueva contraseña</label>
+            <input type="password" name="nuevaContra" id="nuevaContra" class="olvCon__input" placeholder=""/>
+            <label for = "repetir" class = "form_label">Repetir contraseñna</label>
+            <input type="password" name="repertir" id="repetir" class="olvCon__input" placeholder=""/>
+        </div>
+        <div class="formulario__boton">
+            <button class="form__boton" id = "confirmarCambio" type = "button">Confirmar cambio</button>
+        </div>
     </div>
     {% endif %}
     </form> 
