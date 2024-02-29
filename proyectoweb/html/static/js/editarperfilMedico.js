@@ -21,17 +21,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const nombre = document.getElementById("nombre").value.trim();
     const apellido = document.getElementById("apellido").value.trim();
+    const dni = document.getElementById("dni").value.trim();
     const email = document.getElementById("email").value.trim();
+    const usuario = document.getElementById("usuario").value.trim();
+    const matricula = document.getElementById("matricula").value.trim();
 
-    if (nombre === "" || apellido === "" || email === "") {
+    if (nombre === "" || apellido === "" || email === "" || dni === "" || usuario === "" || matricula === "") {
       mostrarMensaje("Por favor, complete todos los campos.");
     } 
     else if (!validarEmail(email)) {
       mostrarMensaje("Ingrese una dirección de correo electrónico válida.");
-    } 
+    }
     else if (!validarNombreApellido(nombre) || !validarNombreApellido(apellido)) {
-      mostrarMensaje("El nombre y el apellido no pueden contener números.");
+      mostrarMensaje("El nombre o el apellido no pueden contener números.");
+    }  
+    else if (!validarDNI(dni)) {
+      mostrarMensaje("El DNI debe contener solo números.");
     } 
+    else if (!validarMatricula(matricula)) {
+      mostrarMensaje("La matrícula debe contener solo números.");
+    }
     else {
       const peticion = new XMLHttpRequest(); 
       peticion.open("POST", "/redireccion", true);
@@ -46,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
                       const respuestaEdicion = JSON.parse(peticionEdicion.responseText);
                   }
               };
-              peticionEdicion.send(formatoDeData);
+              peticionEdicion.send(formatoDeData); 
               let respuesta = JSON.parse(peticion.responseText);
               setTimeout(function() {
                 window.location.href = respuesta.url;
@@ -78,4 +87,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const regex = /^[a-zA-ZÀ-ÿ\s]+$/;
     return regex.test(valor);
   } 
+
+  function validarDNI(dni) {
+    const regexDNI = /^\d+$/;
+    return regexDNI.test(dni);
+  }
+
+  function validarMatricula(matricula) {
+    const regexMatricula = /^\d+$/;
+    return regexMatricula.test(matricula);
+  }
 });

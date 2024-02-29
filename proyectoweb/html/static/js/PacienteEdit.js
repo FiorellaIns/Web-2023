@@ -26,18 +26,20 @@ document.addEventListener("DOMContentLoaded", function(evento) {
         const nroAfiliado = document.getElementById("afiliado").value.trim();
         const nroObraSocial = document.getElementById("nro_obra").value.trim();
         const telefono = document.getElementById("tel").value.trim();
+        const domicilio = document.getElementById("dom").value.trim();
+        
         
         const nombreExpReg = /^[a-zA-ZÀ-ÿ\s]+$/;
         const apellidoExpReg = /^[a-zA-ZÀ-ÿ\s]+$/;
         const obraSocialExpReg = /^[a-zA-ZÀ-ÿ\s]+$/;
-        const nroAfiliadoExpReg = /^\d+$/; // Expresión regular para verificar que solo hay números
-        const nroObraSocialExpReg = /^\d+$/; // Expresión regular para verificar que solo hay números
-        const telefonoExpReg = /^\d+$/; // Expresión regular para verificar que solo hay números
+        const nroAfiliadoExpReg = /^\d+$/; 
+        const nroObraSocialExpReg = /^\d+$/; 
+        const telefonoExpReg = /^\d+$/; 
         
-        if (nombre === "" || apellido === "" || obraSocial === "" || nroAfiliado === "" || nroObraSocial === "" || telefono === "") {
+        if (nombre === "" || apellido === "" || obraSocial === "" || nroAfiliado === "" || nroObraSocial === "" || telefono === "" || domicilio==="") {
             mostrarMensaje("Por favor, complete todos los campos.");
         } else if (!nombreExpReg.test(nombre) || !apellidoExpReg.test(apellido) || !obraSocialExpReg.test(obraSocial) || !nroAfiliadoExpReg.test(nroAfiliado) || !nroObraSocialExpReg.test(nroObraSocial) || !telefonoExpReg.test(telefono)) {
-            mostrarMensaje("Por favor, ingrese valores válidos para los campos.");
+            mostrarMensaje("Por favor, ingrese valores válidos para los todos campos.");
         } else {
             const peticion = new XMLHttpRequest();
             peticion.open("POST", "/redireccion", true);
