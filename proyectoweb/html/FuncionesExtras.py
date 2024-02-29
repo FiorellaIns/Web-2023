@@ -77,5 +77,8 @@ def proporcionarelnombredelmedicoynoelid(lista=[]):
     return retornodelista
 
     
-    
-    
+def ConvertirADiccionarioClaves(lista=[]):
+    retorno = {"exito":False}
+    if len(lista) == 3:
+        retorno = {"exito":True,"ID":lista[0],"Clave":lista[1],"Administrador":lista[2]}
+    return retorno    

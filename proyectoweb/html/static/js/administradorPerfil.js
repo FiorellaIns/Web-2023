@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 peticion.send();
             }
         });
+
+
     });
 
 
@@ -58,11 +60,70 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("resultado_generacion").textContent = respuesta;
                 clave_generada.style.display = "block";
                 resultado_generacion.style.display="inline-block";
-
+                setTimeout(function() {
+                    location.reload()
+                }, 10000);
             }
         };
         peticion.send(JSON.stringify({administrador:admin}));
     });
     
-    
+    const peticion = new XMLHttpRequest();
+    peticion.open("GET", "/claves");
+    peticion.onreadystatechange = function() {
+      if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+        const respuesta = JSON.parse(peticion.responseText);
+        ActualizarTabla(respuesta, respuesta);
+        elementos = table.getElementsByTagName("td");
+        for (let i = 0, c = elementos.length; i < c; i++) {
+          clases = elementos[i].classList;
+          arrClases = Array.from(clases);
+        }
+      }
+    };
+    peticion.send();
 });
+
+function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) {
+    let lectura = "";
+    const cuerpoTabla = document.getElementById("cuerpo");
+    cuerpoTabla.innerHTML = "";
+  
+    for (let i = 0; i < diccionarios.length; i++) {
+      lectura += ConstruirStringTabla(diccionarios[i]);
+    }
+    cuerpoTabla.innerHTML = lectura;
+  }
+  
+  function ConstruirStringTabla(diccionario = {}) {
+    const datos = ["ID","Clave","Administrador"];
+    let retorno = "<tr class=\"fila\">";
+    const id = diccionario["ID"];
+    for (let i = 0; i < datos.length; i++) {
+      retorno += ConstruirStringColumna(id, diccionario[datos[i]]);
+    }
+    retorno += "</tr>";
+    return retorno;
+  }
+  
+  function ConstruirStringColumna(id, dato) {
+    return "<td id=\"" + id + "\">" + dato + "</td>";
+  }
+  
+  function BuscarEnLista(palabra = "",diccionario = [],filtro = "")
+  {
+    var retorno = [];
+    for(let i = 0,lon = diccionario.length;i<lon;i++)
+    {
+      if(VerificarIgualdad(palabra,diccionario[i][filtro]))
+        retorno.push(diccionario[i]);
+    }
+    return retorno;
+  }
+  
+  function VerificarIgualdad(palabra = "",rec)
+  {
+    var sAux = "" + rec;
+    return sAux.includes(palabra);
+  }
+  

@@ -497,6 +497,34 @@ def Route(aplicacion=Flask):
             return redirect(url_for("home"))
 
 
+    @aplicacion.route("/claves",methods=["GET"])
+    def clave():
+        retorno = []
+        try:
+            id = session["ID"]
+            if VerificarSiEsAdministrador(id):
+                clave = ObtenerClaves()
+                for lista in clave:
+                    retorno.append(ConvertirADiccionarioClaves(lista))
+            return jsonify(retorno)
+        except KeyError:
+            return redirect(url_for("home"))
+        
+    '''
+    @aplicacion.route("/Datos_usuarios",methods=["GET"])
+    def datos_usuarios():
+        retorno = []
+        try:
+            id = session["ID"]
+            usuario = ObtenerUsuarios()
+            for lista in usuario:
+                if int(lista[0]) != int(id):
+                    retorno.append(ConvertirADiccionarioUsuarios(lista))
+            return jsonify(retorno)
+        except KeyError:
+            return redirect(url_for("home"))
+    '''
+
 
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])

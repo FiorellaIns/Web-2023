@@ -315,3 +315,15 @@ def EditarPerfilDelUsuario(id_usuario,nombre,apellido,dni,Matricula_medica,Usuar
     herramienta.close()
     conexion.close()
     return("Cambio exitoso")
+
+
+
+def ObtenerClaves():
+    retorno = []
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM claves")
+    retorno = herramienta.fetchall()
+    herramienta.close()
+    conexion.close()
+    return retorno
