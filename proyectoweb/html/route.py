@@ -489,7 +489,26 @@ def Route(aplicacion=Flask):
             mnj = "Acceso no autorizado. No has iniciado sesión."
         return jsonify({"success": exito, "message": mnj})
 
-
+    @aplicacion.route("/eliminar_diagnostico", methods=["POST"])
+    def eliminar_diagnosticos():
+        exito = False
+        mnj = ""
+        try:
+            id = session["ID"]
+            if VerificarSiEsMedico(id):
+                diagnostico_a_eliminar = request.get_json().get("diagnostico_a_eliminar", None)
+                print(diagnostico_a_eliminar)
+                for ID in diagnostico_a_eliminar:
+                    eliminar_diagnostico(ID)
+                exito = True
+                mnj = "PACIENTES ELIMINADOS EXITOSAMENTE."
+            else:
+                mnj = "Acceso no autorizado. No eres medico."
+        except KeyError:
+            mnj = "Acceso no autorizado. No has iniciado sesión."
+        return jsonify({"success": exito, "message": mnj})
+        
+    
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         try:

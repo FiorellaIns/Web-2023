@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const SOLICITUDHECHA = 4;
   const RESPUESTAEXITOSA = 200;
   var datosRecibidos;
+  const usuariosSeleccionados=[];
 
   const volver = document.getElementById("volver");
   volver.addEventListener("click", function(event) {
@@ -39,6 +40,47 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   };
   peticion.send();
+  const table = document.getElementById("miTabla");
+table.addEventListener("change", function(event) {
+    if (event.target.type === "checkbox") {
+        const checkboxId = event.target.id;
+        const id = checkboxId.split("_")[1]; // Obtener el ID del diagnóstico desde el ID del checkbox
+        const isChecked = event.target.checked;
+
+        if (isChecked) {
+            usuariosSeleccionados.push(id);
+        } else {
+            const index = usuariosSeleccionados.indexOf(id);
+            if (index !== -1) {
+                usuariosSeleccionados.splice(index, 1);
+            }
+        }
+
+        console.log("Usuarios seleccionados:", usuariosSeleccionados);
+    }
+});
+
+//este es el boton que realiza la accion
+const boton = document.getElementById("Eliminardiagnostico");
+boton.addEventListener("click", function() {
+    eliminar_diagnostico(usuariosSeleccionados);
+});
+//funcion para eliminar el diagnostico
+function eliminar_diagnostico(usuariosSeleccionados) {
+    const SOLICITUDHECHA = 4;
+    const RESPUESTAEXITOSA = 200;
+    const peticion = new XMLHttpRequest();
+    peticion.open("POST", "/eliminar_diagnostico", true);
+    peticion.setRequestHeader("Content-Type", "application/json");
+    peticion.onreadystatechange = function() {
+      if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+        const respuesta = peticion.responseText;
+        console.log("Respuesta del servidor:", respuesta);
+        window.location.reload();
+      }
+    };
+    peticion.send(JSON.stringify({ diagnostico_a_eliminar: usuariosSeleccionados }));
+}
 
   function ActualizarTabla(diccionarios = []) {
       let lectura = "";
@@ -50,15 +92,21 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function ConstruirStringTabla(diccionario = {}) {
-      const datos = ["Diagnostico medico", "Descripcion", "Fecha de atencion", "Motivo de la atencion", "ID medico"];
-      let retorno = "<tr class=\"fila\">";
-      let id = diccionario["ID"];
-      for (let i = 0; i < datos.length; i++) {
-          retorno += ConstruirStringColumna(id, diccionario[datos[i]]);
-      }
-      retorno += "</tr>";
-      return retorno;
-  }
+    const datos = ["Diagnostico medico", "Descripcion", "Fecha de atencion", "Motivo de la atencion", "ID medico"];
+    let retorno = "<tr class=\"fila\">";
+    let id = diccionario["ID"];
+
+    for (let i = 0; i < datos.length; i++) {
+        retorno += ConstruirStringColumna(id, diccionario[datos[i]]);
+    }
+
+    // Agregar checkbox al final
+    retorno += "<td><input type=\"checkbox\" id=\"check_" + id + "\"></td>";
+
+    retorno += "</tr>";
+    return retorno;
+}
+
 
   function ConstruirStringColumna(id, dato) {
       return "<td id=\"" + id + "\">" + dato + "</td>";
