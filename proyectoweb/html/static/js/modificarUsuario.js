@@ -49,13 +49,14 @@ document.addEventListener("DOMContentLoaded", function(evento) {
                     const formatoDeData = new FormData(document.getElementById("form"));
                     peticionEdicion.onreadystatechange = function() {
                         if (peticionEdicion.readyState === REQUEST_DONE && peticionEdicion.status === SUCCESS_STATUS) {
-                            const respuestaEdicion = JSON.parse(peticionEdicion.responseText);
+                            const respuestaEdicion = (peticionEdicion.responseText);
+                            console.log(respuestaEdicion);
                         }
                     };
                     peticionEdicion.send(formatoDeData);
                     let respuesta = JSON.parse(peticion.responseText);
                     setTimeout(function() {
-                      //window.location.href = respuesta.url;
+                      window.location.href = respuesta.url;
                   }, 100);
                 }
             };

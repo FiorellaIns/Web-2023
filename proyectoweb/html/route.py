@@ -278,27 +278,7 @@ def Route(aplicacion=Flask):
     
 
 
-    @aplicacion.route("/ModificarUsuario",methods = ["GET"])
-    def ObtenerInfoDeMedico():
-        try:
-            id = session["ID"]
-            if VerificarSiEsAdministrador(id):
-                medico = session["ID_Usuario_Gestion"]
-                datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
-                return render_template(
-                                        "modificarUsuario.html",
-                                        nombre = datos[1],
-                                        apellido = datos[2],
-                                        dni = datos[3],
-                                        matricula = datos[4],
-                                        usuario = datos[5],
-                                        contrasenia = datos[6],
-                                        email = datos[7],
-                                        administrador = datos[8])
-            else:
-                 return redirect(url_for("home"))
-        except KeyError:
-            return redirect(url_for("home"))
+
         
 
     
@@ -477,8 +457,8 @@ def Route(aplicacion=Flask):
     def edita_usuarios():
         try:
             id = session["ID"]
-            id_usuario = session["ID_Paciente"]
-
+            id_medico = session["ID_Usuario_Gestion"]
+            Exito=""
             if VerificarSiEsAdministrador(id):
                 nombre = request.form.get("nombre")
                 apellido = request.form.get("apellido")
@@ -487,26 +467,34 @@ def Route(aplicacion=Flask):
                 usuario = request.form.get("usuario")
                 contrasenia = request.form.get("contrasenia")
                 email = request.form.get("email")
-
-                print(nombre,apellido,dni,matricula,usuario,contrasenia,email)
-            
-            # Realizar la edición del usuario aquí
-            
-            # Devolver una respuesta exitosa en caso de éxito
-                return jsonify({"success": True, "message": "Usuario editado correctamente"})
-            else:
-            # Devolver un mensaje de error si el usuario no es un administrador
-                return jsonify({"success": False, "error": "No autorizado para editar usuarios"})
+                Exito = EditarPerfilDelUsuario(id_medico,nombre,apellido,dni,matricula,usuario,contrasenia,email)
+                return Exito
         except KeyError:
-        # Devolver un mensaje de error si ocurre una excepción
-            return jsonify({"success": False, "error": "Error en la edición del usuario"}) 
+            return jsonify({"success": False, "error": "Error: Clave no encontrada en la sesión"})
+        return jsonify({"success": False, "error": "Error desconocido al editar usuario"})
 
 
-
-
-        '''
-        '''     
-
+    @aplicacion.route("/ModificarUsuario",methods = ["GET"])
+    def ObtenerInfoDeMedico():
+        try:
+            id = session["ID"]
+            if VerificarSiEsAdministrador(id):
+                medico = session["ID_Usuario_Gestion"]
+                datos = ConfigurarParaJinja(ObtenerUsuarioPorID(medico))
+                return render_template(
+                                        "modificarUsuario.html",
+                                        nombre = datos[1],
+                                        apellido = datos[2],
+                                        dni = datos[3],
+                                        matricula = datos[4],
+                                        usuario = datos[5],
+                                        contrasenia = datos[6],
+                                        email = datos[7],
+                                        administrador = datos[8])
+            else:
+                 return redirect(url_for("home"))
+        except KeyError:
+            return redirect(url_for("home"))
 
 
 

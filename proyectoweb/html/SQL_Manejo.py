@@ -302,13 +302,16 @@ def EditarPerfilDelPaciente(id,nombre,apellido,dni,afiliado,obra_social,nro_obra
     conexion.close()
     return("Cambio exitoso")
 
-'''def EditarPerfilDelUsuario(id,nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha):
+
+
+
+def EditarPerfilDelUsuario(id_usuario,nombre,apellido,dni,Matricula_medica,Usuario,Contraseña,EMail):
     conexion = InicializarConexion()
     herramienta = conexion.cursor()
-    comando = "UPDATE pacientes SET Nombre = %s, Apellido = %s, DNI = %s, `Nro de afiliado` = %s, `Obra social` = %s,`Nro de obra social` = %s, `Nro de telefono` = %s,Domicilio = %s ,Fecha_De_Consulta = %s  WHERE id = %s"
-    valores = (nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha,id)
+    comando = "UPDATE usuarios SET Nombre = %s, Apellido = %s, DNI = %s, `Matricula medica` = %s, Usuario = %s,Contraseña = %s, EMail = %s WHERE ID = %s"
+    valores = (nombre,apellido,dni,Matricula_medica,Usuario,Contraseña,EMail,id_usuario)
     herramienta.execute(comando, valores)
     conexion.commit()
     herramienta.close()
     conexion.close()
-    return("Cambio exitoso")'''
+    return("Cambio exitoso")
