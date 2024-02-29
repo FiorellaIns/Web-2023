@@ -290,3 +290,25 @@ def eliminar_diagnostico(ID):
     conexion.commit()
     herramienta.close()
     conexion.close()
+
+def EditarPerfilDelPaciente(id,nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    comando = "UPDATE pacientes SET Nombre = %s, Apellido = %s, DNI = %s, `Nro de afiliado` = %s, `Obra social` = %s,`Nro de obra social` = %s, `Nro de telefono` = %s,Domicilio = %s ,Fecha_De_Consulta = %s  WHERE id = %s"
+    valores = (nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha,id)
+    herramienta.execute(comando, valores)
+    conexion.commit()
+    herramienta.close()
+    conexion.close()
+    return("Cambio exitoso")
+
+'''def EditarPerfilDelUsuario(id,nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    comando = "UPDATE pacientes SET Nombre = %s, Apellido = %s, DNI = %s, `Nro de afiliado` = %s, `Obra social` = %s,`Nro de obra social` = %s, `Nro de telefono` = %s,Domicilio = %s ,Fecha_De_Consulta = %s  WHERE id = %s"
+    valores = (nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha,id)
+    herramienta.execute(comando, valores)
+    conexion.commit()
+    herramienta.close()
+    conexion.close()
+    return("Cambio exitoso")'''

@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Usuario</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/styletablaPrueba.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/stylePacienteEdit.css">
 </head>
 <body>
-    <div class="contenedor-boton">
-        <button class="boton" id="volver">Volver</button>
-    </div>
+    <button class="boton" id="volver">Volver</button>
     <div class="contenedor-formulario">
         <form action="/Edita_datos_paciente" id="form">
-            <div>
                 <div class="separacion">
                     <label for="nombre" class="etiqueta">Nombre</label>
                     <input type="text" name="nombre" id="nombre" class="cuadro_de_texto" value="{{ paciente.Nombre }}">
@@ -21,18 +18,18 @@
                     <label for="apellido" class="etiqueta">Apellido</label>
                     <input type="text" name="apellido" id="apellido" class="cuadro_de_texto" value="{{ paciente.Apellido }}">
                 </div>
-            </div>
-            <div>
                 <div class="separacion" id="dnist">
                     <label for="dni" class="etiqueta">DNI</label>
                     <input type="number" name="dni" id="dni" class="cuadro_de_texto" value="{{ paciente.DNI }}">
                 </div>
                 <div class="separacion">
-                    <label for="obra" class="etiqueta">Obra social</label>
-                    <input type="text" id="cuadro_de_texto" class="cuadro_de_texto" value="{{ paciente.Obra_social }}">
+                    <label for="afiliado" class="etiqueta">Nro de afiliado</label>
+                    <input type="text" name="afiliado" id="afiliado" class="cuadro_de_texto" value="{{ paciente.Nro_de_afiliado }}">
                 </div>
-            </div>
-            <div>
+                <div class="separacion">
+                    <label for="obra" class="etiqueta">Obra social</label>
+                    <input type="text" name="obra" id="obra" class="cuadro_de_texto" value="{{ paciente.Obra_social }}">
+                </div>
                 <div class="separacion">
                     <label for="nro_obra" class="etiqueta">Número de obra social</label>
                     <input type="text" name="nro_obra" id="nro_obra" class="cuadro_de_texto" value="{{ paciente.Nro_de_obra_social }}">
@@ -41,22 +38,20 @@
                     <label for="tel" class="etiqueta">Número de telefono</label>
                     <input type="text" name="tel" id="tel" class="cuadro_de_texto" value="{{ paciente.Nro_de_telefono }}">
                 </div>
-            </div>
-            <div>
                 <div class="separacion">
                     <label for="dom" class="etiqueta">Domicilio</label>
                     <input type="text" name="dom" id="dom" class="cuadro_de_texto" value="{{ paciente.Domicilio }}">
                 </div>
                 <div class="separacion">
                     <label for="fecha" class="etiqueta">Fecha de consulta</label>
-                    <input type="text" name="fecha" id="fecha" value="{{ paciente.Fecha_de_consulta }}">
+                    <input type="date" name="fecha" id="fecha" value="{{ paciente.Fecha_de_consulta }}">
                 </div>
-            </div>
             <div class="contenedor-boton">
                 <input type="submit" name="submit" value="Guardar" class="boton" id="enviar" />
             </div>
         </form>
     </div>
+    <div id="error-mensaje" class="error"></div>
     <script src="../static/js/PacienteEdit.js"></script>
 </body>
 </html>

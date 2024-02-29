@@ -4,59 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Usuario</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/stylemodificarUsuario.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/stylePacienteEdit.css">
 </head>
 <body>
-    <div class="contenedor-boton">
-        <button class="boton" id="volver">Volver</button>
-    </div>
+    <button class="boton" id="volver">Volver</button>
     <div class="contenedor-formulario">
-        <form>
-            <div>
+        <form action="/Edita_datos_paciente" id="form">
                 <div class="separacion">
-                    <label class="etiqueta">Nombre</label>
-                    <input type="text" id="nombre" class="cuadro_de_texto"{{nombre}}>
+                    <label for="nombre" class="etiqueta">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" class="cuadro_de_texto" {{ nombre }}>
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Apellido</label>
-                    <input type="text" id="apellido" class="cuadro_de_texto"{{apellido}}>
+                    <label for="apellido" class="etiqueta">Apellido</label>
+                    <input type="text" name="apellido" id="apellido" class="cuadro_de_texto" {{ apellido }}>
                 </div>
-            </div>
-            <div>
                 <div class="separacion" id="dnist">
-                    <label class="etiqueta">DNI</label>
-                    <input type="text" id="dni" class="cuadro_de_texto"{{dni}}>
+                    <label for="dni" class="etiqueta">DNI</label>
+                    <input type="number" name="dni" id="dni" class="cuadro_de_texto" {{ dni }}>
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Matricula</label>
-                    <input type="text" id="matricula" class="cuadro_de_texto"{{matricula}}>
-                </div>
-            </div>
-            <div>
-                <div class="separacion">
-                    <label class="etiqueta">Usuario</label>
-                    <input type="text" id="usuario" class="cuadro_de_texto"{{usuario}}>
+                    <label for="afiliado" class="etiqueta">Nro de afiliado</label>
+                    <input type="text" name="afiliado" id="afiliado" class="cuadro_de_texto" {{ matricula }}>
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Contraseña</label>
-                    <input type="text" id="contrasenia" class="cuadro_de_texto"{{contrasenia}}>
-                </div>
-            </div>
-            <div>
-                <div class="separacion">
-                    <label class="etiqueta">Email</label>
-                    <input type="text" id="email" class="cuadro_de_texto"{{email}}>
+                    <label for="obra" class="etiqueta">Obra social</label>
+                    <input type="text" name="obra" id="obra" class="cuadro_de_texto" {{ usuario }}>
                 </div>
                 <div class="separacion">
-                    <label class="etiqueta">Administrador</label>
-                    <input type="checkbox" id="administrador"{{administrador}}>
+                    <label for="nro_obra" class="etiqueta">Número de obra social</label>
+                    <input type="text" name="nro_obra" id="nro_obra" class="cuadro_de_texto" {{ contrasenia }}>
                 </div>
-            </div>
+                <div class="separacion">
+                    <label for="tel" class="etiqueta">Número de telefono</label>
+                    <input type="text" name="tel" id="tel" class="cuadro_de_texto" {{ email }}>
+                </div>
             <div class="contenedor-boton">
                 <input type="submit" name="submit" value="Guardar" class="boton" id="enviar" />
             </div>
         </form>
     </div>
-    <script src="../static/js/modificarUsuario.js"></script>
+    <div id="error-mensaje" class="error"></div>
+    <script src="../static/js/PacienteEdit.js"></script>
 </body>
 </html>

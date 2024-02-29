@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function()
   
   const editar = document.getElementById("eliminarpaciente");
   editar.addEventListener("click", function(event) {
-    console.log("No programado")
     const peticion = new XMLHttpRequest();
     peticion.open("POST", "/redireccion", true);
     peticion.setRequestHeader("Content-Type", "application/json");

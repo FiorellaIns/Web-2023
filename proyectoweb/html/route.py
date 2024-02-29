@@ -395,15 +395,6 @@ def Route(aplicacion=Flask):
         except KeyError:
             return redirect(url_for("home"))
 
-    
-
-
-
-
-
-
-
-
 
     @aplicacion.route("/Editar_al_paciente",methods=["GET","POST"])
     def editar_al_paciente():
@@ -424,52 +415,23 @@ def Route(aplicacion=Flask):
         Fallo="Fallo"        
         try:
             id = session["ID"]
+            id_paciente = session["ID_Paciente"]
             if VerificarSiEsMedico(id):
                 nombre = request.form.get("nombre")
                 apellido = request.form.get("apellido")
                 dni = request.form.get("dni")
+                afiliado = request.form.get("afiliado")
                 obra_social = request.form.get("obra")
                 nro_obra = request.form.get("nro_obra")
                 tel = request.form.get("tel")
                 domicilio = request.form.get("dom")
                 fecha = request.form.get("fecha")
-                print(nombre,apellido,dni,obra_social,nro_obra,tel,domicilio,fecha)
+                print(nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha)
+                Exito = EditarPerfilDelPaciente(id_paciente,nombre,apellido,dni,afiliado,obra_social,nro_obra,tel,domicilio,fecha)
             return Exito
         except KeyError:
             return Fallo
         
-
-
-    '''
-    
-    @aplicacion.route("/Edicion_de_perfil_medico",methods=["POST"])
-    def edicion():
-        Exito=""
-        Fallo="Fallo de acción"
-        try:
-            id=session["ID"]
-            if VerificarSiEsMedico(id):
-                nombre = request.form.get("nombre")
-                apellido = request.form.get("apellido")
-                dni = request.form.get("dni")
-                matricula = request.form.get("matricula")
-                usuario = request.form.get("usuario")
-                email = request.form.get("email")
-                exito = EditarPerfilDelMedico(id, nombre, apellido, dni, matricula, usuario, email)
-            return exito
-        except KeyError:
-            return Fallo
-
-    '''
-
-
-
-
-
-
-
-
-
         
     @aplicacion.route("/eliminar_pacientes", methods=["POST"])
     def eliminar_paciente():
@@ -508,7 +470,29 @@ def Route(aplicacion=Flask):
             mnj = "Acceso no autorizado. No has iniciado sesión."
         return jsonify({"success": exito, "message": mnj})
         
-    
+    @aplicacion.route("/Edita_datos_usuario")
+    def edita_usuarios():
+        Exito = ""
+        Fallo="Fallo"        
+        try:
+            id = session["ID"]
+            id_usuario = session["ID_Paciente"]
+            if VerificarSiEsAdministrador(id):
+                nombre = request.form.get("nombre")
+                apellido = request.form.get("apellido")
+                dni = request.form.get("dni")
+                matricula = request.form.get("matricula")
+                usuario = request.form.get("usuario")
+                contrasenia = request.form.get("contrasenia")
+                email = request.form.get("email")
+                administrador = request.form.get("administrador")
+                print(id_usuario,nombre,apellido,dni,matricula,usuario,contrasenia,email,administrador)
+                #Exito = EditarPerfilDelUsuario(id_usuario,nombre,apellido,dni,matricula,usuario,contrasenia,email,administrador)
+            return Exito
+        except KeyError:
+            return Fallo
+
+
     @aplicacion.route("/redireccion",methods=["GET","POST"])
     def redireccion():
         try:

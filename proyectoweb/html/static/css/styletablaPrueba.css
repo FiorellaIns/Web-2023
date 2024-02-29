@@ -6,46 +6,42 @@ body {
   margin: 0;
   padding: 0;
 }
-
-/* Estilo mejorado para los botones */
 .boton, .boton1 {
-  background-color: #6893e8; /* Color de fondo */
+  background-color: #6893e8; 
   border: none;
-  color: white; /* Color del texto */
-  padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño de fuente */
+  color: white; 
+  padding: 10px 20px;
+  font-size: 16px; 
   margin: 6px;
   cursor: pointer;
-  border-radius: 5px; /* Bordes redondeados */
-  transition: background-color 0.3s ease; /* Transición suave */
+  border-radius: 5px; 
+  transition: background-color 0.3s ease;
 }
 
-/* Cambio de color al pasar el cursor */
 .boton:hover, .boton1:hover {
-  background-color: #abd9ef; /* Color de fondo al pasar el cursor */
+  background-color: #abd9ef;
 }
 
-/* Estilo de la tabla */
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid black; /* Bordes de la tabla */
+  border: 2px solid black; 
   margin-top: 20px;
   
 }
 
 th, td {
-  border: 1px solid #766868; /* Bordes de las celdas */
+  border: 1px solid #766868;
   padding: 8px;
   text-align: center;
   cursor: pointer;
-  white-space: nowrap; /*Evita el ajuste del texto automatico y el de abajo ajusta el ancho*/
+  white-space: nowrap; 
   width: auto;
   
 }
 
 th {
-  background-color: #abd9ef; /* Color de fondo de las celdas de encabezado */
+  background-color: #abd9ef; 
   color: rgb(3, 12, 15);
   font-weight: bold;
 }
@@ -55,7 +51,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: hsl(231, 27%, 45%); /* Color de fondo de las filas pares */
+  background-color: hsl(231, 27%, 45%);
 }
 
 tr:hover {
@@ -63,7 +59,7 @@ tr:hover {
 }
 
 .oculto {
-  display: none; /* Oculta los elementos con la clase oculto */
+  display: none;
 }
 
 @media screen and (max-width: 768px) {

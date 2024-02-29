@@ -1,95 +1,123 @@
-body {
-    min-height: 100vh;
-    font-family: 'Arial', sans-serif;
-    background: url("../upload/imagen1.jpg") no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
+body,html {
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background: url("../upload/imagen1.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 1px auto 0 auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+
+h1 {
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+}
+
+span {
+  display: block;
+  margin: 5px 0;
+  color: #555;
+}
+
+input[type="file"] {
+  margin: 10px 0;
+}
+
+img {
+  max-width: 100%;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.texto{
+  width: 70%;
+  overflow: absolute;
+  font-size: 20px;
+  padding: 13px 0;
+  margin: 13px 0;
+  margin-bottom: 20px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc; 
+  margin: 10px 0;
+}
+
+.boton{
+  width: 100%;
+  background: white;
+  border: 2px solid black;
+  color: black;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 2px 0;
+  
+}
+.boton:hover {
+  background-color: #0056b3;
+}
+.boton1{
+  width: 10%;
+  background: none;
+  color: black;
+  padding: 2px;
+  font-size: 20px;
+  margin: 6px;
+  color: black;
+  background-color: white;
+  left: 0;
+  cursor: pointer;
   }
-  
-  /* Estilo mejorado para los botones */
-  .boton, .boton1 {
-    background-color: #6893e8; /* Color de fondo */
-    border: none;
-    color: white; /* Color del texto */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    margin: 6px;
-    cursor: pointer;
-    border-radius: 5px; /* Bordes redondeados */
-    transition: background-color 0.3s ease; /* Transición suave */
-  }
-  
-  /* Cambio de color al pasar el cursor */
-  .boton:hover, .boton1:hover {
-    background-color: #abd9ef; /* Color de fondo al pasar el cursor */
-  }
-  
-  /* Estilo de la tabla */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid black; /* Bordes de la tabla */
-    margin-top: 20px;
-    
-  }
-  
-  th, td {
-    border: 1px solid #766868; /* Bordes de las celdas */
-    padding: 8px;
-    text-align: center;
-    cursor: pointer;
-    white-space: nowrap; /*Evita el ajuste del texto automatico y el de abajo ajusta el ancho*/
-    width: auto;
-    
-  }
-  
-  th {
-    background-color: #abd9ef; /* Color de fondo de las celdas de encabezado */
-    color: rgb(3, 12, 15);
-    font-weight: bold;
-  }
-  
-  #miTabla {
-    background-color: rgb(215, 247, 250);
-  }
-  
-  tr:nth-child(even) {
-    background-color: hsl(231, 27%, 45%); /* Color de fondo de las filas pares */
-  }
-  
-  tr:hover {
-    background-color:white;
-  }
-  
-  .oculto {
-    display: none; /* Oculta los elementos con la clase oculto */
-  }
-  
-  @media screen and (max-width: 768px) {
-    .boton, .boton1 {
-      width: 100%;
-      margin: 6px 0; 
-      
-    }
-  
-    .table,#cuerpo, .miTabla {
+.boton1:hover {
+  background-color: #0056b3;
+}
+
+.error{
+  display: none ;
+}
+
+@media screen and (max-width: 768px) {
+  body {
       font-size: 14px; 
-      overflow: auto;
-      width: auto;
-    }
-     
   }
-  
-  @media screen and (max-width: 600px) {
-    th:nth-child(1),
-    td:nth-child(1) {
-      display: none;
-    }
-  
-    #cuerpo,.miTabla {
-      font-size: 12px;
-      overflow: auto;
-      width: auto;
-    }
+
+  header {
+      padding: 10px 0;
   }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .boton1 {
+    width: 100%;
+    background: white;
+    border: 2px solid black;
+    color: black;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 2px 0;
+  }
+
+  #error{
+    display: none;
+  }
+}

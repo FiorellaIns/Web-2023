@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() 
-{
+document.addEventListener("DOMContentLoaded", function() {
   const SOLICITUDHECHA = 4;
   const RESPUESTAEXITOSA = 200;
   const input = document.getElementById("buscador");
@@ -8,25 +7,25 @@ document.addEventListener("DOMContentLoaded", function()
 
   input.addEventListener("input", function() {
     const nuevo = BuscarEnLista(input.value, datosRecibidos, criterio.value);
-    ActualizarTabla(nuevo, datosRecibidos, usuariosSeleccionados);
+    ActualizarTabla(nuevo);
   });
 
   const volver = document.getElementById("volver");
   volver.addEventListener("click", function(event) {
     const peticion = new XMLHttpRequest();
-      peticion.open("POST", "/redireccion", true);
-      peticion.setRequestHeader("Content-Type", "application/json");
-      peticion.onreadystatechange = function() {
-          if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
-              let respuesta = JSON.parse(peticion.responseText);
-              window.location.href = respuesta.url;}};
-        peticion.send(JSON.stringify({"peticion": "perfil_admin"}));
+    peticion.open("POST", "/redireccion", true);
+    peticion.setRequestHeader("Content-Type", "application/json");
+    peticion.onreadystatechange = function() {
+      if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+        let respuesta = JSON.parse(peticion.responseText);
+        window.location.href = respuesta.url;
+      }
+    };
+    peticion.send(JSON.stringify({"peticion": "perfil_admin"}));
   });
 
-
   const usuariosSeleccionados = [];
-  table.addEventListener("change", function(event) 
-  {
+  table.addEventListener("change", function(event) {
     if (event.target.type === "checkbox") {
       if (event.target.checked) {
         usuariosSeleccionados.push(event.target.id);
@@ -37,9 +36,10 @@ document.addEventListener("DOMContentLoaded", function()
         }
       }
       console.log(usuariosSeleccionados);
-    }    
-
+    }
   });
+
+  
 
   const boton = document.getElementById("eliminarusuario");
   boton.addEventListener("click", function() {
@@ -53,33 +53,35 @@ document.addEventListener("DOMContentLoaded", function()
       const respuesta = JSON.parse(peticion.responseText);
       ActualizarTabla(respuesta, respuesta, usuariosSeleccionados);
       elementos = table.getElementsByTagName("td");
-      for(let i = 0,c = elementos.length;i<c;i++)
-      {
-        clases = elementos[i].classList
+      for (let i = 0, c = elementos.length; i < c; i++) {
+        clases = elementos[i].classList;
         arrClases = Array.from(clases);
-        if(arrClases[0] !== "checkFila")
-          elementos[i].addEventListener("click",function(evento)
-        {
-          var enviarData = new XMLHttpRequest();
-          enviarData.open("POST","/redireccion",true);
-          enviarData.setRequestHeader("Content-Type","application/json");
-          enviarData.onreadystatechange = function()
-          {
-            if(enviarData.readyState === SOLICITUDHECHA && enviarData.status === RESPUESTAEXITOSA)
-            {
-              var datosRecibidos = JSON.parse(enviarData.responseText);
-              if(datosRecibidos["url"] !== "valor")
-                window.location.href = datosRecibidos["url"];
-              else
-                alert("Error en el servidor...");
-            }
-          };
-          enviarData.send(JSON.stringify({"peticion":"Gestionar_Datos_Por_Admin","ID":evento.target.id}));
-        })
+        if (arrClases[0] !== "checkFila") {
+          elementos[i].addEventListener("click", function(evento) {
+            var enviarData = new XMLHttpRequest();
+            enviarData.open("POST", "/redireccion", true);
+            enviarData.setRequestHeader("Content-Type", "application/json");
+            enviarData.onreadystatechange = function() {
+              if (enviarData.readyState === SOLICITUDHECHA && enviarData.status === RESPUESTAEXITOSA) {
+                var datosRecibidos = JSON.parse(enviarData.responseText);
+                if (datosRecibidos["url"] !== "valor") {
+                  window.location.href = datosRecibidos["url"];
+                } else {
+                  alert("Error en el servidor...");
+                }
+              }
+            };
+            enviarData.send(JSON.stringify({"peticion": "Gestionar_Datos_Por_Admin", "ID": evento.target.id}));
+          });
+        }
       }
     }
   };
   peticion.send();
+
+
+  
+
 });
 
 function eliminarUsuarios(usuariosSeleccionados) {
@@ -95,18 +97,17 @@ function eliminarUsuarios(usuariosSeleccionados) {
       window.location.reload();
     }
   };
-  peticion.send(JSON.stringify({ perfiles_a_eliminar: usuariosSeleccionados }));
+  peticion.send(JSON.stringify({"perfiles_a_eliminar": usuariosSeleccionados}));
 }
 
-
-function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) 
-{
+function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) {
   let lectura = "";
   const cuerpoTabla = document.getElementById("cuerpo");
   cuerpoTabla.innerHTML = "";
 
-  for (let i = 0; i < diccionarios.length; i++) 
+  for (let i = 0; i < diccionarios.length; i++) {
     lectura += ConstruirStringTabla(diccionarios[i]);
+  }
   cuerpoTabla.innerHTML = lectura;
 }
 
@@ -115,29 +116,30 @@ function ConstruirStringTabla(diccionario = {}) {
   let retorno = "<tr class=\"fila\">";
   const id = diccionario["ID"];
   retorno += "<td class=\"checkFila\"><input type=\"checkbox\" id=\"" + id + "\"></td>";
-  for (let i = 0; i < datos.length; i++) 
+  for (let i = 0; i < datos.length; i++) {
     retorno += ConstruirStringColumna(id, diccionario[datos[i]]);
+  }
   retorno += "</tr>";
   return retorno;
 }
 
-function ConstruirStringColumna(id, dato) 
-{
+function ConstruirStringColumna(id, dato) {
   return "<td id=\"" + id + "\">" + dato + "</td>";
 }
 
-function BuscarEnLista(palabra = "", diccionario = [], filtro = "") {
-  const retorno = [];
-  for (let i = 0, lon = diccionario.length; i < lon; i++) {
-    if (VerificarIgualdad(palabra, diccionario[i][filtro])) {
+function BuscarEnLista(palabra = "",diccionario = [],filtro = "")
+{
+  var retorno = [];
+  for(let i = 0,lon = diccionario.length;i<lon;i++)
+  {
+    if(VerificarIgualdad(palabra,diccionario[i][filtro]))
       retorno.push(diccionario[i]);
-    }
   }
   return retorno;
 }
 
-function VerificarIgualdad(palabra = "", rec) {
-  const sAux = "" + rec;
+function VerificarIgualdad(palabra = "",rec)
+{
+  var sAux = "" + rec;
   return sAux.includes(palabra);
 }
-
