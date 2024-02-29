@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
@@ -124,7 +124,7 @@ table tr:nth-child(even) {
     vertical-align: middle;
 
 }
-/* Estilos para dispositivos móviles */
+
 @media screen and (max-width: 768px) {
     body {
         font-size: 14px; 

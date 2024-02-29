@@ -44,18 +44,18 @@ th {
 
 
 .centrar {
-  text-align: center; /* Alinear al centro */
+  text-align: center; 
 }
 
 #anotar {
   color: rgb(19, 19, 19);
   font-size: 22px;
   cursor: pointer;
-  margin-top: 10px; /* Añadir margen superior */
+  margin-top: 10px; 
 }
 
 .boton1 {
-  float: right; /* Alinea el botón a la derecha */
+  float: right;
   width: auto;
   background: none;
   color: black;
@@ -71,12 +71,12 @@ th {
 
 
 .boton {
-  width: auto; /* Ancho automático */
+  width: auto; 
   background: none;
   color: black;
-  padding: 8px 16px; /* Aumentar el espacio interior */
+  padding: 8px 16px; 
   font-size: 20px;
-  margin: 10px; /* Aumentar el margen */
+  margin: 10px; 
   cursor: pointer;
 }
 
@@ -84,7 +84,6 @@ th {
   background-color: #007bff;
 }
 
-/* Estoy configurando el responsive */
 @media screen and (max-width: 950px) {
   h3 {
     font-size: 20px;
