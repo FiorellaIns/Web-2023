@@ -61,7 +61,72 @@ tr:hover {
 .oculto {
   display: none;
 }
+@media screen and (max-width: 768px) {
+  .boton, .boton1 {
+    width: 100%;
+    margin: 6px 0; 
+    
+  }
+  table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  thead {
+    display: none;
+  }
+  
+  tr th:first-child {
+    background: #eee;
+  }
+  
+  th {
+    display: block;
+    text-align: center;
+  }
+  
+  th:before {
+    content: attr(data-th);
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+  }
+}
 
+@media screen and (max-width: 678px) {
+  .boton, .boton1 {
+    width: 100%;
+    margin: 6px 0; 
+    
+  }
+  table {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  
+  thead {
+    display: none;
+  }
+  
+  tr th:first-child {
+    background: #eee;
+  }
+  
+  th {
+    display: block;
+    text-align: center;
+  }
+  
+  th:before {
+    content: attr(data-th);
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+  }
+}
+
+/*
 @media screen and (max-width: 768px) {
   .boton, .boton1 {
     width: 100%;
@@ -89,3 +154,53 @@ tr:hover {
     width: auto;
   }
 }
+@media only screen and (max-width: 760px) {
+  .boton,
+  .boton1 {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  #miTabla {
+    overflow-x: auto;
+  }
+}
+
+/* Pantallas de 600px de ancho o menos 
+@media only screen and (max-width: 600px) {
+  .boton,
+  .boton1 {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin: 4px;
+  }
+  #miTabla {
+    overflow-x: auto;
+  }
+}
+
+/* Pantallas de 420px de ancho o menos 
+@media only screen and (max-width: 420px) {
+  .boton,
+  .boton1 {
+    font-size: 12px;
+    padding: 6px 12px;
+    margin: 2px;
+  }
+  #miTabla {
+    overflow-x: auto;
+  }
+}
+
+/* Pantallas de 320px de ancho o menos 
+@media only screen and (max-width: 320px) {
+  .boton,
+  .boton1 {
+    font-size: 10px;
+    padding: 4px 8px;
+    margin: 2px;
+  }
+  #miTabla {
+    overflow-x: auto;
+  }
+}*/
