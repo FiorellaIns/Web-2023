@@ -506,6 +506,7 @@ def Route(aplicacion=Flask):
                 clave = ObtenerClaves()
                 for lista in clave:
                     retorno.append(ConvertirADiccionarioClaves(lista))
+                retorno = TratamientoDeDiccionarioTAD(retorno)
             return jsonify(retorno)
         except KeyError:
             return redirect(url_for("home"))

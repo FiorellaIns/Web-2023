@@ -81,4 +81,17 @@ def ConvertirADiccionarioClaves(lista=[]):
     retorno = {"exito":False}
     if len(lista) == 3:
         retorno = {"exito":True,"ID":lista[0],"Clave":lista[1],"Administrador":lista[2]}
-    return retorno    
+    return retorno
+
+
+def TratamientoDeDiccionarioTAD(lista = []):
+    retorno = []
+    for diccionarios in lista:
+        dato = diccionarios["Administrador"]
+        diccionarios.pop("Administrador",None)
+        if bool(dato):
+            diccionarios["Administrador"] = "Si"
+        else:
+            diccionarios["Administrador"] = "No"
+        retorno.append(diccionarios)
+    return retorno
