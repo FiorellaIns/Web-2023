@@ -256,3 +256,11 @@ def eliminar_pacientes(ID):
     conexion.commit()
     herramienta.close()
     conexion.close()
+    
+def eliminar_diagnostico(ID):
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("DELETE FROM `historias clinicas` WHERE ID = %s", (ID,))
+    conexion.commit()
+    herramienta.close()
+    conexion.close()
