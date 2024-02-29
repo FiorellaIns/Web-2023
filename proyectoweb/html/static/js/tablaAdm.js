@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const input = document.getElementById("buscador");
   const criterio = document.getElementById("criterio");
   const table = document.getElementById("miTabla");
+  var ds;
 
   input.addEventListener("input", function() {
-    const nuevo = BuscarEnLista(input.value, datosRecibidos, criterio.value);
+    const nuevo = BuscarEnLista(input.value, ds, criterio.value);
     ActualizarTabla(nuevo);
+    AgregarFuncionalidad(table);
   });
 
   const volver = document.getElementById("volver");
@@ -51,37 +53,12 @@ document.addEventListener("DOMContentLoaded", function() {
   peticion.onreadystatechange = function() {
     if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
       const respuesta = JSON.parse(peticion.responseText);
-      ActualizarTabla(respuesta, respuesta, usuariosSeleccionados);
-      elementos = table.getElementsByTagName("td");
-      for (let i = 0, c = elementos.length; i < c; i++) {
-        clases = elementos[i].classList;
-        arrClases = Array.from(clases);
-        if (arrClases[0] !== "checkFila") {
-          elementos[i].addEventListener("click", function(evento) {
-            var enviarData = new XMLHttpRequest();
-            enviarData.open("POST", "/redireccion", true);
-            enviarData.setRequestHeader("Content-Type", "application/json");
-            enviarData.onreadystatechange = function() {
-              if (enviarData.readyState === SOLICITUDHECHA && enviarData.status === RESPUESTAEXITOSA) {
-                var datosRecibidos = JSON.parse(enviarData.responseText);
-                if (datosRecibidos["url"] !== "valor") {
-                  window.location.href = datosRecibidos["url"];
-                } else {
-                  alert("Error en el servidor...");
-                }
-              }
-            };
-            enviarData.send(JSON.stringify({"peticion": "Gestionar_Datos_Por_Admin", "ID": evento.target.id}));
-          });
-        }
-      }
+      ds = respuesta;
+      ActualizarTabla(respuesta);
+      AgregarFuncionalidad(table);
     }
   };
   peticion.send();
-
-
-  
-
 });
 
 function eliminarUsuarios(usuariosSeleccionados) {
@@ -100,7 +77,8 @@ function eliminarUsuarios(usuariosSeleccionados) {
   peticion.send(JSON.stringify({"perfiles_a_eliminar": usuariosSeleccionados}));
 }
 
-function ActualizarTabla(diccionarios = [], datosRecibidos, usuariosSeleccionados) {
+function ActualizarTabla(diccionarios = []) 
+{
   let lectura = "";
   const cuerpoTabla = document.getElementById("cuerpo");
   cuerpoTabla.innerHTML = "";
@@ -142,4 +120,34 @@ function VerificarIgualdad(palabra = "",rec)
 {
   var sAux = "" + rec;
   return sAux.includes(palabra);
+}
+
+
+function AgregarFuncionalidad(tabla)
+{
+  const SOLICITUDHECHA = 4;
+  const RESPUESTAEXITOSA = 200;
+  elementos = tabla.getElementsByTagName("td");
+      for (let i = 0, c = elementos.length; i < c; i++) {
+        clases = elementos[i].classList;
+        arrClases = Array.from(clases);
+        if (arrClases[0] !== "checkFila") {
+          elementos[i].addEventListener("click", function(evento) {
+            var enviarData = new XMLHttpRequest();
+            enviarData.open("POST", "/redireccion", true);
+            enviarData.setRequestHeader("Content-Type", "application/json");
+            enviarData.onreadystatechange = function() {
+              if (enviarData.readyState === SOLICITUDHECHA && enviarData.status === RESPUESTAEXITOSA) {
+                  datosRecibidos = JSON.parse(enviarData.responseText);
+                if (datosRecibidos["url"] !== "valor") {
+                  window.location.href = datosRecibidos["url"];
+                } else {
+                  alert("Error en el servidor...");
+                }
+              }
+            };
+            enviarData.send(JSON.stringify({"peticion": "Gestionar_Datos_Por_Admin", "ID": evento.target.id}));
+          });
+        }
+      }
 }

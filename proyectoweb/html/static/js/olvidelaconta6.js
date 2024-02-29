@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if(campoDeMail != null)campoDeMail.addEventListener("input",function(eventos)
   {
     texto = campoDeMail.value;
-    regEx = /^[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z0-9]+$/
+    regEx = /^[^\s@]+[@][^\s@]+[.][^\s@]+$/
     eMailValido = regEx.test(texto);
   });
   if(campoContra != null && campoContraRepetir != null)
@@ -121,15 +121,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var campCB;
     campoContra.addEventListener("input",function(evento)
     {
+      const regEx = /^[^\s]+$/;
       campoP = campoContra.value;
       campCB = campoContraRepetir.value;
-      contraseniaValida = campoP === campCB;
+      contraseniaValida = campoP === campCB && regEx.test(campoP);
     });
     campoContraRepetir.addEventListener("input",function(evento)
     {
+      const regEx = /^[^\s]+$/;
       campoP = campoContra.value;
       campCB = campoContraRepetir.value;
-      contraseniaValida = campoP === campCB;
+      contraseniaValida = campoP === campCB && regEx.test(campoP);
     });
 }
 });
