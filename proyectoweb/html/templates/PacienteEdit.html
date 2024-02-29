@@ -1,1 +1,62 @@
-{{ paciente }}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Usuario</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styletablaPrueba.css">
+</head>
+<body>
+    <div class="contenedor-boton">
+        <button class="boton" id="volver">Volver</button>
+    </div>
+    <div class="contenedor-formulario">
+        <form action="/Edita_datos_paciente" id="form">
+            <div>
+                <div class="separacion">
+                    <label class="etiqueta">Nombre</label>
+                    <input type="text" id="nombre" class="cuadro_de_texto" value="{{ paciente.Nombre }}">
+                </div>
+                <div class="separacion">
+                    <label class="etiqueta">Apellido</label>
+                    <input type="text" id="apellido" class="cuadro_de_texto" value="{{ paciente.Apellido }}">
+                </div>
+            </div>
+            <div>
+                <div class="separacion" id="dnist">
+                    <label class="etiqueta">DNI</label>
+                    <input type="text" id="dni" class="cuadro_de_texto" value="{{ paciente.DNI }}">
+                </div>
+                <div class="separacion">
+                    <label class="etiqueta">Obra social</label>
+                    <input type="text" id="obra" class="cuadro_de_texto" value="{{ paciente.Obra_social }}">
+                </div>
+            </div>
+            <div>
+                <div class="separacion">
+                    <label class="etiqueta">Número de obra social</label>
+                    <input type="text" id="nro_obra" class="cuadro_de_texto" value="{{ paciente.Nro_de_obra_social }}">
+                </div>
+                <div class="separacion">
+                    <label class="etiqueta">Número de telefono</label>
+                    <input type="text" id="tel" class="cuadro_de_texto" value="{{ paciente.Nro_de_telefono }}">
+                </div>
+            </div>
+            <div>
+                <div class="separacion">
+                    <label class="etiqueta">Domicilio</label>
+                    <input type="text" id="dom" class="cuadro_de_texto" value="{{ paciente.Domicilio }}">
+                </div>
+                <div class="separacion">
+                    <label class="etiqueta">Fecha de consulta</label>
+                    <input type="text" id="fecha" value="{{ paciente.Fecha_de_consulta }}">
+                </div>
+            </div>
+            <div class="contenedor-boton">
+                <input type="submit" name="submit" value="Guardar" class="boton" id="enviar" />
+            </div>
+        </form>
+    </div>
+    <script src="../static/js/PacienteEdit.js"></script>
+</body>
+</html>

@@ -256,3 +256,29 @@ def eliminar_pacientes(ID):
     conexion.commit()
     herramienta.close()
     conexion.close()
+
+
+def ObtenerDatosPaciente(ID_Paciente):
+    retorno = {}
+    conexion = InicializarConexion()
+    herramienta = conexion.cursor()
+    herramienta.execute("SELECT * FROM pacientes WHERE ID = {}".format(ID_Paciente))
+    datos = herramienta.fetchall()
+    if datos:
+        paciente = datos[0]
+        retorno = {
+            "ID": paciente[0],
+            "Nombre": paciente[1],
+            "Apellido": paciente[2],
+            "DNI": paciente[3],
+            "Nro_de_afiliado": paciente[4],
+            "Obra_social": paciente[5],
+            "Nro_de_obra_social": paciente[6],
+            "Nro_de_telefono": paciente[7],
+            "Domicilio": paciente[8],
+            "Fecha_de_consulta": str(paciente[9])
+        }
+    conexion.commit()
+    herramienta.close()
+    conexion.close()
+    return retorno

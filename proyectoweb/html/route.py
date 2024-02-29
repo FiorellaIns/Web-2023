@@ -250,7 +250,6 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             usuario = ObtenerUsuarios()
             for lista in usuario:
-                print(lista[0])
                 if int(lista[0]) != int(id):
                     retorno.append(ConvertirADiccionarioUsuarios(lista))
             return jsonify(retorno)
@@ -269,9 +268,7 @@ def Route(aplicacion=Flask):
             
             for diagnostico in datos_diagnostico:
                 retorno.append(ConvertirADiccionarioPacientes(diagnostico))
-            print(retorno)
             retorno=proporcionarelnombredelmedicoynoelid(retorno)
-            print(retorno)
             return jsonify(retorno)           
                 
         except KeyError:
@@ -313,7 +310,6 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             if VerificarSiEsAdministrador(id):
                 perfiles_a_eliminar = request.get_json().get("perfiles_a_eliminar", None)
-                print(perfiles_a_eliminar)
                 for ID in perfiles_a_eliminar:
                     eliminar(ID)
                 exito = True
@@ -362,7 +358,6 @@ def Route(aplicacion=Flask):
                 matricula = request.form.get("matricula")
                 usuario = request.form.get("usuario")
                 email = request.form.get("email")
-                print(nombre,apellido,dni,matricula,usuario,email)
                 exito = EditarPerfilDelMedico(id, nombre, apellido, dni, matricula, usuario, email)
             return exito
         except KeyError:
@@ -401,17 +396,80 @@ def Route(aplicacion=Flask):
             return redirect(url_for("home"))
 
     
-    @aplicacion.route("/Editar_al_paciente",methods=["GET","POST"])
+
+
+
+
+
+
+
+
+
+    '''@aplicacion.route("/Editar_al_paciente",methods=["GET","POST"])
     def editar_al_paciente():
         try:
             id=session["ID"]
             ID_Paciente = session["ID_Paciente"]
+            datos=ObtenerDatosPaciente(ID_Paciente)
             if VerificarSiEsMedico(id):
-                return render_template("PacienteEdit.html",paciente = (ObtenerNombrePaciente(ID_Paciente) + " " + ObtenerApellidoPaciente(ID_Paciente)))
+                return render_template("PacienteEdit.html",paciente=datos)
             else:
                 return redirect(url_for("home"))
         except KeyError:
             return redirect(url_for("home"))
+        
+    @aplicacion.route("/Edita_datos_paciente",methods=["POST"])
+    def cambiar_paciente():
+        Exito = ""
+        Fallo="Fallo"        
+        try:
+            id = session["ID"]
+            if VerificarSiEsMedico(id):
+                nombre = request.form.get("nombre")
+                apellido = request.form.get("apellido")
+                dni = request.form.get("dni")
+                obra_social = request.form.get("obra")
+                nro_obra = request.form.get("nro_obra")
+                tel = request.form.get("tel")
+                domicilio = request.form.get("dom")
+                fecha = request.form.get("fecha")
+                print(nombre,apellido,dni,obra_social,nro_obra,tel,domicilio,fecha)
+            return Exito
+        except KeyError:
+            return Fallo'''
+        
+
+
+    '''
+    
+    @aplicacion.route("/Edicion_de_perfil_medico",methods=["POST"])
+    def edicion():
+        Exito=""
+        Fallo="Fallo de acción"
+        try:
+            id=session["ID"]
+            if VerificarSiEsMedico(id):
+                nombre = request.form.get("nombre")
+                apellido = request.form.get("apellido")
+                dni = request.form.get("dni")
+                matricula = request.form.get("matricula")
+                usuario = request.form.get("usuario")
+                email = request.form.get("email")
+                exito = EditarPerfilDelMedico(id, nombre, apellido, dni, matricula, usuario, email)
+            return exito
+        except KeyError:
+            return Fallo
+
+    '''
+
+
+
+
+
+
+
+
+
         
     @aplicacion.route("/eliminar_pacientes", methods=["POST"])
     def eliminar_paciente():
@@ -421,7 +479,6 @@ def Route(aplicacion=Flask):
             id = session["ID"]
             if VerificarSiEsMedico(id):
                 pacientes_a_eliminar = request.get_json().get("pacientes_a_eliminar", None)
-                print(pacientes_a_eliminar)
                 for ID in pacientes_a_eliminar:
                     eliminar_pacientes(ID)
                 exito = True
