@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(evento) {
-    const SOLICITUDHECHA = 4;
-    const RESPUESTAEXITOSA = 200;
+    const REQUEST_DONE = 4;
+    const SUCCESS_STATUS = 200;
     
     const volver = document.getElementById("volver");
     volver.addEventListener("click", function(event) {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(evento) {
         peticion.open("POST", "/redireccion", true);
         peticion.setRequestHeader("Content-Type", "application/json");
         peticion.onreadystatechange = function() {
-            if (peticion.readyState === SOLICITUDHECHA && peticion.status === RESPUESTAEXITOSA) {
+            if (peticion.readyState === REQUEST_DONE && peticion.status === SUCCESS_STATUS) {
                 let respuesta = JSON.parse(peticion.responseText);
                 window.location.href = respuesta.url;
             }
@@ -22,40 +22,40 @@ document.addEventListener("DOMContentLoaded", function(evento) {
         
         const nombre = document.getElementById("nombre").value.trim();
         const apellido = document.getElementById("apellido").value.trim();
-        const obraSocial = document.getElementById("obra").value.trim();
-        const nroAfiliado = document.getElementById("afiliado").value.trim();
-        const nroObraSocial = document.getElementById("nro_obra").value.trim();
-        const telefono = document.getElementById("tel").value.trim();
+        const dni = document.getElementById("dni").value.trim();
+        const matricula = document.getElementById("matricula").value.trim();
+        const usuario = document.getElementById("usuario").value.trim();
+        const contrasenia = document.getElementById("contrasenia").value.trim();
+        const email = document.getElementById("email").value.trim();
         
         const nombreExpReg = /^[a-zA-ZÀ-ÿ\s]+$/;
         const apellidoExpReg = /^[a-zA-ZÀ-ÿ\s]+$/;
-        const obraSocialExpReg = /^[a-zA-ZÀ-ÿ\s]+$/;
-        const nroAfiliadoExpReg = /^\d+$/; // Expresión regular para verificar que solo hay números
-        const nroObraSocialExpReg = /^\d+$/; // Expresión regular para verificar que solo hay números
-        const telefonoExpReg = /^\d+$/; // Expresión regular para verificar que solo hay números
-        
-        if (nombre === "" || apellido === "" || obraSocial === "" || nroAfiliado === "" || nroObraSocial === "" || telefono === "") {
+        const dniExpReg = /^\d+$/; 
+        const matriculaExpReg = /^\d+$/; 
+        const emailExpReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+
+        if (nombre === "" || apellido === "" || dni === "" || matricula === "" || usuario === "" || contrasenia === "" || email === "") {
             mostrarMensaje("Por favor, complete todos los campos.");
-        } else if (!nombreExpReg.test(nombre) || !apellidoExpReg.test(apellido) || !obraSocialExpReg.test(obraSocial) || !nroAfiliadoExpReg.test(nroAfiliado) || !nroObraSocialExpReg.test(nroObraSocial) || !telefonoExpReg.test(telefono)) {
+        } else if (!nombreExpReg.test(nombre) || !apellidoExpReg.test(apellido) || !dniExpReg.test(dni) || !matriculaExpReg.test(matricula) || !emailExpReg.test(email)) {
             mostrarMensaje("Por favor, ingrese valores válidos para los campos.");
         } else {
             const peticion = new XMLHttpRequest();
             peticion.open("POST", "/redireccion", true);
             peticion.setRequestHeader("Content-Type", "application/json");
             peticion.onreadystatechange = function() {
-                if (peticion.readyState === 4 && peticion.status === 200) {
+                if (peticion.readyState === REQUEST_DONE && peticion.status === SUCCESS_STATUS) {
                     const peticionEdicion = new XMLHttpRequest();
-                    peticionEdicion.open("POST", "/Edita_datos_usuarios", true);
+                    peticionEdicion.open("POST", "/Edita_datos_usuario", true);
                     const formatoDeData = new FormData(document.getElementById("form"));
                     peticionEdicion.onreadystatechange = function() {
-                        if (peticionEdicion.readyState === 4 && peticionEdicion.status === 200) {
+                        if (peticionEdicion.readyState === REQUEST_DONE && peticionEdicion.status === SUCCESS_STATUS) {
                             const respuestaEdicion = JSON.parse(peticionEdicion.responseText);
                         }
                     };
                     peticionEdicion.send(formatoDeData);
                     let respuesta = JSON.parse(peticion.responseText);
                     setTimeout(function() {
-                      window.location.href = respuesta.url;
+                      //window.location.href = respuesta.url;
                   }, 100);
                 }
             };

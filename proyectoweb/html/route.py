@@ -470,13 +470,15 @@ def Route(aplicacion=Flask):
             mnj = "Acceso no autorizado. No has iniciado sesión."
         return jsonify({"success": exito, "message": mnj})
         
-    @aplicacion.route("/Edita_datos_usuario")
+
+
+
+    @aplicacion.route("/Edita_datos_usuario", methods=["POST"])
     def edita_usuarios():
-        Exito = ""
-        Fallo="Fallo"        
         try:
             id = session["ID"]
             id_usuario = session["ID_Paciente"]
+
             if VerificarSiEsAdministrador(id):
                 nombre = request.form.get("nombre")
                 apellido = request.form.get("apellido")
@@ -485,12 +487,28 @@ def Route(aplicacion=Flask):
                 usuario = request.form.get("usuario")
                 contrasenia = request.form.get("contrasenia")
                 email = request.form.get("email")
-                administrador = request.form.get("administrador")
-                print(id_usuario,nombre,apellido,dni,matricula,usuario,contrasenia,email,administrador)
-                #Exito = EditarPerfilDelUsuario(id_usuario,nombre,apellido,dni,matricula,usuario,contrasenia,email,administrador)
-            return Exito
+
+                print(nombre,apellido,dni,matricula,usuario,contrasenia,email)
+            
+            # Realizar la edición del usuario aquí
+            
+            # Devolver una respuesta exitosa en caso de éxito
+                return jsonify({"success": True, "message": "Usuario editado correctamente"})
+            else:
+            # Devolver un mensaje de error si el usuario no es un administrador
+                return jsonify({"success": False, "error": "No autorizado para editar usuarios"})
         except KeyError:
-            return Fallo
+        # Devolver un mensaje de error si ocurre una excepción
+            return jsonify({"success": False, "error": "Error en la edición del usuario"}) 
+
+
+
+
+        '''
+        '''     
+
+
+
 
 
     @aplicacion.route("/redireccion",methods=["GET","POST"])
